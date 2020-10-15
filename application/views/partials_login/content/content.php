@@ -60,23 +60,6 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
-        // var url = 'http://127.0.0.1:8080/runsystemdms/getUsers';
-        // $.ajax({ 
-        //     type: 'GET', 
-        //     url: url,
-        //     dataType: 'json',
-        //     cache :false,
-        //     success: function (data) {
-        //             data = JSON.parse(JSON.stringify(data));
-        //             console.log(data.user[0].usercode)
-        //             data = data.user;
-        //             for (i = 0; i < data.length; i++){
-        //                 // $('#jancok').val(data.id_user);
-        //                 // $("#result").html(data['user'].id_user);
-        //                 // alert(data[i].id_user);
-        //             }
-        //     }
-        // });
         $("#submit").on("click", function(){
             var usercode = $('#usercode').val();
             var pwd = $("#pwd").val();
@@ -89,7 +72,7 @@
                 cache:false,
                 success: function(data){
                     if (data.token != null){
-                        // window.location.href = "home";
+                        window.location.href = "home";
                         // console.log(data)
                         var base64Url = data.token.split('.')[1];
                         var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -98,23 +81,12 @@
                         }).join(''));
 
                         var result = JSON.parse(jsonPayload);
-                        alert(result.name)
+                        // alert(result.name)
+                    }else{
+                        if (data.message == false) {
+                            alert("Usercode atau Password Salah !!!")
+                        }
                     }
-                        // data = JSON.parse(JSON.stringify(data));
-                        // // console.log(data.user[0].id_user)
-                        // data = data.user;
-                        // for (i = 0; i < data.length; i++){
-                        //     // $('#jancok').val(data.id_user);
-                        //     // $("#result").html(data['user'].id_user);
-                        //     var email = $('#email').val();
-                        //     var password = $("#password").val();
-                        //     alert(data[i].username +' '+ email );
-                        //     // if (data[i].username == email && password_verify(data[i].password, password)) {
-                        //     //     alert("cocok");
-                        //     // }else{
-                        //     //     alert("tidak cocok");
-                        //     // }
-                        // }
                 }
             });
         });

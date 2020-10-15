@@ -1,110 +1,134 @@
-
-        <div class="main-grid">
+    <div class="main-grid">
         <div class="social grid">
-                    <div class="grid-info">
-                        <div class="col-md-3 top-comment-grid">
-                            <div class="comments">
-                                <div class="comments-icon">
-                                    <i class="fa fa-comments"></i>
-                                </div>
-                                <div class="comments-info">
-                                    <h3>01</h3>
-                                    <a href="#">TWC 1</a>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
+            <div class="grid-info">
+            <div id="grid"></div>
+                <!-- <div class="col-md-3 top-comment-grid">
+                    <div class="comments">
+                        <div class="comments-icon">
+                            <i class="fa fa-comments"></i>
                         </div>
-                        <div class="col-md-3 top-comment-grid">
-                            <div class="comments">
-                                <div class="comments-icon">
-                                    <i class="fa fa-comments"></i>
-                                </div>
-                                <div class="comments-info">
-                                    <h3>02</h3>
-                                    <a href="#">TWC 2</a>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 top-comment-grid">
-                            <div class="comments">
-                                <div class="comments-icon">
-                                    <i class="fa fa-comments"></i>
-                                </div>
-                                <div class="comments-info">
-                                    <h3>03</h3>
-                                    <a href="#">TWC 3</a>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 top-comment-grid">
-                            <div class="comments tweets">
-                                <div class="comments-icon">
-                                    <i class="fa fa-twitter"></i>
-                                </div>
-                                <div class="comments-info tweets-info">
-                                    <h3>04</h3>
-                                    <a href="#">IMS 1</a>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
+                        <div class="comments-info">
+                            <h3>01</h3>
+                            <a href="#">TWC 1</a>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
-            </div>
-
-            <div class="social grid">
-                    <div class="grid-info">
-                        <div class="col-md-3 top-comment-grid">
-                        <div class="comments tweets">
-                                <div class="comments-icon">
-                                    <i class="fa fa-twitter"></i>
-                                </div>
-                                <div class="comments-info tweets-info">
-                                    <h3>05</h3>
-                                    <a href="#">IMS 2</a>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
+                </div> -->
+                <!-- <div class="col-md-3 top-comment-grid">
+                    <div class="comments">
+                        <div class="comments-icon">
+                            <i class="fa fa-comments"></i>
                         </div>
-                        <div class="col-md-3 top-comment-grid">
-                        <div class="comments views">
-                                <div class="comments-icon">
-                                    <i class="fa fa-eye"></i>
-                                </div>
-                                <div class="comments-info views-info">
-                                    <h3>06</h3>
-                                    <a href="#">Sarinah 1</a>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 top-comment-grid">
-                        <div class="comments views">
-                                <div class="comments-icon">
-                                    <i class="fa fa-eye"></i>
-                                </div>
-                                <div class="comments-info views-info">
-                                    <h3>07</h3>
-                                    <a href="#">Sarinah 2</a>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 top-comment-grid">
-                            <div class="comments views">
-                                <div class="comments-icon">
-                                    <i class="fa fa-eye"></i>
-                                </div>
-                                <div class="comments-info views-info">
-                                    <h3>08</h3>
-                                    <a href="#">Sarinah 3</a>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
+                        <div class="comments-info">
+                            <h3>02</h3>
+                            <a href="#">TWC 2</a>
                         </div>
                         <div class="clearfix"> </div>
                     </div>
+                </div>
+                <div class="col-md-3 top-comment-grid">
+                    <div class="comments">
+                        <div class="comments-icon">
+                            <i class="fa fa-comments"></i>
+                        </div>
+                        <div class="comments-info">
+                            <h3>03</h3>
+                            <a href="#">TWC 3</a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="col-md-3 top-comment-grid">
+                    <div class="comments tweets">
+                        <div class="comments-icon">
+                            <i class="fa fa-twitter"></i>
+                        </div>
+                        <div class="comments-info tweets-info">
+                            <h3>04</h3>
+                            <a href="#">IMS 1</a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div> -->
+                <div class="clearfix"> </div>
             </div>
         </div>
+
+        <div class="social grid">
+                <div class="grid-info">
+                    <div class="col-md-3 top-comment-grid">
+                        <div class="comments tweets">
+                            <div class="comments-icon">
+                                <i class="fa fa-twitter"></i>
+                            </div>
+                            <div class="comments-info tweets-info">
+                                <h3>05</h3>
+                                <a href="#">IMS 2</a>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 top-comment-grid">
+                        <div class="comments views">
+                            <div class="comments-icon">
+                                <i class="fa fa-eye"></i>
+                            </div>
+                            <div class="comments-info views-info">
+                                <h3>06</h3>
+                                <a href="#">Sarinah 1</a>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 top-comment-grid">
+                        <div class="comments views">
+                            <div class="comments-icon">
+                                <i class="fa fa-eye"></i>
+                            </div>
+                            <div class="comments-info views-info">
+                                <h3>07</h3>
+                                <a href="#">Sarinah 2</a>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 top-comment-grid">
+                        <div class="comments views">
+                            <div class="comments-icon">
+                                <i class="fa fa-eye"></i>
+                            </div>
+                            <div class="comments-info views-info">
+                                <h3>08</h3>
+                                <a href="#">Sarinah 3</a>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+        <?php $this->load->view("partials/parts/foot") ?>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            var url = 'http://127.0.0.1:8080/runsystemdms/getPG';
+            $.ajax({ 
+                type: 'GET', 
+                url: url,
+                dataType: 'json',
+                cache :false,
+                success: function (data) {
+                        data = JSON.parse(JSON.stringify(data));
+                        // console.log(data.pg[0].pgcode)
+                        data = data.pg;
+                        for (i = 0; i < data.length; i++){
+                            var grid ='<div class="col-md-3 top-comment-grid"><div class="comments"><div class="comments-icon"><i ></i></div><div class="comments-info"><h3>'+ data[i].pgname+'</h3><a href="#">'+data[i].pgcode+'</a></div><div class="clearfix"> </div></div></div>';
+                            $("#grid").html(grid)
+                            // $('#jancok').val(data.id_user);
+                            // $("#result").html(data['user'].id_user);
+                            // alert(data[i].id_user);
+                        }
+                }
+            });
+        });
+        </script>
