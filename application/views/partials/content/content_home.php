@@ -118,16 +118,13 @@
                 dataType: 'json',
                 cache :false,
                 success: function (data) {
-                        data = JSON.parse(JSON.stringify(data));
-                        // console.log(data.pg[0].pgcode)
-                        data = data.pg;
-                        for (i = 0; i < data.length; i++){
-                            var grid ='<div class="col-md-3 top-comment-grid"><div class="comments"><div class="comments-icon"><i ></i></div><div class="comments-info"><h3>'+ data[i].pgname+'</h3><a href="#">'+data[i].pgcode+'</a></div><div class="clearfix"> </div></div></div>';
-                            $("#grid").html(grid)
-                            // $('#jancok').val(data.id_user);
-                            // $("#result").html(data['user'].id_user);
-                            // alert(data[i].id_user);
-                        }
+                    data = JSON.parse(JSON.stringify(data));
+                    // console.log(data.pg[0].pgcode)
+                    data = data.pg;
+                    for (i = 0; i < data.length; i++){
+                        var grid ='<div class="col-md-3 top-comment-grid"><div class="comments"><div class="comments-icon"><i ></i></div><div class="comments-info"><h3>'+ data[i].pgname+'</h3><a href="#">'+data[i].pgcode+'</a></div><div class="clearfix"> </div></div></div>';
+                        $("#grid").html(grid)
+                    }
                 }
             });
         });
