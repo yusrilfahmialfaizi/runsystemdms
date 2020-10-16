@@ -21,14 +21,11 @@
                     <div class="clearfix"></div>
                     <form action="#" method="GET">
                         <div class="form-group form-box">
-                            <input type="username" name="username" class="input-text" placeholder="Username">
-                            <input type="text" id="usercode" name="usercode" class="input-text" placeholder="Email Address">
+                            <input type="text" id="usercode" name="usercode" class="input-text" placeholder="Username">
                         </div>
                         <div class="form-group form-box clearfix">
                             <input type="password" id="pwd" name="pwd" class="input-text" placeholder="Password">
                         </div>
-                        <div class="btn-section clearfix">
-                            <a href="" class="btn-md btn-theme float-left">Login</a>
                         <div class="form-group clearfix mb-0">
                             <button type="button" id="submit" class="btn-md btn-theme float-left">Login</button>
                             <a href="forgot-password-5.html" class="forgot-password">Forgot Password</a>
