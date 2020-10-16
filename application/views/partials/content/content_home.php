@@ -83,7 +83,6 @@
                 cache: false,
                 success: function(data) {
                     data = JSON.parse(JSON.stringify(data));
-                    // console.log(data.pg[0].pgcode)
                     data = data.pg;
                     for (i = 0; i < data.length; i++) {
                         var grid = '<div class="col-md-3 top-comment-grid" style="margin : 5px"><div class="comments"><div class="comments-icon"><i class="fa fa-eye"></i></div><div class="comments-info"><h2 style="color:white;">' + data[i].pgcode + '</h2><a href="#">' + data[i].pgname + '</a></div><div class="clearfix"> </div></div></div>';
