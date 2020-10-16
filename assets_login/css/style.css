@@ -1200,7 +1200,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .login-5 .login-box {
-    background: #fff;
+    background: #7dcae1;
     max-width: 950px;
     border-radius: 20px;
     margin: 0 auto;
@@ -1214,7 +1214,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .login-5 .bg-img {
-    background: rgba(0, 0, 0, 0.04) url(../img/bg-image-9.jpg) top left repeat;
+    background: rgba(0, 0, 0, 0.04) url(../img/b.jpg) top left repeat;
     background-size: cover;
     top: 0;
     bottom: 0;
@@ -1351,7 +1351,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .login-5 .form-section .btn-theme {
-    background: #ff2f2f;
+    background: #1417b5;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border: none;
     color: #fff;
