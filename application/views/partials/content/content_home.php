@@ -2,55 +2,8 @@
         <div class="social grid">
             <div class="grid-info">
             <div id="grid"></div>
-                <!-- <div class="col-md-3 top-comment-grid">
-                    <div class="comments">
-                        <div class="comments-icon">
-                            <i class="fa fa-comments"></i>
-                        </div>
-                        <div class="comments-info">
-                            <h3>01</h3>
-                            <a href="#">TWC 1</a>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                </div> -->
-                <!-- <div class="col-md-3 top-comment-grid">
-                    <div class="comments">
-                        <div class="comments-icon">
-                            <i class="fa fa-comments"></i>
-                        </div>
-                        <div class="comments-info">
-                            <h3>02</h3>
-                            <a href="#">TWC 2</a>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
+                <div class="clearfix"> 
                 </div>
-                <div class="col-md-3 top-comment-grid">
-                    <div class="comments">
-                        <div class="comments-icon">
-                            <i class="fa fa-comments"></i>
-                        </div>
-                        <div class="comments-info">
-                            <h3>03</h3>
-                            <a href="#">TWC 3</a>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                </div>
-                <div class="col-md-3 top-comment-grid">
-                    <div class="comments tweets">
-                        <div class="comments-icon">
-                            <i class="fa fa-twitter"></i>
-                        </div>
-                        <div class="comments-info tweets-info">
-                            <h3>04</h3>
-                            <a href="#">IMS 1</a>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                </div> -->
-                <div class="clearfix"> </div>
             </div>
         </div>
 
@@ -134,7 +87,7 @@
                     // console.log(data.pg[0].pgcode)
                     data = data.pg;
                     for (i = 0; i < data.length; i++){
-                        var grid ='<div class="col-md-3 top-comment-grid" style="margin : 5px"><div class="comments"><div class="comments-icon"><i ></i></div><div class="comments-info"><h4>'+ data[i].pgname+'</h4><a href="#">'+data[i].pgcode+'</a></div><div class="clearfix"> </div></div></div>';
+                        var grid ='<div class="col-md-3 top-comment-grid" style="margin : 5px"><div class="comments"><div class="comments-icon"><i ></i></div><div class="comments-info"><h1 style="color:white;">'+ data[i].pgname+'</h1><a href="#">'+data[i].pgcode   +'</a></div><div class="clearfix"> </div></div></div>';
                         $("#grid").append(grid)
                     }
                 }
