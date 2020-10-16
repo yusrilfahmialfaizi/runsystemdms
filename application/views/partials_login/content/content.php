@@ -51,7 +51,6 @@
                 cache:false,
                 success: function(data){
                     if (data.token != null){
-                        window.location.href = "home";
                         // console.log(data)
                         var base64Url = data.token.split('.')[1];
                         var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -61,6 +60,7 @@
 
                         var result = JSON.parse(jsonPayload);
                         // alert(result.name)
+                        window.location.href = "home";
                     }else{
                         if (data.message == false) {
                             alert("Usercode atau Password Salah !!!")
