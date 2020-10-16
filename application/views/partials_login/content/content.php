@@ -14,6 +14,7 @@
             <div class="col-lg-6 align-self-center pad-0">
                 <div class="form-section align-self-center">
                     <h3>Masuk Akun</h3>
+                    <div id="wrong" class="form-group"></div>
                     <!-- <div class="btn-section clearfix">
                         <a href="login-5.html" class="link-btn active btn-1 active-bg">Login</a>
                         <a href="register-5.html" class="link-btn btn-2 default-bg">Register</a>
@@ -32,8 +33,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
-            
+            </div>            
         </div>
     </div>
 </div>
@@ -62,7 +62,11 @@
                         session(result);
                     }else{
                         if (data.message == false) {
-                            alert("Usercode atau Password Salah !!!")
+                            var text = "Username atau password salah !!!"
+                            document.getElementById("wrong").innerHTML = text;
+                            document.getElementById("wrong").style.color = "#ff6666";
+                            document.getElementById("pwd").style.color = "#ff6666";
+                            document.getElementById("usercode").style.color = "#ff6666";
                         }
                     }
                 }
@@ -74,8 +78,6 @@
             var grpcode = result.grpcode;
             var status = "login"
             var exp = result.exp;
-            alert(usercode);
-
             $.ajax({
                 type : "POST",
                 url : "http://localhost/runsystemdms/login/session",
@@ -83,10 +85,9 @@
                 data : {usercode :usercode, username: username, grpcode:grpcode, status : status,exp : exp},
                 cache : false,
                 success : function(data){
-                        console.log(data);
-                        if (data.message == true) {
-                            window.location.href = "home";
-                        }
+                    if (data.message == true) {
+                        window.location.href = "home";
+                    }
                 }
             });
         }

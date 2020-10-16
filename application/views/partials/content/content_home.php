@@ -6,8 +6,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="social grid">
+            <div class="social grid">
                 <div class="grid-info">
                     <div class="col-md-3 top-comment-grid">
                         <div class="comments tweets">
