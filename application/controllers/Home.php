@@ -6,6 +6,9 @@ class Home extends CI_Controller {
 	
 	public function index()
 	{
+		if ($this->session->userdata('status') != "login") {
+			redirect("login");
+		}
 		$this->load->view('partials/page/home');
 	}
 
