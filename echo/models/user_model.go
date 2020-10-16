@@ -68,7 +68,7 @@ func GetUser() Users {
 }
 func GetProjectGroup() PGs {
 	conn := config.Connection()
-	queryStatement := "Select pgcode, pgname, actind, projectCode, projectname, ctcode From tblprojectgroup"
+	queryStatement := "Select pgcode, pgname, actind, projectCode, projectname, ctcode From tblprojectgroup Where actind = 'Y'"
 
 	rows, err := conn.Query(queryStatement)
 	fmt.Println("ROWS : ", rows)

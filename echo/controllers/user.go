@@ -34,8 +34,9 @@ func Login(c echo.Context) (err error) {
 
 			// set claims yang bisa digunakn di frontend
 			claims := token.Claims.(jwt.MapClaims)
-			claims["name"] = result.Users[i].Username
-			claims["admin"] = true
+			claims["usercode"] = result.Users[i].UserCode
+			claims["username"] = result.Users[i].Username
+			claims["grpcode"] = result.Users[i].GrpCode
 			claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
 
 			// mencari kombinasi token dan mengirimkannya sebagai response

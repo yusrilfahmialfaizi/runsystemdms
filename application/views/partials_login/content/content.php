@@ -59,13 +59,7 @@
                         }).join(''));
 
                         var result = JSON.parse(jsonPayload);
-                        // alert(result.name)
-                        // var userdata = [
-                        //     'usercode' => result.usercode,
-                        //     'username' => result.username,
-                        // ]
-                        
-                        // window.location.href = "home";
+                        session(result);
                     }else{
                         if (data.message == false) {
                             alert("Usercode atau Password Salah !!!")
@@ -74,5 +68,27 @@
                 }
             });
         });
+        function session(result) {
+            var usercode = result.usercode;
+            var username = result.username;
+            var grpcode = result.grpcode;
+            var status = "login"
+            var exp = result.exp;
+            alert(usercode);
+
+            $.ajax({
+                type : "POST",
+                url : "http://localhost/runsystemdms/login/session",
+                dataType : "JSON",
+                data : {usercode :usercode, username: username, grpcode:grpcode, status : status,exp : exp},
+                cache : false,
+                success : function(data){
+                        console.log(data);
+                        if (data.message == true) {
+                            window.location.href = "home";
+                        }
+                }
+            });
+        }
     });
 </script>

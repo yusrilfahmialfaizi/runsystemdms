@@ -33,7 +33,7 @@
         </ul>
         <ul class="logout">
             <li>
-            <a href="login.html">
+            <a href="<?php echo base_url("login/logout");?>">
             <i class="icon-off nav-icon"></i>
             <span class="nav-text">
             Logout
