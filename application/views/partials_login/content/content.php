@@ -22,12 +22,16 @@
                     <form action="#" method="GET">
                         <div class="form-group form-box">
                             <input type="username" name="username" class="input-text" placeholder="Username">
+                            <input type="text" id="usercode" name="usercode" class="input-text" placeholder="Email Address">
                         </div>
                         <div class="form-group form-box clearfix">
-                            <input type="password" name="Password" class="input-text" placeholder="Password">
+                            <input type="password" id="pwd" name="pwd" class="input-text" placeholder="Password">
                         </div>
                         <div class="btn-section clearfix">
                             <a href="" class="btn-md btn-theme float-left">Login</a>
+                        <div class="form-group clearfix mb-0">
+                            <button type="button" id="submit" class="btn-md btn-theme float-left">Login</button>
+                            <a href="forgot-password-5.html" class="forgot-password">Forgot Password</a>
                         </div>
                     </form>
                 </div>
@@ -36,3 +40,37 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#submit").on("click", function(){
+            var usercode = $('#usercode').val();
+            var pwd = $("#pwd").val();
+            var url = 'http://127.0.0.1:8080/runsystemdms/login';
+            $.ajax({
+                type : "POST",
+                url  : url,
+                dataType : "JSON",
+                data : {usercode: usercode, pwd : pwd },
+                cache:false,
+                success: function(data){
+                    if (data.token != null){
+                        window.location.href = "home";
+                        // console.log(data)
+                        var base64Url = data.token.split('.')[1];
+                        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                        }).join(''));
+
+                        var result = JSON.parse(jsonPayload);
+                        // alert(result.name)
+                    }else{
+                        if (data.message == false) {
+                            alert("Usercode atau Password Salah !!!")
+                        }
+                    }
+                }
+            });
+        });
+    });
+</script>
