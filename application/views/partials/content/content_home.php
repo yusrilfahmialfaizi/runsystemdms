@@ -85,7 +85,7 @@
                     data = JSON.parse(JSON.stringify(data));
                     data = data.pg;
                     for (i = 0; i < data.length; i++){
-                        var grid ='<div class="col-md-3 top-comment-grid" style="margin : 5px"><div class="comments"><div class="comments-icon"><i ></i></div><div class="comments-info"><h1 style="color:white;">'+ data[i].pgname+'</h1></div><div class="clearfix"> </div></div></div>';
+                        var grid ='<div class="col-md-3 top-comment-grid" style="margin : 5px"><div class="comments"><div class="comments-icon"><i class="fa fa-eye"></i></div><div class="comments-info"><h1 style="color:white;">'+ data[i].pgname+'</h1></div><div class="clearfix"> </div></div></div>';
                         $("#grid").append(grid)
                     }
                 }
