@@ -26,9 +26,9 @@
                         <div class="form-group form-box clearfix">
                             <input type="password" id="pwd" name="pwd" class="input-text" placeholder="Password">
                         </div>
-                        <div class="form-group clearfix mb-0">
-                            <button type="button" id="submit" class="btn-md btn-theme float-left">Login</button>
-                            <a href="forgot-password-5.html" class="forgot-password">Forgot Password</a>
+                        <div class="form-group form-box">
+                        <button type="button" id="submit" class="btn-md btn-theme float-right">Login</button>
+                     <!--        <a href="forgot-password-5.html" class="forgot-password">Forgot Password</a> -->
                         </div>
                     </form>
                 </div>
