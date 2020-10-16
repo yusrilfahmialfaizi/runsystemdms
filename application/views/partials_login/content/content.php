@@ -60,7 +60,12 @@
 
                         var result = JSON.parse(jsonPayload);
                         // alert(result.name)
-                        window.location.href = "home";
+                        // var userdata = [
+                        //     'usercode' => result.usercode,
+                        //     'username' => result.username,
+                        // ]
+                        
+                        // window.location.href = "home";
                     }else{
                         if (data.message == false) {
                             alert("Usercode atau Password Salah !!!")

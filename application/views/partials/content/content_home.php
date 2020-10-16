@@ -104,6 +104,18 @@
                             <div class="clearfix"> </div>
                         </div>
                     </div>
+                    <div class="col-md-3 top-comment-grid" style="margin:10px">
+                        <div class="comments views">
+                            <div class="comments-icon">
+                                <i class="fa fa-eye"></i>
+                            </div>
+                            <div class="comments-info views-info">
+                                <h3>08</h3>
+                                <a href="#">Sarinah 3</a>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
                     <div class="clearfix"> </div>
                 </div>
             </div>
@@ -122,7 +134,7 @@
                     // console.log(data.pg[0].pgcode)
                     data = data.pg;
                     for (i = 0; i < data.length; i++){
-                        var grid ='<div class="col-md-3 top-comment-grid"><div class="comments"><div class="comments-icon"><i ></i></div><div class="comments-info"><h3>'+ data[i].pgname+'</h3><a href="#">'+data[i].pgcode+'</a></div><div class="clearfix"> </div></div></div>';
+                        var grid ='<div class="col-md-3 top-comment-grid" style="margin : 5px"><div class="comments"><div class="comments-icon"><i ></i></div><div class="comments-info"><h4>'+ data[i].pgname+'</h4><a href="#">'+data[i].pgcode+'</a></div><div class="clearfix"> </div></div></div>';
                         $("#grid").append(grid)
                     }
                 }
