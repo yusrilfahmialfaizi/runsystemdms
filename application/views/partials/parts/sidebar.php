@@ -19,12 +19,12 @@
                 <ul>
                     <li>
                     <a class="subnav-text" href="<?php echo site_url('modul')?>">
-                    Modul 1
+                    Modul
                     </a>
                     </li>
                     <li>
-                    <a class="subnav-text" href="">
-                    Modul 2
+                    <a class="subnav-text" href="<?php echo site_url('general')?>">
+                    General
                     </a>
                     </li>
                 </ul>
