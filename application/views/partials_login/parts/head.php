@@ -5,7 +5,7 @@
     <!-- External CSS libraries -->
     <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets_login/css/bootstrap.min.css')?>">
     <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets_login/fonts/font-awesome/css/font-awesome.min.css')?>">
-    <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets_login/fonts/flaticon/font/flaticon.css')?>">\
+    <link type="text/css" rel="stylesheet" href="<?php echo base_url('assets_login/fonts/flaticon/font/flaticon.css')?>">
     <script src="<?php echo base_url('assets/js/jquery2.0.3.min.js')?>"></script>
 
 
