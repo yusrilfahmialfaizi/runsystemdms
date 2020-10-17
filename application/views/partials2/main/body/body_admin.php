@@ -26,7 +26,7 @@
             </div>
           </div>
           <?php $this->load->view("partials2/main/container_fluid") ?>
-          <?php $this->load->view("partials2/main/preload") ?>
+          </div>
           <?php $this->load->view("partials2/main/footer") ?>
 
           

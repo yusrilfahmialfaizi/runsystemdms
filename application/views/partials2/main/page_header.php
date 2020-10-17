@@ -2,7 +2,7 @@
 <div class="page-main-header">
   <div class="main-header-right">
     <div class="main-header-left text-center">
-      <div class="logo-wrapper"><a href="index.html"><img src="assets/images/logo/logo.png" alt=""></a></div>
+      <div class="logo-wrapper"><a href="index.html"><img src="assets/images/logo/dms.png" alt=""></a></div>
     </div>
     <div class="mobile-sidebar">
       <div class="media-body text-right switch-sm">
@@ -16,9 +16,7 @@
           <form class="form-inline search-form" action="#" method="get">
             <div class="form-group">
               <div class="Typeahead Typeahead--twitterUsers">
-                <div class="u-posRelative">
-                  <input class="Typeahead-input form-control-plaintext" id="demo-input" type="text" name="q" placeholder="Search Your Product...">
-                  <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Loading...</span></div><span class="d-sm-none mobile-search"><i data-feather="search"></i></span>
+                <div class="u-posRelative">                  
                 </div>
                 <div class="Typeahead-menu"></div>
               </div>
