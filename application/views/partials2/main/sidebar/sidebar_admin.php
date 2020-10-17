@@ -3,7 +3,9 @@
   <div class="sidebar">
     <ul class="iconMenu-bar custom-scrollbar">
       <li><a class="bar-icons" href="javascript:void(0)">
-        <!--img(src='assets/images/menu/home.png' alt='')--><i class="pe-7s-home"></i><span>General    </span></a>
+        <!--img(src='assets/images/menu/home.png' alt='')-->
+        <div id="module"></div>
+        <!-- <i class="pe-7s-home"></i><span>General    </span></a> -->
         <ul class="iconbar-mainmenu custom-scrollbar">
           <li class="iconbar-header">Dashboard</li>
           <li><a href="index.html">Default</a></li>
@@ -16,7 +18,7 @@
           <li><a href="http://admin.pixelstrap.com/poco/starter-kit/index.html">starter-kit   </a></li>
         </ul>
       </li>
-      <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-portfolio"></i><span>UI Kits</span></a>
+      <!-- <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-portfolio"></i><span>UI Kits</span></a>
         <ul class="iconbar-mainmenu custom-scrollbar">
           <li class="iconbar-header">Ui Elements</li>
           <li><a href="state-color.html">State color</a></li>
@@ -241,7 +243,7 @@
           <li><a href="comingsoon-bg-video.html">Coming with Bg video</a></li>
           <li><a href="comingsoon-bg-img.html">Coming with Bg Image               </a></li>
         </ul>
-      </li>
+      </li> -->
     </ul>
   </div>
 </div>

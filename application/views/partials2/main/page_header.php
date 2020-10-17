@@ -2,7 +2,7 @@
 <div class="page-main-header">
   <div class="main-header-right">
     <div class="main-header-left text-center">
-      <div class="logo-wrapper"><a href="index.html"><img src="assets/images/logo/dms.png" alt=""></a></div>
+      <div class="logo-wrapper"><a href="index.html"><img src="<?php echo base_url("assets/images/logo/dms.png") ?>" alt=""></a></div>
     </div>
     <div class="mobile-sidebar">
       <div class="media-body text-right switch-sm">
@@ -24,7 +24,7 @@
           </form>
         </li>
         <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
-        <li class="onhover-dropdown"><img class="img-fluid img-shadow-warning" src="assets/images/dashboard/bookmark.png" alt="">
+        <li class="onhover-dropdown"><img class="img-fluid img-shadow-warning" src="<?php echo base_url("assets/images/dashboard/bookmark.png") ?>" alt="">
           <div class="onhover-show-div bookmark-flip">
             <div class="flip-card">
               <div class="flip-card-inner">
@@ -64,7 +64,7 @@
             </div>
           </div>
         </li>
-        <li class="onhover-dropdown"><img class="img-fluid img-shadow-secondary" src="assets/images/dashboard/like.png" alt="">
+        <li class="onhover-dropdown"><img class="img-fluid img-shadow-secondary" src="<?php echo base_url("assets/images/dashboard/like.png") ?>" alt="">
           <ul class="onhover-show-div droplet-dropdown">
             <li class="gradient-primary text-center">
               <h5 class="f-w-700">Grid Dashboard</h5><span>Easy Grid inside dropdown</span>
@@ -84,7 +84,7 @@
             </li>
           </ul>
         </li>
-        <li class="onhover-dropdown"><img class="img-fluid img-shadow-warning" src="assets/images/dashboard/notification.png" alt="">
+        <li class="onhover-dropdown"><img class="img-fluid img-shadow-warning" src="<?php echo base_url("assets/images/dashboard/notification.png") ?>" alt="">
           <ul class="onhover-show-div notification-dropdown">
             <li class="gradient-primary">
               <h5 class="f-w-700">Notifications</h5><span>You have 6 unread messages</span>
@@ -110,8 +110,8 @@
             <li class="bg-light txt-dark"><a href="#">All </a> notification</li>
           </ul>
         </li>
-        <li><a class="right_side_toggle" href="#"><img class="img-fluid img-shadow-success" src="assets/images/dashboard/chat.png" alt=""></a></li>
-        <li class="onhover-dropdown"> <span class="media user-header"><img class="img-fluid" src="assets/images/dashboard/user.png" alt=""></span>
+        <li><a class="right_side_toggle" href="#"><img class="img-fluid img-shadow-success" src="<?php echo base_url("assets/images/dashboard/chat.png") ?>" alt=""></a></li>
+        <li class="onhover-dropdown"> <span class="media user-header"><img class="img-fluid" src="<?php echo base_url("assets/images/dashboard/user.png") ?>" alt=""></span>
           <ul class="onhover-show-div profile-dropdown">
             <li class="gradient-primary">
               <h5 class="f-w-600 mb-0">Elana Saint</h5><span>Web Designer</span>

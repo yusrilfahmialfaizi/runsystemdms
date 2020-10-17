@@ -25,8 +25,5 @@
               </div>
             </div>
           </div>
-          <?php $this->load->view("partials2/main/container_fluid") ?>
-          </div>
-          <?php $this->load->view("partials2/main/footer") ?>
 
           
