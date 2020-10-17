@@ -51,7 +51,6 @@ func Login(c echo.Context) (err error) {
 
 		}
 	}
-	// return echo.ErrUnauthorized
 	response := Response{Message: false}
 	return c.JSON(http.StatusOK, response)
 }
