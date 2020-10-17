@@ -9,7 +9,10 @@ class Home extends CI_Controller {
 		if ($this->session->userdata('status') != "login") {
 			redirect("login");
 		}
-		$this->load->view('partials/page/home');
+		$this->load->view('partials2/main/header/header_admin');
+		$this->load->view('content/admin/content_home');
+		$this->load->view('partials2/main/footer');
+		
 	}
 
 	
