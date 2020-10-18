@@ -1,23 +1,45 @@
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       $(document).ready(function(){
         var url = 'http://127.0.0.1:8080/runsystemdms/getRootModules';
-            $.ajax({
-              type: 'GET',
-              url: url,
-              dataType: 'json',
-              cache: false,
-              success: function(data) {
-                  data = JSON.parse(JSON.stringify(data));
-                  data = data.rmodule;
-                  console.log(data.length);
-                  for (i = 0; i < data.length; i++) {
-                      var grid = '<i class="pe-7s-home"></i><span>'+data[i].menudesc+'</span></a>';
-                      $("#module").append(grid);
-                  }
-              }
+        $.ajax({
+          type: 'GET',
+          url: url,
+          dataType: 'json',
+          cache: false,
+          success: function(data) {
+              data = JSON.parse(JSON.stringify(data));
+              data = data.rmodule;
+              // console.log(data.length);
+              // for (i = 0; i < data.length; i++) {
+              //     var grid = '<li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-home"></i><span>'+data[i].menudesc+'</span></a>';
+              //     $("#module").append(grid);
+              //     // result = data[i];
+              // }
+              modules(data);
+            }
           });
+          // function modules(data){
+          //   var data = data;
+          //   console.log(data);
+          //   $.ajax({
+          //       type : "POST",
+          //       url : "http://localhost/runsystemdms/home/module",
+          //       dataType : "JSON",
+          //       data : {data :data},
+          //       cache : false,
+          //       success : function(data){
+          //           if (data.message == true) {
+          //               // window.location.href = "home";
+          //               alert("abc");
+          //           }else{
+          //             alert("salah");
+          //           }
+          //       }
+          //   });
+          // }
       });
-      </script>
+      </script> -->
+      
     <!-- latest jquery-->
 <script src="<?php echo base_url("assets/js/jquery-3.5.1.min.js") ?>"></script>
     <!-- Bootstrap js-->
