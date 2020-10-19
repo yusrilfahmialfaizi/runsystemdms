@@ -2,21 +2,14 @@
 <div class="iconsidebar-menu">
   <div class="sidebar">
     <ul class="iconMenu-bar custom-scrollbar">
-      <li><a class="bar-icons" href="javascript:void(0)">
-        <!--img(src='assets/images/menu/home.png' alt='')-->
-        <li><a class="bar-icons" href="javascript:void(0)"><i data-feather="home"></i><span><div id="module"></div></span></a>
+      <li id="module"></li>
+      <!-- <li><a class="bar-icons" href="javascript:void(0)"><i data-feather="home"></i><span><div id="module"></div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Dashboard</li><li><a href="<?php //echo site_url('Editor')?>">Editor</a></li></ul></li> -->
+      <!-- <li><a class="bar-icons" href="javascript:void(0)"><i data-feather="home"></i><span><div id="module"></div></span></a>
         <ul class="iconbar-mainmenu custom-scrollbar">
           <li class="iconbar-header">Dashboard</li>
           <li><a href="<?php echo site_url('Editor')?>">Editor</a></li>
-          <!-- <li><a href="dashboard-crypto.html">Crypto</a></li>
-          <li><a href="dashboard-ecommerce.html">Ecommerce</a></li>
-          <li class="iconbar-header sub-header">Widgets</li>
-          <li><a href="general-widget.html">General widget</a></li>
-          <li><a href="chart-widget.html">Chart widget</a></li>
-          <li class="iconbar-header sub-header">starter-kit</li>
-          <li><a href="http://admin.pixelstrap.com/poco/starter-kit/index.html">starter-kit   </a></li> -->
         </ul>
-      </li>
+      </li> -->
       <!-- <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-portfolio"></i><span>UI Kits</span></a>
         <ul class="iconbar-mainmenu custom-scrollbar">
           <li class="iconbar-header">Ui Elements</li>
