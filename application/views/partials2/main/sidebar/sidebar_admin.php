@@ -7,7 +7,7 @@
       <!-- <li><a class="bar-icons" href="javascript:void(0)"><i data-feather="home"></i><span><div id="module"></div></span></a>
         <ul class="iconbar-mainmenu custom-scrollbar">
           <li class="iconbar-header">Dashboard</li>
-          <li><a href="<?php echo site_url('Editor')?>">Editor</a></li>
+          <li><a href="<?php //echo site_url('Editor')?>">Editor</a></li>
         </ul>
       </li> -->
       <!-- <li><a class="bar-icons" href="javascript:void(0)"><i class="pe-7s-portfolio"></i><span>UI Kits</span></a>

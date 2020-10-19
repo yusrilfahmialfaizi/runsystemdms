@@ -9,10 +9,11 @@
           success: function(data) {
               data = JSON.parse(JSON.stringify(data));
               data = data.rmodule;
+              var modul = [];
               for (i = 0; i < data.length; i++) {
-                  var grid = '<li><a class="bar-icons" href="javascript:void(0)" onClick="modules('+data[i].menucode+')"><i data-feather="home"></i><span>'+data[i].menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="submodule"></li></ul></li>';
-                  $("#module").append(grid);
+                  modul.push('<li><a class="bar-icons" href="javascript:void(0)" onClick="modules('+data[i].menucode+')"><i data-feather="home"></i><span>'+data[i].menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="submodule"></li></ul></li>');
               }
+                $("#module").html(modul);
             }
           });
       });
@@ -30,11 +31,13 @@
                     data = JSON.parse(JSON.stringify(data));
                     data = data.submodule;
                     var subs = [];
+                    if (data != null) {   
                     for (i = 0; i < data.length; i++) {
                          subs.push('<li><a href="javascript:void(0)">'+data[i].menudesc+'</a></li>');
                         
                     }
                     $("#submodule").html(subs);
+                    }
                 }
             });
           }
