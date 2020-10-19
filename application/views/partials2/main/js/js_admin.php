@@ -29,10 +29,12 @@
                 success : function(data){
                     data = JSON.parse(JSON.stringify(data));
                     data = data.submodule;
+                    var subs = [];
                     for (i = 0; i < data.length; i++) {
-                        var sub = '<li><a href="javascript:void(0)">'+data[i].menudesc+'</a></li>';
-                        $("#submodule").html(sub);
+                         subs.push('<li><a href="javascript:void(0)">'+data[i].menudesc+'</a></li>');
+                        
                     }
+                    $("#submodule").html(subs);
                 }
             });
           }
