@@ -6,6 +6,7 @@ import (
 	"fmt"
 
 	"github.com/labstack/echo/v4"
+	nullable "gopkg.in/guregu/null.v3"
 )
 
 type CustomContext struct {
@@ -13,49 +14,49 @@ type CustomContext struct {
 }
 
 type Rmodule struct {
-	MenuCode string `json:"menucode"`
-	MenuDesc string `json:"menudesc"`
-	Parent   string `json:"parent"`
-	Param    string `json:"param"`
-	Icon     string `json:"icon"`
-	StdInd   string `json:"stdind"`
-	SpcInd   string `json:"spcind"`
-	Visible  string `json:"visible"`
-	MenuCat  string `json:"menucat"`
-	CreateBy string `json:"createby"`
-	CreateDt string `json:"createdt"`
-	LastupBy string `json:"lastupby"`
-	LastupDt string `json:"lastupdt"`
+	MenuCode string          `json:"menucode"`
+	MenuDesc string          `json:"menudesc"`
+	Parent   nullable.String `json:"parent"`
+	Param    nullable.String `json:"param"`
+	Icon     nullable.String `json:"icon"`
+	StdInd   string          `json:"stdind"`
+	SpcInd   string          `json:"spcind"`
+	Visible  string          `json:"visible"`
+	MenuCat  string          `json:"menucat"`
+	CreateBy string          `json:"createby"`
+	CreateDt string          `json:"createdt"`
+	LastupBy nullable.String `json:"lastupby"`
+	LastupDt nullable.String `json:"lastupdt"`
 }
 type Submodule struct {
-	MenuCode string `json:"menucode"`
-	MenuDesc string `json:"menudesc"`
-	Parent   string `json:"parent"`
-	Param    string `json:"param"`
-	Icon     string `json:"icon"`
-	StdInd   string `json:"stdind"`
-	SpcInd   string `json:"spcind"`
-	Visible  string `json:"visible"`
-	MenuCat  string `json:"menucat"`
-	CreateBy string `json:"createby"`
-	CreateDt string `json:"createdt"`
-	LastupBy string `json:"lastupby"`
-	LastupDt string `json:"lastupdt"`
+	MenuCode string          `json:"menucode"`
+	MenuDesc string          `json:"menudesc"`
+	Parent   nullable.String `json:"parent"`
+	Param    nullable.String `json:"param"`
+	Icon     nullable.String `json:"icon"`
+	StdInd   string          `json:"stdind"`
+	SpcInd   string          `json:"spcind"`
+	Visible  string          `json:"visible"`
+	MenuCat  string          `json:"menucat"`
+	CreateBy string          `json:"createby"`
+	CreateDt string          `json:"createdt"`
+	LastupBy nullable.String `json:"lastupby"`
+	LastupDt nullable.String `json:"lastupdt"`
 }
 type Subsubmodule struct {
-	MenuCode string `json:"menucode"`
-	MenuDesc string `json:"menudesc"`
-	Parent   string `json:"parent"`
-	Param    string `json:"param"`
-	Icon     string `json:"icon"`
-	StdInd   string `json:"stdind"`
-	SpcInd   string `json:"spcind"`
-	Visible  string `json:"visible"`
-	MenuCat  string `json:"menucat"`
-	CreateBy string `json:"createby"`
-	CreateDt string `json:"createdt"`
-	LastupBy string `json:"lastupby"`
-	LastupDt string `json:"lastupdt"`
+	MenuCode string          `json:"menucode"`
+	MenuDesc string          `json:"menudesc"`
+	Parent   nullable.String `json:"parent"`
+	Param    nullable.String `json:"param"`
+	Icon     nullable.String `json:"icon"`
+	StdInd   string          `json:"stdind"`
+	SpcInd   string          `json:"spcind"`
+	Visible  string          `json:"visible"`
+	MenuCat  string          `json:"menucat"`
+	CreateBy string          `json:"createby"`
+	CreateDt string          `json:"createdt"`
+	LastupBy nullable.String `json:"lastupby"`
+	LastupDt nullable.String `json:"lastupdt"`
 }
 type Rmodules struct {
 	Rmodules []Rmodule `json:"rmodule"`
@@ -71,7 +72,7 @@ var connection *sql.DB
 
 func GetRootModules() Rmodules {
 	connection = config.Connection()
-	query := "SELECT menucode,menudesc,parent,param,icon,stdind,spcind,visible,menucat,createby,createdt,lastupby,lastupdt FROM tblmenu WHERE parent IS Null"
+	query := "SELECT MenuCode, MenuDesc, Parent, Param, Icon, StdInd, SpcInd, Visible, MenuCat, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmenu WHERE parent IS NULL "
 	rows, err := connection.Query(query)
 	if err != nil {
 		fmt.Println(err)
@@ -82,9 +83,7 @@ func GetRootModules() Rmodules {
 	for rows.Next() {
 		rmodule := Rmodule{}
 
-		eror := rows.Scan(&rmodule.MenuCode, &rmodule.MenuDesc, &rmodule.Parent, &rmodule.Param,
-			&rmodule.Icon, &rmodule.StdInd, &rmodule.SpcInd, &rmodule.Visible, &rmodule.MenuCat,
-			&rmodule.CreateBy, &rmodule.CreateDt, &rmodule.LastupBy, &rmodule.LastupDt)
+		eror := rows.Scan(&rmodule.MenuCode, &rmodule.MenuDesc, &rmodule.Parent, &rmodule.Param, &rmodule.Icon, &rmodule.StdInd, &rmodule.SpcInd, &rmodule.Visible, &rmodule.MenuCat, &rmodule.CreateBy, &rmodule.CreateDt, &rmodule.LastupBy, &rmodule.LastupDt)
 		if eror != nil {
 			fmt.Println(eror)
 		}

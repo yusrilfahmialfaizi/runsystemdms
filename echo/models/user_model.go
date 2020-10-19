@@ -3,31 +3,39 @@ package models
 import (
 	"database/sql"
 	"echo/config"
+	"encoding/json"
 	"fmt"
+	"log"
+
+	nullable "gopkg.in/guregu/null.v3"
 )
 
 type User struct {
-	UserCode         string `json:"usercode"`
-	Username         string `json:"username"`
-	GrpCode          string `json:"grpcode"`
-	Pwd              string `json:"pwd"`
-	ExpDate          string `json:"expdt"`
-	NotifyInd        string `json:"notifyind"`
-	HasQiscusAccount string `json:"hasqiscusaccout"`
-	AvatarImage      string `json:"avatarimage"`
-	DeviceId         string `json:"deviceid"`
-	CreateBy         string `json:"createby"`
-	CreateAt         string `json:"createat"`
-	LastupBy         string `json:"lastupby"`
-	LastupDt         string `json:"lastupdt"`
+	UserCode         string          `json:"usercode"`
+	Username         string          `json:"username"`
+	GrpCode          string          `json:"grpcode"`
+	Pwd              string          `json:"pwd"`
+	ExpDate          nullable.String `json:"expdt"`
+	NotifyInd        string          `json:"notifyind"`
+	HasQiscusAccount nullable.String `json:"hasqiscusaccout"`
+	AvatarImage      nullable.String `json:"avatarimage"`
+	DeviceId         nullable.String `json:"deviceid"`
+	CreateBy         string          `json:"createby"`
+	CreateAt         string          `json:"createat"`
+	LastupBy         nullable.String `json:"lastupby"`
+	LastupDt         nullable.String `json:"lastupdt"`
 }
 type PG struct {
-	PGCode      string `json:"pgcode"`
-	PGName      string `json:"pgname"`
-	ActInd      string `json:"actind"`
-	ProjectCode string `json:"projectcode"`
-	ProjectName string `json:"projectname"`
-	CtCode      string `json:"ctcode"`
+	PGCode      string          `json:"pgcode"`
+	PGName      string          `json:"pgname"`
+	ActInd      string          `json:"actind"`
+	ProjectCode nullable.String `json:"projectcode"`
+	ProjectName nullable.String `json:"projectname"`
+	CtCode      nullable.String `json:"ctcode"`
+	CreateBy    string          `json:"createby"`
+	CreateDt    string          `json:"createdt"`
+	LastupBy    nullable.String `json:"lastupby"`
+	LastupDt    nullable.String `json:"lastupdt"`
 }
 
 type PGs struct {
@@ -36,8 +44,18 @@ type PGs struct {
 type Users struct {
 	Users []User `json:"user"`
 }
+type NullString struct {
+	sql.NullString
+}
 
 var conn *sql.DB
+
+func (ns *NullString) MarshalJSON() ([]byte, error) {
+	if !ns.Valid {
+		return []byte("null"), nil
+	}
+	return json.Marshal(ns.String)
+}
 
 func GetUser() Users {
 	conn := config.Connection()
@@ -62,13 +80,19 @@ func GetUser() Users {
 			fmt.Println("ER : ", er)
 			fmt.Println("err2")
 		}
+		userJSON, err := json.Marshal(&user)
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			log.Printf("json marshal := %s\n\n", userJSON)
+		}
 		result.Users = append(result.Users, user)
 	}
 	return result
 }
 func GetProjectGroup() PGs {
 	conn := config.Connection()
-	queryStatement := "Select pgcode, pgname, actind, projectCode, projectname, ctcode From tblprojectgroup Where actind = 'Y'"
+	queryStatement := "Select pgcode, pgname, actind, projectCode, projectname, ctcode, createby, createdt,lastupby, lastupdt From tblprojectgroup Where actind = 'Y'"
 
 	rows, err := conn.Query(queryStatement)
 	fmt.Println("ROWS : ", rows)
@@ -83,7 +107,7 @@ func GetProjectGroup() PGs {
 		pg := PG{}
 
 		er := rows.Scan(&pg.PGCode, &pg.PGName, &pg.ActInd,
-			&pg.ProjectCode, &pg.ProjectName, &pg.CtCode)
+			&pg.ProjectCode, &pg.ProjectName, &pg.CtCode, &pg.CreateBy, &pg.CreateDt, &pg.LastupBy, &pg.LastupDt)
 		if er != nil {
 			fmt.Println("ER : ", er)
 			fmt.Println("err2")
