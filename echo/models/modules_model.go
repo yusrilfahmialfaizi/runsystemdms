@@ -58,6 +58,14 @@ type Subsubmodule struct {
 	LastupBy nullable.String `json:"lastupby"`
 	LastupDt nullable.String `json:"lastupdt"`
 }
+
+type Datasubmodule struct {
+	Parent   nullable.String `json:"parent"`
+	Param    nullable.String `json:"param"`
+	Icon     nullable.String `json:"icon"`
+	LastupBy nullable.String `json:"lastupby"`
+	LastupDt nullable.String `json:"lastupdt"`
+}
 type Rmodules struct {
 	Rmodules []Rmodule `json:"rmodule"`
 }
@@ -66,6 +74,9 @@ type Submodules struct {
 }
 type Subsubmodules struct {
 	Subsubmodules []Subsubmodule `json:"subsubmodule"`
+}
+type Datasubmodules struct {
+	Datasubmodules []Datasubmodule `json:"datasubmodule"`
 }
 
 var connection *sql.DB
@@ -139,26 +150,30 @@ func GetSubsubmodules(c *CustomContext) Subsubmodules {
 	return result
 }
 
-// func GetSubsubmodule(c *CustomContext) Subsubmodules {
-// 	parent := c.FormValue("parent")
-// 	connection := config.Connection()
-// 	query := "SELECT menucode,menudesc,parent,param,icon,stdind,spcind,visible,menucat,createby,createdt,lastupby,lastupdt FROM tblmenu WHERE parent = " + parent
-// 	rows, eror := connection.Query(query)
-// 	if eror != nil {
-// 		fmt.Println(eror)
-// 	}
-// 	defer rows.Close()
-// 	result := Subsubmodules{}
+func SaveDataSubModules(c *CustomContext) Datasubmodules {
+	menucode := c.FormValue("menucode")
+	parent := c.FormValue("parent")
+	param := c.FormValue("param")
+	icon := c.FormValue("icon")
+	lastupby := c.FormValue("lastupby")
+	lastupdt := c.FormValue("lastupdt")
+	connection := config.Connection()
+	query := "UPDATE tblmenu SET parent = " + parent + ", param = " + param + ", icon = " + icon + ", lastupBy = " + lastupby + ", lastupDt = " + lastupdt + " WHERE menucode = " + menucode
+	rows, eror := connection.Query(query)
+	if eror != nil {
+		fmt.Println(eror)
+	}
+	defer rows.Close()
+	result := Datasubmodules{}
 
-// 	if rows.Next() {
-// 		subsubmodule := Subsubmodule{}
-// 		eror2 := rows.Scan(&subsubmodule.MenuCode, &subsubmodule.MenuDesc, &subsubmodule.Parent, &subsubmodule.Param,
-// 			&subsubmodule.Icon, &subsubmodule.StdInd, &subsubmodule.SpcInd, &subsubmodule.Visible, &subsubmodule.MenuCat,
-// 			&subsubmodule.CreateBy, &subsubmodule.CreateDt, &subsubmodule.LastupBy, &subsubmodule.LastupDt)
-// 		if eror2 != nil {
-// 			fmt.Println(eror2)
-// 		}
-// 		result.Subsubmodules = append(result.Subsubmodules, subsubmodule)
-// 	}
-// 	return result
-// }
+	if rows.Next() {
+		datasubmodule := Datasubmodule{}
+		eror2 := rows.Scan(&datasubmodule.Parent, &datasubmodule.Param,
+			&datasubmodule.Icon, &datasubmodule.LastupBy, &datasubmodule.LastupDt)
+		if eror2 != nil {
+			fmt.Println(eror2)
+		}
+		result.Datasubmodules = append(result.Datasubmodules, datasubmodule)
+	}
+	return result
+}

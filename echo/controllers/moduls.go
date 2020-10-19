@@ -27,9 +27,9 @@ func GetSubsubmodules(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
-// func GetSubSubModules(c echo.Context) error {
-// 	cc := c.(*models.CustomContext)
-// 	result := models.GetSubsubmodule(cc)
-// 	fmt.Println("Getting sub sub module ...")
-// 	return c.JSON(http.StatusOK, result)
-// }
+func SaveDataSubModules(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.SaveDataSubModules(cc)
+	fmt.Println("Update data sub module ...")
+	return c.JSON(http.StatusOK, result)
+}
