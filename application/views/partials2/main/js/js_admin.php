@@ -20,8 +20,6 @@
       <script type="text/javascript">
           function modules(menucode){
             var parent = menucode;
-            // alert(data);
-            // alert(menucode);
             $.ajax({
                 type : "POST",
                 url : "http://127.0.0.1:8080/runsystemdms/getSubModules",
@@ -31,11 +29,9 @@
                 success : function(data){
                     data = JSON.parse(JSON.stringify(data));
                     data = data.submodule;
-                    // console.log(data);
                     for (i = 0; i < data.length; i++) {
                         var sub = '<li><a href="javascript:void(0)">'+data[i].menudesc+'</a></li>';
-                        $("#submodule").append(sub);
-                        // alert(data[i].menudesc);
+                        $("#submodule").html(sub);
                     }
                 }
             });
