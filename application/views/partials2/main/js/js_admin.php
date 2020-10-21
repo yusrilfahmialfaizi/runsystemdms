@@ -11,7 +11,7 @@
               data = data.rmodule;
               var modul = [];
               for (i = 0; i < data.length; i++) {
-                  modul.push('<li><a class="bar-icons" href="javascript:void(0)" onClick="modules('+data[i].menucode+','+data.length+')"><i></i><span>'+data[i].menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data[i].menucode+'"></li></ul></li>');
+                  modul.push('<li id="'+i+'"><a class="bar-icons" href="javascript:void(0)" onClick="modules('+data[i].menucode+','+i+')"><i></i><span>'+data[i].menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data[i].menucode+'"></li></ul></li>');
               }
                 $("#module").html(modul);
             }
@@ -19,9 +19,10 @@
       });
       </script>
       <script type="text/javascript">
-          function modules(menucode, panjang){
+          function modules(menucode, id_li){
             var parent = menucode;
-            var panjang = panjang;
+            $("li").removeClass("open");
+            $("#"+id_li).even().addClass("open");
             $.ajax({
               type : "POST",
               url : "http://127.0.0.1:8080/runsystemdms/getSubModules",
@@ -36,7 +37,6 @@
                   for (i = 0; i < data.length; i++) {
                       subs.push('<li><a href="javascript:void(0)">'+data[i].menudesc+'</a></li>');      
                   }
-                  console.log(data);
                   $("#"+data[0].parent).html(subs);
                 }
               }
