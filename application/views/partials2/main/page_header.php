@@ -110,7 +110,7 @@
             <li><i data-feather="user"> </i>Profile</li>
             <li><i data-feather="message-square"> </i>Inbox</li>
             <li><i data-feather="settings"> </i>Settings</li>
-            <li><i data-feather="log-out"> </i>logout</li>
+            <li><a href="<?php echo base_url('login/logout')?>"><i data-feather="log-out"></i>logout</a></li>
           </ul>
         </li>
       </ul>
