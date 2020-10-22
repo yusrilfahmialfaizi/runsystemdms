@@ -35,7 +35,7 @@
                 var subs = [];
                 if (data != null) {   
                   for (i = 0; i < data.length; i++) {
-                      subs.push('<li><a href="javascript:void(0)">'+data[i].menudesc+'</a></li>');      
+                      subs.push('<li><a href="<?php echo base_url("Editor")?>">'+data[i].menudesc+'</a></li>');      
                   }
                   $("#"+data[0].parent).html(subs);
                 }
