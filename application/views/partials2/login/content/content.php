@@ -20,7 +20,7 @@
                         <a href="register-5.html" class="link-btn btn-2 default-bg">Register</a>
                     </div> -->
                     <div class="clearfix"></div>
-                    <form action="#" method="GET">
+                    <form action="javascript:login()" >
                         <div class="form-group form-box">
                             <input type="text" id="usercode" name="usercode" class="input-text" placeholder="Username">
                         </div>
@@ -28,7 +28,7 @@
                             <input type="password" id="pwd" name="pwd" class="input-text" placeholder="Password">
                         </div>
                         <div class="form-group form-box">
-                        <button type="button" id="submit" class="btn-md btn-theme float-right">Login</button>
+                        <button type="submit" id="submit" class="btn-md btn-theme float-right">Login</button>
                      <!--        <a href="forgot-password-5.html" class="forgot-password">Forgot Password</a> -->
                         </div>
                     </form>
@@ -40,6 +40,9 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#submit").on("click", function(){
+            login();
+        });
+        function login(){
             var usercode = $('#usercode').val();
             var pwd = $("#pwd").val();
             var url = 'http://127.0.0.1:8080/runsystemdms/login';
@@ -71,7 +74,7 @@
                     }
                 }
             });
-        });
+        }
         function session(result) {
             var usercode = result.usercode;
             var username = result.username;
