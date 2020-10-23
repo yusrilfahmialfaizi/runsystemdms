@@ -2,7 +2,7 @@
 <div class="page-main-header">
   <div class="main-header-right">
     <div class="main-header-left text-center">
-      <div class="logo-wrapper"><a href="index.html"><img src="<?php echo base_url("assets/images/logo/dms.png") ?>" alt=""></a></div>
+      <div class="logo-wrapper"><a href="<?php echo base_url("home")?>"><img src="<?php echo base_url("assets/images/logo/dms.png") ?>" alt=""></a></div>
     </div>
     <div class="mobile-sidebar">
       <div class="media-body text-right switch-sm">
@@ -14,7 +14,7 @@
       <ul class="nav-menus">
         <li>
         </li>
-        <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
+        <li><a class="text-dark" href="#" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
         <li class="onhover-dropdown"><img class="img-fluid img-shadow-warning" src="<?php echo base_url("assets/images/dashboard/bookmark.png") ?>" alt="">
           <div class="onhover-show-div bookmark-flip">
             <div class="flip-card">
@@ -110,7 +110,7 @@
             <li><i data-feather="user"> </i>Profile</li>
             <li><i data-feather="message-square"> </i>Inbox</li>
             <li><i data-feather="settings"> </i>Settings</li>
-            <li><a href="<?php echo base_url('login/logout') ?>"><i data-feather="log-out"></i>logout</a></li>
+            <li><a href="<?php echo base_url('login/logout') ?>"><i data-feather="log-out"></i>Logout</a></li>
           </ul>
         </li>
       </ul>
