@@ -12,7 +12,7 @@ import (
 )
 
 type Response struct {
-	Message bool `json:"message"`
+	Message string `json:"message"`
 }
 
 func GetUser(c echo.Context) error {
@@ -25,34 +25,39 @@ func Login(c echo.Context) (err error) {
 	usercode := c.FormValue("usercode")
 	pwd := c.FormValue("pwd")
 	result := models.GetUser()
+	response := Response{}
 	for i := 0; i < len(result.Users); i++ {
 		fmt.Println(result.Users[i].UserCode)
+		if usercode == result.Users[i].UserCode {
+			if pwd == result.Users[i].Pwd {
+				// membuat token
+				token := jwt.New(jwt.SigningMethodHS256)
 
-		if usercode == result.Users[i].UserCode && pwd == result.Users[i].Pwd {
-			// membuat token
-			token := jwt.New(jwt.SigningMethodHS256)
+				// set claims yang bisa digunakn di frontend
+				claims := token.Claims.(jwt.MapClaims)
+				claims["usercode"] = result.Users[i].UserCode
+				claims["username"] = result.Users[i].Username
+				claims["grpcode"] = result.Users[i].GrpCode
+				claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
 
-			// set claims yang bisa digunakn di frontend
-			claims := token.Claims.(jwt.MapClaims)
-			claims["usercode"] = result.Users[i].UserCode
-			claims["username"] = result.Users[i].Username
-			claims["grpcode"] = result.Users[i].GrpCode
-			claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
+				// mencari kombinasi token dan mengirimkannya sebagai response
+				t, err := token.SignedString([]byte("secret"))
+				if err != nil {
+					return err
+				}
 
-			// mencari kombinasi token dan mengirimkannya sebagai response
-			t, err := token.SignedString([]byte("secret"))
-			if err != nil {
-				return err
+				return c.JSON(http.StatusOK, map[string]string{
+					"token": t,
+				})
+
 			}
-
-			return c.JSON(http.StatusOK, map[string]string{
-				"token": t,
-			})
-
+			response = Response{Message: "password salah"}
+			return c.JSON(http.StatusOK, response)
 		}
 	}
-	response := Response{Message: false}
+	response = Response{Message: "username tidak terdaftar"}
 	return c.JSON(http.StatusOK, response)
+	// return c.JSON(http.StatusOK, response)
 }
 
 func GetProjectGroup(c echo.Context) error {
