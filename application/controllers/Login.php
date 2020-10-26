@@ -1,21 +1,25 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Login extends CI_Controller
+{
 
-	
+
 	public function index()
 	{
+		if ($this->session->userdata('status') == "login") {
+			redirect("home");
+		}
 		$this->load->view('partials2/login/page/page');
 	}
 
 	function session()
 	{
-		$usercode= $this->input->post("usercode");
-		$username= $this->input->post("username");
-		$grpcode= $this->input->post("grpcode");
-		$status= $this->input->post("status");
-		$exp= $this->input->post("exp");
+		$usercode = $this->input->post("usercode");
+		$username = $this->input->post("username");
+		$grpcode = $this->input->post("grpcode");
+		$status = $this->input->post("status");
+		$exp = $this->input->post("exp");
 
 		$data = array(
 			'usercode' 	=> $usercode,
@@ -33,7 +37,4 @@ class Login extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect("login");
 	}
-
-	
-	
 }
