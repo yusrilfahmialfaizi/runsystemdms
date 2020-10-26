@@ -10,7 +10,7 @@ class Login extends CI_Controller
 		if ($this->session->userdata('status') == "login") {
 			redirect("home");
 		}
-		$this->load->view('partials2/login/page/page');
+		$this->load->view('partials2/login/page');
 	}
 
 	function session()
