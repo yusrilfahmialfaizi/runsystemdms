@@ -55,7 +55,7 @@
     <!-- Sidebar jquery-->
     <script src="<?php echo base_url("assets/js/sidebar-menu.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/config.js") ?>"></script>
-    <!-- Plugins JS start--><!-- 
+    <!-- Plugins JS start-->
     <script src="<?php echo base_url("assets/js/typeahead/handlebars.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/typeahead/typeahead.bundle.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/typeahead/typeahead.custom.js") ?>"></script>
@@ -78,6 +78,7 @@
     <script src="<?php echo base_url("assets/js/datepicker/date-picker/datepicker.en.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/datepicker/date-picker/datepicker.custom.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/chat-menu.js") ?>"></script>
+    <!-- Data Table JS -->
     <script src="<?php echo base_url("assets/js/datatable/datatables/jquery.dataTables.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/datatable/datatable-extension/dataTables.buttons.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/datatable/datatable-extension/jszip.min.js") ?>"></script>
@@ -102,5 +103,4 @@
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="<?php echo base_url("assets/js/script.js") ?>"></script>
-    <!-- <script src="<?php echo base_url("assets/js/theme-customizer/customizer.js") ?>"></script> -->
-    <!-- login js-->
+    <script src="<?php echo base_url("assets/js/theme-customizer/customizer.js") ?>"></script>

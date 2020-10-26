@@ -7,6 +7,5 @@
       <div class="page-body-wrapper">
       <?php $this->load->view("partials2/main/sidebar/sidebar_admin") ?>
       <?php $this->load->view("partials2/main/sidebar/right_sidebar") ?>
-      
 
           
