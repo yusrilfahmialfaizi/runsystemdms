@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               10.5.6-MariaDB - mariadb.org binary distribution
--- Server OS:                    Win64
--- HeidiSQL Version:             11.0.0.5919
+-- Versi server:                 10.5.6-MariaDB - mariadb.org binary distribution
+-- OS Server:                    Win64
+-- HeidiSQL Versi:               11.0.0.5919
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -12,40 +12,12 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Dumping database structure for runsystemdms
+-- Membuang struktur basisdata untuk runsystemdms
 DROP DATABASE IF EXISTS `runsystemdms`;
 CREATE DATABASE IF NOT EXISTS `runsystemdms` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `runsystemdms`;
 
--- Dumping structure for table runsystemdms.tbldocumentdtl
-DROP TABLE IF EXISTS `tbldocumentdtl`;
-CREATE TABLE IF NOT EXISTS `tbldocumentdtl` (
-  `Docno` varchar(50) NOT NULL,
-  `MenuCode` varchar(16) NOT NULL,
-  `Description` varchar(500) DEFAULT NULL,
-  `Status` varchar(1) NOT NULL DEFAULT 'O',
-  PRIMARY KEY (`Docno`,`MenuCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Dumping data for table runsystemdms.tbldocumentdtl: ~0 rows (approximately)
-/*!40000 ALTER TABLE `tbldocumentdtl` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbldocumentdtl` ENABLE KEYS */;
-
--- Dumping structure for table runsystemdms.tbldocumenthdr
-DROP TABLE IF EXISTS `tbldocumenthdr`;
-CREATE TABLE IF NOT EXISTS `tbldocumenthdr` (
-  `Docno` varchar(50) NOT NULL,
-  `ModulCode` varchar(16) NOT NULL,
-  `ActiveInd` varchar(1) NOT NULL DEFAULT 'N',
-  `Status` varchar(1) NOT NULL DEFAULT 'O',
-  PRIMARY KEY (`Docno`,`ModulCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Dumping data for table runsystemdms.tbldocumenthdr: ~0 rows (approximately)
-/*!40000 ALTER TABLE `tbldocumenthdr` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbldocumenthdr` ENABLE KEYS */;
-
--- Dumping structure for table runsystemdms.tblgroup
+-- membuang struktur untuk table runsystemdms.tblgroup
 DROP TABLE IF EXISTS `tblgroup`;
 CREATE TABLE IF NOT EXISTS `tblgroup` (
   `GrpCode` varchar(16) NOT NULL,
@@ -57,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `tblgroup` (
   PRIMARY KEY (`GrpCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table runsystemdms.tblgroup: ~16 rows (approximately)
+-- Membuang data untuk tabel runsystemdms.tblgroup: ~16 rows (lebih kurang)
 /*!40000 ALTER TABLE `tblgroup` DISABLE KEYS */;
 REPLACE INTO `tblgroup` (`GrpCode`, `GrpName`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES
 	('11', 'Teknik Informatika', 'Admin', '202003231117', NULL, NULL),
@@ -78,7 +50,7 @@ REPLACE INTO `tblgroup` (`GrpCode`, `GrpName`, `CreateBy`, `CreateDt`, `LastUpBy
 	('26', 'Framasi', 'Admin', '202003231117', NULL, NULL);
 /*!40000 ALTER TABLE `tblgroup` ENABLE KEYS */;
 
--- Dumping structure for table runsystemdms.tblgroupmenu
+-- membuang struktur untuk table runsystemdms.tblgroupmenu
 DROP TABLE IF EXISTS `tblgroupmenu`;
 CREATE TABLE IF NOT EXISTS `tblgroupmenu` (
   `MenuCode` varchar(16) NOT NULL,
@@ -91,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `tblgroupmenu` (
   PRIMARY KEY (`GrpCode`,`MenuCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table runsystemdms.tblgroupmenu: ~16 rows (approximately)
+-- Membuang data untuk tabel runsystemdms.tblgroupmenu: ~16 rows (lebih kurang)
 /*!40000 ALTER TABLE `tblgroupmenu` DISABLE KEYS */;
 REPLACE INTO `tblgroupmenu` (`MenuCode`, `GrpCode`, `AccessInd`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES
 	('01', '11', 'YYNYY', 'system', '202003231117', NULL, NULL),
@@ -112,7 +84,7 @@ REPLACE INTO `tblgroupmenu` (`MenuCode`, `GrpCode`, `AccessInd`, `CreateBy`, `Cr
 	('01', '26', 'YYNYY', 'system', '202003231117', NULL, NULL);
 /*!40000 ALTER TABLE `tblgroupmenu` ENABLE KEYS */;
 
--- Dumping structure for table runsystemdms.tblmenu
+-- membuang struktur untuk table runsystemdms.tblmenu
 DROP TABLE IF EXISTS `tblmenu`;
 CREATE TABLE IF NOT EXISTS `tblmenu` (
   `MenuCode` varchar(16) NOT NULL,
@@ -133,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `tblmenu` (
   KEY `Parent` (`Parent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table runsystemdms.tblmenu: ~475 rows (approximately)
+-- Membuang data untuk tabel runsystemdms.tblmenu: ~475 rows (lebih kurang)
 /*!40000 ALTER TABLE `tblmenu` DISABLE KEYS */;
 REPLACE INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`, `Description`) VALUES
 	('01', 'Module', NULL, NULL, NULL, 'Y', 'N', 'Y', 'D', 'Yusril', '202010151117', NULL, NULL, NULL),
@@ -613,21 +585,7 @@ REPLACE INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdI
 	('03', 'Sub', NULL, NULL, NULL, 'Y', 'N', 'Y', 'D', 'Yusril', '202010191117', NULL, NULL, NULL);
 /*!40000 ALTER TABLE `tblmenu` ENABLE KEYS */;
 
--- Dumping structure for table runsystemdms.tblmodulmenu
-DROP TABLE IF EXISTS `tblmodulmenu`;
-CREATE TABLE IF NOT EXISTS `tblmodulmenu` (
-  `ModulCode` varchar(16) NOT NULL,
-  `MenuCode` varchar(16) NOT NULL,
-  `MenuDesc` varchar(200) NOT NULL,
-  `Parent` varchar(16) NOT NULL,
-  PRIMARY KEY (`ModulCode`,`MenuCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Dumping data for table runsystemdms.tblmodulmenu: ~0 rows (approximately)
-/*!40000 ALTER TABLE `tblmodulmenu` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tblmodulmenu` ENABLE KEYS */;
-
--- Dumping structure for table runsystemdms.tblprojectgroup
+-- membuang struktur untuk table runsystemdms.tblprojectgroup
 DROP TABLE IF EXISTS `tblprojectgroup`;
 CREATE TABLE IF NOT EXISTS `tblprojectgroup` (
   `PGCode` varchar(16) NOT NULL,
@@ -643,14 +601,14 @@ CREATE TABLE IF NOT EXISTS `tblprojectgroup` (
   PRIMARY KEY (`PGCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table runsystemdms.tblprojectgroup: ~2 rows (approximately)
+-- Membuang data untuk tabel runsystemdms.tblprojectgroup: ~2 rows (lebih kurang)
 /*!40000 ALTER TABLE `tblprojectgroup` DISABLE KEYS */;
 REPLACE INTO `tblprojectgroup` (`PGCode`, `PGName`, `ActInd`, `ProjectCode`, `ProjectName`, `CtCode`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES
 	('A000001', 'Backend', 'Y', 'PC00001', 'Api', 'A', 'Admin', '202003231117', NULL, NULL),
 	('A000002', 'Frontend', 'y', 'PC00002', 'DB', 'B', 'Admin', '202003231117', NULL, NULL);
 /*!40000 ALTER TABLE `tblprojectgroup` ENABLE KEYS */;
 
--- Dumping structure for table runsystemdms.tbluser
+-- membuang struktur untuk table runsystemdms.tbluser
 DROP TABLE IF EXISTS `tbluser`;
 CREATE TABLE IF NOT EXISTS `tbluser` (
   `Usercode` varchar(16) NOT NULL,
@@ -675,7 +633,7 @@ CREATE TABLE IF NOT EXISTS `tbluser` (
   CONSTRAINT `FK_tbluser_tblgroup` FOREIGN KEY (`GrpCode`) REFERENCES `tblgroup` (`GrpCode`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table runsystemdms.tbluser: ~3 rows (approximately)
+-- Membuang data untuk tabel runsystemdms.tbluser: ~3 rows (lebih kurang)
 /*!40000 ALTER TABLE `tbluser` DISABLE KEYS */;
 REPLACE INTO `tbluser` (`Usercode`, `Username`, `GrpCode`, `Pwd`, `EXPDt`, `NotifyInd`, `HasQiscusAccount`, `AvatarImage`, `deviceid`, `Createby`, `Createat`, `LastupBy`, `LastupDt`) VALUES
 	('E41170827', 'Munir', '11', 'munir', NULL, 'N', NULL, NULL, NULL, 'munir', '15-10-2020', NULL, NULL),
