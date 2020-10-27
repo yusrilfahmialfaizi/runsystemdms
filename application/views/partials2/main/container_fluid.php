@@ -6,6 +6,7 @@
 </div>
 <script type="text/javascript">
   $(document).ready(function(){
+    // menampilkan data project dalam bentuk card di dashboard
     var url = 'http://127.0.0.1:8080/runsystemdms/getPG';
     $.ajax({ 
       type: 'GET', 

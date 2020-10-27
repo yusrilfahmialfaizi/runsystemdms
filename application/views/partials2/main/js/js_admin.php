@@ -25,26 +25,24 @@
         $("#" + id_li).even().addClass("open");
         alert(menucode);
         $.ajax({
-          type: "POST",
-          url: "http://127.0.0.1:8080/runsystemdms/getMenuSubParent",
-          dataType: "JSON",
-          data: {
-            parent: menucode
-          },
-          cache: false,
-          success: function(data) {
-            data = JSON.parse(JSON.stringify(data));
-            data = data.menusubparent;
-            var subs = [];
-            if (data != null) {
-              for (i = 0; i < data.length; i++) {
-                subs.push('<li><a href="<?php echo base_url("Editor") ?>">' + data[i].menudesc + '</a></li>');
+            type: "POST",
+            url: "http://127.0.0.1:8080/runsystemdms/getMenuSubParent",
+            dataType: "JSON",
+            data: {
+              parent: menucode
+            },
+            cache: false,
+            success: function(data) {
+              data = JSON.parse(JSON.stringify(data));
+              data = data.menusubparent;
+              var subs = [];
+              if (data != null) {
+                for (i = 0; i < data.length; i++) {
+                  subs.push('<li><a href="<?php echo base_url("Editor") ?>">' + data[i].menudesc + '</a></li>');
+                }
               }
-              $("#" + data[0].parent).html(subs);
-            }
-          }
-        });
-      }
+            });
+        }
     </script>
 
     <!-- latest jquery-->
