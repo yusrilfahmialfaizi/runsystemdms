@@ -345,7 +345,7 @@ REPLACE INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdI
 	('01050308', 'Production Planning', '010503', 'FrmPP', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
 	('01050309', 'Material Requirements Planning', '010503', 'FrmMRP', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
 	('01050310', 'Item Index', '010503', 'FrmItemIndex', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
-	('01050311', 'Wages Formulation', '010503', 'FrmWagesFormulation', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050311', 'Wages runsystemdmsFormulation', '010503', 'FrmWagesFormulation', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
 	('01050312', 'Wages Formulation For Work Center', '010503', 'FrmWorkCenterWagesFormulation', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
 	('01050313', 'Production Wages', '010503', 'FrmPWG', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
 	('01050314', 'Production Penalty', '010503', 'FrmProductionPenalty', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),

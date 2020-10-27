@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Editor extends CI_Controller {
+class Edit extends CI_Controller {
 
 	
 	public function index()
 	{
-        $this->load->view('content/admin/editor');
+        $this->load->view('content/admin/edit');
 	}
 
 	
