@@ -21,30 +21,27 @@
       </script>
       <script type="text/javascript">
       // menampilkan anak module di sidebar berdasarkan nilai parent dengan action onclick
-          function modules(menucode, id_li){
-            var parent = menucode;
-            $("li").removeClass("open");
-            $("#"+id_li).even().addClass("open");
-            $.ajax({
-              type : "POST",
-              url : "http://127.0.0.1:8080/runsystemdms/getSubModules",
-              dataType : "JSON",
-              data : {parent :parent},
-              cache : false,
-              success : function(data){
-                data = JSON.parse(JSON.stringify(data));
-                data = data.submodule;
-                var subs = [];
-                if (data != null) {   
-                  for (i = 0; i < data.length; i++) {
-                      // subs.push('<li><a href="<?php echo base_url("Editor")?>">'+data[i].menudesc+'</a></li>');      
-                      subs.push('<li><a href="">'+data[i].menudesc+'</a></li>');      
-                  }
-                  $("#"+data[0].parent).html(subs);
+        function modules(menucode, id_li){
+          var parent = menucode;
+          $("li").removeClass("open");
+          $("#"+id_li).even().addClass("open");
+          $.ajax({
+            type : "POST",
+            url : "http://127.0.0.1:8080/runsystemdms/getSubModules",
+            dataType : "JSON",
+            data : {parent :parent},
+            cache : false,
+            success : function(data){
+              data = JSON.parse(JSON.stringify(data));
+              data = data.submodule;
+              var subs = [];
+              if (data != null) {   
+                for (i = 0; i < data.length; i++) {
+                    // subs.push('<li><a href="<?php echo base_url("Editor")?>">'+data[i].menudesc+'</a></li>');      
+                    subs.push('<li><a href="">'+data[i].menudesc+'</a></li>');      
                 }
+                $("#"+data[0].parent).html(subs);
               }
-              $("#" + data[0].parent).html(subs);
-            }
           }
         });
       }
