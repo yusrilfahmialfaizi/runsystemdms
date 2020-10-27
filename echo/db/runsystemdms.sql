@@ -1,472 +1,688 @@
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0101', 'General', '01', NULL, 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010101', 'Document Approval', '0101', 'FrmDocApproval', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010102', 'Country', '0101', 'FrmCountry', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010103', 'Province', '0101', 'FrmProvince', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010104', 'City', '0101', 'FrmCity', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010105', 'Sub District', '0101', 'FrmSubDistrict', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010106', 'Village', '0101', 'FrmVillage', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010107', 'Activity Category', '0101', 'FrmActivityCategory', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010108', 'Activity', '0101', 'FrmActivity', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010109', 'Transport Type', '0101', 'FrmTransportType', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010110', 'Vendor Update Approval', '0101', 'FrmVendorUpdateApproval', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010111', 'Business Sector', '0101', 'FrmBusinessSector', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201807030000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010112', 'Business Category', '0101', 'FrmBusinessCategory', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201807030000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010113', 'Region', '0101', 'FrmRegion', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102', 'Financial and Cost Management', '01', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010201', 'Accounting Management', '0102', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020101', 'Enterprise Accounting', '010201', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010101', 'Account Category', '01020101', 'FrmAccountCategory', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010102', 'Chart of Account', '01020101', 'FrmCOA', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010103', 'Account Period', '01020101', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010104', 'Business Entity', '01020101', 'FrmEntity', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010105', 'Yearly Closing and Opening Balance', '01020101', 'FrmCOAOpeningBalance', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010106', 'Journal Transaction', '01020101', 'FrmJournal', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010107', 'Journal Voucher', '01020101', 'FrmVoucherJournal', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010108', 'Profit Center', '01020101', 'FrmProfitCenter', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010109', 'Posting Journal Based On Voucher (Manual)', '01020101', 'FrmVoucherCheckPosting', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010110', 'COA Formulation', '01020101', 'FrmCOAFormulation', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'WEDHA', '201708300955', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010111', 'Insert Entity for COA', '01020101', 'FrmInsertEntityCOA', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'WEDHA', '201708300955', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010112', 'Monthly Journal Entries\'s Closing', '01020101', 'FrmClosingJournal', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201712160000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010113', 'Opening Balance Yearly', '01020101', 'FrmOpeningBalanceYearly', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201712160000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010114', 'FICO Reporting\'s Setting', '01020101', 'FrmRptFicoSetting', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201808060000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010115', 'POS akun setting', '01020101', 'FrmTWCJournalSetting', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201808060000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010116', 'RKAP (Company\'s Budget Plan)', '01020101', 'FrmCompanyBudgetPlan', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201712160000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020102', 'Asset Management', '010201', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010201', 'Master Asset', '01020102', 'FrmAsset', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010202', 'Asset Transfer Request', '01020102', 'FrmAssetTransferRequest', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010203', 'Asset Transfer', '01020102', 'FrmAssetTransfer', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010204', 'Depreciation of Business Assets', '01020102', 'FrmDepreciationAsset', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010205', 'Accumulation Asset Depreciation Journal', '01020102', 'FrmAAD', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010206', 'Receiving Asset', '01020102', 'FrmRecvAsset', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'WEDHA', '201703101646', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010207', 'Asset Leasing', '01020102', 'FrmAssetLeasing', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'WEDHA', '201709121150', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010208', 'Monthly Foreign Exchange Journal Entries', '01020102', 'FrmMonthlyFXJournalEntries', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'WEDHA', '201709121150', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010209', 'Processing Multiple Depreciation of Business Assets', '01020102', 'FrmDepreciationAsset2', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201902280000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010210', 'Technical Object', '01020102', 'FrmTO', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010211', 'Asset\'s Category', '01020102', 'FrmAssetCategory', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020103', 'Cost Control', '010201', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010301', 'Cost Center', '01020103', 'FrmCostCenter', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010302', 'Cost Category', '01020103', 'FrmCostCategory', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010303', 'Updating Item\'s Cost Category', '01020103', 'FrmItemCostCategory', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010304', 'Generate Cost Center And Cost Category Data', '01020103', 'FrmCostCenter2', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102010305', 'Updating Cost Category And DO/Return (Dept) Journal', '01020103', 'FrmItemCostCategory2', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010202', 'Finance Management', '0102', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020201', 'Currency', '010202', 'FrmCurrency', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020202', 'Currency Rate', '010202', 'FrmCurrencyRate', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020203', 'Term of Payment', '010202', 'FrmPaymentTerm', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020204', 'Tax', '010202', 'FrmTax', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020205', 'Closing Balance In Cash/Bank Account', '010202', 'FrmClosingBalanceInCash', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020206', 'Employee\'s Claim', '010202', 'FrmEmpClaim', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020207', 'Tax Group', '010202', 'FrmTaxGrp', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020230', 'Account Receivable - AR', '010202', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102023001', 'Sales Invoice', '01020230', 'FrmSalesInvoice', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102023002', 'Sales Return Invoice', '01020230', 'FrmSalesReturnInvoice', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102023003', 'Incoming Payment', '01020230', 'FrmIncomingPayment', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102023005', 'Sales Invoice (Cash Before Delivery)', '01020230', 'FrmSalesInvoice2', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102023006', 'Customer\'s AR Downpayment', '01020230', 'FrmARDownpayment', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102023007', 'Customer Deposit (Currency Switching)', '01020230', 'FrmCustomerDepositCurSwitch', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102023008', 'AR Settlement', '01020230', 'FrmARS', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706061700', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102023009', 'Sales Invoice Based on DO To Customer', '01020230', 'FrmSalesInvoice3', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706221524', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020240', 'Account Payable - AP', '010202', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102024001', 'Receipt Of Invoice Documents', '01020240', 'FrmInvoiceDocReceipts', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102024002', 'Purchase Invoice - AP', '01020240', 'FrmPurchaseInvoice', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102024003', 'AP Settlement', '01020240', 'FrmAPS', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102024004', 'Purchase Return Invoice - AP', '01020240', 'FrmPurchaseReturnInvoice', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102024005', 'Outgoing Payment - AP', '01020240', 'FrmOutgoingPayment', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102024006', 'Vendor\'s AP Downpayment', '01020240', 'FrmAPDownpayment', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102024007', 'Vendor Deposit (Currency Switching)', '01020240', 'FrmVendorDepositCurSwitch', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102024010', 'Returning Vendor\'s AP Downpayment', '01020240', 'FrmReturnAPDownpayment', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102024011', 'Update Purchase Invoice\'s Due Date', '01020240', 'FrmUpdatePurchaseInvoiceDueDt', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'Ica', '202010151412', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020250', 'Cash Flow Management', '010202', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102025001', 'Bank', '01020250', 'FrmBank', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102025002', 'Cash and Bank Account', '01020250', 'FrmBankAccount', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102025003', 'Voucher Request', '01020250', 'FrmVoucherRequest', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102025004', 'Voucher', '01020250', 'FrmVoucher', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102025005', 'Voucher Request VAT', '01020250', 'FrmVoucherRequestPPN', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102025006', 'VAT Settlement', '01020250', 'FrmVATSettlement', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201706210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020260', 'Budget Management', '010202', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102026001', 'Budget Request', '01020260', 'FrmBudgetRequest', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102026002', 'Budget Maintenance', '01020260', 'FrmBudget', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102026003', 'Budget Category', '01020260', 'FrmBudgetCategory', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102026004', 'Budget Request (New)', '01020260', 'FrmBudgetRequest2', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102026005', 'Budget Maintenance (New)', '01020260', 'FrmBudget2', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020270', 'PKBL', '010202', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102027001', 'Partner', '01020270', 'FrmPartner', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102027002', 'Request for Loan to Partner', '01020270', 'FrmRequestLP', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102027003', 'Form Survey', '01020270', 'FrmSurvey', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102027004', 'Partner\'s Loan Payment', '01020270', 'FrmPLP', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01020299', 'Customization', '010202', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0102029901', 'PHT', '01020299', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010202990101', 'Bank Reconciliation', '0102029901', 'FrmBankReconciliation', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010202990102', 'Cash Advance Settlement', '0102029901', 'FrmCashAdvanceSettlement', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201909160000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0103', 'Procurement Management', '01', NULL, 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010301', 'Vendor Category', '0103', 'FrmVendorCategory', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010302', 'Master Vendor', '0103', 'FrmVendor', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010303', 'Delivery Type', '0103', 'FrmDeliveryType', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010310', 'Master Rating', '0103', 'FrmRating', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010311', 'Qualification', '0103', 'FrmQualification', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010330', 'Raw Material Purchasing Management', '0103', NULL, 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033001', 'Document Legality of Raw Material', '010330', 'FrmLegalDocVerify', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033002', 'Pricing Group', '010330', 'FrmPricingGroup', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033003', 'Updating Item\'s Pricing Group', '010330', 'FrmItPricingGroup', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033004', 'Vendor\'s Quotation With Pricing Group', '010330', 'FrmQt2', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033005', 'Loading Queue', '010330', 'FrmTimbanganAD4329', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033006', 'Loading Queue Revision', '010330', 'FrmLoadingQueueRevision', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033007', 'Document Legality Verification', '010330', 'FrmLegalDocVerify', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033008', 'Receiving Raw Material (Log)', '010330', 'FrmRecvRawMaterial', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033009', 'Receiving Raw Material (Balok)', '010330', 'FrmRecvRawMaterial', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033010', 'Raw Material Opname', '010330', 'FrmRawMaterialOpname', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033011', 'Verification of Receiving Raw Material', '010330', 'FrmRawMaterialVerify', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033012', 'A Comparison Between Receiving Raw Material and Opname', '010330', 'FrmRptRawMaterialComparison', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033013', 'Purchase Invoice (Raw material)', '010330', 'FrmPurchaseInvoiceRawMaterial', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033014', 'Voucher (Standard And Raw Material)', '010330', 'FrmVoucher2', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033015', 'Export Raw Material Data', '010330', 'FrmRawMaterialExport', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033016', 'Publisher', '010330', 'FrmPublisher', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033017', 'DKO', '010330', 'FrmDKO', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033018', 'FA-KO', '010330', 'FrmFAKO', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033019', 'Material Inspection (Log)', '010330', 'FrmRecvRawMaterial2', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033020', 'Material Inspection (Balok)', '010330', 'FrmRecvRawMaterial2', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033021', 'Raw Material Quantity Inspection', '010330', 'FrmRawMaterialOpname2', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01033022', 'Document Legality Verification Amendment', '010330', 'FrmLegalDocVerifyUpdate', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010340', 'Purchasing Management', '0103', NULL, 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01034001', 'Vendor Quotation', '010340', 'FrmQt', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01034002', 'PO Request', '010340', 'FrmPORequest', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01034003', 'PO Request Revision', '010340', 'FrmPORequestRevision', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01034004', 'Purchase Order', '010340', 'FrmPO', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01034005', 'Purchase Order Revision', '010340', 'FrmPORevision', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01034006', 'Cancellation of Purchase Order\'s Quantity', '010340', 'FrmPOQtyCancel', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01034007', 'Item Vendor Collection', '010340', 'FrmItemVendorCollection', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01034008', 'Letter of Offer to Vendor', '010340', 'FrmVendorItemCategoryGroup', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010350', 'E-Procurement', '0103', NULL, 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01035001', 'Tender', '010350', 'FrmTender', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01035002', 'Tender Quotation\'s Request', '010350', 'FrmTenderQuotationRequest', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01035003', 'Tender Quotation', '010350', 'FrmTenderQuotation', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01035004', 'Vendor\'s Sector', '010350', 'FrmSector', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01035005', 'Tender Email Notification', '010350', 'FrmEmailVendorSector', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01035006', 'Vendor File Upload\'s Category', '010350', 'FrmVendorFileUploadCategory', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01035007', 'Master Rating', '010350', 'FrmRating', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01035008', 'Qualification', '010350', 'FrmQualification', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0104', 'Inventory & Material Management', '01', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010401', 'Master Data', '0104', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040101', 'Master Item', '010401', 'FrmItem', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040102', 'Item\'s Category', '010401', 'FrmItemCategory', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040103', 'Item\'s Sub Category', '010401', 'FrmItemSubCategory', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040104', 'Item\'s Brand', '010401', 'FrmItemBrand', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040105', 'Item\'s Uom', '010401', 'FrmUom', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040106', 'Item\'s Property', '010401', 'FrmItemProperty', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040107', 'Item\'s Price', '010401', 'FrmItemPrice', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040108', 'Item\'s Group', '010401', 'FrmItemGroup', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040109', 'Item\'s Barcode', '010401', 'FrmItemBarcode', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040110', 'Item\'s Request', '010401', 'FrmItemRequest', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'WEDHA', '201703101646', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040111', 'Master Request By', '010401', 'FrmRequestBy', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'WEDHA', '201703101646', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040112', 'Location', '010401', 'FrmLocation', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010402', 'Inventory Management', '0104', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040201', 'Inventory Level Setup', '010402', 'FrmReorderPoint', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040202', 'Initial Stock', '010402', 'FrmStockInitial', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040203', 'Item Mutation (one on one)', '010402', 'FrmMutation', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040204', 'Item Mutation (Many on Many)', '010402', 'FrmMutations', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040205', 'Stock Adjustment', '010402', 'FrmStockAdjustment', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040206', 'Stock Opname', '010402', 'FrmStockOpname', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040207', 'Item\'s Costing', '010402', 'FrmItemCost', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040208', 'Updating Item\'s Cost', '010402', 'FrmStockPrice', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040209', 'Stock Opname With Value', '010402', 'FrmStockOpname2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040210', 'Lead Time', '010402', 'FrmLeadTime', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010403', 'Warehouse Management System', '0104', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040301', 'Warehouse\'s Category', '010403', 'FrmWarehouseCategory', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040302', 'Warehouse', '010403', 'FrmWarehouse', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040303', 'Lot', '010403', 'FrmLot', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040304', 'Bin', '010403', 'FrmBin', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040305', 'Bin Inspection', '010403', 'FrmBinUpdateStatus', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040306', 'Bin Transfer Request', '010403', 'FrmBinTransferRequest', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040307', 'Bin Transfer', '010403', 'FrmBinTransfer', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010404', 'Material Management', '0104', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040401', 'Material Request', '010404', 'FrmMaterialRequest', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040402', 'DO To Other Warehouse', '010404', 'FrmDOWhs', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040403', 'DO To Vendor (Returning Item)', '010404', 'FrmDOVd', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040404', 'DO To Customer', '010404', 'FrmDOCt', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040405', 'DO To Customer based on Request Delivery', '010404', 'FrmDOCt2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040406', 'DO To Department (Without DO Request) ', '010404', 'FrmDODept2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040407', 'DO To Department (With DO Request)', '010404', 'FrmDODept', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040408', 'DO To Production', '010404', 'FrmDOProduction', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040409', 'DO Request By Department', '010404', 'FrmDORequestDept', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040410', 'Receiving Item From Vendor (Without PO)', '010404', 'FrmRecvVd2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040411', 'Receiving Item From Vendor', '010404', 'FrmRecvVd', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040412', 'Receiving Item From Department (Based On DO)', '010404', 'FrmRecvDept', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040413', 'Receiving Item From Customer', '010404', 'FrmRecvCt', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040414', 'Receiving Item From Other Warehouse', '010404', 'FrmRecvWhs', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040415', 'Receiving Item From Other Warehouse (Without DO) ', '010404', 'FrmRecvWhs2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040416', 'Receiving Item From Other Warehouse (Based On Item)', '010404', 'FrmRecvWhs3', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040417', 'Receiving Item From Production', '010404', 'FrmRecvProduction', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040418', 'Cancelation of Material Request Quantity', '010404', 'FrmMRQtyCancel', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040419', 'Purchase Requisition', '010404', 'FrmPReq', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040420', 'Transfer Request', '010404', 'FrmTransferRequestWhs', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040421', 'DO To Warehouse (Transfer Request)', '010404', 'FrmDOWhs2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040422', 'Receiving From Warehouse (DO With Transfer Request)', '010404', 'FrmRecvWhs4', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040423', 'Transfer Request (With Batch#)', '010404', 'FrmTransferRequestWhs2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040424', 'DO To Warehouse (Transfer Request With Batch#)', '010404', 'FrmDOWhs3', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040425', 'DO To Customer (Replaced Item)', '010404', 'FrmDOCt3', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040426', 'Lot/Bin Transfer', '010404', 'FrmLotBinTransfer', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040427', 'Material Request Routine', '010404', 'FrmMaterialRequest2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'WEDHA', '201909251335', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040428', 'Customer Pickup Item', '010404', 'FrmCustomerPickupItem', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'WEDHA', '201909251335', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01040499', 'Customization', '010404', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0104049901', 'PHT', '01040499', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010404990101', 'Receiving Item From Vendor - Auto DO', '0104049901', 'FrmRecvVd', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010404990102', 'Receiving Item From Vendor (without PO) - Auto DO', '0104049901', 'FrmRecvVd2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0105', 'Production', '01', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010501', 'Product Lifecycle Management', '0105', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050101', 'Project', '010501', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050102', 'Phase', '010501', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050103', 'Costing', '010501', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010502', 'MRP', '0105', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050201', 'Forecast', '010502', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050202', 'Make to Stock (Standard)', '010502', 'FrmMakeToStock', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050203', 'Demand Management', '010502', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050204', 'MRP Wizard', '010502', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050205', 'Purchase Requisition', '010502', 'FrmPR', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050206', 'Make to Stock (Maklon)', '010502', 'FrmMakeToStock', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010503', 'Production', '0105', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050301', 'Work Center', '010503', 'FrmWorkCenter', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050302', 'Formula', '010503', 'FrmFormula', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050303', 'Bill Of Material', '010503', 'FrmBom', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050304', 'Bill Of Material (With Co-Product)', '010503', 'FrmBom2', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050305', 'Production Shift', '010503', 'FrmProductionShift', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050306', 'Production Routing', '010503', 'FrmProductionRouting', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050307', 'Production Order', '010503', 'FrmProductionOrder', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050308', 'Production Planning', '010503', 'FrmPP', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050309', 'Material Requirements Planning', '010503', 'FrmMRP', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050310', 'Item Index', '010503', 'FrmItemIndex', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050311', 'Wages Formulation', '010503', 'FrmWagesFormulation', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050312', 'Wages Formulation For Work Center', '010503', 'FrmWorkCenterWagesFormulation', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050313', 'Production Wages', '010503', 'FrmPWG', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050314', 'Production Penalty', '010503', 'FrmProductionPenalty', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050315', 'Issue for Production', '010503', 'FrmDOProduction', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050316', 'Receipt from Production', '010503', 'FrmRecvProduction', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050317', 'Job Costing', '010503', 'FrmJC', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050318', 'Production Penalty 2', '010503', 'FrmPWG', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050319', 'Production Order Revision', '010503', 'FrmProductionOrderRevision', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050320', 'Item Planning Group', '010503', 'FrmItemPlanningGrp', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050321', 'Updating Item Index\'s Planning Group', '010503', 'FrmUpdatingItemPlanningGrp', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050322', 'WorkCenter BOM Formulation', '010503', 'FrmWorkCenterBOMFormulation', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050323', 'Bill of Material\'s Template', '010503', 'FrmBom2', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010504', 'Manufacturing Execution', '0105', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050401', 'Shop floor Control', '010504', 'FrmShopFloorControl2', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01050402', 'Shop Floor Control Based On BOM\'s Template', '010504', 'FrmShopFloorControl2', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0106', 'Quality System', '01', NULL, 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010601', 'Quality System', '0106', NULL, 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01060101', 'QC Parameter', '010601', 'FrmQCParameter', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01060102', 'QC Parameter Uom', '010601', 'FrmQCParameterUom', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01060103', 'QC Planning', '010601', 'FrmQCPlanning', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01060104', 'Incoming QC Inspection', '010601', NULL, 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01060105', 'Material QC Inspection (Workcenter)', '010601', NULL, 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01060106', 'Material QC Inspection', '010601', 'FrmMaterialQCInspection', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01060107', 'Master Material Planning', '010601', 'FrmMaterialPlanning', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010602', 'Quality Management System', '0106', NULL, 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01060201', 'Non Conforming', '010602', 'FrmNonConforming', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010603', 'Key Performance Indicator', '0106', NULL, 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201506210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01060301', 'KPI', '010603', 'FrmKPI', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201506210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01060302', 'KPI Process', '010603', 'FrmKPIProcess', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201506210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01060303', 'Balance Score Card', '010603', 'FrmKPIPerspective', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201506210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0107', 'Plant Maintenance', '01', NULL, 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010701', 'Technical Object', '0107', NULL, 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070101', 'Object Type', '010701', 'FrmObjectType', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070102', 'Asset\'s Category', '010701', 'FrmAssetCategory', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070103', 'Mechanic', '010701', 'FrmMechanic', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070104', 'Location', '010701', 'FrmLocation', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070105', 'Equipment', '010701', 'FrmEquipment', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070106', 'Technical Object', '010701', 'FrmTO', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070107', 'Hours Meter', '010701', 'FrmHoursMeter', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010702', 'Preventive Maintenance', '0107', NULL, 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070201', 'Inspection Planning', '010702', NULL, 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070202', 'Maintenance Planning', '010702', NULL, 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010703', 'Work Order Management', '0107', NULL, 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070301', 'Work Order Person in Charge', '010703', 'FrmWOPIC', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070302', 'Work Order Request', '010703', 'FrmWOR', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070303', 'Material Request (WO)', '010703', 'FrmMaterialRequestWO', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070304', 'DO Request From Department  (WO)', '010703', 'FrmDORequestDeptWO', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070305', 'DO To Department  (WO)', '010703', 'FrmDODeptWO', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070306', 'Work Order', '010703', 'FrmWO', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070307', 'Work Order Request Settlement', '010703', 'FrmWORSettlement', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070308', 'Bill of Material Maintenance', '010703', 'FrmBOMMaintenance', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01070309', 'Maintenance Schedule', '010703', 'FrmMaintenanceSchedule', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0108', 'Sales & Distribution', '01', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010801', 'Sales Management', '0108', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080101', 'Customer\'s Category', '010801', 'FrmCustomerCategory', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080102', 'Customer Data', '010801', 'FrmCustomer', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080103', 'Agent Data', '010801', 'FrmAgent', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080104', 'Promotional Program Reason', '010801', 'FrmSoQuotPromoReason', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080105', 'Sales Person', '010801', 'FrmSalesPerson', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080106', 'Customer\'s Quotation with Discount Rate Level', '010801', 'FrmSOQuot', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080107', 'Customer\'s Quotation with Fixed Price', '010801', 'FrmCtQt', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080108', 'Customer\'s Quotation Promo', '010801', 'FrmSOQuotPromo', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080109', 'Sales Order with Fixed Price', '010801', 'FrmSO2', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080110', 'Sales Order With Discount Rate Level', '010801', 'FrmSO', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080111', 'Import Data From Online Store', '010801', 'FrmGetDataWeb', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080112', 'Bea Cukai', '010801', 'FrmBeaCukai', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080113', 'Sales Target', '010801', 'FrmSalesTarget', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080114', 'Item\'s Sales Target', '010801', 'FrmItemSalesTarget', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080115', 'Item Classification', '010801', 'FrmItemClassification', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080116', 'Customer\'s Group', '010801', 'FrmCustomerGroup', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201806080000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080199', 'Customization', '010801', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0108019901', 'PHT', '01080199', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010801990101', 'Foreign Visitors', '0108019901', 'FrmForeignVisitors', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010802', 'Logistic', '0108', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080201', 'Port', '010802', 'FrmPort', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080202', 'Shipment Planning', '010802', 'FrmSP', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080203', 'Shipment Instruction', '010802', 'FrmSI', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080204', 'Stuffing (Create Packing List)', '010802', 'FrmPL', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080205', 'Shipment Invoice', '010802', 'FrmSInv', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080206', 'HS Code Maintenance', '010802', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080207', 'Bill of Landing', '010802', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080209', 'Bea Cukai', '010802', 'FrmBeaCukai', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010803', 'Distribution', '0108', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080301', 'Ring Area of Distribution', '010803', 'FrmRingArea', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080302', 'Shipment Methode', '010803', 'FrmShipmentMethod', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080303', 'Delivery Request', '010803', 'FrmDR', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080304', 'Take Order', '010803', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080305', 'Canvasing', '010803', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080306', 'Delivery Request (CBD)', '010803', 'FrmDR', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010804', 'Point of Sales', '0108', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080401', 'Payment Type', '010804', 'FrmPosPayByType', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080402', 'PoS Setting', '010804', 'FrmPosSetting', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080403', 'PoS Function', '010804', 'FrmPosFunction', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080404', 'Point of Sale Transaction', '010804', 'FrmTrnPOS', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080405', 'Shift Closing', '010804', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080406', 'Day End Closing', '010804', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01080407', 'Pos Number', '010804', 'FrmPosNo', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109', 'Human  Resource Management', '01', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010901', 'Organizational Development', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090101', 'Organizational Structure', '010901', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010101', 'Division', '01090101', 'FrmDivision', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010102', 'Profit Center', '01090101', 'FrmProfitCenter', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010103', 'Site/Unit', '01090101', 'FrmSite', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010104', 'Department', '01090101', 'FrmDepartment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010105', 'Section', '01090101', 'FrmSection', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010106', 'Working Group', '01090101', 'FrmWorkingGroup', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010107', 'Position', '01090101', 'FrmPosition', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010108', 'Job Holder', '01090101', 'FrmJobHolder', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010109', 'Competence', '01090101', 'FrmCompetence', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010110', 'Job Description', '01090101', 'FrmOrganizationalStructure', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010111', 'Company City', '01090101', 'FrmCompanyCity', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010112', 'Major', '01090101', 'FrmMajor', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010113', 'Position Status', '01090101', 'FrmPositionStatus', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090102', 'Performance Management (KPI)', '010901', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010201', 'Balance Score Card', '01090102', 'FrmKPIPerspective', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010202', 'KPI', '01090102', 'FrmKPI', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010203', 'KPI Process', '01090102', 'FrmKPIProcess', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010204', 'Performance Evaluation', '01090102', 'FrmPerformanceEvaluation', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010205', 'Performance Grade', '01090102', 'FrmPerformanceGrade', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010206', 'Performance Review', '01090102', 'FrmPerformanceReview', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090103', 'Assessment Management', '010901', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010301', 'Soft Competency', '01090103', 'FrmAssesment2', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010303', 'Assesment Process', '01090103', 'FrmAssesmentProcess', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010304', 'Behaviour Indicator', '01090103', 'FrmBehaviourInd', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090104', 'Learning and Development Management', '010901', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010401', 'Trainer', '01090104', 'FrmTrainer', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010402', 'On Job Training', '01090104', 'FrmOJT', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010403', 'Training', '01090104', 'FrmTraining', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010404', 'Training Request', '01090104', 'FrmTrainingRequest', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010405', 'Training Evaluation', '01090104', 'FrmTrainingEvaluation', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010406', 'Training Schedule', '01090104', 'FrmTrainingSchedule', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010407', 'Training Assignment', '01090104', 'FrmTrainingAssignment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090105', 'Mutation, Promotion & Demotion', '010901', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010501', 'Propose Candidate', '01090105', 'FrmProposeCandidate', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010502', 'Employee Mutation/Promotion/Demotion', '01090105', 'FrmEmpPD', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109010503', 'Payroll Process Setting', '01090105', 'FrmPPS', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010902', 'Recruitment', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109020101', 'Employee Request', '010902', 'FrmEmployeeRequest', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109020102', 'Personal Information', '010902', 'FrmEmployeeRecruitment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109020103', 'Medical Information', '010902', 'FrmMedicalTest', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010903', 'Employee Management', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109030101', 'Master Employee', '010903', 'FrmEmployee', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109030102', 'Employee Information Amendment', '010903', 'FrmEmployeeAmendment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109030103', 'Employee\'s Family Amendment', '010903', 'FrmEmployeeFamily', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109030104', 'Warning Letter', '010903', 'FrmWarningLetter', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109030105', 'Employee\'s Warning Letter', '010903', 'FrmEmpWL', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090308', 'Accident', '010903', 'FrmAccident', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090309', 'Employee\'s Contract Document', '010903', 'FrmEmpContractDoc', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090310', 'Employee\'s Decree', '010903', 'FrmEmpDecree', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010904', 'Claim & Reimbustment', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090401', 'Employee Claim & Reimbustment', '010904', 'FrmClaim', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090402', 'Employee\'s Claim Request', '010904', 'FrmEmpClaim', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010905', 'Time Management', '0109', '', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090501', 'Working Schedule Management', '010905', '', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050101', 'Daily Work Schedule', '01090501', 'FrmWorkSchedule', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090502', 'Attendance', '010905', '', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050201', 'Attendance Group', '01090502', 'FrmAttendanceGrp', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050202', 'Employee\'s Attendance Card', '01090502', 'FrmEmpCard', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050203', 'Export/Import Attendance Data', '01090502', 'FrmEximData', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050204', 'Manual Attendance', '01090502', 'FrmManualAtd', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050205', 'Attendance Verification', '01090502', 'FrmAtd', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050207', 'Employee\'s Attendance Log', '01090502', 'FrmAttendanceLog', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050208', 'Employee\'s Working Schedule Amendment', '01090502', 'FrmEmpWS', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050209', 'Residual Leave Payment', '01090502', 'FrmRLP', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090503', 'Leave Management', '010905', '', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050301', 'Leave Group', '01090503', 'FrmLeaveGrp', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050302', 'Leave', '01090503', 'FrmLeave', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050303', 'Group of Employee\'s Leave Request', '01090503', 'FrmEmpLeave2', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050304', 'Employee\'s Leave Request', '01090503', 'FrmEmpLeave', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090504', 'Over Time', '010905', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050401', 'OT Formula', '01090504', 'FrmOtFormula', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050402', 'OT Request', '01090504', 'FrmOTRequest', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050403', 'OT Adjustment', '01090504', 'FrmOTAdjustment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109050404', 'Holiday', '01090504', 'FrmHoliday', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090514', 'Religious Holiday Allowance Slip', '010905', 'FrmRHASlip2', 'MenuHumanResource', 'Y', 'Y', 'Y', 'D', 'TKG', '201607130000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010906', 'Compensation Benefit', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090601', 'Salary Management', '010906', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060101', 'Grade Level Group', '01090601', 'FrmGradeLevelGroup', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060102', 'Grade', '01090601', 'FrmGradeLevel', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060103', 'Employee Salary, Allowance && Deduction', '01090601', 'FrmEmployeeSalary', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060104', 'Employee Salary, Allowance && Deduction Amendment', '01090601', 'FrmEmpSalary', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060105', 'Level', '01090601', 'FrmLevel', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090602', 'Allowance/Deduction', '010906', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060201', 'Insentif/Penalty Category', '01090602', 'FrmInsPntCategory', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060202', 'Insentif/Penalty', '01090602', 'FrmInsPnt', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060203', 'Employee\'s Insentif/Penalty', '01090602', 'FrmEmpInsPnt', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060204', 'Insentif', '01090602', 'FrmInsentif', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060205', 'Insentif (Coordinator)', '01090602', 'FrmInsentif2', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060206', 'Daily Employee\'s Incentive', '01090602', 'FrmIncentive', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060207', 'Production Incentive', '01090602', 'FrmProductionIncentive', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060208', 'Religious Holiday Allowance', '01090602', 'FrmRHA4', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060209', 'Travel Request', '01090602', 'FrmTravelRequest2', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'HAR', '201710100000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060210', 'Master Allowance Deduction', '01090602', 'FrmAllowanceDeduction', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'HAR', '201710100000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060211', 'Master Employee Travel Request', '01090602', 'FrmEmpTravelRequest', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'HAR', '201710100000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060299', 'Customization', '01090602', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010906029901', 'PHT', '0109060299', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090602990101', 'Annual Leave Allowance', '010906029901', 'FrmAnnualLeaveAllowance', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090602990102', 'Employee\'s Service Charge Incentive', '010906029901', 'FrmEmpSCI', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090602990103', 'Service Charge Incentive Deduction', '010906029901', 'FrmSCIDeduction', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01090603', 'Loan Management', '010906', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060301', 'Employee Loan Request', '01090603', 'FrmAdvancePayment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060302', 'Credit', '01090603', 'FrmCredit', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201710031513', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109060303', 'Employee Loan Import Data', '01090603', 'FrmEmpLoanImport', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201710031513', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010907', 'Social Security', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109070101', 'Social Security Program', '010907', 'FrmSSProgram', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109070102', 'Social Security', '010907', 'FrmSS', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109070103', 'Employee\'s Social Security Amendment', '010907', 'FrmEmpSS', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109070104', 'List of Employee\'s Social Security', '010907', 'FrmEmpSSList', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109070105', 'Voucher Request For Social Security', '010907', 'FrmVoucherRequestSS', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010908', 'Payroll Management', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109080101', 'Taxable Income', '010908', 'FrmTI', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109080102', 'Non Taxable Income', '010908', 'FrmNTI', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109080103', 'Payroll Data Access Authorization', '010908', 'FrmPPA', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109080104', 'Payroll Group', '010908', 'FrmPayrollGrp', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109080105', 'Payrun', '010908', 'FrmPayrun', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109080106', 'Payroll Processing', '010908', 'FrmPayrollProcess4', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109080107', 'Employee\'s Salary Adjustment', '010908', 'FrmSalaryAdjustment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109080108', 'Voucher Request (Payroll)', '010908', 'FrmVoucherRequestPayroll4', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109080109', 'Export Voucher Request To CSV File', '010908', 'FrmVoucherRequestSSCSV', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109080110', 'Pay Slip', '010908', 'FrmPaySlip', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109080112', 'Group Of Employee\'s Salary Adjustment', '010908', 'FrmSalaryAdjustment3', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('010999', 'Customization', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201607130000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('01099901', 'PHT', '010999', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201607130000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109990101', 'Employee Performance Point based on attendance', '01099901', 'FrmEmpAtdPoint', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201607130000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109990102', 'Taxable Income (Gross Up Method)', '01099901', 'FrmTI2', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201802190000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109990103', 'OT Incentive', '01099901', 'FrmOTIncentive', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201802271045', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109990104', 'Email Payslip', '01099901', 'FrmEmailPayslip', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201802271045', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109990105', 'Updating Annual Leave And Long Service Leave Summary', '01099901', 'FrmLeaveSummary', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'HAR', '201902070000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0109990106', 'Bonus', '01099901', 'FrmBonus2', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'HAR', '201902070000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('0110', 'Management', '01', NULL, 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('011001', 'Incoming Payment *', '0110', 'FrmIncomingPayment', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('011002', 'Voucher Request *', '0110', 'FrmVoucherRequest', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('011003', 'Voucher *', '0110', 'FrmVoucher', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('011004', 'Voucher (Standard And Raw Material) *', '0110', 'FrmVoucher2', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL);
-INSERT INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES ('011005', 'Voucher Request For Tax *', '0110', 'FrmVoucherRequestTax', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL);
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               10.5.6-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win64
+-- HeidiSQL Version:             11.0.0.5919
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- Dumping database structure for runsystemdms
+DROP DATABASE IF EXISTS `runsystemdms`;
+CREATE DATABASE IF NOT EXISTS `runsystemdms` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `runsystemdms`;
+
+-- Dumping structure for table runsystemdms.tbldocumentdtl
+DROP TABLE IF EXISTS `tbldocumentdtl`;
+CREATE TABLE IF NOT EXISTS `tbldocumentdtl` (
+  `Docno` varchar(50) NOT NULL,
+  `MenuCode` varchar(16) NOT NULL,
+  `Description` varchar(500) DEFAULT NULL,
+  `Status` varchar(1) NOT NULL DEFAULT 'O',
+  PRIMARY KEY (`Docno`,`MenuCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table runsystemdms.tbldocumentdtl: ~0 rows (approximately)
+/*!40000 ALTER TABLE `tbldocumentdtl` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbldocumentdtl` ENABLE KEYS */;
+
+-- Dumping structure for table runsystemdms.tbldocumenthdr
+DROP TABLE IF EXISTS `tbldocumenthdr`;
+CREATE TABLE IF NOT EXISTS `tbldocumenthdr` (
+  `Docno` varchar(50) NOT NULL,
+  `ModulCode` varchar(16) NOT NULL,
+  `ActiveInd` varchar(1) NOT NULL DEFAULT 'N',
+  `Status` varchar(1) NOT NULL DEFAULT 'O',
+  PRIMARY KEY (`Docno`,`ModulCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table runsystemdms.tbldocumenthdr: ~0 rows (approximately)
+/*!40000 ALTER TABLE `tbldocumenthdr` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbldocumenthdr` ENABLE KEYS */;
+
+-- Dumping structure for table runsystemdms.tblgroup
+DROP TABLE IF EXISTS `tblgroup`;
+CREATE TABLE IF NOT EXISTS `tblgroup` (
+  `GrpCode` varchar(16) NOT NULL,
+  `GrpName` varchar(80) NOT NULL,
+  `CreateBy` varchar(16) NOT NULL,
+  `CreateDt` varchar(12) NOT NULL,
+  `LastUpBy` varchar(16) DEFAULT NULL,
+  `LastUpDt` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`GrpCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table runsystemdms.tblgroup: ~16 rows (approximately)
+/*!40000 ALTER TABLE `tblgroup` DISABLE KEYS */;
+REPLACE INTO `tblgroup` (`GrpCode`, `GrpName`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES
+	('11', 'Teknik Informatika', 'Admin', '202003231117', NULL, NULL),
+	('12', 'Reka Medik', 'Admin', '202003231117', NULL, NULL),
+	('13', 'gizi klinik', 'Admin', '202003231117', NULL, NULL),
+	('14', 'Peternakan', 'Admin', '202003231117', NULL, NULL),
+	('15', 'Bahasa', 'Admin', '202003231117', NULL, NULL),
+	('16', 'Manajemen', 'Admin', '202003231117', NULL, NULL),
+	('17', 'Akuntansi', 'Admin', '202003231117', NULL, NULL),
+	('18', 'Perkebunan', 'Admin', '202003231117', NULL, NULL),
+	('19', 'Benih', 'Admin', '202003231117', NULL, NULL),
+	('20', 'Perhotelan', 'Admin', '202003231117', NULL, NULL),
+	('21', 'Hukum', 'Admin', '202003231117', NULL, NULL),
+	('22', 'Ekonomi', 'Admin', '202003231117', NULL, NULL),
+	('23', 'Sejarah', 'Admin', '202003231117', NULL, NULL),
+	('24', 'Kedokteran', 'Admin', '202003231117', NULL, NULL),
+	('25', 'Teknik', 'Admin', '202003231117', NULL, NULL),
+	('26', 'Framasi', 'Admin', '202003231117', NULL, NULL);
+/*!40000 ALTER TABLE `tblgroup` ENABLE KEYS */;
+
+-- Dumping structure for table runsystemdms.tblgroupmenu
+DROP TABLE IF EXISTS `tblgroupmenu`;
+CREATE TABLE IF NOT EXISTS `tblgroupmenu` (
+  `MenuCode` varchar(16) NOT NULL,
+  `GrpCode` varchar(16) NOT NULL,
+  `AccessInd` varchar(5) NOT NULL DEFAULT 'NNNNN',
+  `CreateBy` varchar(16) NOT NULL,
+  `CreateDt` varchar(12) NOT NULL,
+  `LastUpBy` varchar(16) DEFAULT NULL,
+  `LastUpDt` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`GrpCode`,`MenuCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table runsystemdms.tblgroupmenu: ~16 rows (approximately)
+/*!40000 ALTER TABLE `tblgroupmenu` DISABLE KEYS */;
+REPLACE INTO `tblgroupmenu` (`MenuCode`, `GrpCode`, `AccessInd`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES
+	('01', '11', 'YYNYY', 'system', '202003231117', NULL, NULL),
+	('01', '12', 'YYNYY', 'system', '202003231117', NULL, NULL),
+	('01', '13', 'YYNYY', 'system', '202003231117', NULL, NULL),
+	('01', '14', 'YYNYY', 'ayu', '202003231117', NULL, NULL),
+	('01', '15', 'YYNYY', 'ayu', '202003231117', NULL, NULL),
+	('01', '16', 'YYNYY', 'ayu', '202003231117', NULL, NULL),
+	('01', '17', 'YYNYY', 'system', '202003231117', NULL, NULL),
+	('01', '18', 'YYNYY', 'system', '202003231117', NULL, NULL),
+	('01', '19', 'YYNYY', 'ayu', '202003231117', NULL, NULL),
+	('01', '20', 'YYNYY', 'ayu', '202003231117', NULL, NULL),
+	('01', '21', 'YYNYY', 'ayu', '202003231117', NULL, NULL),
+	('01', '22', 'YYNYY', 'ayu', '202003231117', NULL, NULL),
+	('01', '23', 'YYNYY', 'mei', '202003231117', NULL, NULL),
+	('01', '24', 'YYNYY', 'ayu', '202003231117', NULL, NULL),
+	('01', '25', 'YYNYY', 'ayu', '202003231117', NULL, NULL),
+	('01', '26', 'YYNYY', 'system', '202003231117', NULL, NULL);
+/*!40000 ALTER TABLE `tblgroupmenu` ENABLE KEYS */;
+
+-- Dumping structure for table runsystemdms.tblmenu
+DROP TABLE IF EXISTS `tblmenu`;
+CREATE TABLE IF NOT EXISTS `tblmenu` (
+  `MenuCode` varchar(16) NOT NULL,
+  `MenuDesc` varchar(80) NOT NULL,
+  `Parent` varchar(16) DEFAULT NULL,
+  `Param` varchar(80) DEFAULT NULL,
+  `Icon` varchar(80) DEFAULT NULL,
+  `StdInd` varchar(1) NOT NULL DEFAULT 'Y',
+  `SpcInd` varchar(1) NOT NULL DEFAULT 'N',
+  `Visible` varchar(1) NOT NULL DEFAULT 'Y',
+  `MenuCat` varchar(1) NOT NULL DEFAULT 'D',
+  `CreateBy` varchar(16) NOT NULL,
+  `CreateDt` varchar(12) NOT NULL,
+  `LastUpBy` varchar(16) DEFAULT NULL,
+  `LastUpDt` varchar(12) DEFAULT NULL,
+  `Description` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`MenuCode`),
+  KEY `Parent` (`Parent`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table runsystemdms.tblmenu: ~475 rows (approximately)
+/*!40000 ALTER TABLE `tblmenu` DISABLE KEYS */;
+REPLACE INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdInd`, `SpcInd`, `Visible`, `MenuCat`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`, `Description`) VALUES
+	('01', 'Module', NULL, NULL, NULL, 'Y', 'N', 'Y', 'D', 'Yusril', '202010151117', NULL, NULL, NULL),
+	('0101', 'General', '01', NULL, 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010101', 'Document Approval', '0101', 'FrmDocApproval', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010102', 'Country', '0101', 'FrmCountry', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010103', 'Province', '0101', 'FrmProvince', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010104', 'City', '0101', 'FrmCity', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010105', 'Sub District', '0101', 'FrmSubDistrict', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010106', 'Village', '0101', 'FrmVillage', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010107', 'Activity Category', '0101', 'FrmActivityCategory', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010108', 'Activity', '0101', 'FrmActivity', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010109', 'Transport Type', '0101', 'FrmTransportType', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010110', 'Vendor Update Approval', '0101', 'FrmVendorUpdateApproval', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010111', 'Business Sector', '0101', 'FrmBusinessSector', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201807030000', NULL, NULL, NULL),
+	('010112', 'Business Category', '0101', 'FrmBusinessCategory', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201807030000', NULL, NULL, NULL),
+	('010113', 'Region', '0101', 'FrmRegion', 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102', 'Financial and Cost Management', '01', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010201', 'Accounting Management', '0102', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01020101', 'Enterprise Accounting', '010201', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010101', 'Account Category', '01020101', 'FrmAccountCategory', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010102', 'Chart of Account', '01020101', 'FrmCOA', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010103', 'Account Period', '01020101', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010104', 'Business Entity', '01020101', 'FrmEntity', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010105', 'Yearly Closing and Opening Balance', '01020101', 'FrmCOAOpeningBalance', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010106', 'Journal Transaction', '01020101', 'FrmJournal', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010107', 'Journal Voucher', '01020101', 'FrmVoucherJournal', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010108', 'Profit Center', '01020101', 'FrmProfitCenter', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010109', 'Posting Journal Based On Voucher (Manual)', '01020101', 'FrmVoucherCheckPosting', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010110', 'COA Formulation', '01020101', 'FrmCOAFormulation', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'WEDHA', '201708300955', NULL, NULL, NULL),
+	('0102010111', 'Insert Entity for COA', '01020101', 'FrmInsertEntityCOA', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'WEDHA', '201708300955', NULL, NULL, NULL),
+	('0102010112', 'Monthly Journal Entries\'s Closing', '01020101', 'FrmClosingJournal', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201712160000', NULL, NULL, NULL),
+	('0102010113', 'Opening Balance Yearly', '01020101', 'FrmOpeningBalanceYearly', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201712160000', NULL, NULL, NULL),
+	('0102010114', 'FICO Reporting\'s Setting', '01020101', 'FrmRptFicoSetting', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201808060000', NULL, NULL, NULL),
+	('0102010115', 'POS akun setting', '01020101', 'FrmTWCJournalSetting', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201808060000', NULL, NULL, NULL),
+	('0102010116', 'RKAP (Company\'s Budget Plan)', '01020101', 'FrmCompanyBudgetPlan', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201712160000', NULL, NULL, NULL),
+	('01020102', 'Asset Management', '010201', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010201', 'Master Asset', '01020102', 'FrmAsset', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010202', 'Asset Transfer Request', '01020102', 'FrmAssetTransferRequest', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010203', 'Asset Transfer', '01020102', 'FrmAssetTransfer', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010204', 'Depreciation of Business Assets', '01020102', 'FrmDepreciationAsset', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010205', 'Accumulation Asset Depreciation Journal', '01020102', 'FrmAAD', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010206', 'Receiving Asset', '01020102', 'FrmRecvAsset', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'WEDHA', '201703101646', NULL, NULL, NULL),
+	('0102010207', 'Asset Leasing', '01020102', 'FrmAssetLeasing', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'WEDHA', '201709121150', NULL, NULL, NULL),
+	('0102010208', 'Monthly Foreign Exchange Journal Entries', '01020102', 'FrmMonthlyFXJournalEntries', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'WEDHA', '201709121150', NULL, NULL, NULL),
+	('0102010209', 'Processing Multiple Depreciation of Business Assets', '01020102', 'FrmDepreciationAsset2', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201902280000', NULL, NULL, NULL),
+	('0102010210', 'Technical Object', '01020102', 'FrmTO', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010211', 'Asset\'s Category', '01020102', 'FrmAssetCategory', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01020103', 'Cost Control', '010201', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010301', 'Cost Center', '01020103', 'FrmCostCenter', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010302', 'Cost Category', '01020103', 'FrmCostCategory', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010303', 'Updating Item\'s Cost Category', '01020103', 'FrmItemCostCategory', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010304', 'Generate Cost Center And Cost Category Data', '01020103', 'FrmCostCenter2', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102010305', 'Updating Cost Category And DO/Return (Dept) Journal', '01020103', 'FrmItemCostCategory2', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010202', 'Finance Management', '0102', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01020201', 'Currency', '010202', 'FrmCurrency', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01020202', 'Currency Rate', '010202', 'FrmCurrencyRate', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01020203', 'Term of Payment', '010202', 'FrmPaymentTerm', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01020204', 'Tax', '010202', 'FrmTax', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01020205', 'Closing Balance In Cash/Bank Account', '010202', 'FrmClosingBalanceInCash', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01020206', 'Employee\'s Claim', '010202', 'FrmEmpClaim', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01020207', 'Tax Group', '010202', 'FrmTaxGrp', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01020230', 'Account Receivable - AR', '010202', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102023001', 'Sales Invoice', '01020230', 'FrmSalesInvoice', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102023002', 'Sales Return Invoice', '01020230', 'FrmSalesReturnInvoice', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102023003', 'Incoming Payment', '01020230', 'FrmIncomingPayment', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102023005', 'Sales Invoice (Cash Before Delivery)', '01020230', 'FrmSalesInvoice2', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102023006', 'Customer\'s AR Downpayment', '01020230', 'FrmARDownpayment', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102023007', 'Customer Deposit (Currency Switching)', '01020230', 'FrmCustomerDepositCurSwitch', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102023008', 'AR Settlement', '01020230', 'FrmARS', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706061700', NULL, NULL, NULL),
+	('0102023009', 'Sales Invoice Based on DO To Customer', '01020230', 'FrmSalesInvoice3', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706221524', NULL, NULL, NULL),
+	('01020240', 'Account Payable - AP', '010202', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102024001', 'Receipt Of Invoice Documents', '01020240', 'FrmInvoiceDocReceipts', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102024002', 'Purchase Invoice - AP', '01020240', 'FrmPurchaseInvoice', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102024003', 'AP Settlement', '01020240', 'FrmAPS', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102024004', 'Purchase Return Invoice - AP', '01020240', 'FrmPurchaseReturnInvoice', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102024005', 'Outgoing Payment - AP', '01020240', 'FrmOutgoingPayment', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102024006', 'Vendor\'s AP Downpayment', '01020240', 'FrmAPDownpayment', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102024007', 'Vendor Deposit (Currency Switching)', '01020240', 'FrmVendorDepositCurSwitch', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102024010', 'Returning Vendor\'s AP Downpayment', '01020240', 'FrmReturnAPDownpayment', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102024011', 'Update Purchase Invoice\'s Due Date', '01020240', 'FrmUpdatePurchaseInvoiceDueDt', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'Ica', '202010151412', NULL, NULL, NULL),
+	('01020250', 'Cash Flow Management', '010202', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102025001', 'Bank', '01020250', 'FrmBank', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102025002', 'Cash and Bank Account', '01020250', 'FrmBankAccount', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102025003', 'Voucher Request', '01020250', 'FrmVoucherRequest', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102025004', 'Voucher', '01020250', 'FrmVoucher', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102025005', 'Voucher Request VAT', '01020250', 'FrmVoucherRequestPPN', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102025006', 'VAT Settlement', '01020250', 'FrmVATSettlement', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201706210000', NULL, NULL, NULL),
+	('01020260', 'Budget Management', '010202', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102026001', 'Budget Request', '01020260', 'FrmBudgetRequest', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102026002', 'Budget Maintenance', '01020260', 'FrmBudget', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102026003', 'Budget Category', '01020260', 'FrmBudgetCategory', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102026004', 'Budget Request (New)', '01020260', 'FrmBudgetRequest2', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0102026005', 'Budget Maintenance (New)', '01020260', 'FrmBudget2', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01020270', 'PKBL', '010202', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL, NULL),
+	('0102027001', 'Partner', '01020270', 'FrmPartner', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL, NULL),
+	('0102027002', 'Request for Loan to Partner', '01020270', 'FrmRequestLP', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL, NULL),
+	('0102027003', 'Form Survey', '01020270', 'FrmSurvey', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL, NULL),
+	('0102027004', 'Partner\'s Loan Payment', '01020270', 'FrmPLP', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL, NULL),
+	('01020299', 'Customization', '010202', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL, NULL),
+	('0102029901', 'PHT', '01020299', NULL, 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL, NULL),
+	('010202990101', 'Bank Reconciliation', '0102029901', 'FrmBankReconciliation', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201807050000', NULL, NULL, NULL),
+	('010202990102', 'Cash Advance Settlement', '0102029901', 'FrmCashAdvanceSettlement', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201909160000', NULL, NULL, NULL),
+	('0103', 'Procurement Management', '01', NULL, 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010301', 'Vendor Category', '0103', 'FrmVendorCategory', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010302', 'Master Vendor', '0103', 'FrmVendor', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010303', 'Delivery Type', '0103', 'FrmDeliveryType', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010310', 'Master Rating', '0103', 'FrmRating', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010311', 'Qualification', '0103', 'FrmQualification', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010330', 'Raw Material Purchasing Management', '0103', NULL, 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033001', 'Document Legality of Raw Material', '010330', 'FrmLegalDocVerify', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033002', 'Pricing Group', '010330', 'FrmPricingGroup', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033003', 'Updating Item\'s Pricing Group', '010330', 'FrmItPricingGroup', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033004', 'Vendor\'s Quotation With Pricing Group', '010330', 'FrmQt2', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033005', 'Loading Queue', '010330', 'FrmTimbanganAD4329', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033006', 'Loading Queue Revision', '010330', 'FrmLoadingQueueRevision', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033007', 'Document Legality Verification', '010330', 'FrmLegalDocVerify', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033008', 'Receiving Raw Material (Log)', '010330', 'FrmRecvRawMaterial', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033009', 'Receiving Raw Material (Balok)', '010330', 'FrmRecvRawMaterial', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033010', 'Raw Material Opname', '010330', 'FrmRawMaterialOpname', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033011', 'Verification of Receiving Raw Material', '010330', 'FrmRawMaterialVerify', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033012', 'A Comparison Between Receiving Raw Material and Opname', '010330', 'FrmRptRawMaterialComparison', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033013', 'Purchase Invoice (Raw material)', '010330', 'FrmPurchaseInvoiceRawMaterial', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033014', 'Voucher (Standard And Raw Material)', '010330', 'FrmVoucher2', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033015', 'Export Raw Material Data', '010330', 'FrmRawMaterialExport', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033016', 'Publisher', '010330', 'FrmPublisher', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033017', 'DKO', '010330', 'FrmDKO', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033018', 'FA-KO', '010330', 'FrmFAKO', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01033019', 'Material Inspection (Log)', '010330', 'FrmRecvRawMaterial2', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL, NULL),
+	('01033020', 'Material Inspection (Balok)', '010330', 'FrmRecvRawMaterial2', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL, NULL),
+	('01033021', 'Raw Material Quantity Inspection', '010330', 'FrmRawMaterialOpname2', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL, NULL),
+	('01033022', 'Document Legality Verification Amendment', '010330', 'FrmLegalDocVerifyUpdate', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010340', 'Purchasing Management', '0103', NULL, 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01034001', 'Vendor Quotation', '010340', 'FrmQt', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01034002', 'PO Request', '010340', 'FrmPORequest', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01034003', 'PO Request Revision', '010340', 'FrmPORequestRevision', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01034004', 'Purchase Order', '010340', 'FrmPO', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01034005', 'Purchase Order Revision', '010340', 'FrmPORevision', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01034006', 'Cancellation of Purchase Order\'s Quantity', '010340', 'FrmPOQtyCancel', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01034007', 'Item Vendor Collection', '010340', 'FrmItemVendorCollection', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01034008', 'Letter of Offer to Vendor', '010340', 'FrmVendorItemCategoryGroup', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010350', 'E-Procurement', '0103', NULL, 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01035001', 'Tender', '010350', 'FrmTender', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01035002', 'Tender Quotation\'s Request', '010350', 'FrmTenderQuotationRequest', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01035003', 'Tender Quotation', '010350', 'FrmTenderQuotation', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01035004', 'Vendor\'s Sector', '010350', 'FrmSector', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01035005', 'Tender Email Notification', '010350', 'FrmEmailVendorSector', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01035006', 'Vendor File Upload\'s Category', '010350', 'FrmVendorFileUploadCategory', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01035007', 'Master Rating', '010350', 'FrmRating', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01035008', 'Qualification', '010350', 'FrmQualification', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0104', 'Inventory & Material Management', '01', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010401', 'Master Data', '0104', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040101', 'Master Item', '010401', 'FrmItem', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040102', 'Item\'s Category', '010401', 'FrmItemCategory', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040103', 'Item\'s Sub Category', '010401', 'FrmItemSubCategory', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040104', 'Item\'s Brand', '010401', 'FrmItemBrand', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040105', 'Item\'s Uom', '010401', 'FrmUom', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040106', 'Item\'s Property', '010401', 'FrmItemProperty', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040107', 'Item\'s Price', '010401', 'FrmItemPrice', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040108', 'Item\'s Group', '010401', 'FrmItemGroup', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040109', 'Item\'s Barcode', '010401', 'FrmItemBarcode', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040110', 'Item\'s Request', '010401', 'FrmItemRequest', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'WEDHA', '201703101646', NULL, NULL, NULL),
+	('01040111', 'Master Request By', '010401', 'FrmRequestBy', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'WEDHA', '201703101646', NULL, NULL, NULL),
+	('01040112', 'Location', '010401', 'FrmLocation', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010402', 'Inventory Management', '0104', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040201', 'Inventory Level Setup', '010402', 'FrmReorderPoint', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040202', 'Initial Stock', '010402', 'FrmStockInitial', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040203', 'Item Mutation (one on one)', '010402', 'FrmMutation', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040204', 'Item Mutation (Many on Many)', '010402', 'FrmMutations', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040205', 'Stock Adjustment', '010402', 'FrmStockAdjustment', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040206', 'Stock Opname', '010402', 'FrmStockOpname', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040207', 'Item\'s Costing', '010402', 'FrmItemCost', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040208', 'Updating Item\'s Cost', '010402', 'FrmStockPrice', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040209', 'Stock Opname With Value', '010402', 'FrmStockOpname2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040210', 'Lead Time', '010402', 'FrmLeadTime', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010403', 'Warehouse Management System', '0104', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040301', 'Warehouse\'s Category', '010403', 'FrmWarehouseCategory', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040302', 'Warehouse', '010403', 'FrmWarehouse', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040303', 'Lot', '010403', 'FrmLot', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040304', 'Bin', '010403', 'FrmBin', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040305', 'Bin Inspection', '010403', 'FrmBinUpdateStatus', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040306', 'Bin Transfer Request', '010403', 'FrmBinTransferRequest', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040307', 'Bin Transfer', '010403', 'FrmBinTransfer', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010404', 'Material Management', '0104', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040401', 'Material Request', '010404', 'FrmMaterialRequest', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040402', 'DO To Other Warehouse', '010404', 'FrmDOWhs', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040403', 'DO To Vendor (Returning Item)', '010404', 'FrmDOVd', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040404', 'DO To Customer', '010404', 'FrmDOCt', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040405', 'DO To Customer based on Request Delivery', '010404', 'FrmDOCt2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040406', 'DO To Department (Without DO Request) ', '010404', 'FrmDODept2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040407', 'DO To Department (With DO Request)', '010404', 'FrmDODept', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040408', 'DO To Production', '010404', 'FrmDOProduction', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040409', 'DO Request By Department', '010404', 'FrmDORequestDept', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040410', 'Receiving Item From Vendor (Without PO)', '010404', 'FrmRecvVd2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040411', 'Receiving Item From Vendor', '010404', 'FrmRecvVd', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040412', 'Receiving Item From Department (Based On DO)', '010404', 'FrmRecvDept', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040413', 'Receiving Item From Customer', '010404', 'FrmRecvCt', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040414', 'Receiving Item From Other Warehouse', '010404', 'FrmRecvWhs', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040415', 'Receiving Item From Other Warehouse (Without DO) ', '010404', 'FrmRecvWhs2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040416', 'Receiving Item From Other Warehouse (Based On Item)', '010404', 'FrmRecvWhs3', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040417', 'Receiving Item From Production', '010404', 'FrmRecvProduction', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040418', 'Cancelation of Material Request Quantity', '010404', 'FrmMRQtyCancel', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040419', 'Purchase Requisition', '010404', 'FrmPReq', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040420', 'Transfer Request', '010404', 'FrmTransferRequestWhs', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040421', 'DO To Warehouse (Transfer Request)', '010404', 'FrmDOWhs2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040422', 'Receiving From Warehouse (DO With Transfer Request)', '010404', 'FrmRecvWhs4', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040423', 'Transfer Request (With Batch#)', '010404', 'FrmTransferRequestWhs2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040424', 'DO To Warehouse (Transfer Request With Batch#)', '010404', 'FrmDOWhs3', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040425', 'DO To Customer (Replaced Item)', '010404', 'FrmDOCt3', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040426', 'Lot/Bin Transfer', '010404', 'FrmLotBinTransfer', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01040427', 'Material Request Routine', '010404', 'FrmMaterialRequest2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'WEDHA', '201909251335', NULL, NULL, NULL),
+	('01040428', 'Customer Pickup Item', '010404', 'FrmCustomerPickupItem', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'WEDHA', '201909251335', NULL, NULL, NULL),
+	('01040499', 'Customization', '010404', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0104049901', 'PHT', '01040499', NULL, 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010404990101', 'Receiving Item From Vendor - Auto DO', '0104049901', 'FrmRecvVd', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010404990102', 'Receiving Item From Vendor (without PO) - Auto DO', '0104049901', 'FrmRecvVd2', 'MenuInventory', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0105', 'Production', '01', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010501', 'Product Lifecycle Management', '0105', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050101', 'Project', '010501', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050102', 'Phase', '010501', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050103', 'Costing', '010501', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010502', 'MRP', '0105', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050201', 'Forecast', '010502', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050202', 'Make to Stock (Standard)', '010502', 'FrmMakeToStock', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050203', 'Demand Management', '010502', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050204', 'MRP Wizard', '010502', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050205', 'Purchase Requisition', '010502', 'FrmPR', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050206', 'Make to Stock (Maklon)', '010502', 'FrmMakeToStock', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010503', 'Production', '0105', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050301', 'Work Center', '010503', 'FrmWorkCenter', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050302', 'Formula', '010503', 'FrmFormula', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050303', 'Bill Of Material', '010503', 'FrmBom', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050304', 'Bill Of Material (With Co-Product)', '010503', 'FrmBom2', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050305', 'Production Shift', '010503', 'FrmProductionShift', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050306', 'Production Routing', '010503', 'FrmProductionRouting', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050307', 'Production Order', '010503', 'FrmProductionOrder', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050308', 'Production Planning', '010503', 'FrmPP', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050309', 'Material Requirements Planning', '010503', 'FrmMRP', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050310', 'Item Index', '010503', 'FrmItemIndex', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050311', 'Wages Formulation', '010503', 'FrmWagesFormulation', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050312', 'Wages Formulation For Work Center', '010503', 'FrmWorkCenterWagesFormulation', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050313', 'Production Wages', '010503', 'FrmPWG', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050314', 'Production Penalty', '010503', 'FrmProductionPenalty', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050315', 'Issue for Production', '010503', 'FrmDOProduction', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050316', 'Receipt from Production', '010503', 'FrmRecvProduction', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050317', 'Job Costing', '010503', 'FrmJC', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050318', 'Production Penalty 2', '010503', 'FrmPWG', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050319', 'Production Order Revision', '010503', 'FrmProductionOrderRevision', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050320', 'Item Planning Group', '010503', 'FrmItemPlanningGrp', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL, NULL),
+	('01050321', 'Updating Item Index\'s Planning Group', '010503', 'FrmUpdatingItemPlanningGrp', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL, NULL),
+	('01050322', 'WorkCenter BOM Formulation', '010503', 'FrmWorkCenterBOMFormulation', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL, NULL),
+	('01050323', 'Bill of Material\'s Template', '010503', 'FrmBom2', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL, NULL),
+	('010504', 'Manufacturing Execution', '0105', NULL, 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050401', 'Shop floor Control', '010504', 'FrmShopFloorControl2', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01050402', 'Shop Floor Control Based On BOM\'s Template', '010504', 'FrmShopFloorControl2', 'MenuProduction', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL, NULL),
+	('0106', 'Quality System', '01', NULL, 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010601', 'Quality System', '0106', NULL, 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01060101', 'QC Parameter', '010601', 'FrmQCParameter', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01060102', 'QC Parameter Uom', '010601', 'FrmQCParameterUom', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01060103', 'QC Planning', '010601', 'FrmQCPlanning', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01060104', 'Incoming QC Inspection', '010601', NULL, 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01060105', 'Material QC Inspection (Workcenter)', '010601', NULL, 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01060106', 'Material QC Inspection', '010601', 'FrmMaterialQCInspection', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01060107', 'Master Material Planning', '010601', 'FrmMaterialPlanning', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010602', 'Quality Management System', '0106', NULL, 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01060201', 'Non Conforming', '010602', 'FrmNonConforming', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010603', 'Key Performance Indicator', '0106', NULL, 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201506210000', NULL, NULL, NULL),
+	('01060301', 'KPI', '010603', 'FrmKPI', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201506210000', NULL, NULL, NULL),
+	('01060302', 'KPI Process', '010603', 'FrmKPIProcess', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201506210000', NULL, NULL, NULL),
+	('01060303', 'Balance Score Card', '010603', 'FrmKPIPerspective', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201506210000', NULL, NULL, NULL),
+	('0107', 'Plant Maintenance', '01', NULL, 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010701', 'Technical Object', '0107', NULL, 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070101', 'Object Type', '010701', 'FrmObjectType', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070102', 'Asset\'s Category', '010701', 'FrmAssetCategory', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070103', 'Mechanic', '010701', 'FrmMechanic', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070104', 'Location', '010701', 'FrmLocation', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070105', 'Equipment', '010701', 'FrmEquipment', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070106', 'Technical Object', '010701', 'FrmTO', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070107', 'Hours Meter', '010701', 'FrmHoursMeter', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010702', 'Preventive Maintenance', '0107', NULL, 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070201', 'Inspection Planning', '010702', NULL, 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070202', 'Maintenance Planning', '010702', NULL, 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010703', 'Work Order Management', '0107', NULL, 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070301', 'Work Order Person in Charge', '010703', 'FrmWOPIC', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070302', 'Work Order Request', '010703', 'FrmWOR', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070303', 'Material Request (WO)', '010703', 'FrmMaterialRequestWO', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070304', 'DO Request From Department  (WO)', '010703', 'FrmDORequestDeptWO', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070305', 'DO To Department  (WO)', '010703', 'FrmDODeptWO', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070306', 'Work Order', '010703', 'FrmWO', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070307', 'Work Order Request Settlement', '010703', 'FrmWORSettlement', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070308', 'Bill of Material Maintenance', '010703', 'FrmBOMMaintenance', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01070309', 'Maintenance Schedule', '010703', 'FrmMaintenanceSchedule', 'MenuPlantMaintenance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0108', 'Sales & Distribution', '01', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010801', 'Sales Management', '0108', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080101', 'Customer\'s Category', '010801', 'FrmCustomerCategory', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080102', 'Customer Data', '010801', 'FrmCustomer', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080103', 'Agent Data', '010801', 'FrmAgent', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080104', 'Promotional Program Reason', '010801', 'FrmSoQuotPromoReason', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080105', 'Sales Person', '010801', 'FrmSalesPerson', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080106', 'Customer\'s Quotation with Discount Rate Level', '010801', 'FrmSOQuot', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080107', 'Customer\'s Quotation with Fixed Price', '010801', 'FrmCtQt', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080108', 'Customer\'s Quotation Promo', '010801', 'FrmSOQuotPromo', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080109', 'Sales Order with Fixed Price', '010801', 'FrmSO2', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080110', 'Sales Order With Discount Rate Level', '010801', 'FrmSO', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080111', 'Import Data From Online Store', '010801', 'FrmGetDataWeb', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080112', 'Bea Cukai', '010801', 'FrmBeaCukai', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080113', 'Sales Target', '010801', 'FrmSalesTarget', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080114', 'Item\'s Sales Target', '010801', 'FrmItemSalesTarget', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080115', 'Item Classification', '010801', 'FrmItemClassification', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080116', 'Customer\'s Group', '010801', 'FrmCustomerGroup', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201806080000', NULL, NULL, NULL),
+	('01080199', 'Customization', '010801', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0108019901', 'PHT', '01080199', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010801990101', 'Foreign Visitors', '0108019901', 'FrmForeignVisitors', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010802', 'Logistic', '0108', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080201', 'Port', '010802', 'FrmPort', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080202', 'Shipment Planning', '010802', 'FrmSP', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080203', 'Shipment Instruction', '010802', 'FrmSI', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080204', 'Stuffing (Create Packing List)', '010802', 'FrmPL', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080205', 'Shipment Invoice', '010802', 'FrmSInv', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080206', 'HS Code Maintenance', '010802', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080207', 'Bill of Landing', '010802', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080209', 'Bea Cukai', '010802', 'FrmBeaCukai', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010803', 'Distribution', '0108', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080301', 'Ring Area of Distribution', '010803', 'FrmRingArea', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080302', 'Shipment Methode', '010803', 'FrmShipmentMethod', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080303', 'Delivery Request', '010803', 'FrmDR', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080304', 'Take Order', '010803', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080305', 'Canvasing', '010803', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080306', 'Delivery Request (CBD)', '010803', 'FrmDR', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('010804', 'Point of Sales', '0108', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080401', 'Payment Type', '010804', 'FrmPosPayByType', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080402', 'PoS Setting', '010804', 'FrmPosSetting', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080403', 'PoS Function', '010804', 'FrmPosFunction', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080404', 'Point of Sale Transaction', '010804', 'FrmTrnPOS', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080405', 'Shift Closing', '010804', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080406', 'Day End Closing', '010804', NULL, 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('01080407', 'Pos Number', '010804', 'FrmPosNo', 'MenuSales', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('0109', 'Human  Resource Management', '01', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('010901', 'Organizational Development', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090101', 'Organizational Structure', '010901', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010101', 'Division', '01090101', 'FrmDivision', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010102', 'Profit Center', '01090101', 'FrmProfitCenter', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010103', 'Site/Unit', '01090101', 'FrmSite', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010104', 'Department', '01090101', 'FrmDepartment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010105', 'Section', '01090101', 'FrmSection', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010106', 'Working Group', '01090101', 'FrmWorkingGroup', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010107', 'Position', '01090101', 'FrmPosition', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010108', 'Job Holder', '01090101', 'FrmJobHolder', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010109', 'Competence', '01090101', 'FrmCompetence', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010110', 'Job Description', '01090101', 'FrmOrganizationalStructure', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010111', 'Company City', '01090101', 'FrmCompanyCity', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010112', 'Major', '01090101', 'FrmMajor', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010113', 'Position Status', '01090101', 'FrmPositionStatus', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090102', 'Performance Management (KPI)', '010901', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('0109010201', 'Balance Score Card', '01090102', 'FrmKPIPerspective', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010202', 'KPI', '01090102', 'FrmKPI', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010203', 'KPI Process', '01090102', 'FrmKPIProcess', 'MenuQuality', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010204', 'Performance Evaluation', '01090102', 'FrmPerformanceEvaluation', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('0109010205', 'Performance Grade', '01090102', 'FrmPerformanceGrade', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('0109010206', 'Performance Review', '01090102', 'FrmPerformanceReview', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('01090103', 'Assessment Management', '010901', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('0109010301', 'Soft Competency', '01090103', 'FrmAssesment2', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010303', 'Assesment Process', '01090103', 'FrmAssesmentProcess', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010304', 'Behaviour Indicator', '01090103', 'FrmBehaviourInd', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090104', 'Learning and Development Management', '010901', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('0109010401', 'Trainer', '01090104', 'FrmTrainer', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010402', 'On Job Training', '01090104', 'FrmOJT', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010403', 'Training', '01090104', 'FrmTraining', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL, NULL),
+	('0109010404', 'Training Request', '01090104', 'FrmTrainingRequest', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL, NULL),
+	('0109010405', 'Training Evaluation', '01090104', 'FrmTrainingEvaluation', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL, NULL),
+	('0109010406', 'Training Schedule', '01090104', 'FrmTrainingSchedule', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL, NULL),
+	('0109010407', 'Training Assignment', '01090104', 'FrmTrainingAssignment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL, NULL),
+	('01090105', 'Mutation, Promotion & Demotion', '010901', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('0109010501', 'Propose Candidate', '01090105', 'FrmProposeCandidate', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL, NULL),
+	('0109010502', 'Employee Mutation/Promotion/Demotion', '01090105', 'FrmEmpPD', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109010503', 'Payroll Process Setting', '01090105', 'FrmPPS', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('010902', 'Recruitment', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109020101', 'Employee Request', '010902', 'FrmEmployeeRequest', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109020102', 'Personal Information', '010902', 'FrmEmployeeRecruitment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109020103', 'Medical Information', '010902', 'FrmMedicalTest', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('010903', 'Employee Management', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('0109030101', 'Master Employee', '010903', 'FrmEmployee', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109030102', 'Employee Information Amendment', '010903', 'FrmEmployeeAmendment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109030103', 'Employee\'s Family Amendment', '010903', 'FrmEmployeeFamily', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109030104', 'Warning Letter', '010903', 'FrmWarningLetter', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109030105', 'Employee\'s Warning Letter', '010903', 'FrmEmpWL', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090308', 'Accident', '010903', 'FrmAccident', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090309', 'Employee\'s Contract Document', '010903', 'FrmEmpContractDoc', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090310', 'Employee\'s Decree', '010903', 'FrmEmpDecree', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('010904', 'Claim & Reimbustment', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('01090401', 'Employee Claim & Reimbustment', '010904', 'FrmClaim', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090402', 'Employee\'s Claim Request', '010904', 'FrmEmpClaim', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('010905', 'Time Management', '0109', '', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('01090501', 'Working Schedule Management', '010905', '', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('0109050101', 'Daily Work Schedule', '01090501', 'FrmWorkSchedule', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090502', 'Attendance', '010905', '', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050201', 'Attendance Group', '01090502', 'FrmAttendanceGrp', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050202', 'Employee\'s Attendance Card', '01090502', 'FrmEmpCard', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050203', 'Export/Import Attendance Data', '01090502', 'FrmEximData', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050204', 'Manual Attendance', '01090502', 'FrmManualAtd', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050205', 'Attendance Verification', '01090502', 'FrmAtd', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050207', 'Employee\'s Attendance Log', '01090502', 'FrmAttendanceLog', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050208', 'Employee\'s Working Schedule Amendment', '01090502', 'FrmEmpWS', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050209', 'Residual Leave Payment', '01090502', 'FrmRLP', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090503', 'Leave Management', '010905', '', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('0109050301', 'Leave Group', '01090503', 'FrmLeaveGrp', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050302', 'Leave', '01090503', 'FrmLeave', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050303', 'Group of Employee\'s Leave Request', '01090503', 'FrmEmpLeave2', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050304', 'Employee\'s Leave Request', '01090503', 'FrmEmpLeave', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090504', 'Over Time', '010905', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('0109050401', 'OT Formula', '01090504', 'FrmOtFormula', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050402', 'OT Request', '01090504', 'FrmOTRequest', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050403', 'OT Adjustment', '01090504', 'FrmOTAdjustment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109050404', 'Holiday', '01090504', 'FrmHoliday', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090514', 'Religious Holiday Allowance Slip', '010905', 'FrmRHASlip2', 'MenuHumanResource', 'Y', 'Y', 'Y', 'D', 'TKG', '201607130000', NULL, NULL, NULL),
+	('010906', 'Compensation Benefit', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('01090601', 'Salary Management', '010906', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060101', 'Grade Level Group', '01090601', 'FrmGradeLevelGroup', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060102', 'Grade', '01090601', 'FrmGradeLevel', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060103', 'Employee Salary, Allowance && Deduction', '01090601', 'FrmEmployeeSalary', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060104', 'Employee Salary, Allowance && Deduction Amendment', '01090601', 'FrmEmpSalary', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060105', 'Level', '01090601', 'FrmLevel', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090602', 'Allowance/Deduction', '010906', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060201', 'Insentif/Penalty Category', '01090602', 'FrmInsPntCategory', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060202', 'Insentif/Penalty', '01090602', 'FrmInsPnt', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060203', 'Employee\'s Insentif/Penalty', '01090602', 'FrmEmpInsPnt', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060204', 'Insentif', '01090602', 'FrmInsentif', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060205', 'Insentif (Coordinator)', '01090602', 'FrmInsentif2', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060206', 'Daily Employee\'s Incentive', '01090602', 'FrmIncentive', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060207', 'Production Incentive', '01090602', 'FrmProductionIncentive', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060208', 'Religious Holiday Allowance', '01090602', 'FrmRHA4', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060209', 'Travel Request', '01090602', 'FrmTravelRequest2', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'HAR', '201710100000', NULL, NULL, NULL),
+	('0109060210', 'Master Allowance Deduction', '01090602', 'FrmAllowanceDeduction', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'HAR', '201710100000', NULL, NULL, NULL),
+	('0109060211', 'Master Employee Travel Request', '01090602', 'FrmEmpTravelRequest', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'HAR', '201710100000', NULL, NULL, NULL),
+	('0109060299', 'Customization', '01090602', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('010906029901', 'PHT', '0109060299', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090602990101', 'Annual Leave Allowance', '010906029901', 'FrmAnnualLeaveAllowance', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090602990102', 'Employee\'s Service Charge Incentive', '010906029901', 'FrmEmpSCI', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090602990103', 'Service Charge Incentive Deduction', '010906029901', 'FrmSCIDeduction', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('01090603', 'Loan Management', '010906', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('0109060301', 'Employee Loan Request', '01090603', 'FrmAdvancePayment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109060302', 'Credit', '01090603', 'FrmCredit', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201710031513', NULL, NULL, NULL),
+	('0109060303', 'Employee Loan Import Data', '01090603', 'FrmEmpLoanImport', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201710031513', NULL, NULL, NULL),
+	('010907', 'Social Security', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', '', '201706150000', NULL, NULL, NULL),
+	('0109070101', 'Social Security Program', '010907', 'FrmSSProgram', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109070102', 'Social Security', '010907', 'FrmSS', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109070103', 'Employee\'s Social Security Amendment', '010907', 'FrmEmpSS', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109070104', 'List of Employee\'s Social Security', '010907', 'FrmEmpSSList', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109070105', 'Voucher Request For Social Security', '010907', 'FrmVoucherRequestSS', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('010908', 'Payroll Management', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201706150000', NULL, NULL, NULL),
+	('0109080101', 'Taxable Income', '010908', 'FrmTI', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109080102', 'Non Taxable Income', '010908', 'FrmNTI', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109080103', 'Payroll Data Access Authorization', '010908', 'FrmPPA', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109080104', 'Payroll Group', '010908', 'FrmPayrollGrp', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109080105', 'Payrun', '010908', 'FrmPayrun', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109080106', 'Payroll Processing', '010908', 'FrmPayrollProcess4', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109080107', 'Employee\'s Salary Adjustment', '010908', 'FrmSalaryAdjustment', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109080108', 'Voucher Request (Payroll)', '010908', 'FrmVoucherRequestPayroll4', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109080109', 'Export Voucher Request To CSV File', '010908', 'FrmVoucherRequestSSCSV', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109080110', 'Pay Slip', '010908', 'FrmPaySlip', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('0109080112', 'Group Of Employee\'s Salary Adjustment', '010908', 'FrmSalaryAdjustment3', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201706150000', NULL, NULL, NULL),
+	('010999', 'Customization', '0109', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201607130000', NULL, NULL, NULL),
+	('01099901', 'PHT', '010999', NULL, 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201607130000', NULL, NULL, NULL),
+	('0109990101', 'Employee Performance Point based on attendance', '01099901', 'FrmEmpAtdPoint', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201607130000', NULL, NULL, NULL),
+	('0109990102', 'Taxable Income (Gross Up Method)', '01099901', 'FrmTI2', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'TKG', '201802190000', NULL, NULL, NULL),
+	('0109990103', 'OT Incentive', '01099901', 'FrmOTIncentive', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201802271045', NULL, NULL, NULL),
+	('0109990104', 'Email Payslip', '01099901', 'FrmEmailPayslip', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'WEDHA', '201802271045', NULL, NULL, NULL),
+	('0109990105', 'Updating Annual Leave And Long Service Leave Summary', '01099901', 'FrmLeaveSummary', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'HAR', '201902070000', NULL, NULL, NULL),
+	('0109990106', 'Bonus', '01099901', 'FrmBonus2', 'MenuHumanResource', 'Y', 'N', 'Y', 'D', 'HAR', '201902070000', NULL, NULL, NULL),
+	('0110', 'Management', '01', NULL, 'MenuApplication', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL, NULL),
+	('011001', 'Incoming Payment *', '0110', 'FrmIncomingPayment', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '201507210000', NULL, NULL, NULL),
+	('011002', 'Voucher Request *', '0110', 'FrmVoucherRequest', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL, NULL),
+	('011003', 'Voucher *', '0110', 'FrmVoucher', 'MenuFinance', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL, NULL),
+	('011004', 'Voucher (Standard And Raw Material) *', '0110', 'FrmVoucher2', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL, NULL),
+	('011005', 'Voucher Request For Tax *', '0110', 'FrmVoucherRequestTax', 'MenuProcurement', 'Y', 'N', 'Y', 'D', 'TKG', '200911010000', NULL, NULL, NULL),
+	('02', 'Bab', NULL, NULL, NULL, 'Y', 'N', 'Y', 'D', 'Yusril', '202010151117', NULL, NULL, NULL),
+	('03', 'Sub', NULL, NULL, NULL, 'Y', 'N', 'Y', 'D', 'Yusril', '202010191117', NULL, NULL, NULL);
+/*!40000 ALTER TABLE `tblmenu` ENABLE KEYS */;
+
+-- Dumping structure for table runsystemdms.tblmodulmenu
+DROP TABLE IF EXISTS `tblmodulmenu`;
+CREATE TABLE IF NOT EXISTS `tblmodulmenu` (
+  `ModulCode` varchar(16) NOT NULL,
+  `MenuCode` varchar(16) NOT NULL,
+  `MenuDesc` varchar(200) NOT NULL,
+  `Parent` varchar(16) NOT NULL,
+  PRIMARY KEY (`ModulCode`,`MenuCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table runsystemdms.tblmodulmenu: ~0 rows (approximately)
+/*!40000 ALTER TABLE `tblmodulmenu` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tblmodulmenu` ENABLE KEYS */;
+
+-- Dumping structure for table runsystemdms.tblprojectgroup
+DROP TABLE IF EXISTS `tblprojectgroup`;
+CREATE TABLE IF NOT EXISTS `tblprojectgroup` (
+  `PGCode` varchar(16) NOT NULL,
+  `PGName` varchar(100) NOT NULL,
+  `ActInd` varchar(1) NOT NULL DEFAULT 'Y',
+  `ProjectCode` varchar(16) DEFAULT NULL,
+  `ProjectName` varchar(300) DEFAULT NULL,
+  `CtCode` varchar(15) DEFAULT NULL,
+  `CreateBy` varchar(16) NOT NULL,
+  `CreateDt` varchar(12) NOT NULL,
+  `LastUpBy` varchar(16) DEFAULT NULL,
+  `LastUpDt` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`PGCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table runsystemdms.tblprojectgroup: ~2 rows (approximately)
+/*!40000 ALTER TABLE `tblprojectgroup` DISABLE KEYS */;
+REPLACE INTO `tblprojectgroup` (`PGCode`, `PGName`, `ActInd`, `ProjectCode`, `ProjectName`, `CtCode`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES
+	('A000001', 'Backend', 'Y', 'PC00001', 'Api', 'A', 'Admin', '202003231117', NULL, NULL),
+	('A000002', 'Frontend', 'y', 'PC00002', 'DB', 'B', 'Admin', '202003231117', NULL, NULL);
+/*!40000 ALTER TABLE `tblprojectgroup` ENABLE KEYS */;
+
+-- Dumping structure for table runsystemdms.tbluser
+DROP TABLE IF EXISTS `tbluser`;
+CREATE TABLE IF NOT EXISTS `tbluser` (
+  `Usercode` varchar(16) NOT NULL,
+  `Username` varchar(80) NOT NULL,
+  `GrpCode` varchar(16) NOT NULL,
+  `Pwd` varchar(255) NOT NULL,
+  `EXPDt` varchar(8) DEFAULT NULL,
+  `NotifyInd` varchar(1) NOT NULL DEFAULT 'N',
+  `HasQiscusAccount` tinyint(1) DEFAULT NULL,
+  `AvatarImage` varchar(100) DEFAULT NULL,
+  `deviceid` varchar(300) DEFAULT NULL,
+  `Createby` varchar(30) NOT NULL,
+  `Createat` varchar(16) NOT NULL,
+  `LastupBy` varchar(16) DEFAULT NULL,
+  `LastupDt` varchar(8) DEFAULT NULL,
+  PRIMARY KEY (`Usercode`),
+  KEY `FK_tbluser_tblgroup` (`GrpCode`),
+  KEY `Username` (`Username`),
+  KEY `HasQiscusAccount` (`HasQiscusAccount`),
+  KEY `AvatarImage` (`AvatarImage`),
+  KEY `deviceid` (`deviceid`),
+  CONSTRAINT `FK_tbluser_tblgroup` FOREIGN KEY (`GrpCode`) REFERENCES `tblgroup` (`GrpCode`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table runsystemdms.tbluser: ~3 rows (approximately)
+/*!40000 ALTER TABLE `tbluser` DISABLE KEYS */;
+REPLACE INTO `tbluser` (`Usercode`, `Username`, `GrpCode`, `Pwd`, `EXPDt`, `NotifyInd`, `HasQiscusAccount`, `AvatarImage`, `deviceid`, `Createby`, `Createat`, `LastupBy`, `LastupDt`) VALUES
+	('E41170827', 'Munir', '11', 'munir', NULL, 'N', NULL, NULL, NULL, 'munir', '15-10-2020', NULL, NULL),
+	('E41171015', 'Yusril', '11', 'yusril', NULL, 'N', NULL, NULL, NULL, 'yusril', '15-10-2020', NULL, NULL),
+	('E41172092', 'Rofan', '11', 'ropan', NULL, 'N', NULL, NULL, NULL, 'ropan', '15-10-2020', NULL, NULL);
+/*!40000 ALTER TABLE `tbluser` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
