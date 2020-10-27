@@ -1,5 +1,5 @@
     <script type="text/javascript">
-      $(document).ready(function(){
+      $(document).ready(function() {
         var url = 'http://127.0.0.1:8080/runsystemdms/getRootModules';
         $.ajax({
           type: 'GET',
@@ -7,43 +7,45 @@
           dataType: 'json',
           cache: false,
           success: function(data) {
-              data = JSON.parse(JSON.stringify(data));
-              data = data.rmodule;
-              var modul = [];
-              for (i = 0; i < data.length; i++) {
-                  modul.push('<li id="'+i+'"><a class="bar-icons" href="javascript:void(0)" onClick="modules('+data[i].menucode+','+i+')"><i></i><span>'+data[i].menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data[i].menucode+'"></li></ul></li>');
-              }
-                $("#module").html(modul);
+            data = JSON.parse(JSON.stringify(data));
+            data = data.rmodule;
+            var modul = [];
+            for (i = 0; i < data.length; i++) {
+              modul.push('<li id="' + i + '"><a class="bar-icons" href="javascript:void(0)" onClick="modules(' + data[i].menucode + ',' + i + ')"><i></i><span>' + data[i].menudesc + '</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="' + data[i].menucode + '"></li></ul></li>');
             }
-          });
-      });
-      </script>
-      <script type="text/javascript">
-          function modules(menucode, id_li){
-            var parent = menucode;
-            $("li").removeClass("open");
-            $("#"+id_li).even().addClass("open");
-            $.ajax({
-              type : "POST",
-              url : "http://127.0.0.1:8080/runsystemdms/getSubModules",
-              dataType : "JSON",
-              data : {parent :parent},
-              cache : false,
-              success : function(data){
-                data = JSON.parse(JSON.stringify(data));
-                data = data.submodule;
-                var subs = [];
-                if (data != null) {   
-                  for (i = 0; i < data.length; i++) {
-                      subs.push('<li><a href="<?php echo base_url("Editor")?>">'+data[i].menudesc+'</a></li>');      
-                  }
-                  $("#"+data[0].parent).html(subs);
-                }
-              }
-            });
+            $("#module").html(modul);
           }
-      </script>
-      
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      function modules(menucode, id_li) {
+        var parent = menucode;
+        $("li").removeClass("open");
+        $("#" + id_li).even().addClass("open");
+        $.ajax({
+          type: "POST",
+          url: "http://127.0.0.1:8080/runsystemdms/getSubModules",
+          dataType: "JSON",
+          data: {
+            parent: parent
+          },
+          cache: false,
+          success: function(data) {
+            data = JSON.parse(JSON.stringify(data));
+            data = data.submodule;
+            var subs = [];
+            if (data != null) {
+              for (i = 0; i < data.length; i++) {
+                subs.push('<li><a href="<?php echo base_url("Editor") ?>">' + data[i].menudesc + '</a></li>');
+              }
+              $("#" + data[0].parent).html(subs);
+            }
+          }
+        });
+      }
+    </script>
+
     <!-- latest jquery-->
     <script src="<?php echo base_url("assets/js/jquery-3.5.1.min.js") ?>"></script>
     <!-- Bootstrap js-->
@@ -56,11 +58,11 @@
     <script src="<?php echo base_url("assets/js/sidebar-menu.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/config.js") ?>"></script>
     <!-- Plugins JS start-->
-    <script src="<?php echo base_url("assets/js/typeahead/handlebars.js") ?>"></script>
-    <script src="<?php echo base_url("assets/js/typeahead/typeahead.bundle.js") ?>"></script>
-    <script src="<?php echo base_url("assets/js/typeahead/typeahead.custom.js") ?>"></script>
-    <script src="<?php echo base_url("assets/js/typeahead-search/handlebars.js") ?>"></script>
-    <script src="<?php echo base_url("assets/js/typeahead-search/typeahead-custom.js") ?>"></script> -->
+    <!-- <script src="<?php echo base_url("assets/js/typeahead/handlebars.js") ?>"></script> -->
+    <!-- <script src="<?php echo base_url("assets/js/typeahead/typeahead.bundle.js") ?>"></script> -->
+    <!-- <script src="<?php echo base_url("assets/js/typeahead/typeahead.custom.js") ?>"></script> -->
+    <!-- <script src="<?php echo base_url("assets/js/typeahead-search/handlebars.js") ?>"></script> -->
+    <!-- <script src="<?php echo base_url("assets/js/typeahead-search/typeahead-custom.js") ?>"></script> --> -->
     <!-- <script src="<?php echo base_url("assets/js/chart/chartist/chartist.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/chart/chartist/chartist-plugin-tooltip.js") ?>"></script> -->
     <script src="<?php echo base_url("assets/js/chart/apex-chart/apex-chart.js") ?>"></script>
@@ -99,8 +101,7 @@
     <script src="<?php echo base_url("assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/datatable/datatable-extension/dataTables.scroller.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/datatable/datatable-extension/custom.js") ?>"></script>
-    
+
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="<?php echo base_url("assets/js/script.js") ?>"></script>
-    <script src="<?php echo base_url("assets/js/theme-customizer/customizer.js") ?>"></script>
