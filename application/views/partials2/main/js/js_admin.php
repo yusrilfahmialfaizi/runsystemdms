@@ -1,6 +1,6 @@
     <script type="text/javascript">
       $(document).ready(function() {
-        var url = 'http://127.0.0.1:8080/runsystemdms/getRootModules';
+        var url = 'http://127.0.0.1:8080/runsystemdms/getMenuParents';
         $.ajax({
           type: 'GET',
           url: url,
@@ -8,12 +8,12 @@
           cache: false,
           success: function(data) {
             data = JSON.parse(JSON.stringify(data));
-            data = data.rmodule;
-            var modul = [];
+            data = data.menuparent;
+            var parent = [];
             for (i = 0; i < data.length; i++) {
-              modul.push('<li id="' + i + '"><a class="bar-icons" href="javascript:void(0)" onClick="modules(' + data[i].menucode + ',' + i + ')"><i></i><span>' + data[i].menudesc + '</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="' + data[i].menucode + '"></li></ul></li>');
+              parent.push('<li id="' + i + '"><a class="bar-icons" href="javascript:void(0)" onClick="modules(' + data[i].menucode + ',' + i + ')"><i></i><span>' + data[i].menudesc + '</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="' + data[i].menucode + '"></li></ul></li>');
             }
-            $("#module").html(modul);
+            $("#module").html(parent);
           }
         });
       });
@@ -23,17 +23,18 @@
         var parent = menucode;
         $("li").removeClass("open");
         $("#" + id_li).even().addClass("open");
+        alert(menucode);
         $.ajax({
           type: "POST",
-          url: "http://127.0.0.1:8080/runsystemdms/getSubModules",
+          url: "http://127.0.0.1:8080/runsystemdms/getMenuSubParent",
           dataType: "JSON",
           data: {
-            parent: parent
+            parent: menucode
           },
           cache: false,
           success: function(data) {
             data = JSON.parse(JSON.stringify(data));
-            data = data.submodule;
+            data = data.menusubparent;
             var subs = [];
             if (data != null) {
               for (i = 0; i < data.length; i++) {

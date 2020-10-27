@@ -8,21 +8,21 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func GetRmodules(c echo.Context) error {
-	result := models.GetRootModules()
-	fmt.Println("Getting root modules")
+func GetMenuparents(c echo.Context) error {
+	result := models.GetMenuParents()
+	fmt.Println("Getting menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
 
-func GetSubModules(c echo.Context) error {
+func GetMenusubparents(c echo.Context) error {
 	cc := c.(*models.CustomContext)
-	result := models.GetSubModules(cc)
-	fmt.Println("Getting submodule...")
+	result := models.GetMenusubparents(cc)
+	fmt.Println("Getting sub menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
-func GetSubsubmodules(c echo.Context) error {
+func GetMenusubsubparents(c echo.Context) error {
 	cc := c.(*models.CustomContext)
-	result := models.GetSubsubmodules(cc)
+	result := models.GetMenusubsubparents(cc)
 	fmt.Println("Getting submodule...")
 	return c.JSON(http.StatusOK, result)
 }

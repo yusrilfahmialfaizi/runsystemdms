@@ -13,7 +13,7 @@ type CustomContext struct {
 	echo.Context
 }
 
-type Rmodule struct {
+type Menuparent struct {
 	MenuCode string          `json:"menucode"`
 	MenuDesc string          `json:"menudesc"`
 	Parent   nullable.String `json:"parent"`
@@ -28,7 +28,7 @@ type Rmodule struct {
 	LastupBy nullable.String `json:"lastupby"`
 	LastupDt nullable.String `json:"lastupdt"`
 }
-type Submodule struct {
+type Menusubparent struct {
 	MenuCode string          `json:"menucode"`
 	MenuDesc string          `json:"menudesc"`
 	Parent   nullable.String `json:"parent"`
@@ -43,7 +43,7 @@ type Submodule struct {
 	LastupBy nullable.String `json:"lastupby"`
 	LastupDt nullable.String `json:"lastupdt"`
 }
-type Subsubmodule struct {
+type Menusubsubparent struct {
 	MenuCode string          `json:"menucode"`
 	MenuDesc string          `json:"menudesc"`
 	Parent   nullable.String `json:"parent"`
@@ -66,14 +66,14 @@ type Datasubmodule struct {
 	LastupBy nullable.String `json:"lastupby"`
 	LastupDt nullable.String `json:"lastupdt"`
 }
-type Rmodules struct {
-	Rmodules []Rmodule `json:"rmodule"`
+type Menuparents struct {
+	Menuparents []Menuparent `json:"menuparent"`
 }
-type Submodules struct {
-	Submodules []Submodule `json:"submodule"`
+type Menusubparents struct {
+	Menusubparents []Menusubparent `json:"menusubparent"`
 }
-type Subsubmodules struct {
-	Subsubmodules []Subsubmodule `json:"subsubmodule"`
+type Menusubsubparents struct {
+	Menusubsubparents []Menusubsubparent `json:"menusubsubparent"`
 }
 type Datasubmodules struct {
 	Datasubmodules []Datasubmodule `json:"datasubmodule"`
@@ -81,29 +81,29 @@ type Datasubmodules struct {
 
 var connection *sql.DB
 
-func GetRootModules() Rmodules {
+func GetMenuParents() Menuparents {
 	connection = config.Connection()
-	query := "SELECT MenuCode, MenuDesc, Parent, Param, Icon, StdInd, SpcInd, Visible, MenuCat, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmenu WHERE parent IS NULL "
+	query := "SELECT MenuCode, MenuDesc, Parent, Param, Icon, StdInd, SpcInd, Visible, MenuCat, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmenu WHERE parent = LEFT(parent, 2)  "
 	rows, err := connection.Query(query)
 	if err != nil {
 		fmt.Println(err)
 	}
 	defer rows.Close()
-	result := Rmodules{}
+	result := Menuparents{}
 
 	for rows.Next() {
-		rmodule := Rmodule{}
+		menuparent := Menuparent{}
 
-		eror := rows.Scan(&rmodule.MenuCode, &rmodule.MenuDesc, &rmodule.Parent, &rmodule.Param, &rmodule.Icon, &rmodule.StdInd, &rmodule.SpcInd, &rmodule.Visible, &rmodule.MenuCat, &rmodule.CreateBy, &rmodule.CreateDt, &rmodule.LastupBy, &rmodule.LastupDt)
+		eror := rows.Scan(&menuparent.MenuCode, &menuparent.MenuDesc, &menuparent.Parent, &menuparent.Param, &menuparent.Icon, &menuparent.StdInd, &menuparent.SpcInd, &menuparent.Visible, &menuparent.MenuCat, &menuparent.CreateBy, &menuparent.CreateDt, &menuparent.LastupBy, &menuparent.LastupDt)
 		if eror != nil {
 			fmt.Println(eror)
 		}
-		result.Rmodules = append(result.Rmodules, rmodule)
+		result.Menuparents = append(result.Menuparents, menuparent)
 	}
 	return result
 }
 
-func GetSubModules(c *CustomContext) Submodules {
+func GetMenusubparents(c *CustomContext) Menusubparents {
 	parent := c.FormValue("parent")
 	connection := config.Connection()
 	query := "SELECT menucode,menudesc,parent,param,icon,stdind,spcind,visible,menucat,createby,createdt,lastupby,lastupdt FROM tblmenu WHERE parent = " + parent
@@ -112,21 +112,21 @@ func GetSubModules(c *CustomContext) Submodules {
 		fmt.Println(eror1)
 	}
 	defer rows.Close()
-	result := Submodules{}
+	result := Menusubparents{}
 
 	for rows.Next() {
-		submodule := Submodule{}
-		eror2 := rows.Scan(&submodule.MenuCode, &submodule.MenuDesc, &submodule.Parent, &submodule.Param,
-			&submodule.Icon, &submodule.StdInd, &submodule.SpcInd, &submodule.Visible, &submodule.MenuCat,
-			&submodule.CreateBy, &submodule.CreateDt, &submodule.LastupBy, &submodule.LastupDt)
+		menusubparent := Menusubparent{}
+		eror2 := rows.Scan(&menusubparent.MenuCode, &menusubparent.MenuDesc, &menusubparent.Parent, &menusubparent.Param,
+			&menusubparent.Icon, &menusubparent.StdInd, &menusubparent.SpcInd, &menusubparent.Visible, &menusubparent.MenuCat,
+			&menusubparent.CreateBy, &menusubparent.CreateDt, &menusubparent.LastupBy, &menusubparent.LastupDt)
 		if eror2 != nil {
 			fmt.Println(eror2)
 		}
-		result.Submodules = append(result.Submodules, submodule)
+		result.Menusubparents = append(result.Menusubparents, menusubparent)
 	}
 	return result
 }
-func GetSubsubmodules(c *CustomContext) Subsubmodules {
+func GetMenusubsubparents(c *CustomContext) Menusubsubparents {
 	parent := c.FormValue("parent")
 	connection := config.Connection()
 	query := "SELECT menucode,menudesc,parent,param,icon,stdind,spcind,visible,menucat,createby,createdt,lastupby,lastupdt FROM tblmenu WHERE parent = " + parent
@@ -135,17 +135,17 @@ func GetSubsubmodules(c *CustomContext) Subsubmodules {
 		fmt.Println(eror1)
 	}
 	defer rows.Close()
-	result := Subsubmodules{}
+	result := Menusubsubparents{}
 
 	for rows.Next() {
-		subsubmodule := Subsubmodule{}
-		eror2 := rows.Scan(&subsubmodule.MenuCode, &subsubmodule.MenuDesc, &subsubmodule.Parent, &subsubmodule.Param,
-			&subsubmodule.Icon, &subsubmodule.StdInd, &subsubmodule.SpcInd, &subsubmodule.Visible, &subsubmodule.MenuCat,
-			&subsubmodule.CreateBy, &subsubmodule.CreateDt, &subsubmodule.LastupBy, &subsubmodule.LastupDt)
+		menusubsubparent := Menusubsubparent{}
+		eror2 := rows.Scan(&menusubsubparent.MenuCode, &menusubsubparent.MenuDesc, &menusubsubparent.Parent, &menusubsubparent.Param,
+			&menusubsubparent.Icon, &menusubsubparent.StdInd, &menusubsubparent.SpcInd, &menusubsubparent.Visible, &menusubsubparent.MenuCat,
+			&menusubsubparent.CreateBy, &menusubsubparent.CreateDt, &menusubsubparent.LastupBy, &menusubsubparent.LastupDt)
 		if eror2 != nil {
 			fmt.Println(eror2)
 		}
-		result.Subsubmodules = append(result.Subsubmodules, subsubmodule)
+		result.Menusubsubparents = append(result.Menusubsubparents, menusubsubparent)
 	}
 	return result
 }
