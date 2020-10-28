@@ -26,7 +26,7 @@ func Routes() *echo.Echo {
 			return next(cc)
 		}
 	})
-
+	// Routes
 	e.GET("/", func(c echo.Context) error {
 		return c.JSON(http.StatusCreated, "Welcome mvc echo")
 	})
@@ -36,7 +36,7 @@ func Routes() *echo.Echo {
 	e.GET("/runsystemdms/getMenuParents", controllers.GetMenuparents)
 	e.POST("/runsystemdms/getMenuSubParent", controllers.GetMenusubparents)
 	e.POST("/runsystemdms/getMenuSubSubParent", controllers.GetMenusubsubparents)
-	e.PUT("/runsystemdms/saveDataSubModules", controllers.SaveDataSubModules)
+	e.PUT("/runsystemdms/updateDataSubModules", controllers.UpdateDataSubModules)
 
 	return e
 }
