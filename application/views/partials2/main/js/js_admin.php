@@ -37,8 +37,8 @@
                         // console.log(data2.length);
                         if (data.parent.length == (u = u+2)) { 
                           menu = '<li><a href="">'+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
-                          modul.push(menu);
-                          $("#"+data.parent).append(modul);
+                          // modul.push(menu);
+                          $("#"+data.parent).append(menu);
                         }
                       }
                       // if (data.parent.length == (u+=2)) { 
