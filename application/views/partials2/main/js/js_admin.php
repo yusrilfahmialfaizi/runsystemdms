@@ -1,4 +1,62 @@
+    
     <script type="text/javascript">
+    $(document).ready(function(){
+      var url1 = 'http://127.0.0.1:8080/runsystemdms/getMenuParents';
+      var url2 = 'http://127.0.0.1:8080/runsystemdms/getParentsLength';
+      var modul = [];
+      var menu = '';
+      var sub = '';
+      var subs = 'sub';
+      
+      $.ajax({
+        type: 'GET',
+        url: url1,
+        dataType: 'json',
+        cache: false,
+        success: function(data1) {
+          data1 = JSON.parse(JSON.stringify(data1));
+          data1 = data1.menuparent;
+          $.ajax({
+              type: 'GET',
+              url: url2,
+              dataType: 'json',
+              cache: false,
+              success: function(data2) {
+                data2 = JSON.parse(JSON.stringify(data2));
+                data2 = data2.parentlength;
+                  $.each(data1, function(i,data){
+                    window[subs+data.parent] = [];  // in a function we use "this";
+                    var u = 2;
+                    if (data.parent != null) {
+                      if (data.parent.length == u) { 
+                        menu = '<li id="' + i + '"><a class="bar-icons" href="javascript:modules('+i+')" ><i></i><span>'+data.menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data.menucode+'"></li></ul></li>';
+                        modul.push(menu);
+                        $("#module").html(modul);
+                      }
+                      for (var i = 0; i < data2.length; i++) {
+                        // console.log(data2.length);
+                        if (data.parent.length == (u = u+2)) { 
+                          menu = '<li><a href="">'+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
+                          modul.push(menu);
+                          $("#"+data.parent).append(modul);
+                        }
+                      }
+                      // if (data.parent.length == (u+=2)) { 
+                      //   sub = '<li><a href="">'+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
+                      //   window[subs+data.parent].push(sub);
+                      //   console.log(window[subs+data.parent]);
+                      //   // $("#"+data.parent).html(window[subs+data.parent]);
+                      //   $("#module").html(window[subs+data.parent]);
+                      // }
+                    };
+                  });
+              }
+            });
+          }
+        });
+    });
+    </script>
+    <!-- <script type="text/javascript">
       $(document).ready(function() {
         var url = 'http://127.0.0.1:8080/runsystemdms/getMenuParents';
         $.ajax({
@@ -8,40 +66,45 @@
           cache: false,
           success: function(data) {
             data = JSON.parse(JSON.stringify(data));
-            data = data.menuparent;
-            var parent = [];
+            data = data.rmodule;
+            var modul = [];
+            var menucode;
             for (i = 0; i < data.length; i++) {
-              parent.push('<li id="' + i + '"><a class="bar-icons" href="javascript:void(0)" onClick="modules(' + data[i].menucode + ',' + i + ')"><i></i><span>' + data[i].menudesc + '</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="' + data[i].menucode + '"></li></ul></li>');
+            menucode = data[i].menucode;
+              modul.push('<li id="' + i + '"><a class="bar-icons" href="javascript:modules('+menucode+','+i+')" ><i></i><span>'+data[i].menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data[i].menucode+'"></li></ul></li>');
             }
-            $("#module").html(parent);
+            console.log(modul);
+            $("#module").html(modul);
           }
         });
       });
-    </script>
-    <script type="text/javascript">
-      function modules(menucode, id_li) {
-        var parent = menucode;
-        $("li").removeClass("open");
-        $("#" + id_li).even().addClass("open");
-        alert(menucode);
-        $.ajax({
-            type: "POST",
-            url: "http://127.0.0.1:8080/runsystemdms/getMenuSubParent",
-            dataType: "JSON",
-            data: {
-              parent: menucode
-            },
-            cache: false,
-            success: function(data) {
-              data = JSON.parse(JSON.stringify(data));
-              data = data.menusubparent;
-              var subs = [];
-              if (data != null) {
-                for (i = 0; i < data.length; i++) {
-                  subs.push('<li><a href="<?php echo base_url("Editor") ?>">' + data[i].menudesc + '</a></li>');
-                }
-              }
-            });
+      </script> -->
+      <script type="text/javascript">
+      // menampilkan anak module di sidebar berdasarkan nilai parent dengan action onclick
+        function modules(id_li){
+          // var parent = menucode;
+          $("li").removeClass("open");
+          $("#"+id_li).even().addClass("open");
+          // alert(menucode);
+          // $.ajax({
+          //   type : "POST",
+          //   url : "http://127.0.0.1:8080/runsystemdms/getMenuSubParent",
+          //   dataType : "JSON",
+          //   data : {parent :parent},
+          //   cache : false,
+          //   success : function(data){
+          //     data = JSON.parse(JSON.stringify(data));
+          //     data = data.menusubparent;
+          //     var subs = [];
+          //     if (data != null) {   
+          //       console.log(data);
+          //       // for (i = 0; i < data.length; i++) {
+          //       //     // subs.push('<li><a href="<?php echo base_url("Editor")?>">'+data[i].menudesc+'</a></li>');      
+          //       //     subs.push('<li><a href="">'+data[i].menudesc+'</a></li>');      
+          //       // }
+          //       // $("#"+data[0].parent).html(subs);
+          //     }
+          //   });
         }
     </script>
 
@@ -61,7 +124,7 @@
     <!-- <script src="<?php echo base_url("assets/js/typeahead/typeahead.bundle.js") ?>"></script> -->
     <!-- <script src="<?php echo base_url("assets/js/typeahead/typeahead.custom.js") ?>"></script> -->
     <!-- <script src="<?php echo base_url("assets/js/typeahead-search/handlebars.js") ?>"></script> -->
-    <!-- <script src="<?php echo base_url("assets/js/typeahead-search/typeahead-custom.js") ?>"></script> --> -->
+    <!-- <script src="<?php echo base_url("assets/js/typeahead-search/typeahead-custom.js") ?>"></script> -->
     <!-- <script src="<?php echo base_url("assets/js/chart/chartist/chartist.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/chart/chartist/chartist-plugin-tooltip.js") ?>"></script> -->
     <script src="<?php echo base_url("assets/js/chart/apex-chart/apex-chart.js") ?>"></script>
