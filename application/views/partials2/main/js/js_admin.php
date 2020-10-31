@@ -5,6 +5,7 @@
       var url2 = 'http://127.0.0.1:8080/runsystemdms/getParentsLength';
       var modul = [];
       var menu = '';
+      var menus = 'menu';
       var sub = '';
       var subs = 'sub';
       
@@ -16,6 +17,9 @@
         success: function(data1) {
           data1 = JSON.parse(JSON.stringify(data1));
           data1 = data1.menuparent;
+          $.each(data1, function(i,data){
+            window[subs+data.parent] = [];  // in a function we use "this"
+          });
           $.ajax({
               type: 'GET',
               url: url2,
@@ -25,7 +29,6 @@
                 data2 = JSON.parse(JSON.stringify(data2));
                 data2 = data2.parentlength;
                   $.each(data1, function(i,data){
-                    window[subs+data.parent] = [];  // in a function we use "this";
                     var u = 2;
                     if (data.parent != null) {
                       if (data.parent.length == u) { 
@@ -34,12 +37,20 @@
                         $("#module").html(modul);
                       }
                       for (var i = 0; i < data2.length; i++) {
-                        // console.log(data2.length);
                         if (data.parent.length == (u = u+2)) { 
-                          menu = '<li><a href="">'+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
-                          // modul.push(menu);
-                          $("#"+data.parent).append(menu);
+                          sub = '<li><a href="">'+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
+                          // console.log(menu);
+                          window[subs+data.parent].push(sub);
+                          console.log("sub"+data.parent);
+                          $("#"+data.parent).append(sub);
                         }
+                        // if (data.parent.length == (u = u+2)) { 
+                          
+                        //   sub = '<li><a href="">'+data.menudesc+'</a><ul id="sub3'+data.menucode+'"></ul></li>';
+                        //   // console.log(menu);
+                        //   window[subs+data.parent].push(sub);
+                        //   $("#sub2"+data.parent).html(window[subs+data.parent]);
+                        // }
                       }
                       // if (data.parent.length == (u+=2)) { 
                       //   sub = '<li><a href="">'+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
