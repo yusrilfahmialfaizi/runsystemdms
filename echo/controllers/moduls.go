@@ -7,12 +7,14 @@ import (
 
 	"github.com/labstack/echo/v4"
 )
+
 // Controller untuk get data
 func GetMenuparents(c echo.Context) error {
 	result := models.GetMenuParents()
 	fmt.Println("Getting menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
+
 // Controller untuk get data
 func GetMenusubparents(c echo.Context) error {
 	cc := c.(*models.CustomContext)
@@ -20,6 +22,7 @@ func GetMenusubparents(c echo.Context) error {
 	fmt.Println("Getting sub menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
+
 // Controller untuk get data
 func GetMenusubsubparents(c echo.Context) error {
 	cc := c.(*models.CustomContext)
@@ -27,6 +30,7 @@ func GetMenusubsubparents(c echo.Context) error {
 	fmt.Println("Getting submodule...")
 	return c.JSON(http.StatusOK, result)
 }
+
 // Controller untuk update data
 func UpdateDataSubModules(c echo.Context) error {
 	cc := c.(*models.CustomContext)

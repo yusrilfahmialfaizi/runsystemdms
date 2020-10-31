@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"database/sql"
 	"echo/controllers"
 	"echo/models"
 	"net/http"
@@ -26,7 +27,7 @@ func Routes() *echo.Echo {
 			return next(cc)
 		}
 	})
-	// Routes
+
 	e.GET("/", func(c echo.Context) error {
 		return c.JSON(http.StatusCreated, "Welcome mvc echo")
 	})
@@ -36,7 +37,12 @@ func Routes() *echo.Echo {
 	e.GET("/runsystemdms/getMenuParents", controllers.GetMenuparents)
 	e.POST("/runsystemdms/getMenuSubParent", controllers.GetMenusubparents)
 	e.POST("/runsystemdms/getMenuSubSubParent", controllers.GetMenusubsubparents)
-	e.PUT("/runsystemdms/updateDataSubModules", controllers.UpdateDataSubModules)
+	e.PUT("/runsystemdms/saveDataSubModules", controllers.SaveDataSubModules)
+
+	//routes document
+	var con *sql.DB
+	e.GET("/runsystemdms/getDataDocuments", controllers.GetDatadocuments)
+	e.POST("/runsystemdms/postDataDocuments", controllers.PostDataDocuments(con))
 
 	return e
 }

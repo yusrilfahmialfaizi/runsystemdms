@@ -80,6 +80,7 @@ type Datasubmodules struct {
 }
 
 var connection *sql.DB
+
 // function untuk mengambil data dari tabel menu berdasarkan parent yang memiliki 2 digit angka
 func GetMenuParents() Menuparents {
 	connection = config.Connection()
@@ -102,6 +103,7 @@ func GetMenuParents() Menuparents {
 	}
 	return result
 }
+
 // get data dari tabel menu berdasarkan parent
 func GetMenusubparents(c *CustomContext) Menusubparents {
 	parent := c.FormValue("parent")
@@ -126,6 +128,7 @@ func GetMenusubparents(c *CustomContext) Menusubparents {
 	}
 	return result
 }
+
 // get data dari tabel menu berdasarkan parent
 func GetMenusubsubparents(c *CustomContext) Menusubsubparents {
 	parent := c.FormValue("parent")
@@ -150,6 +153,7 @@ func GetMenusubsubparents(c *CustomContext) Menusubsubparents {
 	}
 	return result
 }
+
 // function update data berdasarkan menucode pada tabel menu
 func UpdateDataSubModules(c *CustomContext) Datasubmodules {
 	menucode := c.FormValue("menucode")
