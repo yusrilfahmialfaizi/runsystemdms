@@ -28,7 +28,6 @@
               success: function(data2) {
                 data2 = JSON.parse(JSON.stringify(data2));
                 data2 = data2.parentlength;
-                // console.log(data2.length);
                   $.each(data1, function(i,data){
                     var u = 2;
                     if (data.parent != null) {
@@ -54,56 +53,13 @@
         });
     });
     </script>
-    <!-- <script type="text/javascript">
-      $(document).ready(function() {
-        var url = 'http://127.0.0.1:8080/runsystemdms/getMenuParents';
-        $.ajax({
-          type: 'GET',
-          url: url,
-          dataType: 'json',
-          cache: false,
-          success: function(data) {
-            data = JSON.parse(JSON.stringify(data));
-            data = data.rmodule;
-            var modul = [];
-            var menucode;
-            for (i = 0; i < data.length; i++) {
-            menucode = data[i].menucode;
-              modul.push('<li id="' + i + '"><a class="bar-icons" href="javascript:modules('+menucode+','+i+')" ><i></i><span>'+data[i].menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data[i].menucode+'"></li></ul></li>');
-            }
-            console.log(modul);
-            $("#module").html(modul);
-          }
-        });
-      });
-      </script> -->
-      <script type="text/javascript">
-      // menampilkan anak module di sidebar berdasarkan nilai parent dengan action onclick
-        function modules(id_li){
-          // var parent = menucode;
-          $("li").removeClass("open");
-          $("#"+id_li).even().addClass("open");
-          // alert(menucode);
-          // $.ajax({
-          //   type : "POST",
-          //   url : "http://127.0.0.1:8080/runsystemdms/getMenuSubParent",
-          //   dataType : "JSON",
-          //   data : {parent :parent},
-          //   cache : false,
-          //   success : function(data){
-          //     data = JSON.parse(JSON.stringify(data));
-          //     data = data.menusubparent;
-          //     var subs = [];
-          //     if (data != null) {   
-          //       console.log(data);
-          //       // for (i = 0; i < data.length; i++) {
-          //       //     // subs.push('<li><a href="<?php echo base_url("Editor")?>">'+data[i].menudesc+'</a></li>');      
-          //       //     subs.push('<li><a href="">'+data[i].menudesc+'</a></li>');      
-          //       // }
-          //       // $("#"+data[0].parent).html(subs);
-          //     }
-          //   });
-        }
+    <script type="text/javascript">
+      // add and remove class open on sidebar
+      function modules(id_li){
+        $("li").removeClass("open");
+        $("#"+id_li).even().addClass("open");
+        
+      }
     </script>
 
     <!-- latest jquery-->
