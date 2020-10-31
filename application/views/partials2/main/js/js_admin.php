@@ -28,9 +28,11 @@
               success: function(data2) {
                 data2 = JSON.parse(JSON.stringify(data2));
                 data2 = data2.parentlength;
+                // console.log(data2.length);
                   $.each(data1, function(i,data){
                     var u = 2;
                     if (data.parent != null) {
+                          console.log(data.parent);
                       if (data.parent.length == u) { 
                         menu = '<li id="' + i + '"><a class="bar-icons" href="javascript:modules('+i+')" ><i></i><span>'+data.menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data.menucode+'"></li></ul></li>';
                         modul.push(menu);
@@ -38,27 +40,12 @@
                       }
                       for (var i = 0; i < data2.length; i++) {
                         if (data.parent.length == (u = u+2)) { 
-                          sub = '<li><a href="">'+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
-                          // console.log(menu);
+                          sub = '<li><a href="<?php echo base_url("Tabel")?>">'+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
                           window[subs+data.parent].push(sub);
                           console.log("sub"+data.parent);
                           $("#"+data.parent).append(sub);
                         }
-                        // if (data.parent.length == (u = u+2)) { 
-                          
-                        //   sub = '<li><a href="">'+data.menudesc+'</a><ul id="sub3'+data.menucode+'"></ul></li>';
-                        //   // console.log(menu);
-                        //   window[subs+data.parent].push(sub);
-                        //   $("#sub2"+data.parent).html(window[subs+data.parent]);
-                        // }
                       }
-                      // if (data.parent.length == (u+=2)) { 
-                      //   sub = '<li><a href="">'+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
-                      //   window[subs+data.parent].push(sub);
-                      //   console.log(window[subs+data.parent]);
-                      //   // $("#"+data.parent).html(window[subs+data.parent]);
-                      //   $("#module").html(window[subs+data.parent]);
-                      // }
                     };
                   });
               }

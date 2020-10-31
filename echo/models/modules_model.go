@@ -66,15 +66,26 @@ type Datasubmodule struct {
 	LastupBy nullable.String `json:"lastupby"`
 	LastupDt nullable.String `json:"lastupdt"`
 }
+type ParentLength struct {
+	ParentLength   nullable.String `json:"parentlength"`
+}
+
 type Menuparents struct {
 	Menuparents []Menuparent `json:"menuparent"`
 }
+
+type ParentLengths struct {
+	ParentLengths []ParentLength `json:"parentlength"`
+}
+
 type Menusubparents struct {
 	Menusubparents []Menusubparent `json:"menusubparent"`
 }
+
 type Menusubsubparents struct {
 	Menusubsubparents []Menusubsubparent `json:"menusubsubparent"`
 }
+
 type Datasubmodules struct {
 	Datasubmodules []Datasubmodule `json:"datasubmodule"`
 }
@@ -100,6 +111,28 @@ func GetMenuParents() Menuparents {
 			fmt.Println(eror)
 		}
 		result.Menuparents = append(result.Menuparents, menuparent)
+	}
+	return result
+}
+// function untuk mengambil panjang data parent dari tabel menu berdasarkan parent
+func GetParentsLength() ParentLengths {
+	connection = config.Connection()
+	query := "SELECT Length(parent) FROM tblmenu WHERE parent IS NOT NULL GROUP BY Length(parent) "
+	rows, err := connection.Query(query)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer rows.Close()
+	result := ParentLengths{}
+
+	for rows.Next() {
+		parentLength := ParentLength{}
+		
+		eror := rows.Scan(&parentLength.ParentLength)
+		if eror != nil {
+			fmt.Println(eror)
+		}
+		result.ParentLengths = append(result.ParentLengths, parentLength)
 	}
 	return result
 }

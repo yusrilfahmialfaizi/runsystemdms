@@ -22,45 +22,46 @@
         <div class="card-header">
           <button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"> + New Document</button>
         </div>
-        <div class="dt-ext table-responsive">
-          <table class="display" id="responsive">
-            
-            <thead>
-              <tr>
-                <th>No.</th>
-                <th>Nama Dokumen</th>
-                <th>Tahun Buat</th>
-                <th>Format</th>
-                <th>Nama Pembuat</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <div class="form-group">
-                    <a href="#" data-feather="edit" data-toggle="modal" data-target=".bs-example-modal-lga">Edit</a>
-                    <a href="#" data-toggle="modal" data-target="" data-feather="trash-2">Hapus</a>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th>No.</th>
-                <th>Nama Dokumen</th>
-                <th>Tahun Buat</th>
-                <th>Format</th>
-                <th>Nama Pembuat</th>
-                <th>Action</th>
-              </tr>
-            </tfoot>
-          </table>
+        <div class="card-body">
+          <div class="dt-ext table-responsive">
+            <table class="display" id="responsive">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Nama Dokumen</th>
+                  <th>Tahun Buat</th>
+                  <th>Format</th>
+                  <th>Nama Pembuat</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <div class="form-group">
+                      <a href="#" data-feather="edit" data-toggle="modal" data-target=".bs-example-modal-lga">Edit</a>
+                      <a href="#" data-toggle="modal" data-target="" data-feather="trash-2">Hapus</a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>No.</th>
+                  <th>Nama Dokumen</th>
+                  <th>Tahun Buat</th>
+                  <th>Format</th>
+                  <th>Nama Pembuat</th>
+                  <th>Action</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
         </div>
       </div>
     </div>

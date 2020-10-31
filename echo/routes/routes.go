@@ -35,9 +35,10 @@ func Routes() *echo.Echo {
 	e.POST("/runsystemdms/login", controllers.Login)
 	e.GET("/runsystemdms/getPG", controllers.GetProjectGroup)
 	e.GET("/runsystemdms/getMenuParents", controllers.GetMenuparents)
+	e.GET("/runsystemdms/getParentsLength", controllers.GetParentsLength)
 	e.POST("/runsystemdms/getMenuSubParent", controllers.GetMenusubparents)
 	e.POST("/runsystemdms/getMenuSubSubParent", controllers.GetMenusubsubparents)
-	e.PUT("/runsystemdms/saveDataSubModules", controllers.SaveDataSubModules)
+	e.PUT("/runsystemdms/updateDataSubModules", controllers.UpdateDataSubModules)
 
 	//routes document
 	var con *sql.DB
