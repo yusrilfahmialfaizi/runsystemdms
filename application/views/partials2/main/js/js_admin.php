@@ -1,6 +1,7 @@
     
     <script type="text/javascript">
     $(document).ready(function(){
+      // get data dynamic sidebar menu 
       var url1 = 'http://127.0.0.1:8080/runsystemdms/getMenuParents';
       var url2 = 'http://127.0.0.1:8080/runsystemdms/getParentsLength';
       var modul = [];
@@ -9,7 +10,7 @@
       var sub = '';
       var subs = 'sub';
       
-      $.ajax({
+      $.ajax({ //to get all data menu from db
         type: 'GET',
         url: url1,
         dataType: 'json',
@@ -17,10 +18,11 @@
         success: function(data1) {
           data1 = JSON.parse(JSON.stringify(data1));
           data1 = data1.menuparent;
-          $.each(data1, function(i,data){
-            window[subs+data.parent] = [];  // in a function we use "this"
-          });
-          $.ajax({
+          // console.log(data1)
+          // $.each(data1, function(i,data){
+            // window[subs+data.parent] = [];  // in a function we use "this"
+          // });
+          $.ajax({ // to get length of parent
               type: 'GET',
               url: url2,
               dataType: 'json',
@@ -28,25 +30,22 @@
               success: function(data2) {
                 data2 = JSON.parse(JSON.stringify(data2));
                 data2 = data2.parentlength;
-                  $.each(data1, function(i,data){
-                    var u = 2;
-                    if (data.parent != null) {
-                          console.log(data.parent);
-                      if (data.parent.length == u) { 
-                        menu = '<li id="' + i + '"><a class="bar-icons" href="javascript:modules('+i+')" ><i></i><span>'+data.menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data.menucode+'"></li></ul></li>';
-                        modul.push(menu);
-                        $("#module").html(modul);
+                $.each(data1, function(i,data){
+                  var u = 2;
+                  if (data.parent != null) {  
+                    if (data.parent.length == u) { 
+                      menu = '<li id="' + i + '"><a class="bar-icons" href="javascript:modules('+i+')" ><i></i><span>'+data.menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data.menucode+'"></li></ul></li>';
+                      $("#module").append(menu);
+                    }
+                    for (var j = 0; j < data2.length; j++) {
+                      if (data.parent.length == (u = u+2)) { 
+                        sub = '<li><a href="<?php echo base_url("Tabel")?>">'+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
+                        console.log(sub)
+                        $("#"+data.parent).append(sub);
                       }
-                      for (var i = 0; i < data2.length; i++) {
-                        if (data.parent.length == (u = u+2)) { 
-                          sub = '<li><a href="<?php echo base_url("Tabel")?>">'+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
-                          window[subs+data.parent].push(sub);
-                          console.log("sub"+data.parent);
-                          $("#"+data.parent).append(sub);
-                        }
-                      }
-                    };
-                  });
+                    }
+                  };
+                });
               }
             });
           }
