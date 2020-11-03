@@ -39,9 +39,11 @@
                     data3 = data3.lastChilds;
                     $.each(data1, function(i, data) {
                       var u = 2;
-                      if (data.parent != null) {
-                        if (data.parent.length == u) {
-                          menu = '<li id="' + i + '"><a class="bar-icons" href="javascript:modules(' + i + ')" ><i></i><span>' + data.menudesc + '</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="' + data.menucode + '"></li></ul></li>';
+                      if (data.parent != null) {  
+                        if (data.parent.length == u) { 
+                          // <div class="dropdown-basic"><div class="dropdown"><div class="btn-group mb-0"><button class="dropbtn btn-primary" type="button">Action <span><i class="icofont icofont-arrow-down"></i></span></button><div class="dropdown-content"><a href="#">Action</a><a href="#">Another Action</a><a href="#">Something Else Here</a><div class="dropdown-divider"></div><a href="#">Separated Link </a></div></div></div></div>
+                          menu = '<li id="' + i + '"><div class="dropdown-basic"><div class="dropdown"><div class="btn-group mb-0"><button class="dropbtn btn-primary" type="button">'+data.menudesc+' <span><i class="icofont icofont-arrow-down"></i></span></button><div class="dropdown-content"><a href="<?php echo base_url("tabel")?>">Add Document</a><a href="javascript:modules('+i+')">Open Submodules</a></div></div></div></div><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data.menucode+'"></li></ul></li>';
+                          // menu = '<li id="' + i + '"><a class="bar-icons" href="javascript:modules('+i+')" ><i></i><span>'+data.menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data.menucode+'"></li></ul></li>';
                           $("#module").append(menu);
                         }
                         for (var j = 0; j < data2.length; j++) {
@@ -53,8 +55,8 @@
                                 $("#" + data.parent).append(sub);
                               }
                             }
-                            sub = '<li><a href="<?php echo base_url("editor") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
-                            $("#" + data.parent).append(sub);
+                            sub = '<li><a href="<?php echo base_url("editor")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
+                            $("#"+data.parent).append(sub);
                           }
                         }
                       };
