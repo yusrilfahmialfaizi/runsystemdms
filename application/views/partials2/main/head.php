@@ -30,6 +30,9 @@
 
     <script src="<?php echo base_url('assets/js/jquery2.0.3.min.js') ?>"></script>
     <!-- Plugins css Ends-->
+    <!-- Plugins css start-->
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/css/datatables.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/css/datatable-extension.css">
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/bootstrap.css") ?>">
     <!-- App css-->

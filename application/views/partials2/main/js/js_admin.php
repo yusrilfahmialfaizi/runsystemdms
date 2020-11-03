@@ -1,28 +1,27 @@
-    
     <script type="text/javascript">
-    $(document).ready(function(){
-      if ("<?php $this->uri->segment(3)?>" != "home"){
-        $("#sidebar").removeClass("iconbar-second-close");
-      }
-      // get data dynamic sidebar menu 
-      var url1 = 'http://127.0.0.1:8080/runsystemdms/getMenuParents';
-      var url2 = 'http://127.0.0.1:8080/runsystemdms/getParentsLength';
-      var url3 = 'http://127.0.0.1:8080/runsystemdms/getLastChilds';
-      var modul = [];
-      var menu = '';
-      var menus = 'menu';
-      var sub = '';
-      var subs = 'sub';
-      
-      $.ajax({ //to get all data menu from db
-        type: 'GET',
-        url: url1,
-        dataType: 'json',
-        cache: false,
-        success: function(data1) {
-          data1 = JSON.parse(JSON.stringify(data1));
-          data1 = data1.menuparent;
-          $.ajax({ // to get length of parent
+      $(document).ready(function() {
+        if ("<?php $this->uri->segment(3) ?>" != "home") {
+          $("#sidebar").removeClass("iconbar-second-close");
+        }
+        // get data dynamic sidebar menu 
+        var url1 = 'http://127.0.0.1:8080/runsystemdms/getMenuParents';
+        var url2 = 'http://127.0.0.1:8080/runsystemdms/getParentsLength';
+        var url3 = 'http://127.0.0.1:8080/runsystemdms/getLastChilds';
+        var modul = [];
+        var menu = '';
+        var menus = 'menu';
+        var sub = '';
+        var subs = 'sub';
+
+        $.ajax({ //to get all data menu from db
+          type: 'GET',
+          url: url1,
+          dataType: 'json',
+          cache: false,
+          success: function(data1) {
+            data1 = JSON.parse(JSON.stringify(data1));
+            data1 = data1.menuparent;
+            $.ajax({ // to get length of parent
               type: 'GET',
               url: url2,
               dataType: 'json',
@@ -31,31 +30,31 @@
                 data2 = JSON.parse(JSON.stringify(data2));
                 data2 = data2.parentlength;
                 $.ajax({
-                  type : 'GET',
-                  url : url3,
-                  dataType : 'json',
-                  cache : false,
-                  success: function(data3){
+                  type: 'GET',
+                  url: url3,
+                  dataType: 'json',
+                  cache: false,
+                  success: function(data3) {
                     data3 = JSON.parse(JSON.stringify(data3));
                     data3 = data3.lastChilds;
-                    $.each(data1, function(i,data){
+                    $.each(data1, function(i, data) {
                       var u = 2;
-                      if (data.parent != null) {  
-                        if (data.parent.length == u) { 
-                          menu = '<li id="' + i + '"><a class="bar-icons" href="javascript:modules('+i+')" ><i></i><span>'+data.menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data.menucode+'"></li></ul></li>';
+                      if (data.parent != null) {
+                        if (data.parent.length == u) {
+                          menu = '<li id="' + i + '"><a class="bar-icons" href="javascript:modules(' + i + ')" ><i></i><span>' + data.menudesc + '</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="' + data.menucode + '"></li></ul></li>';
                           $("#module").append(menu);
                         }
                         for (var j = 0; j < data2.length; j++) {
-                          if (data.parent.length == (u = u+2)) { 
-                            for (k = 0; k < data3.length; k++){
-                              if (data.menucode == data3[k].menucode){
-                                sub = '<li><a href="<?php echo base_url("edit")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
-                                console.log("Ya"+ k +" : "+data3[k].menucode)
-                                $("#"+data.parent).append(sub);
+                          if (data.parent.length == (u = u + 2)) {
+                            for (k = 0; k < data3.length; k++) {
+                              if (data.menucode == data3[k].menucode) {
+                                sub = '<li><a href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
+                                console.log("Ya" + k + " : " + data3[k].menucode)
+                                $("#" + data.parent).append(sub);
                               }
                             }
-                                sub = '<li><a href="<?php echo base_url("editor")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
-                                $("#"+data.parent).append(sub);
+                            sub = '<li><a href="<?php echo base_url("editor") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
+                            $("#" + data.parent).append(sub);
                           }
                         }
                       };
@@ -66,14 +65,14 @@
             });
           }
         });
-    });
+      });
     </script>
     <script type="text/javascript">
       // add and remove class open on sidebar
-      function modules(id_li){
+      function modules(id_li) {
         $("li").removeClass("open");
-        $("#"+id_li).even().addClass("open");
-        // window.location = "<?php echo base_url("tabel")?>";
+        $("#" + id_li).even().addClass("open");
+        // window.location = "<?php echo base_url("tabel") ?>";
       }
     </script>
 
