@@ -13,40 +13,54 @@
 
 
 -- Dumping database structure for runsystemdms
-DROP DATABASE IF EXISTS `runsystemdms`;
 CREATE DATABASE IF NOT EXISTS `runsystemdms` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `runsystemdms`;
 
 -- Dumping structure for table runsystemdms.tbldocumentdtl
-DROP TABLE IF EXISTS `tbldocumentdtl`;
 CREATE TABLE IF NOT EXISTS `tbldocumentdtl` (
   `Docno` varchar(50) NOT NULL,
   `MenuCode` varchar(16) NOT NULL,
   `Description` varchar(500) DEFAULT NULL,
   `Status` varchar(1) NOT NULL DEFAULT 'O',
+  `CreateBy` varchar(16) NOT NULL,
+  `CreateDt` varchar(12) NOT NULL,
+  `LastUpBy` varchar(16) DEFAULT NULL,
+  `LastUpDt` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`Docno`,`MenuCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table runsystemdms.tbldocumentdtl: ~0 rows (approximately)
+-- Dumping data for table runsystemdms.tbldocumentdtl: ~2 rows (approximately)
 /*!40000 ALTER TABLE `tbldocumentdtl` DISABLE KEYS */;
+REPLACE INTO `tbldocumentdtl` (`Docno`, `MenuCode`, `Description`, `Status`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES
+	('', '', '', '', '', '', NULL, NULL),
+	('12', '12', '1', 'O', 'me', 'me', NULL, NULL),
+	('122', '122', '1', 'O', 'me', 'me', NULL, NULL),
+	('33', '33', '1', 'O', 'me', 'me', NULL, NULL);
 /*!40000 ALTER TABLE `tbldocumentdtl` ENABLE KEYS */;
 
 -- Dumping structure for table runsystemdms.tbldocumenthdr
-DROP TABLE IF EXISTS `tbldocumenthdr`;
 CREATE TABLE IF NOT EXISTS `tbldocumenthdr` (
   `Docno` varchar(50) NOT NULL,
   `ModulCode` varchar(16) NOT NULL,
   `ActiveInd` varchar(1) NOT NULL DEFAULT 'N',
   `Status` varchar(1) NOT NULL DEFAULT 'O',
+  `CreateBy` varchar(16) NOT NULL,
+  `CreateDt` varchar(12) NOT NULL,
+  `LastUpBy` varchar(16) DEFAULT NULL,
+  `LastUpDt` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`Docno`,`ModulCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table runsystemdms.tbldocumenthdr: ~0 rows (approximately)
+-- Dumping data for table runsystemdms.tbldocumenthdr: ~2 rows (approximately)
 /*!40000 ALTER TABLE `tbldocumenthdr` DISABLE KEYS */;
+REPLACE INTO `tbldocumenthdr` (`Docno`, `ModulCode`, `ActiveInd`, `Status`, `CreateBy`, `CreateDt`, `LastUpBy`, `LastUpDt`) VALUES
+	('', '', '', '', '', '', NULL, NULL),
+	('12', '12', 'N', 'O', 'me', 'me', NULL, NULL),
+	('122', '122', 'N', 'O', 'me', 'me', NULL, NULL),
+	('33', '33', 'N', 'O', 'me', 'me', NULL, NULL);
 /*!40000 ALTER TABLE `tbldocumenthdr` ENABLE KEYS */;
 
 -- Dumping structure for table runsystemdms.tblgroup
-DROP TABLE IF EXISTS `tblgroup`;
 CREATE TABLE IF NOT EXISTS `tblgroup` (
   `GrpCode` varchar(16) NOT NULL,
   `GrpName` varchar(80) NOT NULL,
@@ -79,7 +93,6 @@ REPLACE INTO `tblgroup` (`GrpCode`, `GrpName`, `CreateBy`, `CreateDt`, `LastUpBy
 /*!40000 ALTER TABLE `tblgroup` ENABLE KEYS */;
 
 -- Dumping structure for table runsystemdms.tblgroupmenu
-DROP TABLE IF EXISTS `tblgroupmenu`;
 CREATE TABLE IF NOT EXISTS `tblgroupmenu` (
   `MenuCode` varchar(16) NOT NULL,
   `GrpCode` varchar(16) NOT NULL,
@@ -113,7 +126,6 @@ REPLACE INTO `tblgroupmenu` (`MenuCode`, `GrpCode`, `AccessInd`, `CreateBy`, `Cr
 /*!40000 ALTER TABLE `tblgroupmenu` ENABLE KEYS */;
 
 -- Dumping structure for table runsystemdms.tblmenu
-DROP TABLE IF EXISTS `tblmenu`;
 CREATE TABLE IF NOT EXISTS `tblmenu` (
   `MenuCode` varchar(16) NOT NULL,
   `MenuDesc` varchar(80) NOT NULL,
@@ -614,12 +626,15 @@ REPLACE INTO `tblmenu` (`MenuCode`, `MenuDesc`, `Parent`, `Param`, `Icon`, `StdI
 /*!40000 ALTER TABLE `tblmenu` ENABLE KEYS */;
 
 -- Dumping structure for table runsystemdms.tblmodulmenu
-DROP TABLE IF EXISTS `tblmodulmenu`;
 CREATE TABLE IF NOT EXISTS `tblmodulmenu` (
   `ModulCode` varchar(16) NOT NULL,
   `MenuCode` varchar(16) NOT NULL,
   `MenuDesc` varchar(200) NOT NULL,
   `Parent` varchar(16) NOT NULL,
+  `CreateBy` varchar(16) NOT NULL,
+  `CreateDt` varchar(12) NOT NULL,
+  `LastUpBy` varchar(16) DEFAULT NULL,
+  `LastUpDt` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`ModulCode`,`MenuCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -628,7 +643,6 @@ CREATE TABLE IF NOT EXISTS `tblmodulmenu` (
 /*!40000 ALTER TABLE `tblmodulmenu` ENABLE KEYS */;
 
 -- Dumping structure for table runsystemdms.tblprojectgroup
-DROP TABLE IF EXISTS `tblprojectgroup`;
 CREATE TABLE IF NOT EXISTS `tblprojectgroup` (
   `PGCode` varchar(16) NOT NULL,
   `PGName` varchar(100) NOT NULL,
@@ -651,7 +665,6 @@ REPLACE INTO `tblprojectgroup` (`PGCode`, `PGName`, `ActInd`, `ProjectCode`, `Pr
 /*!40000 ALTER TABLE `tblprojectgroup` ENABLE KEYS */;
 
 -- Dumping structure for table runsystemdms.tbluser
-DROP TABLE IF EXISTS `tbluser`;
 CREATE TABLE IF NOT EXISTS `tbluser` (
   `Usercode` varchar(16) NOT NULL,
   `Username` varchar(80) NOT NULL,
