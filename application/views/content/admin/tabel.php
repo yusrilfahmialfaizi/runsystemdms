@@ -38,23 +38,8 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody id="datadocs">
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="form-group">
-                        <a href="#" data-feather="edit" data-toggle="modal" data-target=".bs-example-modal-lga">Edit</a>
-                        <a href="#" data-toggle="modal" data-target="" data-feather="trash-2">Hapus</a>
-                      </div>
-                    </td>
-                  </tr>
+                <tbody id="datacos">
+                  <!-- js -->
                 </tbody>
                 <tfoot>
                   <tr>
