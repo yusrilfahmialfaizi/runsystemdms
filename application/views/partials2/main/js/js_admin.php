@@ -71,9 +71,9 @@
     <script type="text/javascript">
       // add and remove class open on sidebar
       function modules(id_li){
-        // window.location = "<?php echo base_url("tabel")?>";
         $("li").removeClass("open");
         $("#"+id_li).even().addClass("open");
+        // window.location = "<?php echo base_url("tabel")?>";
       }
     </script>
 
