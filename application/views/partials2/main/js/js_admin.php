@@ -1,6 +1,9 @@
     
     <script type="text/javascript">
     $(document).ready(function(){
+      if ("<?php $this->uri->segment(3)?>" != "home"){
+        $("#sidebar").removeClass("iconbar-second-close");
+      }
       // get data dynamic sidebar menu 
       var url1 = 'http://127.0.0.1:8080/runsystemdms/getMenuParents';
       var url2 = 'http://127.0.0.1:8080/runsystemdms/getParentsLength';
@@ -46,7 +49,7 @@
                           if (data.parent.length == (u = u+2)) { 
                             for (k = 0; k < data3.length; k++){
                               if (data.menucode == data3[k].menucode){
-                                sub = '<li><a href="<?php echo base_url("tabel")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
+                                sub = '<li><a href="<?php echo base_url("edit")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
                                 console.log("Ya"+ k +" : "+data3[k].menucode)
                                 $("#"+data.parent).append(sub);
                               }
@@ -70,7 +73,7 @@
       function modules(id_li){
         $("li").removeClass("open");
         $("#"+id_li).even().addClass("open");
-        
+        // window.location = "<?php echo base_url("tabel")?>";
       }
     </script>
 
