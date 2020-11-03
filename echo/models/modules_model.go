@@ -69,6 +69,9 @@ type Datasubmodule struct {
 type ParentLength struct {
 	ParentLength   nullable.String `json:"parentlength"`
 }
+type LastChild struct {
+	MenuCode nullable.String `json:"menucode"`
+}
 
 type Menuparents struct {
 	Menuparents []Menuparent `json:"menuparent"`
@@ -76,6 +79,9 @@ type Menuparents struct {
 
 type ParentLengths struct {
 	ParentLengths []ParentLength `json:"parentlength"`
+}
+type LastChilds struct {
+	LastChilds []LastChild `json:"lastChilds"`
 }
 
 type Menusubparents struct {
@@ -95,7 +101,7 @@ var connection *sql.DB
 // function untuk mengambil data dari tabel menu berdasarkan parent yang memiliki 2 digit angka
 func GetMenuParents() Menuparents {
 	connection = config.Connection()
-	query := "SELECT MenuCode, MenuDesc, Parent, Param, Icon, StdInd, SpcInd, Visible, MenuCat, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmenu WHERE parent = LEFT(parent, 2)  "
+	query := "SELECT MenuCode, MenuDesc, Parent, Param, Icon, StdInd, SpcInd, Visible, MenuCat, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmenu "
 	rows, err := connection.Query(query)
 	if err != nil {
 		fmt.Println(err)
@@ -133,6 +139,26 @@ func GetParentsLength() ParentLengths {
 			fmt.Println(eror)
 		}
 		result.ParentLengths = append(result.ParentLengths, parentLength)
+	}
+	return result
+}
+//function untuk mengambil anak paling bontotadri tabel menu
+func GetLastChild() LastChilds {
+	connection = config.Connection()
+	query := "SELECT menucode FROM tblmenu WHERE parent IS NOT NULL AND menucode IN (SELECT menucode FROM tblmenu WHERE menucode IN (SELECT parent FROM tblmenu))"
+	rows, eror1 := connection.Query(query)
+	if eror1 != nil{
+		fmt.Println("eror 1 : ", eror1)
+	}
+	defer rows.Close()
+	result := LastChilds{}
+	for rows.Next(){
+		lastChild := LastChild{}
+		eror2 := rows.Scan(&lastChild.MenuCode)
+		if eror2 != nil {
+			fmt.Println("eror 2 : ", eror2)
+		}
+		result.LastChilds = append(result.LastChilds, lastChild)
 	}
 	return result
 }
