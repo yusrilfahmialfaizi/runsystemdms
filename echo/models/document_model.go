@@ -97,9 +97,6 @@ func PostDataDocumentsDtl(con *sql.DB, Docno string, MenuCode string, Descriptio
 	// Create a prepared SQL statement
 	stmt, err := con.Prepare(query)
 
-	// if err := c.Bind(stmt); err !=nil {
-	// 			return err
-	// }
 	// / Exit if we get an error
 	if err != nil {
 		panic(err)
@@ -108,54 +105,90 @@ func PostDataDocumentsDtl(con *sql.DB, Docno string, MenuCode string, Descriptio
 	defer stmt.Close()
 
 	//The sql stat wll return the id, so we can use it.
-	result, err2 := stmt.Exec(Docno, MenuCode, Description, Status, CreateBy, CreateDt, LastUpBy, LastUpDt)
-
-	// data := map[string]result, result2
-
-	// data := [result, result2]
+	result, err2 := stmt.Exec(Docno, MenuCode, Description, Status, CreateBy, CreateDt, LastUpBy, LastUpDt, Docno)
 
 	// Exit if we get an error
 	if err2 != nil {
 		panic(err2)
 	}
-	// if err3 != nil {
-	// 	panic(err3)
-	// }
 
 	return result.RowsAffected()
-	// return result2.RowsAffected()
 }
 
-// func PostDataDocuments(c *CustomContext) InDatadocuments {
-// 	// form := map[string]string{
-// 	// 	"docno":     c.FormValue("docno"),
-// 	// 	"modulcode": c.FormValue("modulcode")
-// 	// 	"activeind": c.FormValue("activeind")
-// 	// 	"status":    c.FormValue("status"),
-// 	// 	"createby":  c.FormValue("createby"),
-// 	// 	createdt":  c.FormValue("createdt"),
-// // 	// 	"lastupby":  c.FormValue("lastupby"),
-// 	// 	"lastupdt":  c.FormVaue("lastupdt"),
-// 	// }
+//function untuk untuk edit data documenthdr yang ditampilkan di view tabel
+func EditDocHdr(con *sql.DB, Docno string, ModulCode string, ActiveInd string, Status string, CreateBy string, CreateDt string, LastUpBy nullable.String, LastUpDt nullable.String) (int64, error) {
+	con = config.Connection()
+	query := "Update tbldocumenthdr set modulcode = ?, activeind = ?, status = ?, createby = ?, createdt = ?, lastupby = ?, lastupdt = ? where docno = ?"
 
-// 	con = config.Conection()
-// 	query := "INSERT NTO tbldocumenthdr (docno, modulcode, activeind, status, createby, createdt, lastupby, lastupdt) values ()"
-// 	rws, err := con.Query(query)
-// 	if err != nil {
-// 		fmt.Println(err)
-// 	}
-// 	defer rows.Close(
-// 	result := InsDatadocuments{}
+	stmt, err := con.Prepare(query)
 
-// 	for rows.Next() {
-// 		datadocument := InsDatadocument{}
-// 		// eror := rows.can(&datadocument.Docno1, &datadocument.Docno2, &datadocument.MenuCode, &datadocument.ModulCode, &datadocument.Description, &datadocument.Status1, &datadocument.Status2, &datadocument.ActiveInd, &datadocument.CreateBy1, &datadocument.CreateDt1, &datadocument.LastupBy1, &datadocument.LastupDt1, &datadocument.CreateBy2, &datadocument.CreateDt2, &datadocument.LastupBy2, &datadocument.LastupDt2)
+	if err != nil {
+		panic(err)
+	}
 
-// 		eor := rows.Scan(&datadocument.Docno, &datadocument.ModulCode, &datadocument.ActiveInd, &datadocument.Status, &datadocument.CreateBy, &datadocument.CreateDt, &datadocument.LastupBy, &datadocument.LastupDt)
-// 		if eror != nil {
-// 		fmt.Println(eror)
-// 		}
-// 	result.InsDatadocuments = append(result.InsDatadocuments, datadocument)
-// 	}
-// 	return result
-// }
+	result, err2 := stmt.Exec(ModulCode, ActiveInd, Status, CreateBy, CreateDt, LastUpBy, LastUpDt, Docno)
+
+	if err2 != nil {
+		panic(err2)
+	}
+
+	return result.RowsAffected()
+}
+
+//function untuk untuk edit data documenthdr yang ditampilkan di view tabel
+func EditDocDtl(con *sql.DB, Docno string, MenuCode string, Description string, Status string, CreateBy string, CreateDt string, LastUpBy nullable.String, LastUpDt nullable.String) (int64, error) {
+	con = config.Connection()
+	query := "UPDATE tbldocumentdtl set menucode = ?, description = ?, status = ?, createby = ?, createdt = ?, lastupby = ?, lastupdt = ? where docno = ?"
+
+	stmt, err := con.Prepare(query)
+
+	if err != nil {
+		panic(err)
+	}
+
+	result, err2 := stmt.Exec(MenuCode, Description, Status, CreateBy, CreateDt, LastUpBy, LastUpDt, Docno)
+
+	if err2 != nil {
+		panic(err2)
+	}
+
+	return result.RowsAffected()
+}
+
+//func untuk delete data tbldocumenthdr dan tbldocumentdtl
+func DeleteDocs(c *CustomContext) Datadocuments {
+	connection := config.Connection()
+	docno := c.FormValue("docno")
+	query := "DELETE tbldocumenthdr.*, tbldocumentdtl.* FROM tbldocumenthdr INNER JOIN tbldocumentdtl  WHERE tbldocumenthdr.docno = tbldocumentdtl.docno and tbldocumenthdr.docno = " + docno
+
+	rows, eror := connection.Query(query)
+	if eror != nil {
+		fmt.Println(eror)
+	}
+	defer rows.Close()
+	result := Datadocuments{}
+
+	if rows.Next() {
+		datadocument := Datadocument{}
+		eror2 := rows.Scan(&datadocument.Docno)
+		if eror2 != nil {
+			fmt.Println(eror2)
+		}
+		result.Datadocuments = append(result.Datadocuments, datadocument)
+	}
+	return result
+
+	// // buat prepare statement
+	// stmt, err := con.Prepare(query)
+	// // Exit jika error
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	// result, err2 := stmt.Exec(docno)
+	// // Exit jika error
+	// if err2 != nil {
+	// 	panic(err2)
+	// }
+
+}
