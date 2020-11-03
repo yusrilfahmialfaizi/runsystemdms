@@ -10,9 +10,11 @@ import (
 
 type Datadocument struct {
 	Docno       string          `json:"docno"`
+	ModulCode   string          `json:"modulcode"`
 	Description nullable.String `json:"description"`
 	Status      string          `json:"status"`
 	ActiveInd   string          `json:"activeind"`
+	MenuCode    string          `json:"menucode"`
 	CreateBy    string          `json:"createby"`
 	CreateDt    string          `json:"createdt"`
 	LastupBy    nullable.String `json:"lastupby"`
@@ -44,7 +46,7 @@ var con *sql.DB
 //function untuk get document yang ditampilkan di view tabel
 func GetDatadocuments() Datadocuments {
 	con = config.Connection()
-	query := "SELECT hdr.docno as docno, dtl.description as description, hdr.status as status, hdr.activeind as activeind, hdr.createby as createby, hdr.createdt as createdt, hdr.lastupby as lastupby, hdr.lastupdt as lastupdt FROM tbldocumenthdr as hdr JOIN tbldocumentdtl as dtl ON dtl.docno = hdr.docno"
+	query := "SELECT hdr.docno as docno, hdr.modulcode as modulcode, dtl.description as description, hdr.status as status, hdr.activeind as activeind, dtl.menucode as menucode, hdr.createby as createby, hdr.createdt as createdt, hdr.lastupby as lastupby, hdr.lastupdt as lastupdt FROM tbldocumenthdr as hdr JOIN tbldocumentdtl as dtl ON dtl.docno = hdr.docno"
 	rows, err := con.Query(query)
 	if err != nil {
 		fmt.Println(err)
@@ -55,7 +57,7 @@ func GetDatadocuments() Datadocuments {
 	for rows.Next() {
 		datadocument := Datadocument{}
 
-		eror := rows.Scan(&datadocument.Docno, &datadocument.Description, &datadocument.Status, &datadocument.ActiveInd, &datadocument.CreateBy, &datadocument.CreateDt, &datadocument.LastupBy, &datadocument.LastupDt)
+		eror := rows.Scan(&datadocument.Docno, &datadocument.ModulCode, &datadocument.Description, &datadocument.Status, &datadocument.ActiveInd, &datadocument.MenuCode, &datadocument.CreateBy, &datadocument.CreateDt, &datadocument.LastupBy, &datadocument.LastupDt)
 		if eror != nil {
 			fmt.Println(eror)
 		}

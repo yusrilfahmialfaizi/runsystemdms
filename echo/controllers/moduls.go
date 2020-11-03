@@ -14,6 +14,7 @@ func GetMenuparents(c echo.Context) error {
 	fmt.Println("Getting menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
+
 // Controller untuk get panjang data parent
 func GetParentsLength(c echo.Context) error {
 	result := models.GetParentsLength()
@@ -22,7 +23,7 @@ func GetParentsLength(c echo.Context) error {
 }
 
 // Controller untuk get menucode anak paling bontot
-func GetLastChild(c echo.Context) error{
+func GetLastChild(c echo.Context) error {
 	result := models.GetLastChild()
 	fmt.Println("Getting last childs .....")
 	return c.JSON(http.StatusOK, result)

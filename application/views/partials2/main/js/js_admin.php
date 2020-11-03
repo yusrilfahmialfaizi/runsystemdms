@@ -49,7 +49,7 @@
                             for (k = 0; k < data3.length; k++) {
                               if (data.menucode == data3[k].menucode) {
                                 sub = '<li><a href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
-                                console.log("Ya" + k + " : " + data3[k].menucode)
+                                // console.log("Ya" + k + " : " + data3[k].menucode)
                                 $("#" + data.parent).append(sub);
                               }
                             }
@@ -75,6 +75,9 @@
         // window.location = "<?php echo base_url("tabel") ?>";
       }
     </script>
+
+    <!-- Load Tabel JS-->
+    <script src="<?php echo base_url("assets/js/load-tabel.js") ?>"></script>
 
     <!-- latest jquery-->
     <script src="<?php echo base_url("assets/js/jquery-3.5.1.min.js") ?>"></script>

@@ -67,7 +67,7 @@ type Datasubmodule struct {
 	LastupDt nullable.String `json:"lastupdt"`
 }
 type ParentLength struct {
-	ParentLength   nullable.String `json:"parentlength"`
+	ParentLength nullable.String `json:"parentlength"`
 }
 type LastChild struct {
 	MenuCode nullable.String `json:"menucode"`
@@ -120,6 +120,7 @@ func GetMenuParents() Menuparents {
 	}
 	return result
 }
+
 // function untuk mengambil panjang data parent dari tabel menu berdasarkan parent
 func GetParentsLength() ParentLengths {
 	connection = config.Connection()
@@ -133,7 +134,7 @@ func GetParentsLength() ParentLengths {
 
 	for rows.Next() {
 		parentLength := ParentLength{}
-		
+
 		eror := rows.Scan(&parentLength.ParentLength)
 		if eror != nil {
 			fmt.Println(eror)
@@ -142,17 +143,18 @@ func GetParentsLength() ParentLengths {
 	}
 	return result
 }
+
 //function untuk mengambil anak paling bontotadri tabel menu
 func GetLastChild() LastChilds {
 	connection = config.Connection()
 	query := "SELECT menucode FROM tblmenu WHERE parent IS NOT NULL AND menucode IN (SELECT menucode FROM tblmenu WHERE menucode IN (SELECT parent FROM tblmenu))"
 	rows, eror1 := connection.Query(query)
-	if eror1 != nil{
+	if eror1 != nil {
 		fmt.Println("eror 1 : ", eror1)
 	}
 	defer rows.Close()
 	result := LastChilds{}
-	for rows.Next(){
+	for rows.Next() {
 		lastChild := LastChild{}
 		eror2 := rows.Scan(&lastChild.MenuCode)
 		if eror2 != nil {
