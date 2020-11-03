@@ -28,36 +28,6 @@ type Menuparent struct {
 	LastupBy nullable.String `json:"lastupby"`
 	LastupDt nullable.String `json:"lastupdt"`
 }
-type Menusubparent struct {
-	MenuCode string          `json:"menucode"`
-	MenuDesc string          `json:"menudesc"`
-	Parent   nullable.String `json:"parent"`
-	Param    nullable.String `json:"param"`
-	Icon     nullable.String `json:"icon"`
-	StdInd   string          `json:"stdind"`
-	SpcInd   string          `json:"spcind"`
-	Visible  string          `json:"visible"`
-	MenuCat  string          `json:"menucat"`
-	CreateBy string          `json:"createby"`
-	CreateDt string          `json:"createdt"`
-	LastupBy nullable.String `json:"lastupby"`
-	LastupDt nullable.String `json:"lastupdt"`
-}
-type Menusubsubparent struct {
-	MenuCode string          `json:"menucode"`
-	MenuDesc string          `json:"menudesc"`
-	Parent   nullable.String `json:"parent"`
-	Param    nullable.String `json:"param"`
-	Icon     nullable.String `json:"icon"`
-	StdInd   string          `json:"stdind"`
-	SpcInd   string          `json:"spcind"`
-	Visible  string          `json:"visible"`
-	MenuCat  string          `json:"menucat"`
-	CreateBy string          `json:"createby"`
-	CreateDt string          `json:"createdt"`
-	LastupBy nullable.String `json:"lastupby"`
-	LastupDt nullable.String `json:"lastupdt"`
-}
 
 type Datasubmodule struct {
 	Parent   nullable.String `json:"parent"`
@@ -82,14 +52,6 @@ type ParentLengths struct {
 }
 type LastChilds struct {
 	LastChilds []LastChild `json:"lastChilds"`
-}
-
-type Menusubparents struct {
-	Menusubparents []Menusubparent `json:"menusubparent"`
-}
-
-type Menusubsubparents struct {
-	Menusubsubparents []Menusubsubparent `json:"menusubsubparent"`
 }
 
 type Datasubmodules struct {
@@ -147,7 +109,7 @@ func GetParentsLength() ParentLengths {
 //function untuk mengambil anak paling bontotadri tabel menu
 func GetLastChild() LastChilds {
 	connection = config.Connection()
-	query := "SELECT menucode FROM tblmenu WHERE parent IS NOT NULL AND menucode IN (SELECT menucode FROM tblmenu WHERE menucode IN (SELECT parent FROM tblmenu))"
+	query := "SELECT menucode FROM tblmenu A WHERE EXISTS (SELECT NULL FROM tblmenu B WHERE B.parent = A.MenuCode)"
 	rows, eror1 := connection.Query(query)
 	if eror1 != nil {
 		fmt.Println("eror 1 : ", eror1)
@@ -161,56 +123,6 @@ func GetLastChild() LastChilds {
 			fmt.Println("eror 2 : ", eror2)
 		}
 		result.LastChilds = append(result.LastChilds, lastChild)
-	}
-	return result
-}
-
-// get data dari tabel menu berdasarkan parent
-func GetMenusubparents(c *CustomContext) Menusubparents {
-	parent := c.FormValue("parent")
-	connection := config.Connection()
-	query := "SELECT menucode,menudesc,parent,param,icon,stdind,spcind,visible,menucat,createby,createdt,lastupby,lastupdt FROM tblmenu WHERE parent = " + parent
-	rows, eror1 := connection.Query(query)
-	if eror1 != nil {
-		fmt.Println(eror1)
-	}
-	defer rows.Close()
-	result := Menusubparents{}
-
-	for rows.Next() {
-		menusubparent := Menusubparent{}
-		eror2 := rows.Scan(&menusubparent.MenuCode, &menusubparent.MenuDesc, &menusubparent.Parent, &menusubparent.Param,
-			&menusubparent.Icon, &menusubparent.StdInd, &menusubparent.SpcInd, &menusubparent.Visible, &menusubparent.MenuCat,
-			&menusubparent.CreateBy, &menusubparent.CreateDt, &menusubparent.LastupBy, &menusubparent.LastupDt)
-		if eror2 != nil {
-			fmt.Println(eror2)
-		}
-		result.Menusubparents = append(result.Menusubparents, menusubparent)
-	}
-	return result
-}
-
-// get data dari tabel menu berdasarkan parent
-func GetMenusubsubparents(c *CustomContext) Menusubsubparents {
-	parent := c.FormValue("parent")
-	connection := config.Connection()
-	query := "SELECT menucode,menudesc,parent,param,icon,stdind,spcind,visible,menucat,createby,createdt,lastupby,lastupdt FROM tblmenu WHERE parent = " + parent
-	rows, eror1 := connection.Query(query)
-	if eror1 != nil {
-		fmt.Println(eror1)
-	}
-	defer rows.Close()
-	result := Menusubsubparents{}
-
-	for rows.Next() {
-		menusubsubparent := Menusubsubparent{}
-		eror2 := rows.Scan(&menusubsubparent.MenuCode, &menusubsubparent.MenuDesc, &menusubsubparent.Parent, &menusubsubparent.Param,
-			&menusubsubparent.Icon, &menusubsubparent.StdInd, &menusubsubparent.SpcInd, &menusubsubparent.Visible, &menusubsubparent.MenuCat,
-			&menusubsubparent.CreateBy, &menusubsubparent.CreateDt, &menusubsubparent.LastupBy, &menusubsubparent.LastupDt)
-		if eror2 != nil {
-			fmt.Println(eror2)
-		}
-		result.Menusubsubparents = append(result.Menusubsubparents, menusubsubparent)
 	}
 	return result
 }

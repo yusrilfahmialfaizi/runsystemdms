@@ -55,8 +55,8 @@
                                 $("#" + data.parent).append(sub);
                               }
                             }
-                            sub = '<li><a href="<?php echo base_url("editor")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
-                            $("#"+data.parent).append(sub);
+                              sub = '<li><a href="<?php echo base_url("editor")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
+                              $("#"+data.parent).append(sub);
                           }
                         }
                       };
