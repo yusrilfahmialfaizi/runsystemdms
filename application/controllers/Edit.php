@@ -6,7 +6,7 @@ class Edit extends CI_Controller {
 	
 	public function index()
 	{
-        $this->load->view('content/admin/edit');
+        $this->load->view('partials2/main/page/page_edit');
 	}
 
 	

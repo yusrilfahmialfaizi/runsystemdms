@@ -1,4 +1,4 @@
-<?php $this->load->view('partials2/main/header/header_admin'); ?>
+
 <script type="text/javascript" src="assets/ckeditor/ckeditor.js"> </script>
 <div class="page-body">
 	<div class="container-fluid">
@@ -30,4 +30,4 @@
 	</div>
 </div>
 <!-- Container-fluid Ends-->
-<?php $this->load->view('partials2/main/footer'); ?>
+

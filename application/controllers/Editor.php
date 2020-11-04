@@ -6,7 +6,7 @@ class Editor extends CI_Controller {
 	
 	public function index()
 	{
-        $this->load->view('content/admin/editor');
+        $this->load->view('partials2/main/page/page_editor');
 	}
 
 	
