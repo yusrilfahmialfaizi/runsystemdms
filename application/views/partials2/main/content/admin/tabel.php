@@ -8,7 +8,7 @@
         </div>
         <div class="col-lg-6 breadcrumb-right">
           <ol class="breadcrumb">
-            <?php $this->load->view("partials2/main/breadcrumb") ?>
+            <?php $this->load->view("partials2/main/breadcrumb/breadcrumb") ?>
           </ol>
         </div>
       </div>

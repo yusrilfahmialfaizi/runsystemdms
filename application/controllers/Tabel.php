@@ -9,9 +9,7 @@ class Tabel extends CI_Controller {
 		// if ($this->session->userdata('status') != "login") {
 		// 	redirect("login");
 		// }
-		$this->load->view('partials2/main/header/header_admin');
-		$this->load->view('content/admin/tabel');
-		$this->load->view('partials2/main/footer');
+		$this->load->view('partials2/main/page/page_tabel');
 	}
 }
 ?>

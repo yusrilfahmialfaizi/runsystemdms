@@ -1,5 +1,5 @@
 
-          <?php $this->load->view("partials2/main/foot") ?>
+          <?php $this->load->view("partials2/main/foot/foot") ?>
           <!-- </div> -->
 </div>
     </div>
