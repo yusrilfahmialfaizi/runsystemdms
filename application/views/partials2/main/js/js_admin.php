@@ -1,6 +1,8 @@
     <script type="text/javascript">
       $(document).ready(function() {
-        if ("<?php $this->uri->segment(3) ?>" != "home") {
+        var uri = "<?php echo $this->uri->segment("1"); ?>";
+
+        if (uri != "home") {
           $("#sidebar").removeClass("iconbar-second-close");
         }
         // get data dynamic sidebar menu 
@@ -67,6 +69,9 @@
             });
           }
         });
+        $("#sidebar-toggle").on("click", function(){
+          $("li").removeClass("open");
+        });
       });
     </script>
     <script type="text/javascript">
@@ -74,7 +79,6 @@
       function modules(id_li) {
         $("li").removeClass("open");
         $("#" + id_li).even().addClass("open");
-        // window.location = "<?php echo base_url("tabel") ?>";
       }
     </script>
 

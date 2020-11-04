@@ -27,6 +27,6 @@
 </script>
 <script type="text/javascript">
     function project(){
-      $("#sidebar").removeClass("iconbar-second-close");
+      window.location = "<?php echo base_url("tabel") ?>";
     }
 </script>
