@@ -1,3 +1,4 @@
+<?php $this->load->view('partials2/main/header/header_admin'); ?>
         <div class="page-body">
           <div class="container-fluid">
             <div class="page-header">
@@ -15,3 +16,4 @@
             </div>
           </div>
           <?php $this->load->view("partials2/main/container_fluid") ?>
+<?php $this->load->view('partials2/main/footer'); ?>
