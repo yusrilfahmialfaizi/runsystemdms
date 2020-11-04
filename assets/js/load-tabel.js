@@ -21,7 +21,7 @@ var url = 'http://127.0.0.1:8080/runsystemdms/getDataDocuments';
                     "<td>"+data[i].createdt+"</td>"+
                     "<td>"+data[i].lastupby+"</td>"+
                     "<td>"+data[i].lastupdt+"</td>"+
-                    "<td>Action</td>"+
+                    "<td>Edit</td>"+
                     "<tr>"); 
             }
             $("#datacos").html(r);
