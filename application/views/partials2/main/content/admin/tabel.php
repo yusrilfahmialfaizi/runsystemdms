@@ -39,6 +39,19 @@
                 </thead>
                 <tbody id="datacos">
                   <!-- js -->
+                  <?php foreach ($post as $key) {
+		 	                for ($i=0; $i < count($key); $i++) { ?>
+                    <tr>
+		                  <td><?php echo $key[$i]["docno"];?></td>
+		                  <td><?php echo $key[$i]["activeind"];?></td>
+		                  <td><?php echo $key[$i]["status"];?></td>
+		                  <td><?php echo $key[$i]["createby"];?></td>
+		                  <td><?php echo $key[$i]["createdt"];?></td>
+		                  <td><?php echo $key[$i]["lastupby"];?></td>
+		                  <td><?php echo $key[$i]["lastupdt"];?></td>
+		                  <td>Action</td>
+                    </tr>
+	                <?php }} ?>
                 </tbody>
                 <tfoot>
                   <tr>

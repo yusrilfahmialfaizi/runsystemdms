@@ -79,8 +79,6 @@
       }
     </script>
 
-    <!-- Load Tabel JS-->
-    <?php $this->load->view("partials2/main/js/load-table"); ?>;
 
     <!-- latest jquery-->
     <script src="<?php echo base_url("assets/js/jquery-3.5.1.min.js") ?>"></script>
