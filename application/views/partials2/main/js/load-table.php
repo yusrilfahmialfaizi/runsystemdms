@@ -1,7 +1,8 @@
+<script type="text/javascript">
 // get data dynamic sidebar menu 
 $(document).ready(function(){
-var url = 'http://127.0.0.1:8080/runsystemdms/getDataDocuments';
-    $.ajax({
+     var url = 'http://127.0.0.1:8080/runsystemdms/getDataDocuments';
+     $.ajax({
         type: 'GET',
         url: url,
         dataType: 'json',
@@ -12,9 +13,8 @@ var url = 'http://127.0.0.1:8080/runsystemdms/getDataDocuments';
             console.log(data);
             var r = [];
             for (i = 0; i < data.length; i++) {//i is index of array
-                r.push("<tr>"+
+               r.push("<tr>"+
                     "<td>"+data[i].docno+"</td>"+
-                    "<td>"+data[i].description+"</td>"+
                     "<td>"+data[i].activeind+"</td>"+
                     "<td>"+data[i].status+"</td>"+
                     "<td>"+data[i].createby+"</td>"+
@@ -25,6 +25,7 @@ var url = 'http://127.0.0.1:8080/runsystemdms/getDataDocuments';
                     "<tr>"); 
             }
             $("#datacos").html(r);
-        }
-    });
+          }
+     });
 });
+</script>

@@ -28,7 +28,6 @@
                 <thead>
                   <tr>
                     <th>Docno</th>
-                    <th>Description</th>
                     <th>Active Ind</th>
                     <th>Status</th>
                     <th>Create By</th>
@@ -44,7 +43,6 @@
                 <tfoot>
                   <tr>
                     <th>Docno</th>
-                    <th>Description</th>
                     <th>Active Ind</th>
                     <th>Status</th>
                     <th>Create By</th>

@@ -43,9 +43,7 @@
                       var u = 2;
                       if (data.parent != null) {  
                         if (data.parent.length == u) { 
-                          // <div class="dropdown-basic"><div class="dropdown"><div class="btn-group mb-0"><button class="dropbtn btn-primary" type="button">Action <span><i class="icofont icofont-arrow-down"></i></span></button><div class="dropdown-content"><a href="#">Action</a><a href="#">Another Action</a><a href="#">Something Else Here</a><div class="dropdown-divider"></div><a href="#">Separated Link </a></div></div></div></div>
                           menu = '<li id="' + i + '"><div class="dropdown-basic"><div class="dropdown"><div class="btn-group mb-0"><button class="dropbtn btn-primary" type="button">'+data.menudesc+' <span><i class="icofont icofont-arrow-down"></i></span></button><div class="dropdown-content"><a href="<?php echo base_url("tabel")?>">Add Document</a><a href="javascript:modules('+i+')">Open Submodules</a></div></div></div></div><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data.menucode+'"></li></ul></li>';
-                          // menu = '<li id="' + i + '"><a class="bar-icons" href="javascript:modules('+i+')" ><i></i><span>'+data.menudesc+'</div></span></a><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data.menucode+'"></li></ul></li>';
                           $("#module").append(menu);
                         }
                         for (var j = 0; j < data2.length; j++) {
@@ -53,7 +51,6 @@
                             for (k = 0; k < data3.length; k++) {
                               if (data.menucode == data3[k].menucode) {
                                 sub = '<li><a href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
-                                // console.log("Ya" + k + " : " + data3[k].menucode)
                                 $("#" + data.parent).append(sub);
                               }
                             }
@@ -83,7 +80,7 @@
     </script>
 
     <!-- Load Tabel JS-->
-    <script src="<?php echo base_url("assets/js/load-tabel.js") ?>"></script>
+    <?php $this->load->view("partials2/main/js/load-table"); ?>;
 
     <!-- latest jquery-->
     <script src="<?php echo base_url("assets/js/jquery-3.5.1.min.js") ?>"></script>
