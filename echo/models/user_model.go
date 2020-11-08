@@ -21,7 +21,7 @@ type User struct {
 	AvatarImage      nullable.String `json:"avatarimage"`
 	DeviceId         nullable.String `json:"deviceid"`
 	CreateBy         string          `json:"createby"`
-	CreateAt         string          `json:"createat"`
+	CreateDt         string          `json:"createdt"`
 	LastupBy         nullable.String `json:"lastupby"`
 	LastupDt         nullable.String `json:"lastupdt"`
 }
@@ -59,7 +59,7 @@ func (ns *NullString) MarshalJSON() ([]byte, error) {
 
 func GetUser() Users {
 	conn := config.Connection()
-	queryStatement := "Select usercode, username, grpcode, pwd, expdt, notifyind, hasqiscusaccount, avatarimage, deviceid, createby, createat,lastupby, lastupdt From tbluser"
+	queryStatement := "Select usercode, username, grpcode, pwd, expdt, notifyind, hasqiscusaccount, avatarimage, deviceid, createby, createdt,lastupby, lastupdt From tbluser"
 
 	rows, err := conn.Query(queryStatement)
 	fmt.Println("ROWS : ", rows)
@@ -75,7 +75,7 @@ func GetUser() Users {
 
 		er := rows.Scan(&user.UserCode, &user.Username, &user.GrpCode,
 			&user.Pwd, &user.ExpDate, &user.NotifyInd, &user.HasQiscusAccount, &user.AvatarImage, &user.DeviceId,
-			&user.CreateBy, &user.CreateAt, &user.LastupBy, &user.LastupDt)
+			&user.CreateBy, &user.CreateDt, &user.LastupBy, &user.LastupDt)
 		if er != nil {
 			fmt.Println("ER : ", er)
 			fmt.Println("err2")

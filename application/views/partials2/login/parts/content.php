@@ -71,15 +71,15 @@
                         } else if (data.message == "username tidak terdaftar") {
                             var text = "Username anda belum terdaftar atau salah !!!"
                             document.getElementById("wrong").innerHTML = text;
-                            document.getElementById("wrong").style.color = "#ff6666";
-                            document.getElementById("pwd").style.color = "#ff6666";
-                            document.getElementById("usercode").style.color = "#ff6666";
+                            document.getElementById("wrong").style.color = "#FFFFFF";
+                            document.getElementById("pwd").style.color = "#ff0000";
+                            document.getElementById("usercode").style.color = "#ff0000";
                         } else if (data.message == "password salah") {
                             var text = "Password anda salah !!!"
                             document.getElementById("wrong").innerHTML = text;
-                            document.getElementById("wrong").style.color = "#ff6666";
-                            document.getElementById("pwd").style.color = "#ff6666";
-                            document.getElementById("usercode").style.color = "#ff6666";
+                            document.getElementById("wrong").style.color = "#FFFFFF";
+                            document.getElementById("pwd").style.color = "#ff0000";
+                            document.getElementById("usercode").style.color = "#ff0000";
                         }
                     }
                 });

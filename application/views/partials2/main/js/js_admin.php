@@ -6,9 +6,8 @@
           $("#sidebar").removeClass("iconbar-second-close");
         }
         // get data dynamic sidebar menu 
-        var url1 = 'http://127.0.0.1:8080/runsystemdms/getMenuParents';
-        var url2 = 'http://127.0.0.1:8080/runsystemdms/getParentsLength';
-        var url3 = 'http://127.0.0.1:8080/runsystemdms/getLastChilds';
+        var url1 = 'http://127.0.0.1:8080/runsystemdms/getModuls';
+        var url2 = 'http://127.0.0.1:8080/runsystemdms/getDynamicMenuParts';
         var modul = [];
         var menu = '';
         var menus = 'menu';
@@ -22,7 +21,7 @@
           cache: false,
           success: function(data1) {
             data1 = JSON.parse(JSON.stringify(data1));
-            data1 = data1.menuparent;
+            data1 = data1.menu[0].modulmenu;
             $.ajax({ // to get length of parent
               type: 'GET',
               url: url2,
@@ -30,36 +29,24 @@
               cache: false,
               success: function(data2) {
                 data2 = JSON.parse(JSON.stringify(data2));
-                data2 = data2.parentlength;
-                $.ajax({
-                  type: 'GET',
-                  url: url3,
-                  dataType: 'json',
-                  cache: false,
-                  success: function(data3) {
-                    data3 = JSON.parse(JSON.stringify(data3));
-                    data3 = data3.lastChilds;
-                    $.each(data1, function(i, data) {
-                      var u = 2;
-                      if (data.parent != null) {  
-                        if (data.parent.length == u) { 
-                          menu = '<li id="' + i + '"><div class="dropdown-basic"><div class="dropdown"><div class="btn-group mb-0"><button class="dropbtn btn-primary" type="button">'+data.menudesc+' <span><i class="icofont icofont-arrow-down"></i></span></button><div class="dropdown-content"><a href="<?php echo base_url("tabel")?>">Add Document</a><a href="javascript:modules('+i+')">Open Submodules</a></div></div></div></div><ul class="iconbar-mainmenu custom-scrollbar"><li class="iconbar-header">Sub Module</li><li id="'+data.menucode+'"></li></ul></li>';
-                          $("#module").append(menu);
+                data2 = data2.parts[0];
+                $.each(data1, function(i, data){
+                var u = 0;
+                  if (data.parent.length == u) { 
+                    sub = '<li><a href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
+                    $("#" + data.modulcode).append(sub);
+                  }
+                  for (var j = 0; j < data2.parentlength.length; j++) {
+                    if (data.parent.length == (u = u + 2)) {
+                      for (k = 0; k < data2.lastChilds.length; k++) {
+                        if (data.menucode == data2.lastChilds[k].menucode) {
+                          sub = '<li><a href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
+                          $("#" + data.parent).append(sub);
                         }
-                        for (var j = 0; j < data2.length; j++) {
-                          if (data.parent.length == (u = u + 2)) {
-                            for (k = 0; k < data3.length; k++) {
-                              if (data.menucode == data3[k].menucode) {
-                                sub = '<li><a href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
-                                $("#" + data.parent).append(sub);
-                              }
-                            }
-                              sub = '<li><a href="<?php echo base_url("editor")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
-                              $("#"+data.parent).append(sub);
-                          }
-                        }
-                      };
-                    });
+                      }
+                        sub = '<li><a href="<?php echo base_url("editor")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
+                        $("#"+data.parent).append(sub);
+                    }
                   }
                 });
               }

@@ -13,21 +13,25 @@ type CustomContext struct {
 	echo.Context
 }
 
-type Menuparent struct {
-	MenuCode string          `json:"menucode"`
-	MenuDesc string          `json:"menudesc"`
-	Parent   nullable.String `json:"parent"`
-	Param    nullable.String `json:"param"`
-	Icon     nullable.String `json:"icon"`
-	StdInd   string          `json:"stdind"`
-	SpcInd   string          `json:"spcind"`
-	Visible  string          `json:"visible"`
-	MenuCat  string          `json:"menucat"`
+type Modul struct {
+	ModulCode string          `json:"modulcode"`
+	ModulName string          `json:"modulname"`
 	CreateBy string          `json:"createby"`
 	CreateDt string          `json:"createdt"`
 	LastupBy nullable.String `json:"lastupby"`
 	LastupDt nullable.String `json:"lastupdt"`
 }
+type ModulMenu struct {
+	MenuCode string          `json:"menucode"`
+	ModulCode string          `json:"modulcode"`
+	MenuDesc string          `json:"menudesc"`
+	Parent   nullable.String `json:"parent"`
+	CreateBy string          `json:"createby"`
+	CreateDt string          `json:"createdt"`
+	LastupBy nullable.String `json:"lastupby"`
+	LastupDt nullable.String `json:"lastupdt"`
+}
+
 
 type Datasubmodule struct {
 	Parent   nullable.String `json:"parent"`
@@ -43,15 +47,21 @@ type LastChild struct {
 	MenuCode nullable.String `json:"menucode"`
 }
 
-type Menuparents struct {
-	Menuparents []Menuparent `json:"menuparent"`
+type Moduls struct {
+	Moduls []Modul `json:"modul"`
+	ModulMenu []ModulMenu `json:"modulmenu"`
 }
 
-type ParentLengths struct {
-	ParentLengths []ParentLength `json:"parentlength"`
+type Menu struct {
+	Menu []Moduls `json:"menu"`
 }
-type LastChilds struct {
+
+type DynamicMenu struct {
+	ParentLengths []ParentLength `json:"parentlength"`
 	LastChilds []LastChild `json:"lastChilds"`
+}
+type Parts struct {
+	Parts []DynamicMenu `json:"parts"`
 }
 
 type Datasubmodules struct {
@@ -61,71 +71,102 @@ type Datasubmodules struct {
 var connection *sql.DB
 
 // function untuk mengambil data dari tabel menu berdasarkan parent yang memiliki 2 digit angka
-func GetMenuParents() Menuparents {
+func GetModuls() Menu {
 	connection = config.Connection()
-	query := "SELECT MenuCode, MenuDesc, Parent, Param, Icon, StdInd, SpcInd, Visible, MenuCat, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmenu "
-	rows, err := connection.Query(query)
-	if err != nil {
-		fmt.Println(err)
+	query1 := "SELECT ModulCode, ModulName, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmodul "
+	query2 := "SELECT MenuCode, ModulCode, MenuDesc, Parent, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmodulmenu "
+	rows1, err1 := connection.Query(query1)
+	rows2, err2 := connection.Query(query2)
+	if err1 != nil && err2 != nil{
+		fmt.Println(err1)
+		fmt.Println(err2)
 	}
-	defer rows.Close()
-	result := Menuparents{}
+	defer rows1.Close()
+	defer rows2.Close()
+	all_result := Menu{}
+	result := Moduls{}
 
-	for rows.Next() {
-		menuparent := Menuparent{}
+	for rows1.Next() {
+		modul := Modul{}
 
-		eror := rows.Scan(&menuparent.MenuCode, &menuparent.MenuDesc, &menuparent.Parent, &menuparent.Param, &menuparent.Icon, &menuparent.StdInd, &menuparent.SpcInd, &menuparent.Visible, &menuparent.MenuCat, &menuparent.CreateBy, &menuparent.CreateDt, &menuparent.LastupBy, &menuparent.LastupDt)
+		eror := rows1.Scan(&modul.ModulCode, &modul.ModulName, &modul.CreateBy, &modul.CreateDt, &modul.LastupBy, &modul.LastupDt)
 		if eror != nil {
 			fmt.Println(eror)
 		}
-		result.Menuparents = append(result.Menuparents, menuparent)
+		result.Moduls = append(result.Moduls, modul)
 	}
-	return result
+	for rows2.Next() {
+		modulmenu := ModulMenu{}
+
+		eror := rows2.Scan(&modulmenu.MenuCode, &modulmenu.ModulCode, &modulmenu.MenuDesc, &modulmenu.Parent, &modulmenu.CreateBy, &modulmenu.CreateDt, &modulmenu.LastupBy, &modulmenu.LastupDt)
+		if eror != nil {
+			fmt.Println(eror)
+		}
+		result.ModulMenu = append(result.ModulMenu, modulmenu)
+	}
+	all_result.Menu = append(all_result.Menu, result)
+	return all_result
 }
+// function untuk mengambil data dari tabel ModulMenu
+// func GetModulMenu() ModulMenus {
+// 	connection = config.Connection()
+// 	query2 := "SELECT MenuCode, ModulCode, MenuDesc, Parent, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmodulmenu "
+// 	rows2, err2 := connection.Query(query2)
+// 	if err2 != nil{
+// 		fmt.Println(err2)
+// 	}
+// 	defer rows2.Close()
+// 	result := Moduls{}
+
+// 	for rows2.Next() {
+// 		modulmenu := ModulMenu{}
+
+// 		eror := rows2.Scan(&modulmenu.MenuCode, &modulmenu.ModulCode, &modulmenu.MenuDesc, &modulmenu.Parent, &modulmenu.CreateBy, &modulmenu.CreateDt, &modulmenu.LastupBy, &modulmenu.LastupDt)
+// 		if eror != nil {
+// 			fmt.Println(eror)
+// 		}
+// 		result.ModulMenu = append(result.ModulMenu, modulmenu)
+// 	}
+// 	return result
+// }
 
 // function untuk mengambil panjang data parent dari tabel menu berdasarkan parent
-func GetParentsLength() ParentLengths {
+func GetDynamicMenuParts() Parts {
 	connection = config.Connection()
-	query := "SELECT Length(parent) FROM tblmenu WHERE parent IS NOT NULL GROUP BY Length(parent) "
-	rows, err := connection.Query(query)
-	if err != nil {
-		fmt.Println(err)
+	query1 := "SELECT Length(parent) FROM tblmodulmenu GROUP BY Length(parent) "
+	query2 := "SELECT menucode FROM tblmodulmenu A WHERE EXISTS (SELECT NULL FROM tblmodulmenu B WHERE B.parent = A.MenuCode)"
+	rows1, err1 := connection.Query(query1)
+	rows2, err2 := connection.Query(query2)
+	if err1 != nil && err2 != nil{
+		fmt.Println(err1, err2)
 	}
-	defer rows.Close()
-	result := ParentLengths{}
+	defer rows1.Close()
+	defer rows2.Close()
+	all_result := Parts{}
+	result := DynamicMenu{}
 
-	for rows.Next() {
+	for rows1.Next() {
 		parentLength := ParentLength{}
 
-		eror := rows.Scan(&parentLength.ParentLength)
+		eror := rows1.Scan(&parentLength.ParentLength)
 		if eror != nil {
 			fmt.Println(eror)
 		}
 		result.ParentLengths = append(result.ParentLengths, parentLength)
 	}
-	return result
-}
-
-//function untuk mengambil anak paling bontotadri tabel menu
-func GetLastChild() LastChilds {
-	connection = config.Connection()
-	query := "SELECT menucode FROM tblmenu A WHERE EXISTS (SELECT NULL FROM tblmenu B WHERE B.parent = A.MenuCode)"
-	rows, eror1 := connection.Query(query)
-	if eror1 != nil {
-		fmt.Println("eror 1 : ", eror1)
-	}
-	defer rows.Close()
-	result := LastChilds{}
-	for rows.Next() {
+	for rows2.Next() {
 		lastChild := LastChild{}
-		eror2 := rows.Scan(&lastChild.MenuCode)
+		eror2 := rows2.Scan(&lastChild.MenuCode)
 		if eror2 != nil {
 			fmt.Println("eror 2 : ", eror2)
 		}
 		result.LastChilds = append(result.LastChilds, lastChild)
 	}
-	return result
+	all_result.Parts = append(all_result.Parts, result)
+
+	return all_result
 }
+
 
 // function update data berdasarkan menucode pada tabel menu
 func UpdateDataSubModules(c *CustomContext) Datasubmodules {

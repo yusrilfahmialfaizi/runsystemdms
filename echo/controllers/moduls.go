@@ -9,25 +9,30 @@ import (
 )
 
 // Controller untuk get data
-func GetMenuparents(c echo.Context) error {
-	result := models.GetMenuParents()
+func GetModuls(c echo.Context) error {
+	result := models.GetModuls()
 	fmt.Println("Getting menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
+// func GetModulMenu(c echo.Context) error {
+// 	result := models.GetModulMenu()
+// 	fmt.Println("Getting menu parent...")
+// 	return c.JSON(http.StatusOK, result)
+// }
 
 // Controller untuk get panjang data parent
-func GetParentsLength(c echo.Context) error {
-	result := models.GetParentsLength()
+func GetDynamicMenuParts(c echo.Context) error {
+	result := models.GetDynamicMenuParts()
 	fmt.Println("Getting parent length...")
 	return c.JSON(http.StatusOK, result)
 }
 
 // Controller untuk get menucode anak paling bontot
-func GetLastChild(c echo.Context) error {
-	result := models.GetLastChild()
-	fmt.Println("Getting last childs .....")
-	return c.JSON(http.StatusOK, result)
-}
+// func GetLastChild(c echo.Context) error {
+// 	result := models.GetLastChild()
+// 	fmt.Println("Getting last childs .....")
+// 	return c.JSON(http.StatusOK, result)
+// }
 
 // Controller untuk update data
 func UpdateDataSubModules(c echo.Context) error {

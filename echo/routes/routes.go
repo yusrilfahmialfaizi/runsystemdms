@@ -34,9 +34,11 @@ func Routes() *echo.Echo {
 	e.GET("/runsystemdms/getUsers", controllers.GetUser)
 	e.POST("/runsystemdms/login", controllers.Login)
 	e.GET("/runsystemdms/getPG", controllers.GetProjectGroup)
-	e.GET("/runsystemdms/getMenuParents", controllers.GetMenuparents)
-	e.GET("/runsystemdms/getParentsLength", controllers.GetParentsLength)
-	e.GET("/runsystemdms/getLastChilds", controllers.GetLastChild)
+	e.GET("/runsystemdms/getModuls", controllers.GetModuls)
+	// e.GET("/runsystemdms/getModulMenu", controllers.GetModulMenu)
+	e.GET("/runsystemdms/getDynamicMenuParts", controllers.GetDynamicMenuParts)
+	e.GET("/runsystemdms/getGenerateCode", controllers.GenerateCode)
+	// e.GET("/runsystemdms/getLastChilds", controllers.GetLastChild)
 
 	e.PUT("/runsystemdms/updateDataSubModules", controllers.UpdateDataSubModules)
 

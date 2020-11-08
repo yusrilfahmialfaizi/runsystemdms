@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"echo/config"
 	"fmt"
+	//"strconv"
 
 	nullable "gopkg.in/guregu/null.v3"
 )
@@ -39,6 +40,9 @@ type Datadocuments struct {
 }
 type InsDatadocuments struct {
 	InsDatadocuments []InsDatadocument `json:"insdatadocument"`
+}
+type GenerateCodes struct {
+	DocNo int `json:"docno"`
 }
 
 var con *sql.DB
@@ -193,4 +197,25 @@ func DeleteDocs(c *CustomContext) Datadocuments {
 	// 	panic(err2)
 	// }
 
+}
+// Generate docno
+func GenerateCode () GenerateCodes{
+	con = config.Connection()
+	query := "SELECT MAX(LEFT(tbldocumenthdr.Docno,4)) AS DocNo FROM tbldocumenthdr WHERE DATE(createdt) = DATE(NOW()) ORDER BY DocNo DESC"
+
+	rows, err := con.Query(query)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer rows.Close()
+	result := GenerateCodes{}
+	for rows.Next(){
+		eror := rows.Scan(&result.DocNo)
+		if eror != nil {
+			fmt.Println(eror)
+		}
+		fmt.Println("Data : ",&result.DocNo)
+		fmt.Println("Rows : ",rows)
+	}
+	return result
 }

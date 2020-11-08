@@ -70,6 +70,11 @@ func DelDocument(c echo.Context) error {
 	fmt.Println("Update data sub module ...")
 	return c.JSON(http.StatusOK, result)
 }
+func GenerateCode(c echo.Context) error {
+	result := models.GenerateCode()
+	fmt.Println("Getting generate code...")
+	return c.JSON(http.StatusOK, result)
+}
 
 //function controller untuk delete data document
 // func DelDocument(con *sql.DB) echo.HandlerFunc {
