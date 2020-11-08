@@ -43,35 +43,39 @@
                     if ($key != null) {
                       # code...
                       for ($i=0; $i < count($key); $i++) { ?>
-                      
-                    <tr>
-		                  <td><?php echo $key[$i]["docno"];?></td>
-		                  <td><?php echo $key[$i]["activeind"];?></td>
-		                  <td><?php echo $key[$i]["status"];?></td>
-		                  <td><?php echo $key[$i]["createby"];?></td>
-		                  <td><?php echo $key[$i]["createdt"];?></td>
-		                  <td><?php echo $key[$i]["lastupby"];?></td>
-		                  <td><?php echo $key[$i]["lastupdt"];?></td>
-		                  <td>Action</td>
-                    </tr>
-	                <?php }}} ?>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th>Docno</th>
-                    <th>Active Ind</th>
-                    <th>Status</th>
-                    <th>Create By</th>
-                    <th>Create Date</th>
-                    <th>Last Update By</th>
-                    <th>Last Update Date</th>
-                    <th>Action</th>
-                  </tr>
-                </tfoot>
-              </table>
+
+                        <tr>
+                          <td><?php echo $key[$i]["docno"];?></td>
+                          <td><?php echo $key[$i]["activeind"];?></td>
+                          <td><?php echo $key[$i]["status"];?></td>
+                          <td><?php echo $key[$i]["createby"];?></td>
+                          <td><?php echo $key[$i]["createdt"];?></td>
+                          <td><?php echo $key[$i]["lastupby"];?></td>
+                          <td><?php echo $key[$i]["lastupdt"];?></td>
+                          <td>
+                            <div class="form-group">
+                              <a href="#" data-feather="edit">Edit</a>
+                              <a id="id_user_hapus" name="id_user_hapus" href="#" data-feather="trash-2">Hapus</a>
+                            </div></td>
+                          </tr>
+                        <?php }}} ?>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th>Docno</th>
+                          <th>Active Ind</th>
+                          <th>Status</th>
+                          <th>Create By</th>
+                          <th>Create Date</th>
+                          <th>Last Update By</th>
+                          <th>Last Update Date</th>
+                          <th>Action</th>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
