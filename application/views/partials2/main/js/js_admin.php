@@ -122,7 +122,8 @@
     <script src="<?php echo base_url("assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/datatable/datatable-extension/dataTables.scroller.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/datatable/datatable-extension/custom.js") ?>"></script>
-
+    <script src="<?php echo base_url("assets/js/sweet-alert/sweetalert.min.js") ?>"></script>
+    <script src="<?php echo base_url("assets/js/sweet-alert/app.js") ?>"></script>
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="<?php echo base_url("assets/js/script.js") ?>"></script>

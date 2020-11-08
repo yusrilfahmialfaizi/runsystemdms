@@ -20,7 +20,9 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-header">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"> + New Document</button>
+            <a href="<?php echo base_url("tabel/GenerateCode")?>" class="btn btn-success"> + New Document</a>
+            <!-- <button type="button" class="btn btn-success sweet-11" data-toggle="modal" data-target=".bs-example-modal-lg" > + New Document</button> -->
+            <!-- <button class="btn btn-danger sweet-11" type="button" onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-11']);">Danger</button> -->
           </div>
           <div class="card-body">
             <div class="dt-ext table-responsive">
