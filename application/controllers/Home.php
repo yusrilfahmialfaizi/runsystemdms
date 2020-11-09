@@ -22,9 +22,6 @@ class Home extends CI_Controller {
 		curl_close($ch);
 		$data = json_decode($data, true);
 		$data['get'] = $data;
-		// echo "<pre>";
-		// print_r($data["pg"][0]);
-		// echo"</pre>";
 		$data2 = $this->menu->getModulMenu();
 		$data2 = json_decode($data2, true);
 		$data['sidebar'] = $data2;

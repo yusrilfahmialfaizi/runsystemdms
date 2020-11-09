@@ -2,7 +2,7 @@
       $(document).ready(function() {
         var uri = "<?php echo $this->uri->segment("1"); ?>";
 
-        if (uri != "home") {
+        if (uri != "home" && uri != "edit" && uri != "editor") {
           $("#sidebar").removeClass("iconbar-second-close");
           $("#sidebar").addClass("iconbar-mainmenu-close");
         }
@@ -54,18 +54,14 @@
             });
           }
         });
-        $("#sidebar-toggle").on("click", function(){
-          $("li").removeClass("open");
-        });
       });
     </script>
     <script type="text/javascript">
       // add and remove class open on sidebar
-      // function modules(id_li) {
-      //   // $("li").removeClass("open");
-      //   // $("#" + id_li).even().addClass("open");
-      //   <?php //$this->session->set_userdata(array("modul" => "a"));?>
-      // }
+      function modules(id_li) {
+        $("li").removeClass("open");
+        $("#" + id_li).even().addClass("open");
+      }
       function modulCode(modulCode) {
         var modulCode = modulCode;
         $.post( "<?php echo base_url("tabel/modul_session")?>", { modulCode: modulCode} );

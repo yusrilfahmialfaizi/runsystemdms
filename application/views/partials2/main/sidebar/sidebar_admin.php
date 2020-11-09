@@ -7,7 +7,7 @@
                         for ($j=0; $j < count($key[$i]["modul"]); $j++) { 
                             
               ?>
-              <li id="<?php echo $j ?>">
+              <li id="<?php echo $key[$i]["modul"][$j]["modulname"]  ?>">
               <?php if ($this->uri->segment("1") == "home") { ?>
                 <div class="dropdown-basic">
                   <div class="dropdown">
@@ -25,10 +25,6 @@
                       <a class="bar-icons" href="#" onClick="modulCode('<?php echo $key[$i]["modul"][$j]["modulcode"] ?>')">
                         <i></i><span><?php echo $key[$i]["modul"][$j]["modulname"] ?></span>
                       </a>
-                      <!-- <div class="dropdown-content">
-                        <a href="<?php echo base_url("tabel/").$key[$i]["modul"][$j]["modulcode"]?>">Add Document</a>
-                        <a href="javascript:modules('<?php echo $j ?>')">Open Submodules</a>
-                      </div> -->
                     </div>
                   </div>
                 </div>
