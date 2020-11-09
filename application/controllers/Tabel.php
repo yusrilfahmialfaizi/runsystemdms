@@ -63,7 +63,7 @@ class Tabel extends CI_Controller {
 	}
 	function createDocument(){
 		$code = $this->GenerateCode();
-		$modulcode = "FICO";
+		$modulcode = $this->session->userdata("modul");
 		$url = "http://127.0.0.1:8080/runsystemdms/postDataDocuments";
 		date_default_timezone_set('Asia/Jakarta');
 		$now = date('YmdHi');

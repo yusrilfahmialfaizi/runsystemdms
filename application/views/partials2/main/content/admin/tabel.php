@@ -28,7 +28,6 @@
             <div class="dt-ext table-responsive">
               <table class="display" id="responsive">
                 <thead>
-                <?php echo $this->session->userdata("modul");?>
                   <tr>
                     <th>Docno</th>
                     <th>Active Ind</th>
@@ -40,7 +39,7 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody id="datacos">
+                <tbody>
                   <!-- js -->
                   <?php foreach ($get as $key) {
                     if ($key != null) {
@@ -55,12 +54,9 @@
                           <td><?php echo $key[$i]["createdt"];?></td>
                           <td><?php echo $key[$i]["lastupby"];?></td>
                           <td><?php echo $key[$i]["lastupdt"];?></td>
-                          <td>
-                            <div class="form-group">
-                              <a href="#" data-feather="edit">Edit</a>
-                              <a id="id_user_hapus" name="id_user_hapus" href="#" data-feather="trash-2">Hapus</a>
-                            </div></td>
-                          </tr>
+                          <!-- <td><a onClick="modules('<?php echo $key[$i]["modulcode"];?>')" >Edit</a></td> -->
+                          <td><?php echo $key[$i]["modulcode"];?></td>
+                        </tr>
                         <?php }}} ?>
                       </tbody>
                       <tfoot>
