@@ -22,13 +22,13 @@
                 <div class="dropdown-basic">
                   <div class="dropdown">
                     <div class="btn-group mb-0">
-                      <button class="dropbtn btn-primary" type="button"><?php echo $key[$i]["modul"][$j]["modulname"] ?> 
-                        <span><i class="icofont icofont-arrow-down"></i></span>
-                      </button>
-                      <div class="dropdown-content">
+                      <a class="bar-icons" href="#" onClick="modulCode('<?php echo $key[$i]["modul"][$j]["modulcode"] ?>')">
+                        <i></i><span><?php echo $key[$i]["modul"][$j]["modulname"] ?></span>
+                      </a>
+                      <!-- <div class="dropdown-content">
                         <a href="<?php echo base_url("tabel/").$key[$i]["modul"][$j]["modulcode"]?>">Add Document</a>
                         <a href="javascript:modules('<?php echo $j ?>')">Open Submodules</a>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>

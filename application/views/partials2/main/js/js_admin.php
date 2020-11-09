@@ -61,11 +61,11 @@
     </script>
     <script type="text/javascript">
       // add and remove class open on sidebar
-      function modules(id_li) {
-        $("li").removeClass("open");
-        $("#" + id_li).even().addClass("open");
-        <?php //$this->session->set_userdata(array("modul" => "a"));?>
-      }
+      // function modules(id_li) {
+      //   // $("li").removeClass("open");
+      //   // $("#" + id_li).even().addClass("open");
+      //   <?php //$this->session->set_userdata(array("modul" => "a"));?>
+      // }
       function modulCode(modulCode) {
         var modulCode = modulCode;
         $.post( "<?php echo base_url("tabel/modul_session")?>", { modulCode: modulCode} );
