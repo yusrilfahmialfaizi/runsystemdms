@@ -45,7 +45,7 @@ class Tabel extends CI_Controller {
 		curl_setopt($ch, CURLOPT_URL, $url);
 		$data = curl_exec($ch);
 		curl_close($ch);
-
+		
 		$data = json_decode($data, true);
 		$number = $data["docno"];
 		if ($number == null) {
@@ -56,10 +56,42 @@ class Tabel extends CI_Controller {
 		date_default_timezone_set('Asia/Jakarta');
 		$tahun = date("Y");
 		$bulan = date("m");
+		$modul = $this->session->userdata("modul");
 		$batas = str_pad($number, 4, "0", STR_PAD_LEFT);
-		$code = $batas."/GSS/INVESTAI/FICO/".$bulan."/".$tahun;
-		// return $code;
-		echo $code;
+		$code = $batas."/GSS/INVESTAI/".$modul."/".$bulan."/".$tahun;
+		return $code;
+	}
+	function createDocument(){
+		$code = $this->GenerateCode();
+		$modulcode = "FICO";
+		$url = "http://127.0.0.1:8080/runsystemdms/postDataDocuments";
+		date_default_timezone_set('Asia/Jakarta');
+		$now = date('YmdHi');
+		$data = array(
+			"Docno" =>$code,
+			"ModulCode"=>$modulcode, 
+			"ActiveInd" => "Y", 
+			"Status" => "O",
+			"CreateBy" => $this->session->userdata("usercode"),
+			"CreateDt" => $now,
+			"LastUpBy" => "",
+			"LastUpAt" => ""
+		);
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data); //pass encoded JSON string to post fields
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_VERBOSE, true,);
+		curl_setopt($ch, CURLOPT_URL, $url);
+		$response = curl_exec($ch);
+		echo curl_error($ch);
+		curl_close($ch);
+		redirect(base_url("tabel"));
+	}
+
+	function modul_session(){
+		$modul = $this->input->post("modulCode");
+		$this->session->set_userdata(array("modul" => $modul));
 	}
 }
 ?>

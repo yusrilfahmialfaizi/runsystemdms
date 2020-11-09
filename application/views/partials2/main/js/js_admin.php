@@ -4,6 +4,7 @@
 
         if (uri != "home") {
           $("#sidebar").removeClass("iconbar-second-close");
+          $("#sidebar").addClass("iconbar-mainmenu-close");
         }
         // get data dynamic sidebar menu 
         var url1 = 'http://127.0.0.1:8080/runsystemdms/getModuls';
@@ -63,6 +64,11 @@
       function modules(id_li) {
         $("li").removeClass("open");
         $("#" + id_li).even().addClass("open");
+        <?php //$this->session->set_userdata(array("modul" => "a"));?>
+      }
+      function modulCode(modulCode) {
+        var modulCode = modulCode;
+        $.post( "<?php echo base_url("tabel/modul_session")?>", { modulCode: modulCode} );
       }
     </script>
 

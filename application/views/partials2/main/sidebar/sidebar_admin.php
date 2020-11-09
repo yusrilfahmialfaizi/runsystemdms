@@ -8,6 +8,17 @@
                             
               ?>
               <li id="<?php echo $j ?>">
+              <?php if ($this->uri->segment("1") == "home") { ?>
+                <div class="dropdown-basic">
+                  <div class="dropdown">
+                    <div class="btn-group mb-0">
+                    <a class="bar-icons" href="<?php echo base_url("tabel")?>" onClick="modulCode('<?php echo $key[$i]["modul"][$j]["modulcode"] ?>')">
+                      <i></i><span><?php echo $key[$i]["modul"][$j]["modulname"] ?></span>
+                    </a>
+                    </div>
+                  </div>
+                </div>
+              <?php }else{ ?>
                 <div class="dropdown-basic">
                   <div class="dropdown">
                     <div class="btn-group mb-0">
@@ -15,7 +26,7 @@
                         <span><i class="icofont icofont-arrow-down"></i></span>
                       </button>
                       <div class="dropdown-content">
-                        <a href="<?php echo base_url("tabel")?>">Add Document</a>
+                        <a href="<?php echo base_url("tabel/").$key[$i]["modul"][$j]["modulcode"]?>">Add Document</a>
                         <a href="javascript:modules('<?php echo $j ?>')">Open Submodules</a>
                       </div>
                     </div>
@@ -25,6 +36,7 @@
                   <li class="iconbar-header">Sub Module</li>
                   <li id="<?php echo $key[$i]["modul"][$j]["modulcode"] ?>"></li>
                 </ul>
+              <?php } ?>
               </li>
               <?php }}} ?>
             </ul>
