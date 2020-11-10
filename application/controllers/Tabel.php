@@ -81,7 +81,7 @@ class Tabel extends CI_Controller {
 		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data); //pass encoded JSON string to post fields
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_VERBOSE, true,);
+		curl_setopt($ch, CURLOPT_VERBOSE, true);
 		curl_setopt($ch, CURLOPT_URL, $url);
 		$response = curl_exec($ch);
 		echo curl_error($ch);
