@@ -30,7 +30,7 @@
 							</label>
 						</div>
 						<h4> Deskripsi</h4><br>
-						<textarea class="form-control" rows="10" cols="50" name="deskripsi"></textarea>
+						<textarea class="form-control" rows="10" cols="50" name="deskripsi"><?php echo $this->session->userdata("menu");?></textarea>
 
 						<div class="clearfix"><br>
 							<div class="col-md-4 offset-md-10">

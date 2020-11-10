@@ -29,7 +29,7 @@
 							</label>
 						</div>
 						<a> Berikut Merupakan Teks Editor :)</a></br>
-						<textarea class="form-control" name="deskripsi"></textarea>
+						<textarea class="form-control" name="deskripsi"><?php $this->session->userdata("menu");?></textarea>
 
 						<script type="text/javascript">
 							window.onload = function() {
