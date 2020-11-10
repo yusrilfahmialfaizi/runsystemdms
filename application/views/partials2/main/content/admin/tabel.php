@@ -54,7 +54,6 @@
                           <td><?php echo $key[$i]["createdt"];?></td>
                           <td><?php echo $key[$i]["lastupby"];?></td>
                           <td><?php echo $key[$i]["lastupdt"];?></td>
-                          <!-- <td><a onClick="modules('<?php echo $key[$i]["modulcode"];?>')" >Edit</a></td> -->
                           <td><?php echo $key[$i]["modulcode"];?></td>
                         </tr>
                         <?php }}} ?>

@@ -11,8 +11,6 @@ import (
 
 // var con *sql.DB
 
-type H map[string]interface{}
-
 //function controller untuk get data document
 func GetDatadocuments(c echo.Context) error {
 	result := models.GetDatadocuments()
@@ -29,13 +27,9 @@ func PostDataDocuments(con *sql.DB) echo.HandlerFunc {
 		c.Bind(&insDatadocument)
 
 		result, err := models.PostDataDocuments(con, insDatadocument.Docno, insDatadocument.ModulCode, insDatadocument.Status, insDatadocument.ActiveInd, insDatadocument.CreateBy, insDatadocument.CreateDt, insDatadocument.LastUpBy, insDatadocument.LastUpDt)
-		result2, err := models.PostDataDocumentsDtl(con, insDatadocument.Docno, insDatadocument.MenuCode, insDatadocument.Description, insDatadocument.Status, insDatadocument.CreateBy, insDatadocument.CreateDt, insDatadocument.LastUpBy, insDatadocument.LastUpDt)
 
 		if err == nil {
-			return c.JSON(http.StatusCreated, H{
-				"created":       result,
-				"created again": result2,
-			})
+			return c.JSON(http.StatusCreated, result)
 		} else {
 			return err
 		}
@@ -51,13 +45,10 @@ func EditDataDocuments(con *sql.DB) echo.HandlerFunc {
 		c.Bind(&editdochdr)
 
 		_, err := models.EditDocHdr(con, editdochdr.Docno, editdochdr.ModulCode, editdochdr.Status, editdochdr.ActiveInd, editdochdr.CreateBy, editdochdr.CreateDt, editdochdr.LastUpBy, editdochdr.LastUpDt)
-		result2, err := models.EditDocDtl(con, editdochdr.Docno, editdochdr.MenuCode, editdochdr.Description, editdochdr.Status, editdochdr.CreateBy, editdochdr.CreateDt, editdochdr.LastUpBy, editdochdr.LastUpDt)
+		// result2, err := models.EditDocDtl(con, editdochdr.Docno, editdochdr.MenuCode, editdochdr.Description, editdochdr.Status, editdochdr.CreateBy, editdochdr.CreateDt, editdochdr.LastUpBy, editdochdr.LastUpDt)
 
 		if err == nil {
-			return c.JSON(http.StatusOK, H{
-				"updated":    editdochdr,
-				"updated to": result2,
-			})
+			return c.JSON(http.StatusOK, editdochdr)
 		} else {
 			return err
 		}
@@ -71,7 +62,8 @@ func DelDocument(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 func GenerateCode(c echo.Context) error {
-	result := models.GenerateCode()
+	cc := c.(*models.CustomContext)
+	result := models.GenerateCode(cc)
 	fmt.Println("Getting generate code...")
 	return c.JSON(http.StatusOK, result)
 }

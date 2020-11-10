@@ -39,7 +39,7 @@ class Tabel extends CI_Controller {
 
 	
 	function GenerateCode(){
-		$url = "http://127.0.0.1:8080/runsystemdms/getGenerateCode";
+		$url = "http://127.0.0.1:8080/runsystemdms/getGenerateCode/".$this->session->userdata("modul");
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_URL, $url);

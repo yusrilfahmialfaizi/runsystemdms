@@ -12,10 +12,8 @@ import (
 type Datadocument struct {
 	Docno       string          `json:"docno"`
 	ModulCode   string          `json:"modulcode"`
-	Description nullable.String `json:"description"`
-	Status      string          `json:"status"`
 	ActiveInd   string          `json:"activeind"`
-	MenuCode    string          `json:"menucode"`
+	Status	  string          `json:"status"`
 	CreateBy    string          `json:"createby"`
 	CreateDt    string          `json:"createdt"`
 	LastupBy    nullable.String `json:"lastupby"`
@@ -50,7 +48,8 @@ var con *sql.DB
 //function untuk get document yang ditampilkan di view tabel
 func GetDatadocuments() Datadocuments {
 	con = config.Connection()
-	query := "SELECT hdr.docno as docno, hdr.modulcode as modulcode, dtl.description as description, hdr.status as status, hdr.activeind as activeind, dtl.menucode as menucode, hdr.createby as createby, hdr.createdt as createdt, hdr.lastupby as lastupby, hdr.lastupdt as lastupdt FROM tbldocumenthdr as hdr JOIN tbldocumentdtl as dtl ON dtl.docno = hdr.docno"
+	// query := "SELECT hdr.docno as docno, hdr.modulcode as modulcode, dtl.description as description, hdr.status as status, hdr.activeind as activeind, dtl.menucode as menucode, hdr.createby as createby, hdr.createdt as createdt, hdr.lastupby as lastupby, hdr.lastupdt as lastupdt FROM tbldocumenthdr as hdr JOIN tbldocumentdtl as dtl ON dtl.docno = hdr.docno"
+	query := "SELECT * FROM tbldocumenthdr where ActiveInd = 'Y'"
 	rows, err := con.Query(query)
 	if err != nil {
 		fmt.Println(err)
@@ -61,7 +60,7 @@ func GetDatadocuments() Datadocuments {
 	for rows.Next() {
 		datadocument := Datadocument{}
 
-		eror := rows.Scan(&datadocument.Docno, &datadocument.ModulCode, &datadocument.Description, &datadocument.Status, &datadocument.ActiveInd, &datadocument.MenuCode, &datadocument.CreateBy, &datadocument.CreateDt, &datadocument.LastupBy, &datadocument.LastupDt)
+		eror := rows.Scan(&datadocument.Docno, &datadocument.ModulCode, &datadocument.ActiveInd, &datadocument.Status, &datadocument.CreateBy, &datadocument.CreateDt, &datadocument.LastupBy, &datadocument.LastupDt)
 		if eror != nil {
 			fmt.Println(eror)
 		}
@@ -199,11 +198,13 @@ func DeleteDocs(c *CustomContext) Datadocuments {
 
 }
 // Generate docno
-func GenerateCode () GenerateCodes{
+func GenerateCode (c *CustomContext) GenerateCodes{
+	modulcode := c.Param("modulcode")
 	con = config.Connection()
-	query := "SELECT MAX(LEFT(tbldocumenthdr.Docno,4)) AS DocNo FROM tbldocumenthdr WHERE DATE(createdt) = DATE(NOW()) ORDER BY DocNo DESC"
+	// query := "SELECT MAX(LEFT(tbldocumenthdr.Docno,4)) AS DocNo FROM tbldocumenthdr ORDER BY DocNo DESC"
+	query := "SELECT MAX(LEFT(tbldocumenthdr.Docno,4)) AS DocNo FROM tbldocumenthdr WHERE modulcode = ? ORDER BY DocNo DESC"
 
-	rows, err := con.Query(query)
+	rows, err := con.Query(query, modulcode)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -214,8 +215,6 @@ func GenerateCode () GenerateCodes{
 		if eror != nil {
 			fmt.Println(eror)
 		}
-		fmt.Println("Data : ",&result.DocNo)
-		fmt.Println("Rows : ",rows)
 	}
 	return result
 }
