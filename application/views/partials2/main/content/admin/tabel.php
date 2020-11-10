@@ -54,7 +54,7 @@
                           <td><?php echo $key[$i]["createdt"];?></td>
                           <td><?php echo $key[$i]["lastupby"];?></td>
                           <td><?php echo $key[$i]["lastupdt"];?></td>
-                          <td><?php echo $key[$i]["modulcode"];?></td>
+                          <td><a href="javascript:modules('<?php echo $key[$i]["modulcode"];?>')"><?php echo $key[$i]["modulcode"];?></a></td>
                         </tr>
                         <?php }}} ?>
                       </tbody>

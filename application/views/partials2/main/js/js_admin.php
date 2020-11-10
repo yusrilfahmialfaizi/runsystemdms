@@ -36,6 +36,7 @@
                   if (data.parent.length == u) { 
                     sub = '<li><a href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
                     $("#" + data.modulcode).append(sub);
+                    console.log(data.modulname);
                   }
                   for (var j = 0; j < data2.parentlength.length; j++) {
                     if (data.parent.length == (u = u + 2)) {
@@ -61,6 +62,10 @@
       function modules(id_li) {
         $("li").removeClass("open");
         $("#" + id_li).even().addClass("open");
+      }
+      function modules2(id_li) {
+        $("li").removeClass("open");
+        $("." + id_li).addClass("open");
       }
       function modulCode(modulCode) {
         var modulCode = modulCode;

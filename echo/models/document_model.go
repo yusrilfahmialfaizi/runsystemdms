@@ -72,23 +72,27 @@ func GetDatadocuments() Datadocuments {
 //function untuk untuk post data documenthdr yang ditampilkan di view tabel
 func PostDataDocuments(con *sql.DB, Docno string, ModulCode string, Status string, ActiveInd string, CreateBy string, CreateDt string, LastUpBy nullable.String, LastUpDt nullable.String) (int64, error) {
 	con = config.Connection()
-	query := "INSERT INTO tbldocumenthdr (docno, modulcode, activeind, status, createby, createdt, lastupby, lastupdt) values (?,?,?,?,?,?,?,?)"
+	query1 := "UPDATE tbldocumenthdr SET ActiveInd = 'N' WHERE modulcode = ?"
+	query2 := "INSERT INTO tbldocumenthdr (docno, modulcode, activeind, status, createby, createdt, lastupby, lastupdt) values (?,?,?,?,?,?,?,?)"
 	// Create a prepared SQL statement
-	stmt, err := con.Prepare(query)
+	stmt1, err1 := con.Prepare(query1)
+	stmt2, err2 := con.Prepare(query2)
 
 	// / Exit if we get an error
-	if err != nil {
-		panic(err)
+	if err1 != nil && err2 != nil {
+		fmt.Println(err1, err2)
 	}
 	// Make sure to cleanup after the program exits
-	defer stmt.Close()
+	defer stmt1.Close()
+	defer stmt2.Close()
 
 	//The sql stat wll return the id, so we can use it.
-	result, err2 := stmt.Exec(Docno, ModulCode, ActiveInd, Status, CreateBy, CreateDt, LastUpBy, LastUpDt)
+	_, er1 := stmt1.Exec(ModulCode)
+	result, er2 := stmt2.Exec(Docno, ModulCode, ActiveInd, Status, CreateBy, CreateDt, LastUpBy, LastUpDt)
 
 	// Exit if we get an error
-	if err2 != nil {
-		panic(err2)
+	if er2 != nil {
+		fmt.Println(er1, er2)
 	}
 
 	return result.RowsAffected()
