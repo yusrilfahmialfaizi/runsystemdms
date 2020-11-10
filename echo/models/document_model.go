@@ -12,6 +12,7 @@ import (
 type Datadocument struct {
 	Docno       string          `json:"docno"`
 	ModulCode   string          `json:"modulcode"`
+	ModulName   string          `json:"modulname"`
 	ActiveInd   string          `json:"activeind"`
 	Status	  string          `json:"status"`
 	CreateBy    string          `json:"createby"`
@@ -49,7 +50,7 @@ var con *sql.DB
 func GetDatadocuments() Datadocuments {
 	con = config.Connection()
 	// query := "SELECT hdr.docno as docno, hdr.modulcode as modulcode, dtl.description as description, hdr.status as status, hdr.activeind as activeind, dtl.menucode as menucode, hdr.createby as createby, hdr.createdt as createdt, hdr.lastupby as lastupby, hdr.lastupdt as lastupdt FROM tbldocumenthdr as hdr JOIN tbldocumentdtl as dtl ON dtl.docno = hdr.docno"
-	query := "SELECT * FROM tbldocumenthdr where ActiveInd = 'Y'"
+	query := "SELECT tbldocumenthdr.Docno, tbldocumenthdr.ModulCode, tblmodul.ModulName, tbldocumenthdr.ActiveInd, tbldocumenthdr.`Status`, tbldocumenthdr.CreateBy, tbldocumenthdr.CreateDt, tbldocumenthdr.LastUpBy, tbldocumenthdr.LastUpDt FROM tbldocumenthdr INNER JOIN tblmodul ON tblmodul.ModulCode = tbldocumenthdr.ModulCode where ActiveInd = 'Y' "
 	rows, err := con.Query(query)
 	if err != nil {
 		fmt.Println(err)
@@ -60,7 +61,7 @@ func GetDatadocuments() Datadocuments {
 	for rows.Next() {
 		datadocument := Datadocument{}
 
-		eror := rows.Scan(&datadocument.Docno, &datadocument.ModulCode, &datadocument.ActiveInd, &datadocument.Status, &datadocument.CreateBy, &datadocument.CreateDt, &datadocument.LastupBy, &datadocument.LastupDt)
+		eror := rows.Scan(&datadocument.Docno, &datadocument.ModulCode, &datadocument.ModulName, &datadocument.ActiveInd, &datadocument.Status, &datadocument.CreateBy, &datadocument.CreateDt, &datadocument.LastupBy, &datadocument.LastupDt)
 		if eror != nil {
 			fmt.Println(eror)
 		}

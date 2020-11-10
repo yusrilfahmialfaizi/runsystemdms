@@ -30,6 +30,7 @@ type ModulMenu struct {
 	CreateDt string          `json:"createdt"`
 	LastupBy nullable.String `json:"lastupby"`
 	LastupDt nullable.String `json:"lastupdt"`
+	Status nullable.String `json:"status"`
 }
 
 
@@ -44,7 +45,14 @@ type ParentLength struct {
 	ParentLength nullable.String `json:"parentlength"`
 }
 type LastChild struct {
-	MenuCode nullable.String `json:"menucode"`
+	MenuCode string          `json:"menucode"`
+	ModulCode string          `json:"modulcode"`
+	MenuDesc string          `json:"menudesc"`
+	Parent   nullable.String `json:"parent"`
+	CreateBy string          `json:"createby"`
+	CreateDt string          `json:"createdt"`
+	LastupBy nullable.String `json:"lastupby"`
+	LastupDt nullable.String `json:"lastupdt"`
 }
 
 type Moduls struct {
@@ -74,7 +82,7 @@ var connection *sql.DB
 func GetModuls() Menu {
 	connection = config.Connection()
 	query1 := "SELECT ModulCode, ModulName, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmodul "
-	query2 := "SELECT MenuCode, ModulCode, MenuDesc, Parent, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmodulmenu "
+	query2 := "SELECT tblmodulmenu.MenuCode, tblmodulmenu.ModulCode, tblmodulmenu.MenuDesc, tblmodulmenu.Parent, tblmodulmenu.CreateBy, tblmodulmenu.CreateDt, tblmodulmenu.LastUpBy, tblmodulmenu.LastUpDt, tbldocumentdtl.`Status` FROM tblmodulmenu LEFT JOIN tbldocumentdtl ON tbldocumentdtl.MenuCode = tblmodulmenu.MenuCode"
 	rows1, err1 := connection.Query(query1)
 	rows2, err2 := connection.Query(query2)
 	if err1 != nil && err2 != nil{
@@ -98,7 +106,7 @@ func GetModuls() Menu {
 	for rows2.Next() {
 		modulmenu := ModulMenu{}
 
-		eror := rows2.Scan(&modulmenu.MenuCode, &modulmenu.ModulCode, &modulmenu.MenuDesc, &modulmenu.Parent, &modulmenu.CreateBy, &modulmenu.CreateDt, &modulmenu.LastupBy, &modulmenu.LastupDt)
+		eror := rows2.Scan(&modulmenu.MenuCode, &modulmenu.ModulCode, &modulmenu.MenuDesc, &modulmenu.Parent, &modulmenu.CreateBy, &modulmenu.CreateDt, &modulmenu.LastupBy, &modulmenu.LastupDt, &modulmenu.Status)
 		if eror != nil {
 			fmt.Println(eror)
 		}
@@ -134,7 +142,7 @@ func GetModuls() Menu {
 func GetDynamicMenuParts() Parts {
 	connection = config.Connection()
 	query1 := "SELECT Length(parent) FROM tblmodulmenu GROUP BY Length(parent) "
-	query2 := "SELECT menucode FROM tblmodulmenu A WHERE EXISTS (SELECT NULL FROM tblmodulmenu B WHERE B.parent = A.MenuCode)"
+	query2 := "SELECT  * FROM tblmodulmenu A WHERE NOT EXISTS(SELECT  NULL	FROM    tblmodulmenu B	WHERE   B.parent = A.MenuCode);"
 	rows1, err1 := connection.Query(query1)
 	rows2, err2 := connection.Query(query2)
 	if err1 != nil && err2 != nil{
@@ -156,7 +164,7 @@ func GetDynamicMenuParts() Parts {
 	}
 	for rows2.Next() {
 		lastChild := LastChild{}
-		eror2 := rows2.Scan(&lastChild.MenuCode)
+		eror2 := rows2.Scan(&lastChild.MenuCode, &lastChild.ModulCode, &lastChild.MenuDesc, &lastChild.Parent, &lastChild.CreateBy, &lastChild.CreateDt, &lastChild.LastupBy, &lastChild.LastupDt)
 		if eror2 != nil {
 			fmt.Println("eror 2 : ", eror2)
 		}
