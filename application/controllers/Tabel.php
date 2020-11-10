@@ -93,5 +93,10 @@ class Tabel extends CI_Controller {
 		$modul = $this->input->post("modulCode");
 		$this->session->set_userdata(array("modul" => $modul));
 	}
+	function menu_session(){
+		$menu = $this->input->post("menuCode");
+		echo $menu;
+		$this->session->set_userdata(array("menu" => $menu));
+	}
 }
 ?>

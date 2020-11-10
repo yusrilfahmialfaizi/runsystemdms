@@ -29,6 +29,7 @@
               <table class="display" id="responsive">
                 <thead>
                   <tr>
+                  <?php $this->session->userdata("menu");?>
                     <th>Docno</th>
                     <th>Active Ind</th>
                     <th>Status</th>
@@ -54,7 +55,7 @@
                           <td><?php echo $key[$i]["createdt"];?></td>
                           <td><?php echo $key[$i]["lastupby"];?></td>
                           <td><?php echo $key[$i]["lastupdt"];?></td>
-                          <td><a href="javascript:modules('<?php echo $key[$i]["modulcode"];?>')"><?php echo $key[$i]["modulcode"];?></a></td>
+                          <td><a href="javascript:modules('<?php echo $key[$i]["modulname"];?>')"><?php echo $key[$i]["modulcode"];?></a></td>
                         </tr>
                         <?php }}} ?>
                       </tbody>

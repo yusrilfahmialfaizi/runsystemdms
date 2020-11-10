@@ -13,7 +13,7 @@
         var menu = '';
         var menus = 'menu';
         var sub = '';
-        var subs = 'sub';
+        var subs = '';
 
         $.ajax({ //to get all data menu from db
           type: 'GET',
@@ -32,22 +32,23 @@
                 data2 = JSON.parse(JSON.stringify(data2));
                 data2 = data2.parts[0];
                 $.each(data1, function(i, data){
-                var u = 0;
-                  if (data.parent.length == u) { 
+                var u = 2;
+                  if (data.parent.length == 0) { 
                     sub = '<li><a href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
                     $("#" + data.modulcode).append(sub);
-                    console.log(data.modulname);
                   }
                   for (var j = 0; j < data2.parentlength.length; j++) {
                     if (data.parent.length == (u = u + 2)) {
                       for (k = 0; k < data2.lastChilds.length; k++) {
                         if (data.menucode == data2.lastChilds[k].menucode) {
-                          sub = '<li><a href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
-                          $("#" + data.parent).append(sub);
+                          // console.log(data.menucode+ "=="+ data2.lastChilds[k].menucode);
+                          // subs = '<li><a href="<?php echo base_url("editor") ?>"> > ' + data2.lastChilds[k].menucode + '</a><ul id="' + data2.lastChilds[k].menucode + '"></ul></li>';
+                          // $("#" + data.parent).append(sub);
+                        }else{
                         }
                       }
-                        sub = '<li><a href="<?php echo base_url("editor")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
-                        $("#"+data.parent).append(sub);
+                        subs = '<li><a onClick="menuCode(this)" data-id="'+data.menucode+'" href="<?php echo base_url("edit")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
+                        $("#"+data.parent).append(subs);
                     }
                   }
                 });
@@ -65,11 +66,17 @@
       }
       function modules2(id_li) {
         $("li").removeClass("open");
-        $("." + id_li).addClass("open");
+        $("#" + id_li).addClass("open");
+        console.log(id_li);
       }
       function modulCode(modulCode) {
         var modulCode = modulCode;
         $.post( "<?php echo base_url("tabel/modul_session")?>", { modulCode: modulCode} );
+      }
+      function menuCode(menuCode) {
+        var menuCode = $(menuCode).attr('data-id');
+        console.log(menuCode);
+        $.post( "<?php echo base_url("tabel/menu_session")?>", { menuCode: menuCode} );
       }
     </script>
 
