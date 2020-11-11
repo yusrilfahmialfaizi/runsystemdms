@@ -16,7 +16,8 @@ class Edit extends CI_Controller {
 			redirect("login");
 		}
 		$menucode = $this->session->userdata("menu");
-		$doc = $this->documentdtl->getDocumentDtl($menucode);
+		$docno = $this->session->userdata("docno");
+		$doc = $this->documentdtl->getDocumentDtl($docno,$menucode);
 		$data2 = $this->menu->getModulMenu();
 		$data2 = json_decode($data2, true);
 		$doc = json_decode($doc, true);
@@ -38,7 +39,7 @@ class Edit extends CI_Controller {
 		$lastupby = $this->session->userdata("usercode");
 		date_default_timezone_set('Asia/Jakarta');
 		$lastupdt = date('YmdHi');
-		$doc = $this->documentdtl->getDocumentDtl($menucode);
+		$doc = $this->documentdtl->getDocumentDtl($docno, $menucode);
 		$doc = json_decode($doc, true);
 		// print_r($doc["documentsdtl"]);
 		print_r($doc);
