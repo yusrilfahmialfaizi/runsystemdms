@@ -7,6 +7,7 @@ class Edit extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library("menu");
+		$this->load->library("documentdtl");
 	}
 
 	public function index()
@@ -14,12 +15,68 @@ class Edit extends CI_Controller {
 		if ($this->session->userdata('status') != "login") {
 			redirect("login");
 		}
+		$menucode = $this->session->userdata("menu");
+		$doc = $this->documentdtl->getDocumentDtl($menucode);
 		$data2 = $this->menu->getModulMenu();
 		$data2 = json_decode($data2, true);
+		$doc = json_decode($doc, true);
 		$data["sidebar"] = $data2;
+		$data["doc"] = $doc;
         	$this->load->view('partials2/main/page/page_edit', $data);
 	}
 
+	function EditDocDetail(){
+		$docno = '0003/GSS/INVESTAI/FICO/11/2020';
+		$menucode = $this->session->userdata("menu");
+		$description = $this->input->post("deskripsi");
+		$stts = $this->input->post("chk-ani");
+		if ($stts == "on") {
+			$status = "F";
+		}else{
+			$status = "O";
+		}
+		$lastupby = $this->session->userdata("usercode");
+		date_default_timezone_set('Asia/Jakarta');
+		$lastupdt = date('YmdHi');
+		$doc = $this->documentdtl->getDocumentDtl($menucode);
+		$doc = json_decode($doc, true);
+		// print_r($doc["documentsdtl"]);
+		print_r($doc);
+		if ($doc['documentsdtl'] != null) {
+			$data = array(
+				"docno" => $docno,
+				"menucode" => $menucode,
+				"description" => $description,
+				"status" => $status,
+				"lastupby" => $lastupby,
+				"lastupdt" => $lastupdt
+			);
+			# update
+			$response = $this->documentdtl->callApiDocDtl('PUT', "http://127.0.0.1:8080/runsystemdms/editDataDocuments", $data);
+			echo "update";
+				redirect(base_url("tabel"));
+			
+			
+		}else{
+			echo "insert";
+			$data = array(
+				"docno" => $docno,
+				"menucode" => $menucode,
+				"description" => $description,
+				"status" => $status,
+				"createby" => $this->session->userdata("usercode"),
+				"createdt" => $lastupdt,
+				"lastupby" => $lastupby,
+				"lastupdt" => $lastupdt
+			);
+			# insert
+			$response = $this->documentdtl->callApiDocDtl('POST', "http://127.0.0.1:8080/runsystemdms/postDataDocumentsDtl", $data);
+			
+				redirect(base_url("tabel"));
+			
+			
+		}
+	}
 	
 	
 }

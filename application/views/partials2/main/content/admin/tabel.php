@@ -55,7 +55,7 @@
                           <td><?php echo $key[$i]["createdt"];?></td>
                           <td><?php echo $key[$i]["lastupby"];?></td>
                           <td><?php echo $key[$i]["lastupdt"];?></td>
-                          <td><a href="javascript:modules('<?php echo $key[$i]["modulname"];?>')"><?php echo $key[$i]["modulcode"];?></a></td>
+                          <td><a onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"];?>" href="#"><?php echo $key[$i]["modulcode"];?></a></td>
                         </tr>
                         <?php }}} ?>
                       </tbody>

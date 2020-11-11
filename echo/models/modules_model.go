@@ -115,28 +115,7 @@ func GetModuls() Menu {
 	all_result.Menu = append(all_result.Menu, result)
 	return all_result
 }
-// function untuk mengambil data dari tabel ModulMenu
-// func GetModulMenu() ModulMenus {
-// 	connection = config.Connection()
-// 	query2 := "SELECT MenuCode, ModulCode, MenuDesc, Parent, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmodulmenu "
-// 	rows2, err2 := connection.Query(query2)
-// 	if err2 != nil{
-// 		fmt.Println(err2)
-// 	}
-// 	defer rows2.Close()
-// 	result := Moduls{}
 
-// 	for rows2.Next() {
-// 		modulmenu := ModulMenu{}
-
-// 		eror := rows2.Scan(&modulmenu.MenuCode, &modulmenu.ModulCode, &modulmenu.MenuDesc, &modulmenu.Parent, &modulmenu.CreateBy, &modulmenu.CreateDt, &modulmenu.LastupBy, &modulmenu.LastupDt)
-// 		if eror != nil {
-// 			fmt.Println(eror)
-// 		}
-// 		result.ModulMenu = append(result.ModulMenu, modulmenu)
-// 	}
-// 	return result
-// }
 
 // function untuk mengambil panjang data parent dari tabel menu berdasarkan parent
 func GetDynamicMenuParts() Parts {

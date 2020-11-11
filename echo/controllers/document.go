@@ -36,6 +36,23 @@ func PostDataDocuments(con *sql.DB) echo.HandlerFunc {
 
 	}
 }
+func PostDataDocumentsDtl(con *sql.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+
+		var docdtl models.DocDtl
+
+		c.Bind(&docdtl)
+
+		result, err := models.PostDataDocumentsDtl(con, docdtl.Docno, docdtl.MenuCode, docdtl.Description, docdtl.Status, docdtl.CreateBy, docdtl.CreateDt, docdtl.LastUpBy, docdtl.LastUpDt)
+
+		if err == nil {
+			return c.JSON(http.StatusCreated, result)
+		} else {
+			return err
+		}
+
+	}
+}
 
 //function controller untuk edit data document
 func EditDataDocuments(con *sql.DB) echo.HandlerFunc {
@@ -44,8 +61,8 @@ func EditDataDocuments(con *sql.DB) echo.HandlerFunc {
 		var editdochdr models.InsDatadocument
 		c.Bind(&editdochdr)
 
-		_, err := models.EditDocHdr(con, editdochdr.Docno, editdochdr.ModulCode, editdochdr.Status, editdochdr.ActiveInd, editdochdr.CreateBy, editdochdr.CreateDt, editdochdr.LastUpBy, editdochdr.LastUpDt)
-		// result2, err := models.EditDocDtl(con, editdochdr.Docno, editdochdr.MenuCode, editdochdr.Description, editdochdr.Status, editdochdr.CreateBy, editdochdr.CreateDt, editdochdr.LastUpBy, editdochdr.LastUpDt)
+		// _, err := models.EditDocHdr(con, editdochdr.Docno, editdochdr.ModulCode, editdochdr.Status, editdochdr.ActiveInd, editdochdr.CreateBy, editdochdr.CreateDt, editdochdr.LastUpBy, editdochdr.LastUpDt)
+		_, err := models.EditDocDtl(con, editdochdr.Docno, editdochdr.MenuCode, editdochdr.Description, editdochdr.Status, editdochdr.LastUpBy, editdochdr.LastUpDt)
 
 		if err == nil {
 			return c.JSON(http.StatusOK, editdochdr)
@@ -61,9 +78,17 @@ func DelDocument(c echo.Context) error {
 	fmt.Println("Update data sub module ...")
 	return c.JSON(http.StatusOK, result)
 }
+
 func GenerateCode(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GenerateCode(cc)
+	fmt.Println("Getting generate code...")
+	return c.JSON(http.StatusOK, result)
+}
+
+func GetDocumentDtl(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.GetDocumentDtl(cc)
 	fmt.Println("Getting generate code...")
 	return c.JSON(http.StatusOK, result)
 }

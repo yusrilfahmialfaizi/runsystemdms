@@ -33,7 +33,20 @@ type InsDatadocument struct {
 	LastUpBy    nullable.String `json:"lastupby"`
 	LastUpDt    nullable.String `json:"lastupdt"`
 }
+type DocDtl struct {
+	Docno       string          `json:"docno"`
+	MenuCode    string          `json:"menucode"`
+	Description string 		   `json:"description"`
+	Status      string          `json:"status"`
+	CreateBy    string          `json:"createby"`
+	CreateDt    string          `json:"createdt"`
+	LastUpBy    nullable.String `json:"lastupby"`
+	LastUpDt    nullable.String `json:"lastupdt"`
+}
 
+type DocumentsDtl struct {
+	DocumentsDtl []DocDtl `json:"documentsdtl"`
+}
 type Datadocuments struct {
 	Datadocuments []Datadocument `json:"datadocument"`
 }
@@ -49,7 +62,6 @@ var con *sql.DB
 //function untuk get document yang ditampilkan di view tabel
 func GetDatadocuments() Datadocuments {
 	con = config.Connection()
-	// query := "SELECT hdr.docno as docno, hdr.modulcode as modulcode, dtl.description as description, hdr.status as status, hdr.activeind as activeind, dtl.menucode as menucode, hdr.createby as createby, hdr.createdt as createdt, hdr.lastupby as lastupby, hdr.lastupdt as lastupdt FROM tbldocumenthdr as hdr JOIN tbldocumentdtl as dtl ON dtl.docno = hdr.docno"
 	query := "SELECT tbldocumenthdr.Docno, tbldocumenthdr.ModulCode, tblmodul.ModulName, tbldocumenthdr.ActiveInd, tbldocumenthdr.`Status`, tbldocumenthdr.CreateBy, tbldocumenthdr.CreateDt, tbldocumenthdr.LastUpBy, tbldocumenthdr.LastUpDt FROM tbldocumenthdr INNER JOIN tblmodul ON tblmodul.ModulCode = tbldocumenthdr.ModulCode where ActiveInd = 'Y' "
 	rows, err := con.Query(query)
 	if err != nil {
@@ -109,26 +121,26 @@ func PostDataDocumentsDtl(con *sql.DB, Docno string, MenuCode string, Descriptio
 
 	// / Exit if we get an error
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 	// Make sure to cleanup after the program exits
 	defer stmt.Close()
 
 	//The sql stat wll return the id, so we can use it.
-	result, err2 := stmt.Exec(Docno, MenuCode, Description, Status, CreateBy, CreateDt, LastUpBy, LastUpDt, Docno)
+	result, err2 := stmt.Exec(Docno, MenuCode, Description, Status, CreateBy, CreateDt, LastUpBy, LastUpDt)
 
 	// Exit if we get an error
 	if err2 != nil {
-		panic(err2)
+		fmt.Println(err2)
 	}
 
 	return result.RowsAffected()
 }
 
 //function untuk untuk edit data documenthdr yang ditampilkan di view tabel
-func EditDocHdr(con *sql.DB, Docno string, ModulCode string, ActiveInd string, Status string, CreateBy string, CreateDt string, LastUpBy nullable.String, LastUpDt nullable.String) (int64, error) {
+func EditDocDtl(con *sql.DB, Docno string, MenuCode string, Description string, Status string,  LastUpBy nullable.String, LastUpDt nullable.String) (int64, error) {
 	con = config.Connection()
-	query := "Update tbldocumenthdr set modulcode = ?, activeind = ?, status = ?, createby = ?, createdt = ?, lastupby = ?, lastupdt = ? where docno = ?"
+	query := "UPDATE tbldocumentdtl set description = ?, status = ?, lastupby = ?, lastupdt = ? where docno = ? && menucode = ?"
 
 	stmt, err := con.Prepare(query)
 
@@ -136,27 +148,7 @@ func EditDocHdr(con *sql.DB, Docno string, ModulCode string, ActiveInd string, S
 		panic(err)
 	}
 
-	result, err2 := stmt.Exec(ModulCode, ActiveInd, Status, CreateBy, CreateDt, LastUpBy, LastUpDt, Docno)
-
-	if err2 != nil {
-		panic(err2)
-	}
-
-	return result.RowsAffected()
-}
-
-//function untuk untuk edit data documenthdr yang ditampilkan di view tabel
-func EditDocDtl(con *sql.DB, Docno string, MenuCode string, Description string, Status string, CreateBy string, CreateDt string, LastUpBy nullable.String, LastUpDt nullable.String) (int64, error) {
-	con = config.Connection()
-	query := "UPDATE tbldocumentdtl set menucode = ?, description = ?, status = ?, createby = ?, createdt = ?, lastupby = ?, lastupdt = ? where docno = ?"
-
-	stmt, err := con.Prepare(query)
-
-	if err != nil {
-		panic(err)
-	}
-
-	result, err2 := stmt.Exec(MenuCode, Description, Status, CreateBy, CreateDt, LastUpBy, LastUpDt, Docno)
+	result, err2 := stmt.Exec(Description, Status,  LastUpBy, LastUpDt, Docno, MenuCode)
 
 	if err2 != nil {
 		panic(err2)
@@ -208,7 +200,7 @@ func GenerateCode (c *CustomContext) GenerateCodes{
 	con = config.Connection()
 	// query := "SELECT MAX(LEFT(tbldocumenthdr.Docno,4)) AS DocNo FROM tbldocumenthdr ORDER BY DocNo DESC"
 	query := "SELECT MAX(LEFT(tbldocumenthdr.Docno,4)) AS DocNo FROM tbldocumenthdr WHERE modulcode = ? ORDER BY DocNo DESC"
-
+	
 	rows, err := con.Query(query, modulcode)
 	if err != nil {
 		fmt.Println(err)
@@ -220,6 +212,29 @@ func GenerateCode (c *CustomContext) GenerateCodes{
 		if eror != nil {
 			fmt.Println(eror)
 		}
+	}
+	return result
+}
+// function untuk mengambil data dari tabel document dtl
+func GetDocumentDtl(c *CustomContext) DocumentsDtl {
+	menucode := c.Param("menucode")
+	connection = config.Connection()
+	query2 := "SELECT * FROM tbldocumentdtl where menucode = ? "
+	rows2, err2 := connection.Query(query2, menucode)
+	if err2 != nil{
+		fmt.Println(err2)
+	}
+	defer rows2.Close()
+	result := DocumentsDtl{}
+
+	for rows2.Next() {
+		docdtl := DocDtl{}
+
+		eror := rows2.Scan(&docdtl.Docno, &docdtl.MenuCode, &docdtl.Description, &docdtl.Status, &docdtl.CreateBy, &docdtl.CreateDt, &docdtl.LastUpBy, &docdtl.LastUpDt)
+		if eror != nil {
+			fmt.Println(eror)
+		}
+		result.DocumentsDtl = append(result.DocumentsDtl, docdtl)
 	}
 	return result
 }

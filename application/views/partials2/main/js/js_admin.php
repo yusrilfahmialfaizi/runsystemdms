@@ -34,7 +34,7 @@
                 $.each(data1, function(i, data){
                 var u = 2;
                   if (data.parent.length == 0) { 
-                    sub = '<li><a href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
+                    sub = '<li><a onClick="menuCode(this)" data-id="'+data.menucode+'"  href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
                     $("#" + data.modulcode).append(sub);
                   }
                   for (var j = 0; j < data2.parentlength.length; j++) {
@@ -65,9 +65,10 @@
         $("#" + id_li).even().addClass("open");
       }
       function modules2(id_li) {
+        var modulname = $(id_li).attr("data-id");
         $("li").removeClass("open");
-        $("#" + id_li).addClass("open");
-        console.log(id_li);
+        $("#" + modulname).addClass("open");
+        console.log(modulname);
       }
       function modulCode(modulCode) {
         var modulCode = modulCode;

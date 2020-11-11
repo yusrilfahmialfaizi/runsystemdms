@@ -39,13 +39,15 @@ func Routes() *echo.Echo {
 	e.GET("/runsystemdms/getDynamicMenuParts", controllers.GetDynamicMenuParts)
 	e.GET("/runsystemdms/getGenerateCode/:modulcode", controllers.GenerateCode)
 	// e.GET("/runsystemdms/getLastChilds", controllers.GetLastChild)
-
+	
 	e.PUT("/runsystemdms/updateDataSubModules", controllers.UpdateDataSubModules)
-
+	
 	//routes document
 	var con *sql.DB
+	e.GET("/runsystemdms/getDocsDtl/:menucode", controllers.GetDocumentDtl)
 	e.GET("/runsystemdms/getDataDocuments", controllers.GetDatadocuments)
 	e.POST("/runsystemdms/postDataDocuments", controllers.PostDataDocuments(con))
+	e.POST("/runsystemdms/postDataDocumentsDtl", controllers.PostDataDocumentsDtl(con))
 	e.PUT("/runsystemdms/editDataDocuments", controllers.EditDataDocuments(con))
 	e.DELETE("/runsystemdms/deleteDocument", controllers.DelDocument)
 
