@@ -30,8 +30,8 @@ type InsDatadocument struct {
 	Description string          `json:"description"`
 	CreateBy    string          `json:"createby"`
 	CreateDt    string          `json:"createdt"`
-	LastUpBy    nullable.String `json:"lastupby"`
-	LastUpDt    nullable.String `json:"lastupdt"`
+	LastUpBy    string 		   `json:"lastupby"`
+	LastUpDt    string    	   `json:"lastupdt"`
 }
 type DocDtl struct {
 	Docno       string          `json:"docno"`
@@ -83,7 +83,7 @@ func GetDatadocuments() Datadocuments {
 }
 
 //function untuk untuk post data documenthdr yang ditampilkan di view tabel
-func PostDataDocuments(con *sql.DB, Docno string, ModulCode string, Status string, ActiveInd string, CreateBy string, CreateDt string, LastUpBy nullable.String, LastUpDt nullable.String) (int64, error) {
+func PostDataDocuments(con *sql.DB, Docno string, ModulCode string, Status string, ActiveInd string, CreateBy string, CreateDt string, LastUpBy string, LastUpDt string) (int64, error) {
 	con = config.Connection()
 	query1 := "UPDATE tbldocumenthdr SET ActiveInd = 'N' WHERE modulcode = ?"
 	query2 := "INSERT INTO tbldocumenthdr (docno, modulcode, activeind, status, createby, createdt, lastupby, lastupdt) values (?,?,?,?,?,?,?,?)"
@@ -138,7 +138,7 @@ func PostDataDocumentsDtl(con *sql.DB, Docno string, MenuCode string, Descriptio
 }
 
 //function untuk untuk edit data documenthdr yang ditampilkan di view tabel
-func EditDocDtl(con *sql.DB, Docno string, MenuCode string, Description string, Status string,  LastUpBy nullable.String, LastUpDt nullable.String) (int64, error) {
+func EditDocDtl(con *sql.DB, Docno string, MenuCode string, Description string, Status string,  LastUpBy string, LastUpDt string) (int64, error) {
 	con = config.Connection()
 	query := "UPDATE tbldocumentdtl set description = ?, status = ?, lastupby = ?, lastupdt = ? where docno = ? && menucode = ?"
 
@@ -217,10 +217,13 @@ func GenerateCode (c *CustomContext) GenerateCodes{
 }
 // function untuk mengambil data dari tabel document dtl
 func GetDocumentDtl(c *CustomContext) DocumentsDtl {
-	menucode := c.Param("menucode")
+	docno := c.FormValue("docno")
+	menucode := c.FormValue("menucode")
 	connection = config.Connection()
-	query2 := "SELECT * FROM tbldocumentdtl where menucode = ? "
-	rows2, err2 := connection.Query(query2, menucode)
+	// query2 := "SELECT * FROM tbldocumentdtl where docno = ?"
+	query2 := "SELECT * FROM tbldocumentdtl where docno = ? AND menucode = ? "
+	rows2, err2 := connection.Query(query2, docno, menucode)
+	// rows2, err2 := connection.Query(query2, docno)
 	if err2 != nil{
 		fmt.Println(err2)
 	}
