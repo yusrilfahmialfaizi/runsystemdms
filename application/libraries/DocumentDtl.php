@@ -7,11 +7,17 @@
                $this->CI =& get_instance();
           }
 
-          function getDocumentDtl($menucode){
-               $url = 'http://127.0.0.1:8080/runsystemdms/getDocsDtl/'.$menucode;
+          function getDocumentDtl($docno,$menucode){
+               $data = [
+                    "docno" => $docno,
+                    "menucode" => $menucode
+               ];
+               $url = 'http://127.0.0.1:8080/runsystemdms/getDocsDtl';
                $ch = curl_init();
 
                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+               curl_setopt($ch, CURLOPT_POST, 1);
+               curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
                curl_setopt($ch, CURLOPT_URL, $url);
                $data = curl_exec($ch);
                curl_close($ch);
