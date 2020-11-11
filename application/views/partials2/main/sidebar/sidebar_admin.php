@@ -29,7 +29,7 @@
                   </div>
                 </div>
                 <ul class="iconbar-mainmenu custom-scrollbar">
-                  <li class="iconbar-header">Sub Module</li>
+                  <li  id="sub-header-<?php echo $key[$i]["modul"][$j]["modulcode"] ?>" class="iconbar-header">Sub Module</li>
                   <li id="<?php echo $key[$i]["modul"][$j]["modulcode"] ?>"></li>
                 </ul>
               <?php } ?>

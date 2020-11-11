@@ -26,7 +26,7 @@ class Edit extends CI_Controller {
 	}
 
 	function EditDocDetail(){
-		$docno = '0003/GSS/INVESTAI/FICO/11/2020';
+		$docno = $this->session->userdata("docno");
 		$menucode = $this->session->userdata("menu");
 		$description = $this->input->post("deskripsi");
 		$stts = $this->input->post("chk-ani");

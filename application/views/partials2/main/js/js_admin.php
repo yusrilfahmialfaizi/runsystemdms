@@ -66,9 +66,13 @@
       }
       function modules2(id_li) {
         var modulname = $(id_li).attr("data-id");
+        var modulcode = $(id_li).attr("data-modulcode");
+        var docno = $(id_li).attr("data-docno");
+        $.post( "<?php echo base_url("tabel/docno_session")?>", { docno: docno} );
+        $("#sub-header-"+ modulcode ).text(docno);
         $("li").removeClass("open");
-        $("#" + modulname).addClass("open");
-        console.log(modulname);
+        document.getElementById(modulname).className += "open";
+        $("#sidebar").removeClass("iconbar-mainmenu-close");
       }
       function modulCode(modulCode) {
         var modulCode = modulCode;

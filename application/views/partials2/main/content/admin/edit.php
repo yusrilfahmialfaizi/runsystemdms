@@ -37,7 +37,7 @@
 								</label>
 							</div>
 							<h4> Deskripsi</h4><br>
-							<textarea class="form-control" rows="10" cols="50" id="deskripsi" name="deskripsi"><?php echo $value[0]['description']?></textarea>
+							<textarea class="form-control" rows="10" cols="50" id="deskripsi" name="deskripsi"><?php echo $value[0]['description']?> </textarea>
 
 							<div class="clearfix"><br>
 								<div class="col-md-4 offset-md-10">
