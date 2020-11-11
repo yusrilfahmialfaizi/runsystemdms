@@ -71,6 +71,22 @@ func EditDataDocuments(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
+func EditDataDocumentsHdr(con *sql.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+
+		var editdochdr models.UpDatadocumentHdr
+		c.Bind(&editdochdr)
+
+		// _, err := models.EditDocHdr(con, editdochdr.Docno, editdochdr.ModulCode, editdochdr.Status, editdochdr.ActiveInd, editdochdr.CreateBy, editdochdr.CreateDt, editdochdr.LastUpBy, editdochdr.LastUpDt)
+		_, err := models.EditDocHdr(con, editdochdr.Docno, editdochdr.Status, editdochdr.LastUpBy, editdochdr.LastUpDt)
+
+		if err == nil {
+			return c.JSON(http.StatusOK, editdochdr)
+		} else {
+			return err
+		}
+	}
+}
 
 func DelDocument(c echo.Context) error {
 	cc := c.(*models.CustomContext)

@@ -97,11 +97,37 @@ class Tabel extends CI_Controller {
 		$menu = $this->input->post("menuCode");
 		$this->session->set_userdata(array("menu" => $menu));
 	}
-	function docno_session(){
+	function doc_session(){
 		$docno = $this->input->post("docno");
-		$this->session->set_userdata(array("docno" => $docno));
+		$active = $this->input->post("active");
+		$this->session->set_userdata(array("docno" => $docno, "active" => $active));
 		echo $docno."\n";
 		echo $this->session->userdata("docno");
+	}
+	function update_statushdr(){
+		$url = 'http://127.0.0.1:8080/runsystemdms/editDataDocumentshdr';
+		$checked = $this->input->post("checked");
+		$docno = $this->session->userdata("docno");
+		$lastupby = $this->session->userdata("usercode");
+		date_default_timezone_set('Asia/Jakarta');
+		$lastupdt = date('YmdHi');
+		$data = [
+			"docno" => $docno,
+			"status" => $checked,
+			"lastupby" => $lastupby,
+			"lastupdt" => $lastupdt
+		];
+		if ($docno != null) {
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+			curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_VERBOSE, true);
+			curl_setopt($ch, CURLOPT_URL, $url);
+			$response = curl_exec($ch);
+			echo curl_error($ch);
+			curl_close($ch);
+		}
 	}
 }
 ?>

@@ -49,6 +49,7 @@ func Routes() *echo.Echo {
 	e.POST("/runsystemdms/postDataDocuments", controllers.PostDataDocuments(con))
 	e.POST("/runsystemdms/postDataDocumentsDtl", controllers.PostDataDocumentsDtl(con))
 	e.PUT("/runsystemdms/editDataDocuments", controllers.EditDataDocuments(con))
+	e.PUT("/runsystemdms/editDataDocumentshdr", controllers.EditDataDocumentsHdr(con))
 	e.DELETE("/runsystemdms/deleteDocument", controllers.DelDocument)
 
 	return e

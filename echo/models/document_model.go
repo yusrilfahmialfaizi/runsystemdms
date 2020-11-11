@@ -33,6 +33,12 @@ type InsDatadocument struct {
 	LastUpBy    string 		   `json:"lastupby"`
 	LastUpDt    string    	   `json:"lastupdt"`
 }
+type UpDatadocumentHdr struct {
+	Docno       string          `json:"docno"`
+	Status      string          `json:"status"`
+	LastUpBy    string 		   `json:"lastupby"`
+	LastUpDt    string    	   `json:"lastupdt"`
+}
 type DocDtl struct {
 	Docno       string          `json:"docno"`
 	MenuCode    string          `json:"menucode"`
@@ -62,7 +68,7 @@ var con *sql.DB
 //function untuk get document yang ditampilkan di view tabel
 func GetDatadocuments() Datadocuments {
 	con = config.Connection()
-	query := "SELECT tbldocumenthdr.Docno, tbldocumenthdr.ModulCode, tblmodul.ModulName, tbldocumenthdr.ActiveInd, tbldocumenthdr.`Status`, tbldocumenthdr.CreateBy, tbldocumenthdr.CreateDt, tbldocumenthdr.LastUpBy, tbldocumenthdr.LastUpDt FROM tbldocumenthdr INNER JOIN tblmodul ON tblmodul.ModulCode = tbldocumenthdr.ModulCode where ActiveInd = 'Y' "
+	query := "SELECT tbldocumenthdr.Docno, tbldocumenthdr.ModulCode, tblmodul.ModulName, tbldocumenthdr.ActiveInd, tbldocumenthdr.`Status`, tbldocumenthdr.CreateBy, tbldocumenthdr.CreateDt, tbldocumenthdr.LastUpBy, tbldocumenthdr.LastUpDt FROM tbldocumenthdr INNER JOIN tblmodul ON tblmodul.ModulCode = tbldocumenthdr.ModulCode "
 	rows, err := con.Query(query)
 	if err != nil {
 		fmt.Println(err)
@@ -149,6 +155,24 @@ func EditDocDtl(con *sql.DB, Docno string, MenuCode string, Description string, 
 	}
 
 	result, err2 := stmt.Exec(Description, Status,  LastUpBy, LastUpDt, Docno, MenuCode)
+
+	if err2 != nil {
+		panic(err2)
+	}
+
+	return result.RowsAffected()
+}
+func EditDocHdr(con *sql.DB, Docno string, Status string,  LastUpBy string, LastUpDt string) (int64, error) {
+	con = config.Connection()
+	query := "UPDATE tbldocumenthdr set status = ?, lastupby = ?, lastupdt = ? where docno = ? "
+
+	stmt, err := con.Prepare(query)
+
+	if err != nil {
+		panic(err)
+	}
+
+	result, err2 := stmt.Exec(Status,  LastUpBy, LastUpDt, Docno)
 
 	if err2 != nil {
 		panic(err2)

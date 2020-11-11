@@ -68,7 +68,12 @@
         var modulname = $(id_li).attr("data-id");
         var modulcode = $(id_li).attr("data-modulcode");
         var docno = $(id_li).attr("data-docno");
-        $.post( "<?php echo base_url("tabel/docno_session")?>", { docno: docno} );
+        var active = $(id_li).attr("data-active");
+        var status = $(id_li).attr("data-status");
+        if (status != "O") {
+          document.getElementById('statushdr').checked = true;
+        }
+        $.post( "<?php echo base_url("tabel/doc_session")?>", { docno: docno, active:active} );
         $("#sub-header-"+ modulcode ).text(docno);
         $("li").removeClass("open");
         document.getElementById(modulname).className += "open";
@@ -83,6 +88,18 @@
         console.log(menuCode);
         $.post( "<?php echo base_url("tabel/menu_session")?>", { menuCode: menuCode} );
       }
+      $('input[type="checkbox"]').click(function(){
+          if($(this).prop("checked") == true){
+              // console.log("Checkbox is checked.");
+              var checked = "F";
+              $.post( "<?php echo base_url("tabel/update_statushdr")?>", { checked: checked} );
+          }
+          else if($(this).prop("checked") == false){
+              var checked = "O";
+              // console.log("Checkbox is unchecked.");
+              $.post( "<?php echo base_url("tabel/update_statushdr")?>", { checked: checked} );
+          }
+      });
     </script>
 
 

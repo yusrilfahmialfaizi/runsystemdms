@@ -55,7 +55,7 @@
                           <td><?php echo $key[$i]["createdt"];?></td>
                           <td><?php echo $key[$i]["lastupby"];?></td>
                           <td><?php echo $key[$i]["lastupdt"];?></td>
-                          <td><button type="button" data-feather="edit" data-docno="<?php echo $key[$i]["docno"];?>" data-modulcode="<?php echo $key[$i]["modulcode"];?>" onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"];?>">Edit</button></td>
+                          <td><button type="button" data-feather="edit" data-docno="<?php echo $key[$i]["docno"];?>" data-modulcode="<?php echo $key[$i]["modulcode"];?>" data-status="<?php echo $key[$i]["status"];?>" data-active="<?php echo $key[$i]["activeind"];?>" onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"];?>">Edit</button></td>
                         </tr>
                         <?php }}} ?>
                       </tbody>
