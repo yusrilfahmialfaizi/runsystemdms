@@ -27,8 +27,7 @@
 							<label class="d-block" for="chk-ani">
 								<input class="checkbox_animated" id="chk-ani" type="checkbox" >Status
 							</label>
-						</div>
-						<a> Berikut Merupakan Teks Editor :)</a></br>
+						</div></br>
 						<textarea class="form-control" name="deskripsi"><?php $this->session->userdata("menu");?></textarea>
 
 						<script type="text/javascript">

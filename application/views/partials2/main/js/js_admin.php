@@ -34,7 +34,7 @@
                 $.each(data1, function(i, data){
                 var u = 2;
                   if (data.parent.length == 0) { 
-                    sub = '<li><a onClick="menuCode(this)" data-id="'+data.menucode+'"  href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + '</a><ul id="' + data.menucode + '"></ul></li>';
+                    sub = '<li><a onClick="menuCode(this)" data-id="'+data.menucode+'"  href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + ' ('+ data.status + ')</a><ul id="' + data.menucode + '"></ul></li>';
                     $("#" + data.modulcode).append(sub);
                   }
                   for (var j = 0; j < data2.parentlength.length; j++) {
