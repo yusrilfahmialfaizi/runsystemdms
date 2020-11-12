@@ -66,7 +66,7 @@ class Multi_menu {
 	 * 
 	 * @var string
 	 */
-	private $parent_anchor            = '<a href="%s">%s</a>';
+	private $parent_anchor            = '<a onClick="menuCode(this)" href="%s">%s</a>';
 
 	/**
 	 * Opening tag of the menu item level one that has children
@@ -130,7 +130,7 @@ class Multi_menu {
 	 * 
 	 * @var string
 	 */
-	private $item_anchor              = '<a href="%s">%s</a>';
+	private $item_anchor              = '<a onClick="menuCode(this)" href="%s">%s</a>';
 
 	/**
 	 * The list of menu items that has divider
@@ -427,12 +427,14 @@ class Multi_menu {
 		        	if ( is_null($item[$this->menu_parent]) && $this->parentl1_tag_open != '' ) 
 		        	{
 						$tag_open    =  $this->parentl1_tag_open;
-						$item_anchor = $this->parentl1_anchor != '' ? $this->parentl1_anchor : $this->parent_anchor;
+						// $item_anchor = $this->parentl1_anchor != '' ? $this->parentl1_anchor : $this->parent_anchor.'<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" href="%s">%s</a>';
+						$item_anchor = $this->parentl1_anchor != '' ? $this->parentl1_anchor : '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" href="%s">%s</a>';
 		        	}
 		        	else 
 		        	{
 						$tag_open     = $this->parent_tag_open;
-						$item_anchor = $this->parent_anchor;
+						// $item_anchor = $this->parent_anchor;
+						$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" href="%s">%s</a>';
 		        	}
 
 					$href  = base_url('edit');				
@@ -441,13 +443,16 @@ class Multi_menu {
 		        {
 		        	$tag_open    = $this->item_tag_open;
 					$href        = site_url($slug);
-					$item_anchor = $this->item_anchor;
+					// $item_anchor = $this->item_anchor;
+					$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" href="%s">%s</a>';
 		        }
 
-				$html .= $this->set_active($tag_open, $slug);	        	        
+				$html .= $this->set_active($tag_open, $slug);	      
+				
+				// $onclick = 'onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'"';
 
 				if (substr_count($item_anchor, '%s') == 2) {
-					$html .= sprintf($item_anchor, $href, $label);
+					$html .= sprintf($item_anchor, $href, $label."Status");
 				}
 				else {
 					$html .= sprintf($item_anchor, $label);	
