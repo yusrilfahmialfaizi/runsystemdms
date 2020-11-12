@@ -14,32 +14,19 @@ func GetModuls(c echo.Context) error {
 	fmt.Println("Getting menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
+// function untuk get moduls berdasarkan modulcode
 func GetModulsById(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetModulsById(cc)
 	fmt.Println("Getting menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
-// func GetModulMenu(c echo.Context) error {
-// 	result := models.GetModulMenu()
-// 	fmt.Println("Getting menu parent...")
-// 	return c.JSON(http.StatusOK, result)
-// }
-
 // Controller untuk get panjang data parent
 func GetDynamicMenuParts(c echo.Context) error {
 	result := models.GetDynamicMenuParts()
 	fmt.Println("Getting parent length...")
 	return c.JSON(http.StatusOK, result)
 }
-
-// Controller untuk get menucode anak paling bontot
-// func GetLastChild(c echo.Context) error {
-// 	result := models.GetLastChild()
-// 	fmt.Println("Getting last childs .....")
-// 	return c.JSON(http.StatusOK, result)
-// }
-
 // Controller untuk update data
 func UpdateDataSubModules(c echo.Context) error {
 	cc := c.(*models.CustomContext)

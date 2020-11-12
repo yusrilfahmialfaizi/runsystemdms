@@ -7,11 +7,7 @@ class Tabel extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library("menu");
-		// $this->load->library("multi_menu");
-		// $items = $this->menu->getModulMenu();
-		// $items = json_decode($items, true);
-		// $items = $items['menu'][0]['modulmenu'];
-		// $this->multi_menu->set_items($items);
+		$this->load->library("documentdtl");
 	}
 	
 	public function index()
@@ -21,27 +17,20 @@ class Tabel extends CI_Controller {
 		}
 		$data2 = $this->menu->getModulMenu();
 		$data2 = json_decode($data2, true);
-		// echo "<pre>"; 
-		// print_r($data2['menu'][0]['modulmenu']);
-		// echo "</pre>";
 		$data["sidebar"] = $data2;
 		$data1 = $this->getDataDocuments();
 		$data1 = json_decode($data1, true);
 		$data["get"] = $data1;
-
-		// $items = $this->menu->getModulMenu();
-		// $items = json_decode($items, true);
-		// $items = $items['menu'][0]['modulmenu'];
-		// $this->multi_menu->set_items($items);
-		// echo $this->multi_menu->render('Item-0');
-
-		// $config["nav_tag_open"]          = '<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">';		
-		// $config["parent_tag_open"]       = '<li class="dropdown-submenu">';			
-		// $config["parent_anchor_tag"]     = '<a tabindex="-1" href="%s">%s</a>';	
-		// $config["children_tag_open"]     = '<ul class="dropdown-menu">';			
-		// $config["item_divider"]          = "<li class='divider'></li>";
-
-		// $this->multi_menu->initialize($config);
+		// $dt = array("docno" => '0003/GSS/INVESTAI/FICO/11/2020');
+		// $response = $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForMenu", $dt);
+		// $response = json_decode($response, true);
+		// $response = $response["documentsdtl"];
+		// echo "<pre>"; 
+		// foreach ($response as $key) {
+		// 	# code...
+		// 	print_r($key);
+		// }
+		// echo "</pre>";
 		$this->load->view('partials2/main/page/page_tabel', $data);
 	}
 
@@ -125,11 +114,15 @@ class Tabel extends CI_Controller {
 		$this->load->library("menu");
 		$this->load->library("multi_menu");
 		$modulcode = $this->input->post('modulCode');
-		// echo $modulcode;
+		$dt = array("docno" => '0003/GSS/INVESTAI/FICO/11/2020');
+		$response = $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForMenu", $dt);
+		$response = json_decode($response, true);
+		$status = $response["documentsdtl"];
 		$items = $this->menu->getModulMenuById($modulcode);
 		$items = json_decode($items, true);
 		$items = $items['menu'];
 		$this->multi_menu->set_items($items); 
+		// $this->multi_menu->set_items($items, $status); 
 		echo json_encode($this->multi_menu->render('Item-0')); 
 	}
 

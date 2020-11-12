@@ -162,6 +162,7 @@ func EditDocDtl(con *sql.DB, Docno string, MenuCode string, Description string, 
 
 	return result.RowsAffected()
 }
+// function untuk edit doc header
 func EditDocHdr(con *sql.DB, Docno string, Status string,  LastUpBy string, LastUpDt string) (int64, error) {
 	con = config.Connection()
 	query := "UPDATE tbldocumenthdr set status = ?, lastupby = ?, lastupdt = ? where docno = ? "
@@ -244,10 +245,31 @@ func GetDocumentDtl(c *CustomContext) DocumentsDtl {
 	docno := c.FormValue("docno")
 	menucode := c.FormValue("menucode")
 	connection = config.Connection()
-	// query2 := "SELECT * FROM tbldocumentdtl where docno = ?"
 	query2 := "SELECT * FROM tbldocumentdtl where docno = ? AND menucode = ? "
 	rows2, err2 := connection.Query(query2, docno, menucode)
-	// rows2, err2 := connection.Query(query2, docno)
+	if err2 != nil{
+		fmt.Println(err2)
+	}
+	defer rows2.Close()
+	result := DocumentsDtl{}
+
+	for rows2.Next() {
+		docdtl := DocDtl{}
+
+		eror := rows2.Scan(&docdtl.Docno, &docdtl.MenuCode, &docdtl.Description, &docdtl.Status, &docdtl.CreateBy, &docdtl.CreateDt, &docdtl.LastUpBy, &docdtl.LastUpDt)
+		if eror != nil {
+			fmt.Println(eror)
+		}
+		result.DocumentsDtl = append(result.DocumentsDtl, docdtl)
+	}
+	return result
+}
+// function untuk mengambil data dari tabel document dtl
+func GetDocumentsDtl(c *CustomContext) DocumentsDtl {
+	docno := c.FormValue("docno")
+	connection = config.Connection()
+	query2 := "SELECT * FROM tbldocumentdtl where docno = ? "
+	rows2, err2 := connection.Query(query2, docno)
 	if err2 != nil{
 		fmt.Println(err2)
 	}

@@ -36,6 +36,7 @@ func PostDataDocuments(con *sql.DB) echo.HandlerFunc {
 
 	}
 }
+// function pada controller untuk post data document dtl
 func PostDataDocumentsDtl(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
 
@@ -71,13 +72,13 @@ func EditDataDocuments(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
+// function untuk controller update data document header 
 func EditDataDocumentsHdr(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
 
 		var editdochdr models.UpDatadocumentHdr
 		c.Bind(&editdochdr)
 
-		// _, err := models.EditDocHdr(con, editdochdr.Docno, editdochdr.ModulCode, editdochdr.Status, editdochdr.ActiveInd, editdochdr.CreateBy, editdochdr.CreateDt, editdochdr.LastUpBy, editdochdr.LastUpDt)
 		_, err := models.EditDocHdr(con, editdochdr.Docno, editdochdr.Status, editdochdr.LastUpBy, editdochdr.LastUpDt)
 
 		if err == nil {
@@ -87,43 +88,32 @@ func EditDataDocumentsHdr(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
-
+// function pada controller untuk delete document
 func DelDocument(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.DeleteDocs(cc)
 	fmt.Println("Update data sub module ...")
 	return c.JSON(http.StatusOK, result)
 }
-
+// function untuk mengambil 4 digit angka untuk generate code
 func GenerateCode(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GenerateCode(cc)
 	fmt.Println("Getting generate code...")
 	return c.JSON(http.StatusOK, result)
 }
-
+// function pada controller untuk get documents dtl berdasarkan docno dan menucode
 func GetDocumentDtl(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetDocumentDtl(cc)
 	fmt.Println("Getting generate code...")
 	return c.JSON(http.StatusOK, result)
 }
+// function pada controller untuk get documents dtl berdasarkan docno
+func GetDocumentsDtl(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.GetDocumentsDtl(cc)
+	fmt.Println("Getting generate code...")
+	return c.JSON(http.StatusOK, result)
+}
 
-//function controller untuk delete data document
-// func DelDocument(con *sql.DB) echo.HandlerFunc {
-// 	return func(c echo.Context) error {
-
-// 		docno, _ := strconv.Atoi(c.Param("docno"))
-// 		// docs := strconv.Itoa(int(docno))
-// 		_, err := models.DeleteDocs(con, docno)
-
-// 		if err == nil {
-// 			return c.JSON(http.StatusOK, H{
-// 				"deleted": docno,
-// 			})
-// 		} else {
-// 			return err
-// 		}
-
-// 	}
-// }

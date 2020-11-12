@@ -53,9 +53,9 @@
                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                curl_setopt($ch, CURLOPT_VERBOSE, true);
                curl_setopt($ch, CURLOPT_URL, $url);
-               curl_exec($ch);
+               $response = curl_exec($ch);
                curl_close($ch);
-
+               return $response;
           }
      }
 ?>

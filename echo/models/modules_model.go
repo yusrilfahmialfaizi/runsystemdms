@@ -82,17 +82,12 @@ func GetModuls() Moduls {
 	// modulcode := c.Param("modulcode");
 	connection = config.Connection()
 	query1 := "SELECT ModulCode, ModulName, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmodul "
-	// query2 := "SELECT tblmodulmenu.MenuCode, tblmodulmenu.ModulCode, tblmodulmenu.MenuDesc, tblmodulmenu.Parent, tblmodulmenu.CreateBy, tblmodulmenu.CreateDt, tblmodulmenu.LastUpBy, tblmodulmenu.LastUpDt, tbldocumentdtl.`Status` FROM tblmodulmenu LEFT JOIN tbldocumentdtl ON tbldocumentdtl.MenuCode = tblmodulmenu.MenuCode "
 	rows1, err1 := connection.Query(query1)
-	// rows2, err2 := connection.Query(query2)
-	// if err1 != nil && err2 != nil{
 	if err1 != nil {
 		fmt.Println(err1)
 		// fmt.Println(err2)
 	}
 	defer rows1.Close()
-	// defer rows2.Close()
-	// all_result := Menu{}
 	result := Moduls{}
 
 	for rows1.Next() {
@@ -104,18 +99,9 @@ func GetModuls() Moduls {
 		}
 		result.Moduls = append(result.Moduls, modul)
 	}
-	// for rows2.Next() {
-	// 	modulmenu := ModulMenu{}
-
-	// 	eror := rows2.Scan(&modulmenu.MenuCode, &modulmenu.ModulCode, &modulmenu.MenuDesc, &modulmenu.Parent, &modulmenu.CreateBy, &modulmenu.CreateDt, &modulmenu.LastupBy, &modulmenu.LastupDt, &modulmenu.Status)
-	// 	if eror != nil {
-	// 		fmt.Println(eror)
-	// 	}
-	// 	result.ModulMenu = append(result.ModulMenu, modulmenu)
-	// }
-	// all_result.Menu = append(all_result.Menu, result)
 	return result
 }
+// function untuk get data modul berdasarkan modulcode
 func GetModulsById(c *CustomContext) Menu {
 	modulcode := c.Param("modulcode");
 	connection = config.Connection()
