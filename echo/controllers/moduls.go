@@ -14,6 +14,12 @@ func GetModuls(c echo.Context) error {
 	fmt.Println("Getting menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
+func GetModulsById(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.GetModulsById(cc)
+	fmt.Println("Getting menu parent...")
+	return c.JSON(http.StatusOK, result)
+}
 // func GetModulMenu(c echo.Context) error {
 // 	result := models.GetModulMenu()
 // 	fmt.Println("Getting menu parent...")

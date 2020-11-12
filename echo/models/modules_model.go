@@ -57,11 +57,10 @@ type LastChild struct {
 
 type Moduls struct {
 	Moduls []Modul `json:"modul"`
-	ModulMenu []ModulMenu `json:"modulmenu"`
 }
 
 type Menu struct {
-	Menu []Moduls `json:"menu"`
+	Menu []ModulMenu `json:"menu"`
 }
 
 type DynamicMenu struct {
@@ -79,19 +78,21 @@ type Datasubmodules struct {
 var connection *sql.DB
 
 // function untuk mengambil data dari tabel menu berdasarkan parent yang memiliki 2 digit angka
-func GetModuls() Menu {
+func GetModuls() Moduls {
+	// modulcode := c.Param("modulcode");
 	connection = config.Connection()
 	query1 := "SELECT ModulCode, ModulName, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmodul "
-	query2 := "SELECT tblmodulmenu.MenuCode, tblmodulmenu.ModulCode, tblmodulmenu.MenuDesc, tblmodulmenu.Parent, tblmodulmenu.CreateBy, tblmodulmenu.CreateDt, tblmodulmenu.LastUpBy, tblmodulmenu.LastUpDt, tbldocumentdtl.`Status` FROM tblmodulmenu LEFT JOIN tbldocumentdtl ON tbldocumentdtl.MenuCode = tblmodulmenu.MenuCode"
+	// query2 := "SELECT tblmodulmenu.MenuCode, tblmodulmenu.ModulCode, tblmodulmenu.MenuDesc, tblmodulmenu.Parent, tblmodulmenu.CreateBy, tblmodulmenu.CreateDt, tblmodulmenu.LastUpBy, tblmodulmenu.LastUpDt, tbldocumentdtl.`Status` FROM tblmodulmenu LEFT JOIN tbldocumentdtl ON tbldocumentdtl.MenuCode = tblmodulmenu.MenuCode "
 	rows1, err1 := connection.Query(query1)
-	rows2, err2 := connection.Query(query2)
-	if err1 != nil && err2 != nil{
+	// rows2, err2 := connection.Query(query2)
+	// if err1 != nil && err2 != nil{
+	if err1 != nil {
 		fmt.Println(err1)
-		fmt.Println(err2)
+		// fmt.Println(err2)
 	}
 	defer rows1.Close()
-	defer rows2.Close()
-	all_result := Menu{}
+	// defer rows2.Close()
+	// all_result := Menu{}
 	result := Moduls{}
 
 	for rows1.Next() {
@@ -103,6 +104,29 @@ func GetModuls() Menu {
 		}
 		result.Moduls = append(result.Moduls, modul)
 	}
+	// for rows2.Next() {
+	// 	modulmenu := ModulMenu{}
+
+	// 	eror := rows2.Scan(&modulmenu.MenuCode, &modulmenu.ModulCode, &modulmenu.MenuDesc, &modulmenu.Parent, &modulmenu.CreateBy, &modulmenu.CreateDt, &modulmenu.LastupBy, &modulmenu.LastupDt, &modulmenu.Status)
+	// 	if eror != nil {
+	// 		fmt.Println(eror)
+	// 	}
+	// 	result.ModulMenu = append(result.ModulMenu, modulmenu)
+	// }
+	// all_result.Menu = append(all_result.Menu, result)
+	return result
+}
+func GetModulsById(c *CustomContext) Menu {
+	modulcode := c.Param("modulcode");
+	connection = config.Connection()
+	query2 := "SELECT tblmodulmenu.MenuCode, tblmodulmenu.ModulCode, tblmodulmenu.MenuDesc, tblmodulmenu.Parent, tblmodulmenu.CreateBy, tblmodulmenu.CreateDt, tblmodulmenu.LastUpBy, tblmodulmenu.LastUpDt, tbldocumentdtl.`Status` FROM tblmodulmenu LEFT JOIN tbldocumentdtl ON tbldocumentdtl.MenuCode = tblmodulmenu.MenuCode WHERE modulcode = ?"
+	rows2, err2 := connection.Query(query2, modulcode)
+	if err2 != nil{
+		fmt.Println(err2)
+	}
+	defer rows2.Close()
+	result := Menu{}
+
 	for rows2.Next() {
 		modulmenu := ModulMenu{}
 
@@ -110,10 +134,9 @@ func GetModuls() Menu {
 		if eror != nil {
 			fmt.Println(eror)
 		}
-		result.ModulMenu = append(result.ModulMenu, modulmenu)
+		result.Menu = append(result.Menu, modulmenu)
 	}
-	all_result.Menu = append(all_result.Menu, result)
-	return all_result
+	return result
 }
 
 
