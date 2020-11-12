@@ -66,15 +66,26 @@
       }
       function modules2(id_li) {
         var modulname = $(id_li).attr("data-id");
-        var modulcode = $(id_li).attr("data-modulcode");
+        var modulCode = $(id_li).attr("data-modulcode");
         var docno = $(id_li).attr("data-docno");
         var active = $(id_li).attr("data-active");
         var status = $(id_li).attr("data-status");
+        $.post( "<?php echo base_url("tabel/modul_session")?>", { modulCode: modulCode} );
+        $.ajax({ //to get all data menu from db
+          type: 'POST',
+          url: '<?php echo base_url("tabel/modulmenubyid")?>',
+          dataType: 'json',
+          data :{modulCode: modulCode},
+          cache: false,
+          success: function(response){
+            $('#modul-menu-' + modulCode).html(response);
+          }
+        });
         if (status != "O") {
           document.getElementById('statushdr').checked = true;
         }
         $.post( "<?php echo base_url("tabel/doc_session")?>", { docno: docno, active:active} );
-        $("#sub-header-"+ modulcode ).text(docno);
+        $("#sub-header-"+ modulCode ).text(docno);
         $("li").removeClass("open");
         document.getElementById(modulname).className += "open";
         $("#sidebar").removeClass("iconbar-mainmenu-close");
