@@ -7,19 +7,41 @@ class Tabel extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library("menu");
+		// $this->load->library("multi_menu");
+		// $items = $this->menu->getModulMenu();
+		// $items = json_decode($items, true);
+		// $items = $items['menu'][0]['modulmenu'];
+		// $this->multi_menu->set_items($items);
 	}
 	
 	public function index()
 	{
 		if ($this->session->userdata('status') != "login") {
-			redirect("login");
+			// redirect("login");
 		}
 		$data2 = $this->menu->getModulMenu();
 		$data2 = json_decode($data2, true);
+		// echo "<pre>"; 
+		// print_r($data2['menu'][0]['modulmenu']);
+		// echo "</pre>";
 		$data["sidebar"] = $data2;
 		$data1 = $this->getDataDocuments();
 		$data1 = json_decode($data1, true);
 		$data["get"] = $data1;
+
+		// $items = $this->menu->getModulMenu();
+		// $items = json_decode($items, true);
+		// $items = $items['menu'][0]['modulmenu'];
+		// $this->multi_menu->set_items($items);
+		// echo $this->multi_menu->render('Item-0');
+
+		// $config["nav_tag_open"]          = '<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">';		
+		// $config["parent_tag_open"]       = '<li class="dropdown-submenu">';			
+		// $config["parent_anchor_tag"]     = '<a tabindex="-1" href="%s">%s</a>';	
+		// $config["children_tag_open"]     = '<ul class="dropdown-menu">';			
+		// $config["item_divider"]          = "<li class='divider'></li>";
+
+		// $this->multi_menu->initialize($config);
 		$this->load->view('partials2/main/page/page_tabel', $data);
 	}
 
@@ -93,10 +115,24 @@ class Tabel extends CI_Controller {
 		$modul = $this->input->post("modulCode");
 		$this->session->set_userdata(array("modul" => $modul));
 	}
+
 	function menu_session(){
 		$menu = $this->input->post("menuCode");
 		$this->session->set_userdata(array("menu" => $menu));
 	}
+
+	function ModulMenuById(){
+		$this->load->library("menu");
+		$this->load->library("multi_menu");
+		$modulcode = $this->input->post('modulCode');
+		// echo $modulcode;
+		$items = $this->menu->getModulMenuById($modulcode);
+		$items = json_decode($items, true);
+		$items = $items['menu'];
+		$this->multi_menu->set_items($items); 
+		echo json_encode($this->multi_menu->render('Item-0')); 
+	}
+
 	function doc_session(){
 		$docno = $this->input->post("docno");
 		$active = $this->input->post("active");

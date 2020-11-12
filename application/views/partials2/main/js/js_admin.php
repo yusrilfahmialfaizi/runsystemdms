@@ -15,47 +15,47 @@
         var sub = '';
         var subs = '';
 
-        $.ajax({ //to get all data menu from db
-          type: 'GET',
-          url: url1,
-          dataType: 'json',
-          cache: false,
-          success: function(data1) {
-            data1 = JSON.parse(JSON.stringify(data1));
-            data1 = data1.menu[0].modulmenu;
-            $.ajax({ // to get length of parent
-              type: 'GET',
-              url: url2,
-              dataType: 'json',
-              cache: false,
-              success: function(data2) {
-                data2 = JSON.parse(JSON.stringify(data2));
-                data2 = data2.parts[0];
-                $.each(data1, function(i, data){
-                var u = 2;
-                  if (data.parent.length == 0) { 
-                    sub = '<li><a onClick="menuCode(this)" data-id="'+data.menucode+'"  href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + ' ('+ data.status + ')</a><ul id="' + data.menucode + '"></ul></li>';
-                    $("#" + data.modulcode).append(sub);
-                  }
-                  for (var j = 0; j < data2.parentlength.length; j++) {
-                    if (data.parent.length == (u = u + 2)) {
-                      for (k = 0; k < data2.lastChilds.length; k++) {
-                        if (data.menucode == data2.lastChilds[k].menucode) {
-                          // console.log(data.menucode+ "=="+ data2.lastChilds[k].menucode);
-                          // subs = '<li><a href="<?php echo base_url("editor") ?>"> > ' + data2.lastChilds[k].menucode + '</a><ul id="' + data2.lastChilds[k].menucode + '"></ul></li>';
-                          // $("#" + data.parent).append(sub);
-                        }else{
-                        }
-                      }
-                        subs = '<li><a onClick="menuCode(this)" data-id="'+data.menucode+'" href="<?php echo base_url("edit")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
-                        $("#"+data.parent).append(subs);
-                    }
-                  }
-                });
-              }
-            });
-          }
-        });
+        // $.ajax({ //to get all data menu from db
+        //   type: 'GET',
+        //   url: url1,
+        //   dataType: 'json',
+        //   cache: false,
+        //   success: function(data1) {
+        //     data1 = JSON.parse(JSON.stringify(data1));
+        //     data1 = data1.menu[0].modulmenu;
+        //     $.ajax({ // to get length of parent
+        //       type: 'GET',
+        //       url: url2,
+        //       dataType: 'json',
+        //       cache: false,
+        //       success: function(data2) {
+        //         data2 = JSON.parse(JSON.stringify(data2));
+        //         data2 = data2.parts[0];
+        //         $.each(data1, function(i, data){
+        //         var u = 2;
+        //           if (data.parent.length == 0) { 
+        //             sub = '<li><a onClick="menuCode(this)" data-id="'+data.menucode+'"  href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + ' ('+ data.status + ')</a><ul id="' + data.menucode + '"></ul></li>';
+        //             $("#" + data.modulcode).append(sub);
+        //           }
+        //           for (var j = 0; j < data2.parentlength.length; j++) {
+        //             if (data.parent.length == (u = u + 2)) {
+        //               for (k = 0; k < data2.lastChilds.length; k++) {
+        //                 if (data.menucode == data2.lastChilds[k].menucode) {
+        //                   // console.log(data.menucode+ "=="+ data2.lastChilds[k].menucode);
+        //                   // subs = '<li><a href="<?php echo base_url("editor") ?>"> > ' + data2.lastChilds[k].menucode + '</a><ul id="' + data2.lastChilds[k].menucode + '"></ul></li>';
+        //                   // $("#" + data.parent).append(sub);
+        //                 }else{
+        //                 }
+        //               }
+        //                 subs = '<li><a onClick="menuCode(this)" data-id="'+data.menucode+'" href="<?php echo base_url("edit")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
+        //                 $("#"+data.parent).append(subs);
+        //             }
+        //           }
+        //         });
+        //       }
+        //     });
+        //   }
+        // });
       });
     </script>
     <script type="text/javascript">
@@ -79,9 +79,19 @@
         document.getElementById(modulname).className += "open";
         $("#sidebar").removeClass("iconbar-mainmenu-close");
       }
-      function modulCode(modulCode) {
-        var modulCode = modulCode;
+      function modulCode(ths) {
+        var modulCode = $(ths).attr("data-modul");
         $.post( "<?php echo base_url("tabel/modul_session")?>", { modulCode: modulCode} );
+        $.ajax({ //to get all data menu from db
+          type: 'POST',
+          url: '<?php echo base_url("tabel/modulmenubyid")?>',
+          dataType: 'json',
+          data :{modulCode: modulCode},
+          cache: false,
+          success: function(response){
+            $('#modul-menu-' + modulCode).html(response);
+          }
+        });
       }
       function menuCode(menuCode) {
         var menuCode = $(menuCode).attr('data-id');
