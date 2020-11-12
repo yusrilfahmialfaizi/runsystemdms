@@ -452,7 +452,7 @@ class Multi_menu {
 				// $onclick = 'onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'"';
 
 				if (substr_count($item_anchor, '%s') == 2) {
-					$html .= sprintf($item_anchor, $href, $label."Status");
+					$html .= sprintf($item_anchor, $href, $label);
 				}
 				else {
 					$html .= sprintf($item_anchor, $label);	
