@@ -19,17 +19,13 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="card">
-          <div class="card-header">
-            <a href="<?php echo base_url("tabel/createDocument")?>" class="btn btn-success"> + New Document</a>
-            <!-- <button type="button" class="btn btn-success sweet-11" data-toggle="modal" data-target=".bs-example-modal-lg" > + New Document</button> -->
-            <!-- <button class="btn btn-danger sweet-11" type="button" onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-11']);">Danger</button> -->
-          </div>
           <div class="card-body">
-            <div class="dt-ext table-responsive">
-              <table class="display" id="responsive">
+            <a href="<?php echo base_url("tabel/createDocument")?>" class="btn btn-success"> + New Document</a>
+            <div class="table-responsive">
+              <table class="display" id="basic-11">
                 <thead>
                   <tr>
-                  <?php $this->session->userdata("menu");?>
+                    <?php $this->session->userdata("menu");?>
                     <th>Docno</th>
                     <th>Active Ind</th>
                     <th>Status</th>
@@ -55,26 +51,19 @@
                           <td><?php echo $key[$i]["createdt"];?></td>
                           <td><?php echo $key[$i]["lastupby"];?></td>
                           <td><?php echo $key[$i]["lastupdt"];?></td>
-                          <td><button type="button" data-feather="edit" data-docno="<?php echo $key[$i]["docno"];?>" data-modulcode="<?php echo $key[$i]["modulcode"];?>" data-status="<?php echo $key[$i]["status"];?>" data-active="<?php echo $key[$i]["activeind"];?>" onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"];?>">Edit</button></td>
+                          <td>
+                            <div class="form-group">
+                              <button type="button" data-feather="edit" data-docno="<?php echo $key[$i]["docno"];?>" data-modulcode="<?php echo $key[$i]["modulcode"];?>" data-status="<?php echo $key[$i]["status"];?>" data-active="<?php echo $key[$i]["activeind"];?>" onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"];?>">Edit</button>
+                              <button type="button" data-feather="book-open" >Preview</button>
+                            </div>
+                          </td>
                         </tr>
-                        <?php }}} ?>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <th>Docno</th>
-                          <th>Active Ind</th>
-                          <th>Status</th>
-                          <th>Create By</th>
-                          <th>Create Date</th>
-                          <th>Last Update By</th>
-                          <th>Last Update Date</th>
-                          <th>Action</th>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
+                      <?php }}} ?>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>

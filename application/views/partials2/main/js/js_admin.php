@@ -160,6 +160,7 @@
     <script src="<?php echo base_url("assets/js/chat-menu.js") ?>"></script>
     <!-- Data Table JS -->
     <script src="<?php echo base_url("assets/js/datatable/datatables/jquery.dataTables.min.js") ?>"></script>
+    <script src="<?php echo base_url("assets/js/datatable/datatables/datatable.custom.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/datatable/datatable-extension/dataTables.buttons.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/datatable/datatable-extension/jszip.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/datatable/datatable-extension/buttons.colVis.min.js") ?>"></script>

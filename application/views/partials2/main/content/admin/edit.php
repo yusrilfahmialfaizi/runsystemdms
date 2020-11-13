@@ -30,9 +30,9 @@
 									<div class="col-md-4 offset-md-10">
 										<label class="d-block" for="chk-ani">
 									<?php if($value[0]['status'] == "O" || $value[0]['status'] == null) {?>
-											<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox"  >Status
+											<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox"  >Review
 									<?php }else {?>
-											<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" checked="checked" >Status
+											<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" checked="checked" >Review
 									<?php }?>
 										</label>
 									</div>
@@ -48,9 +48,9 @@
 									<div class="col-md-4 offset-md-10">
 										<label class="d-block" for="chk-ani">
 									<?php if($value[0]['status'] == "O" || $value[0]['status'] == null) {?>
-											<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" disabled>Status
+											<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" disabled>Review
 									<?php }else {?>
-											<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" checked="checked" disabled>Status
+											<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" checked="checked" disabled>Review
 									<?php }?>
 										</label>
 									</div>

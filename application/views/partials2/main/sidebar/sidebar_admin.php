@@ -30,7 +30,7 @@
                 <ul class="iconbar-mainmenu custom-scrollbar">
                   <li class="iconbar-header">
                     <b><p id="sub-header-<?php echo $key[$i]["modulcode"] ?>">Sub Module</p></b>
-                    <span>Status 
+                    <span>Final 
                       <input class="checkbox_animated" id="statushdr" name="statushdr-<?php echo $key[$i]["modulcode"] ?>" type="checkbox" data-code="<?php echo $key[$i]["modulcode"] ?>">
                     </span>
                   </li>
