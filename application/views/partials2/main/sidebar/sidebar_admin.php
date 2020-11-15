@@ -5,23 +5,15 @@
               <?php 
                 foreach ($sidebar as $key) { 
                   for ($i=0; $i < count($key); $i++) {
-              ?>
-              <li id="<?php echo $key[$i]["modulname"]  ?>">
-              <?php if ($this->uri->segment("1") == "home") { ?>
+                    if ($i == 0){ ?>
+                      <li id="<?php echo $key[$i]["modulname"]  ?>" class="open">
+                  <?php  }else{ ?>
+                      <li id="<?php echo $key[$i]["modulname"]  ?>">
+                  <?php  }  ?>
                 <div class="dropdown-basic">
                   <div class="dropdown">
                     <div class="btn-group mb-0">
-                    <a class="bar-icons" href="<?php echo base_url("tabel")?>" onClick="modulCode('<?php echo $key[$i]["modulcode"] ?>')">
-                      <i></i><span><?php echo $key[$i]["modulname"] ?></span>
-                    </a>
-                    </div>
-                  </div>
-                </div>
-              <?php }else{ ?>
-                <div class="dropdown-basic">
-                  <div class="dropdown">
-                    <div class="btn-group mb-0">
-                      <a class="bar-icons" href="#" data-modul="<?php echo $key[$i]["modulcode"] ?>" onClick="modulCode(this)">
+                      <a class="bar-icons" href="#">
                         <i></i><span><?php echo $key[$i]["modulname"] ?></span>
                       </a>
                     </div>
@@ -34,10 +26,8 @@
                       <input class="checkbox_animated" id="statushdr" name="statushdr-<?php echo $key[$i]["modulcode"] ?>" type="checkbox" data-code="<?php echo $key[$i]["modulcode"] ?>">
                     </span>
                   </li>
-                  <!-- <li id="<?php //echo $key[$i]["modul"]["modulcode"] ?>"></li> -->
                   <ul id="modul-menu-<?php echo $key[$i]["modulcode"] ?>"></ul>
                 </ul>
-              <?php } ?>
               </li>
               <?php }} ?>
             </ul>

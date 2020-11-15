@@ -2,60 +2,10 @@
       $(document).ready(function() {
         var uri = "<?php echo $this->uri->segment("1"); ?>";
 
-        if (uri != "home" && uri != "edit" && uri != "editor") {
+        if (uri != "home") {
           $("#sidebar").removeClass("iconbar-second-close");
-          $("#sidebar").addClass("iconbar-mainmenu-close");
+          // $("#sidebar").addClass("iconbar-mainmenu-close");
         }
-        // get data dynamic sidebar menu 
-        var url1 = 'http://127.0.0.1:8080/runsystemdms/getModuls';
-        var url2 = 'http://127.0.0.1:8080/runsystemdms/getDynamicMenuParts';
-        var modul = [];
-        var menu = '';
-        var menus = 'menu';
-        var sub = '';
-        var subs = '';
-
-        // $.ajax({ //to get all data menu from db
-        //   type: 'GET',
-        //   url: url1,
-        //   dataType: 'json',
-        //   cache: false,
-        //   success: function(data1) {
-        //     data1 = JSON.parse(JSON.stringify(data1));
-        //     data1 = data1.menu[0].modulmenu;
-        //     $.ajax({ // to get length of parent
-        //       type: 'GET',
-        //       url: url2,
-        //       dataType: 'json',
-        //       cache: false,
-        //       success: function(data2) {
-        //         data2 = JSON.parse(JSON.stringify(data2));
-        //         data2 = data2.parts[0];
-        //         $.each(data1, function(i, data){
-        //         var u = 2;
-        //           if (data.parent.length == 0) { 
-        //             sub = '<li><a onClick="menuCode(this)" data-id="'+data.menucode+'"  href="<?php echo base_url("edit") ?>"> > ' + data.menudesc + ' ('+ data.status + ')</a><ul id="' + data.menucode + '"></ul></li>';
-        //             $("#" + data.modulcode).append(sub);
-        //           }
-        //           for (var j = 0; j < data2.parentlength.length; j++) {
-        //             if (data.parent.length == (u = u + 2)) {
-        //               for (k = 0; k < data2.lastChilds.length; k++) {
-        //                 if (data.menucode == data2.lastChilds[k].menucode) {
-        //                   // console.log(data.menucode+ "=="+ data2.lastChilds[k].menucode);
-        //                   // subs = '<li><a href="<?php echo base_url("editor") ?>"> > ' + data2.lastChilds[k].menucode + '</a><ul id="' + data2.lastChilds[k].menucode + '"></ul></li>';
-        //                   // $("#" + data.parent).append(sub);
-        //                 }else{
-        //                 }
-        //               }
-        //                 subs = '<li><a onClick="menuCode(this)" data-id="'+data.menucode+'" href="<?php echo base_url("edit")?>"> > '+data.menudesc+'</a><ul id="'+data.menucode+'"></ul></li>';
-        //                 $("#"+data.parent).append(subs);
-        //             }
-        //           }
-        //         });
-        //       }
-        //     });
-        //   }
-        // });
       });
     </script>
     <script type="text/javascript">
@@ -106,7 +56,6 @@
       }
       function menuCode(menuCode) {
         var menuCode = $(menuCode).attr('data-id');
-        console.log(menuCode);
         $.post( "<?php echo base_url("tabel/menu_session")?>", { menuCode: menuCode} );
       }
       $('input[type="checkbox"]').click(function(){
@@ -133,16 +82,16 @@
     <script src="<?php echo base_url("assets/js/icons/feather-icon/feather.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/icons/feather-icon/feather-icon.js") ?>"></script>
     <!-- Sidebar jquery-->
-    <script src="<?php echo base_url("assets/js/sidebar-menu.js") ?>"></script>
-    <script src="<?php echo base_url("assets/js/config.js") ?>"></script>
+    <!-- <script src="<?php //echo base_url("assets/js/sidebar-menu.js") ?>"></script> -->
+    <!-- <script src="<?php //echo base_url("assets/js/config.js") ?>"></script> -->
     <!-- Plugins JS start-->
-    <!-- <script src="<?php echo base_url("assets/js/typeahead/handlebars.js") ?>"></script> -->
-    <!-- <script src="<?php echo base_url("assets/js/typeahead/typeahead.bundle.js") ?>"></script> -->
-    <!-- <script src="<?php echo base_url("assets/js/typeahead/typeahead.custom.js") ?>"></script> -->
-    <!-- <script src="<?php echo base_url("assets/js/typeahead-search/handlebars.js") ?>"></script> -->
-    <!-- <script src="<?php echo base_url("assets/js/typeahead-search/typeahead-custom.js") ?>"></script> -->
-    <!-- <script src="<?php echo base_url("assets/js/chart/chartist/chartist.js") ?>"></script>
-    <script src="<?php echo base_url("assets/js/chart/chartist/chartist-plugin-tooltip.js") ?>"></script> -->
+    <!-- <script src="<?php //echo base_url("assets/js/typeahead/handlebars.js") ?>"></script> -->
+    <!-- <script src="<?php //echo base_url("assets/js/typeahead/typeahead.bundle.js") ?>"></script> -->
+    <!-- <script src="<?php //echo base_url("assets/js/typeahead/typeahead.custom.js") ?>"></script> -->
+    <!-- <script src="<?php //echo base_url("assets/js/typeahead-search/handlebars.js") ?>"></script> -->
+    <!-- <script src="<?php //echo base_url("assets/js/typeahead-search/typeahead-custom.js") ?>"></script> -->
+    <!-- <script src="<?php //echo base_url("assets/js/chart/chartist/chartist.js") ?>"></script>
+    <!-- <script src="<?php //echo base_url("assets/js/chart/chartist/chartist-plugin-tooltip.js") ?>"></script> --> -->
     <script src="<?php echo base_url("assets/js/chart/apex-chart/apex-chart.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/chart/apex-chart/stock-prices.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/prism/prism.min.js") ?>"></script>

@@ -38,8 +38,6 @@
         </div>
         <script type="text/javascript">
           function project(){
-            // window.location = "<?php //echo base_url("tabel") ?>";
-            $("#sidebar").removeClass("iconbar-second-close");
-            $("#sidebar").addClass("iconbar-mainmenu-close");
+            window.location = "<?php echo base_url("tabel") ?>";
           }
         </script>
