@@ -4,6 +4,7 @@ import (
 	"echo/models"
 	"fmt"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
@@ -23,12 +24,14 @@ func GetUser(c echo.Context) error {
 
 func Login(c echo.Context) (err error) {
 	usercode := c.FormValue("usercode")
+	usr := strings.ToLower(usercode)
+	usr2 := strings.ToUpper(usercode)
 	pwd := c.FormValue("pwd")
 	result := models.GetUser()
 	response := Response{}
 	for i := 0; i < len(result.Users); i++ {
 		fmt.Println(result.Users[i].UserCode)
-		if usercode == result.Users[i].UserCode {
+		if usr == result.Users[i].UserCode || usr2 == result.Users[i].UserCode {
 			if pwd == result.Users[i].Pwd {
 				// membuat token
 				token := jwt.New(jwt.SigningMethodHS256)
