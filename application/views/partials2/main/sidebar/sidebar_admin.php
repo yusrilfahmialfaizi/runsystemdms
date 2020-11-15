@@ -5,7 +5,7 @@
               <?php 
                 foreach ($sidebar as $key) { 
                   for ($i=0; $i < count($key); $i++) {
-                    if ($i == 0){ ?>
+                    if ($i == 0 && $this->uri->segment("1") != "home"){ ?>
                       <li id="<?php echo $key[$i]["modulname"]  ?>" class="open">
                   <?php  }else{ ?>
                       <li id="<?php echo $key[$i]["modulname"]  ?>">
