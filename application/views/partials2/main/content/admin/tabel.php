@@ -20,7 +20,7 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-body">
-            <a href="<?php echo base_url("tabel/createDocument") ?>" class="btn btn-success"> + New Document</a>
+            <a style="margin-bottom: 20px;" href="<?php echo base_url("tabel/createDocument") ?>" class="btn btn-success"> + New Document</a>
             <div class="table-responsive">
               <table class="display" id="basic-13">
                 <thead>
