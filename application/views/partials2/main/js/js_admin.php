@@ -4,7 +4,6 @@
 
         if (uri != "home") {
           $("#sidebar").removeClass("iconbar-second-close");
-          // $("#sidebar").addClass("iconbar-mainmenu-close");
         }
       });
     </script>
@@ -112,10 +111,15 @@
     <script src="<?php echo base_url("assets/js/icons/feather-icon/feather.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/icons/feather-icon/feather-icon.js") ?>"></script>
     <!-- Sidebar jquery-->
+<<<<<<< HEAD
     <!-- <script src="<?php //echo base_url("assets/js/sidebar-menu.js") 
                       ?>"></script> -->
     <!-- <script src="<?php //echo base_url("assets/js/config.js") 
                       ?>"></script> -->
+=======
+    <!-- <script src="<?php //echo base_url("assets/js/sidebar-menu.js") ?>"></script> -->
+    <script src="<?php echo base_url("assets/js/config.js") ?>"></script>
+>>>>>>> 234225091d4132012a2f9f8a59812e72a831df46
     <!-- Plugins JS start-->
     <!-- <script src="<?php //echo base_url("assets/js/typeahead/handlebars.js") 
                       ?>"></script> -->
@@ -151,7 +155,7 @@
     <script src="<?php echo base_url("assets/js/datatable/datatables/jquery.dataTables.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/datatable/datatables/datatable.custom.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/sweet-alert/sweetalert.min.js") ?>"></script>
-    <script src="<?php echo base_url("assets/js/sweet-alert/app.js") ?>"></script>
+    <!-- <script src="<?php //echo base_url("assets/js/sweet-alert/app.js") ?>"></script> -->
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="<?php echo base_url("assets/js/script.js") ?>"></script>
