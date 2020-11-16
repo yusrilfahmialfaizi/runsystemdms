@@ -20,20 +20,20 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-body">
-            <a href="<?php echo base_url("tabel/createDocument")?>" class="btn btn-success"> + New Document</a>
+            <a href="<?php echo base_url("tabel/createDocument") ?>" class="btn btn-success"> + New Document</a>
             <div class="table-responsive">
-              <table class="display" id="basic-11">
+              <table class="display" id="basic-13">
                 <thead>
                   <tr>
-                    <?php $this->session->userdata("menu");?>
-                    <th>Docno</th>
-                    <th>Active Ind</th>
-                    <th>Status</th>
-                    <th>Create By</th>
-                    <th>Create Date</th>
-                    <th>Last Update By</th>
-                    <th>Last Update Date</th>
-                    <th>Action</th>
+                    <?php $this->session->userdata("menu"); ?>
+                    <th style="padding-right: 210px;">Docno</th>
+                    <th style="padding-right: 50px;">Active Ind</th>
+                    <th style="padding-right: 50px;">Status</th>
+                    <th style="padding-right: 50px;">Create By</th>
+                    <th style="padding-right: 75px;">Create Date</th>
+                    <th style="padding-right: 50px;">Last Update By</th>
+                    <th style="padding-right: 50px;">Last Update Date</th>
+                    <th style="padding-right: 75px;">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,29 +41,31 @@
                   <?php foreach ($get as $key) {
                     if ($key != null) {
                       # code...
-                      for ($i=0; $i < count($key); $i++) { ?>
+                      for ($i = 0; $i < count($key); $i++) { ?>
 
                         <tr>
-                          <td><?php echo $key[$i]["docno"];?></td>
-                          <td><?php echo $key[$i]["activeind"];?></td>
-                          <td><?php echo $key[$i]["status"];?></td>
-                          <td><?php echo $key[$i]["createby"];?></td>
-                          <td><?php echo $key[$i]["createdt"];?></td>
-                          <td><?php echo $key[$i]["lastupby"];?></td>
-                          <td><?php echo $key[$i]["lastupdt"];?></td>
+                          <td><?php echo $key[$i]["docno"]; ?></td>
+                          <td><?php echo $key[$i]["activeind"]; ?></td>
+                          <td><?php echo $key[$i]["status"]; ?></td>
+                          <td><?php echo $key[$i]["createby"]; ?></td>
+                          <td><?php echo $key[$i]["createdt"]; ?></td>
+                          <td><?php echo $key[$i]["lastupby"]; ?></td>
+                          <td><?php echo $key[$i]["lastupdt"]; ?></td>
                           <td>
                             <div class="form-group">
-                              <button type="button" data-feather="edit" data-docno="<?php echo $key[$i]["docno"];?>" data-modulcode="<?php echo $key[$i]["modulcode"];?>" data-status="<?php echo $key[$i]["status"];?>" data-active="<?php echo $key[$i]["activeind"];?>" onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"];?>">Edit</button>
-                              <button type="button" data-feather="book-open" >Preview</button>
+                              <button type="button" data-feather="edit" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" data-status="<?php echo $key[$i]["status"]; ?>" data-active="<?php echo $key[$i]["activeind"]; ?>" onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"]; ?>">Edit</button>
+                              <button type="button" data-feather="book-open">Preview</button>
                             </div>
                           </td>
                         </tr>
-                      <?php }}} ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+                  <?php }
+                    }
+                  } ?>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>

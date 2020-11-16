@@ -59,7 +59,10 @@ $(document).ready(function() {
     });
     $('#basic-13').DataTable({
         "scrollY": 200,
-        "scrollX": true
+        "scrollX": true,
+        // "paging":   true,
+        "ordering": false
+        // "info":     false
     });
     $('#basic-14').DataTable({
         "language": {
