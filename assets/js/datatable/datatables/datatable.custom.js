@@ -58,7 +58,7 @@ $(document).ready(function() {
         paging:         false
     });
     $('#basic-13').DataTable({
-        "scrollY": 200,
+        "scrollY": 400,
         "scrollX": true,
         // "paging":   true,
         "ordering": false
