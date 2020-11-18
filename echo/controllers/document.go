@@ -9,8 +9,6 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-// var con *sql.DB
-
 //function controller untuk get data document
 func GetDatadocuments(c echo.Context) error {
 	result := models.GetDatadocuments()
@@ -27,24 +25,6 @@ func PostDataDocuments(con *sql.DB) echo.HandlerFunc {
 		c.Bind(&insDatadocument)
 
 		result, err := models.PostDataDocuments(con, insDatadocument.Docno, insDatadocument.ModulCode, insDatadocument.Status, insDatadocument.ActiveInd, insDatadocument.CreateBy, insDatadocument.CreateDt, insDatadocument.LastUpBy, insDatadocument.LastUpDt)
-
-		if err == nil {
-			return c.JSON(http.StatusCreated, result)
-		} else {
-			return err
-		}
-
-	}
-}
-// function pada controller untuk post data document dtl
-func PostDataDocumentsDtl(con *sql.DB) echo.HandlerFunc {
-	return func(c echo.Context) error {
-
-		var docdtl models.DocDtl
-
-		c.Bind(&docdtl)
-
-		result, err := models.PostDataDocumentsDtl(con, docdtl.Docno, docdtl.MenuCode, docdtl.Description, docdtl.Status, docdtl.CreateBy, docdtl.CreateDt, docdtl.LastUpBy, docdtl.LastUpDt)
 
 		if err == nil {
 			return c.JSON(http.StatusCreated, result)
@@ -88,13 +68,7 @@ func EditDataDocumentsHdr(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
-// function pada controller untuk delete document
-func DelDocument(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.DeleteDocs(cc)
-	fmt.Println("Update data sub module ...")
-	return c.JSON(http.StatusOK, result)
-}
+
 // function untuk mengambil 4 digit angka untuk generate code
 func GenerateCode(c echo.Context) error {
 	cc := c.(*models.CustomContext)

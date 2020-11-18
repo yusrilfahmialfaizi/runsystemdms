@@ -36,11 +36,8 @@ func Routes() *echo.Echo {
 	e.GET("/runsystemdms/getPG", controllers.GetProjectGroup)
 	e.GET("/runsystemdms/getModuls", controllers.GetModuls)
 	e.GET("/runsystemdms/getModulsByID/:modulcode", controllers.GetModulsById)
-	// e.GET("/runsystemdms/getModulMenu", controllers.GetModulMenu)
-	e.GET("/runsystemdms/getDynamicMenuParts", controllers.GetDynamicMenuParts)
+	// e.GET("/runsystemdms/getDynamicMenuParts", controllers.GetDynamicMenuParts)
 	e.GET("/runsystemdms/getGenerateCode/:modulcode", controllers.GenerateCode)
-	// e.GET("/runsystemdms/getLastChilds", controllers.GetLastChild)
-	
 	e.PUT("/runsystemdms/updateDataSubModules", controllers.UpdateDataSubModules)
 	
 	//routes document
@@ -49,10 +46,8 @@ func Routes() *echo.Echo {
 	e.POST("/runsystemdms/getDocsDtlForMenu", controllers.GetDocumentsDtl)
 	e.GET("/runsystemdms/getDataDocuments", controllers.GetDatadocuments)
 	e.POST("/runsystemdms/postDataDocuments", controllers.PostDataDocuments(con))
-	e.POST("/runsystemdms/postDataDocumentsDtl", controllers.PostDataDocumentsDtl(con))
 	e.PUT("/runsystemdms/editDataDocuments", controllers.EditDataDocuments(con))
 	e.PUT("/runsystemdms/editDataDocumentshdr", controllers.EditDataDocumentsHdr(con))
-	e.DELETE("/runsystemdms/deleteDocument", controllers.DelDocument)
 
 	return e
 }

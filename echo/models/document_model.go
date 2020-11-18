@@ -49,9 +49,25 @@ type DocDtl struct {
 	LastUpBy    nullable.String `json:"lastupby"`
 	LastUpDt    nullable.String `json:"lastupdt"`
 }
+type DocDtlJoin struct {
+	Docno       string          `json:"docno"`
+	MenuCode    string          `json:"menucode"`
+	ModulCode   string          `json:"modulcode"`
+	MenuDesc 	  string          `json:"menudesc"`
+	Parent   	  nullable.String `json:"parent"`
+	Description nullable.String `json:"description"`
+	Status      string          `json:"status"`
+	CreateBy    string          `json:"createby"`
+	CreateDt    string          `json:"createdt"`
+	LastUpBy    nullable.String `json:"lastupby"`
+	LastUpDt    nullable.String `json:"lastupdt"`
+}
 
 type DocumentsDtl struct {
 	DocumentsDtl []DocDtl `json:"documentsdtl"`
+}
+type DocumentsDtlJoin struct {
+	DocumentsDtlJoin []DocDtlJoin `json:"documentsdtl"`
 }
 type Datadocuments struct {
 	Datadocuments []Datadocument `json:"datadocument"`
@@ -93,24 +109,38 @@ func PostDataDocuments(con *sql.DB, Docno string, ModulCode string, Status strin
 	con = config.Connection()
 	query1 := "UPDATE tbldocumenthdr SET ActiveInd = 'N' WHERE modulcode = ?"
 	query2 := "INSERT INTO tbldocumenthdr (docno, modulcode, activeind, status, createby, createdt, lastupby, lastupdt) values (?,?,?,?,?,?,?,?)"
+	query3 := "SELECT tblmodulmenu.MenuCode, tblmodulmenu.ModulCode, tblmodulmenu.MenuDesc, tblmodulmenu.Parent, tblmodulmenu.CreateBy, tblmodulmenu.CreateDt, tblmodulmenu.LastUpBy, tblmodulmenu.LastUpDt, tbldocumentdtl.`Status` FROM tblmodulmenu LEFT JOIN tbldocumentdtl ON tbldocumentdtl.MenuCode = tblmodulmenu.MenuCode WHERE modulcode = ?"
 	// Create a prepared SQL statement
 	stmt1, err1 := con.Prepare(query1)
 	stmt2, err2 := con.Prepare(query2)
+	stmt3, err3 := con.Query(query3, ModulCode)
 
 	// / Exit if we get an error
-	if err1 != nil && err2 != nil {
-		fmt.Println(err1, err2)
+	if err1 != nil && err2 != nil && err3 != nil{
+		fmt.Println(err1, err2, err3)
 	}
 	// Make sure to cleanup after the program exits
 	defer stmt1.Close()
 	defer stmt2.Close()
+	defer stmt3.Close()
 
 	//The sql stat wll return the id, so we can use it.
 	_, er1 := stmt1.Exec(ModulCode)
 	result, er2 := stmt2.Exec(Docno, ModulCode, ActiveInd, Status, CreateBy, CreateDt, LastUpBy, LastUpDt)
 
+	for stmt3.Next() {
+		modulmenu := ModulMenu{}
+
+		er3 := stmt3.Scan(&modulmenu.MenuCode, &modulmenu.ModulCode, &modulmenu.MenuDesc, &modulmenu.Parent, &modulmenu.CreateBy, &modulmenu.CreateDt, &modulmenu.LastupBy, &modulmenu.LastupDt, &modulmenu.Status)
+		if er3 != nil {
+			fmt.Println(er3)
+		}
+		fmt.Println(modulmenu.MenuCode, modulmenu.Parent)
+		PostDataDocumentsDtl(con, Docno, modulmenu.MenuCode, CreateBy, CreateDt, LastUpBy, LastUpDt)
+	}
+
 	// Exit if we get an error
-	if er2 != nil {
+	if er1 != nil && er2 != nil {
 		fmt.Println(er1, er2)
 	}
 
@@ -119,9 +149,9 @@ func PostDataDocuments(con *sql.DB, Docno string, ModulCode string, Status strin
 }
 
 //function untuk untuk post data documentdtl yang ditampilkan di view tabel
-func PostDataDocumentsDtl(con *sql.DB, Docno string, MenuCode string, Description string, Status string, CreateBy string, CreateDt string, LastUpBy nullable.String, LastUpDt nullable.String) (int64, error) {
+func PostDataDocumentsDtl(con *sql.DB, Docno string, MenuCode string, CreateBy string, CreateDt string, LastUpBy string, LastUpDt string) (int64, error) {
 	con = config.Connection()
-	query := "INSERT INTO tbldocumentdtl (docno, menucode, description, status, createby, createdt, lastupby, lastupdt) values (?,?,?,?,?,?,?,?)"
+	query := "INSERT INTO tbldocumentdtl (docno, menucode, createby, createdt, lastupby, lastupdt) values (?,?,?,?,?,?)"
 	// Create a prepared SQL statement
 	stmt, err := con.Prepare(query)
 
@@ -133,7 +163,7 @@ func PostDataDocumentsDtl(con *sql.DB, Docno string, MenuCode string, Descriptio
 	defer stmt.Close()
 
 	//The sql stat wll return the id, so we can use it.
-	result, err2 := stmt.Exec(Docno, MenuCode, Description, Status, CreateBy, CreateDt, LastUpBy, LastUpDt)
+	result, err2 := stmt.Exec(Docno, MenuCode, CreateBy, CreateDt, LastUpBy, LastUpDt)
 
 	// Exit if we get an error
 	if err2 != nil {
@@ -182,43 +212,6 @@ func EditDocHdr(con *sql.DB, Docno string, Status string,  LastUpBy string, Last
 	return result.RowsAffected()
 }
 
-//func untuk delete data tbldocumenthdr dan tbldocumentdtl
-func DeleteDocs(c *CustomContext) Datadocuments {
-	connection := config.Connection()
-	docno := c.FormValue("docno")
-	query := "DELETE tbldocumenthdr.*, tbldocumentdtl.* FROM tbldocumenthdr INNER JOIN tbldocumentdtl  WHERE tbldocumenthdr.docno = tbldocumentdtl.docno and tbldocumenthdr.docno = " + docno
-
-	rows, eror := connection.Query(query)
-	if eror != nil {
-		fmt.Println(eror)
-	}
-	defer rows.Close()
-	result := Datadocuments{}
-
-	if rows.Next() {
-		datadocument := Datadocument{}
-		eror2 := rows.Scan(&datadocument.Docno)
-		if eror2 != nil {
-			fmt.Println(eror2)
-		}
-		result.Datadocuments = append(result.Datadocuments, datadocument)
-	}
-	return result
-
-	// // buat prepare statement
-	// stmt, err := con.Prepare(query)
-	// // Exit jika error
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// result, err2 := stmt.Exec(docno)
-	// // Exit jika error
-	// if err2 != nil {
-	// 	panic(err2)
-	// }
-
-}
 // Generate docno
 func GenerateCode (c *CustomContext) GenerateCodes{
 	modulcode := c.Param("modulcode")
@@ -265,25 +258,26 @@ func GetDocumentDtl(c *CustomContext) DocumentsDtl {
 	return result
 }
 // function untuk mengambil data dari tabel document dtl
-func GetDocumentsDtl(c *CustomContext) DocumentsDtl {
+func GetDocumentsDtl(c *CustomContext) DocumentsDtlJoin {
 	docno := c.FormValue("docno")
+	modulcode := c.FormValue("modulcode")
 	connection = config.Connection()
-	query2 := "SELECT * FROM tbldocumentdtl where docno = ? "
-	rows2, err2 := connection.Query(query2, docno)
+	query2 := "SELECT tbldocumentdtl.Docno, tblmodulmenu.MenuCode, tblmodulmenu.ModulCode, tblmodulmenu.MenuDesc, tblmodulmenu.Parent, tbldocumentdtl.Description, tbldocumentdtl.`Status`,tblmodulmenu.CreateBy, tblmodulmenu.CreateDt, tblmodulmenu.LastUpBy, tblmodulmenu.LastUpDt FROM tblmodulmenu LEFT JOIN tbldocumentdtl ON tbldocumentdtl.MenuCode = tblmodulmenu.MenuCode WHERE Docno = ? &&  ModulCode = ?"
+	rows2, err2 := connection.Query(query2, docno, modulcode)
 	if err2 != nil{
 		fmt.Println(err2)
 	}
 	defer rows2.Close()
-	result := DocumentsDtl{}
+	result := DocumentsDtlJoin{}
 
 	for rows2.Next() {
-		docdtl := DocDtl{}
+		docdtl := DocDtlJoin{}
 
-		eror := rows2.Scan(&docdtl.Docno, &docdtl.MenuCode, &docdtl.Description, &docdtl.Status, &docdtl.CreateBy, &docdtl.CreateDt, &docdtl.LastUpBy, &docdtl.LastUpDt)
+		eror := rows2.Scan(&docdtl.Docno, &docdtl.MenuCode, &docdtl.ModulCode, &docdtl.MenuDesc, &docdtl.Parent, &docdtl.Description, &docdtl.Status, &docdtl.CreateBy, &docdtl.CreateDt, &docdtl.LastUpBy, &docdtl.LastUpDt)
 		if eror != nil {
 			fmt.Println(eror)
 		}
-		result.DocumentsDtl = append(result.DocumentsDtl, docdtl)
+		result.DocumentsDtlJoin = append(result.DocumentsDtlJoin, docdtl)
 	}
 	return result
 }
