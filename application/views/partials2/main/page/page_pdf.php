@@ -12,8 +12,26 @@
       border-top: 1px solid #000;
     }
   </style>
-</head>
-<body>
+  <script>
+  .disable-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;    
+    -moz-user-select: none;      
+    -ms-user-select: none;      
+    user-select: none;
+}
+@media print{
+   .disable-select{
+       display:none
+   }
+}
+$(document).bind('contextmenu cut copy', function (e) {
+    e.preventDefault();
+});
+  </script>
+ </head>
+<body class="disable-select" onmousedown="return false" onselectstart="return false" onload="window.print()">
   <table style="width: 100%;">
     <tr>
       <td align="center">

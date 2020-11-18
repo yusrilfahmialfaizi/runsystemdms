@@ -28,17 +28,9 @@ class Tabel extends CI_Controller {
 	function pdf()
   {
 	$this->load->view('partials2/main/page/page_pdf');
-    $html = $this->output->get_output();
-	$this->load->library('mypdf');
-	$this->dompdf->loadHtml($html);
-	$this->dompdf->setPaper('A4', 'portrait');
-	$this->dompdf->render();
-	$this->dompdf->stream("a.pdf", array("Attachment"=>0));
-
-	//$this->load->view('partials2/main/page/page_pdf');
-	//$this->mypdf->generate('partials2/main/page/page_pdf');
   }
 
+  
 
 	public function getDataDocuments(){
 		$url = "http://127.0.0.1:8080/runsystemdms/getDataDocuments";
