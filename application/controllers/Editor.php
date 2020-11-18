@@ -52,24 +52,7 @@ class Editor extends CI_Controller {
 			);
 			# update
 			$response = $this->documentdtl->callApiDocDtl('PUT', "http://127.0.0.1:8080/runsystemdms/editDataDocuments", $data);
-			echo "update";
-			redirect(base_url("tabel"));
-		}else{
-			echo "insert";
-			$data = array(
-				"docno" => $docno,
-				"menucode" => $menucode,
-				"description" => $description,
-				"status" => $status,
-				"createby" => $this->session->userdata("usercode"),
-				"createdt" => $lastupdt,
-				"lastupby" => $lastupby,
-				"lastupdt" => $lastupdt
-			);
-			# insert
-			$response = $this->documentdtl->callApiDocDtl('POST', "http://127.0.0.1:8080/runsystemdms/postDataDocumentsDtl", $data);
-			
-			redirect(base_url("tabel"));		
+			redirect(base_url("editor"));
 		}
 	}	
 }

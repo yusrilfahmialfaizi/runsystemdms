@@ -8,11 +8,10 @@
   <li class="breadcrumb-item <?php echo $is_active ? 'active': '' ?>">
 
     <?php if ($is_active):?>
-     <?php echo ucfirst($segment); ?>
+     <?php echo ucfirst($segment); ?>\<?php echo $this->session->userdata("menuName") ?> 
      <?php else: ?>
-      <a href="<?php echo site_url($url) ?>"><?php echo ucfirst($segment) ?></a>
+      <a href="<?php echo site_url($url) ?>"><?php echo ucfirst($segment) ?>\<?php echo $this->session->userdata("menuName") ?></a>
     <?php endif; ?>
   </li>
-
 <?php endforeach; ?>
 </ol>

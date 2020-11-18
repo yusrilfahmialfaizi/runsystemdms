@@ -1,9 +1,29 @@
     <script type="text/javascript">
-      $(document).ready(function() {
+      $(document).ready(function () {
         var uri = "<?php echo $this->uri->segment("1"); ?>";
 
         if (uri != "home") {
           $("#sidebar").removeClass("iconbar-second-close");
+        }
+
+        if (uri != "home" && uri != "tabel") {
+          var modulCode = "<?php echo $this->session->userdata("modul");?>";
+          if ("<?php echo $this->session->userdata("doc_status ");?>" != "O") {
+            document.getElementById('statushdr').checked = true;
+          }
+
+          $.ajax({ //to get all data menu from db
+            type: 'POST',
+            url: '<?php echo base_url("tabel/modulmenubyid") ?>',
+            dataType: 'json',
+            data: {
+              modulCode: modulCode
+            },
+            cache: false,
+            success: function (response) {
+              $('#modul-menu-' + modulCode).html(response);
+            }
+          });
         }
       });
     </script>
@@ -12,17 +32,20 @@
       function modules(id_li) {
         $("li").removeClass("open");
         $("#" + id_li).even().addClass("open");
+        $.post("<?php echo base_url("tabel/menu_session") ?>", {
+            menuCode: id_li
+          });
       }
 
       function modules2(id_li) {
-        var modulname = $(id_li).attr("data-id");
+        var modulname = $(id_li).attr("data-name");
         var modulCode = $(id_li).attr("data-modulcode");
         var docno = $(id_li).attr("data-docno");
         var active = $(id_li).attr("data-active");
         var status = $(id_li).attr("data-status");
         $.post("<?php echo base_url("tabel/modul_session") ?>", {
-          modulCode: modulCode
-        });
+            modulCode: modulCode
+          });
         $.ajax({ //to get all data menu from db
           type: 'POST',
           url: '<?php echo base_url("tabel/modulmenubyid") ?>',
@@ -31,7 +54,7 @@
             modulCode: modulCode
           },
           cache: false,
-          success: function(response) {
+          success: function (response) {
             $('#modul-menu-' + modulCode).html(response);
           }
         });
@@ -39,20 +62,19 @@
           document.getElementById('statushdr').checked = true;
         }
         $.post("<?php echo base_url("tabel/doc_session") ?>", {
-          docno: docno,
-          active: active
-        });
+            docno: docno,
+            active: active,
+            status: status
+          });
         $("#sub-header-" + modulCode).text(docno);
         $("li").removeClass("open");
-        document.getElementById(modulname).className += "open";
+        document.getElementById(modulCode).className += "open";
         $("#sidebar").removeClass("iconbar-mainmenu-close");
       }
 
       function modulCode(ths) {
         var modulCode = $(ths).attr("data-modul");
-        $.post("<?php echo base_url("tabel/modul_session") ?>", {
-          modulCode: modulCode
-        });
+        $.post("<?php echo base_url("tabel/modul_session ") ?>", {modulCode: modulCode});
         $.ajax({ //to get all data menu from db
           type: 'POST',
           url: '<?php echo base_url("tabel/modulmenubyid") ?>',
@@ -61,36 +83,39 @@
             modulCode: modulCode
           },
           cache: false,
-          success: function(response) {
+          success: function (response) {
             $('#modul-menu-' + modulCode).html(response);
           }
         });
       }
 
       function menuCode(menuCode) {
+        var menuName = $(menuCode).data('name');
         var menuCode = $(menuCode).attr('data-id');
+  
         $.post("<?php echo base_url("tabel/menu_session") ?>", {
-          menuCode: menuCode
-        });
+            menuCode: menuCode,
+            menuName: menuName
+          });
       }
-      $('input[type="checkbox"]').click(function() {
+      $('input[type="checkbox"]').click(function () {
         if ($(this).prop("checked") == true) {
           // console.log("Checkbox is checked.");
           var checked = "F";
           $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
-            checked: checked
-          });
+              checked: checked
+            });
         } else if ($(this).prop("checked") == false) {
           var checked = "O";
           // console.log("Checkbox is unchecked.");
           $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
-            checked: checked
-          });
+              checked: checked
+            });
         }
       });
     </script>
 
-    //remove sorting data table
+    <!-- remove sorting data table -->
     <!-- <script type="text/javascript">
       $(document).ready(function() {
         $('#basic-1').DataTable({
@@ -111,15 +136,8 @@
     <script src="<?php echo base_url("assets/js/icons/feather-icon/feather.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/icons/feather-icon/feather-icon.js") ?>"></script>
     <!-- Sidebar jquery-->
-<<<<<<< HEAD
-    <!-- <script src="<?php //echo base_url("assets/js/sidebar-menu.js") 
-                      ?>"></script> -->
-    <!-- <script src="<?php //echo base_url("assets/js/config.js") 
-                      ?>"></script> -->
-=======
     <!-- <script src="<?php //echo base_url("assets/js/sidebar-menu.js") ?>"></script> -->
     <script src="<?php echo base_url("assets/js/config.js") ?>"></script>
->>>>>>> 234225091d4132012a2f9f8a59812e72a831df46
     <!-- Plugins JS start-->
     <!-- <script src="<?php //echo base_url("assets/js/typeahead/handlebars.js") 
                       ?>"></script> -->

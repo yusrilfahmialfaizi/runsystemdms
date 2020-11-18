@@ -13,7 +13,7 @@ class Tabel extends CI_Controller {
 	public function index()
 	{
 		if ($this->session->userdata('status') != "login") {
-			// redirect("login");
+			redirect("login");
 		}
 		$data2 = $this->menu->getModulMenu();
 		$data2 = json_decode($data2, true);
@@ -21,16 +21,6 @@ class Tabel extends CI_Controller {
 		$data1 = $this->getDataDocuments();
 		$data1 = json_decode($data1, true);
 		$data["get"] = $data1;
-		// $dt = array("docno" => '0003/GSS/INVESTAI/FICO/11/2020');
-		// $response = $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForMenu", $dt);
-		// $response = json_decode($response, true);
-		// $response = $response["documentsdtl"];
-		// echo "<pre>"; 
-		// foreach ($response as $key) {
-		// 	# code...
-		// 	print_r($key);
-		// }
-		// echo "</pre>";
 		$this->load->view('partials2/main/page/page_tabel', $data);
 	}
 
@@ -69,7 +59,7 @@ class Tabel extends CI_Controller {
 		$bulan = date("m");
 		$modul = $this->session->userdata("modul");
 		$batas = str_pad($number, 4, "0", STR_PAD_LEFT);
-		$code = $batas."/GSS/INVESTAI/".$modul."/".$bulan."/".$tahun;
+		$code = $batas."/GSS/INVESTASI/".$modul."/".$bulan."/".$tahun;
 		return $code;
 	}
 	function createDocument(){
@@ -107,30 +97,30 @@ class Tabel extends CI_Controller {
 
 	function menu_session(){
 		$menu = $this->input->post("menuCode");
-		$this->session->set_userdata(array("menu" => $menu));
+		$menuName = $this->input->post("menuName");
+		$this->session->set_userdata(array("menu" => $menu, "menuName" => $menuName));
 	}
 
 	function ModulMenuById(){
 		$this->load->library("menu");
 		$this->load->library("multi_menu");
 		$modulcode = $this->input->post('modulCode');
-		$dt = array("docno" => '0003/GSS/INVESTAI/FICO/11/2020');
+		$dt = array("docno" => $this->session->userdata("docno"), "modulcode" => $modulcode);
 		$response = $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForMenu", $dt);
 		$response = json_decode($response, true);
-		$status = $response["documentsdtl"];
-		$items = $this->menu->getModulMenuById($modulcode);
-		$items = json_decode($items, true);
-		$items = $items['menu'];
+		$items = $response["documentsdtl"];
 		$this->multi_menu->set_items($items); 
-		// $this->multi_menu->set_items($items, $status); 
 		echo json_encode($this->multi_menu->render('Item-0')); 
 	}
 
 	function doc_session(){
 		$docno = $this->input->post("docno");
 		$active = $this->input->post("active");
-		$this->session->set_userdata(array("docno" => $docno, "active" => $active));
-		echo $docno."\n";
+		$status = $this->input->post("status");
+		$this->session->set_userdata(array(
+			"docno" => $docno, 
+			"active" => $active, 
+			"doc_status" => $status));
 		echo $this->session->userdata("docno");
 	}
 	function update_statushdr(){

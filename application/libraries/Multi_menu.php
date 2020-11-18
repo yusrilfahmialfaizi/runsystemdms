@@ -395,7 +395,7 @@ class Multi_menu {
 	        // menu label
 	        if ( isset($item[$this->menu_label], $item[$this->menu_key]) ) 
 	        {
-		        $label = $item[$this->menu_label];
+		        $label = $item[$this->menu_label]. "   Review : ". $item['status'];
 
 		        // icon
 		        $icon  = empty($item[$this->menu_icon]) ? '' : $item[$this->menu_icon];
@@ -428,13 +428,13 @@ class Multi_menu {
 		        	{
 						$tag_open    =  $this->parentl1_tag_open;
 						// $item_anchor = $this->parentl1_anchor != '' ? $this->parentl1_anchor : $this->parent_anchor.'<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" href="%s">%s</a>';
-						$item_anchor = $this->parentl1_anchor != '' ? $this->parentl1_anchor : '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" href="%s">%s</a>';
+						$item_anchor = $this->parentl1_anchor != '' ? $this->parentl1_anchor : '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" href="%s">%s</a>';
 		        	}
 		        	else 
 		        	{
 						$tag_open     = $this->parent_tag_open;
 						// $item_anchor = $this->parent_anchor;
-						$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" href="%s">%s</a>';
+						$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" href="%s">%s</a>';
 		        	}
 
 					$href  = base_url('edit');				
@@ -444,7 +444,7 @@ class Multi_menu {
 		        	$tag_open    = $this->item_tag_open;
 					$href        = site_url($slug);
 					// $item_anchor = $this->item_anchor;
-					$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" href="%s">%s</a>';
+					$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" href="%s">%s</a>';
 		        }
 
 				$html .= $this->set_active($tag_open, $slug);	      
