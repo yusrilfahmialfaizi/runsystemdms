@@ -53,7 +53,7 @@
                           <td>
                             <div class="form-group">
                               <button type="button" data-feather="edit" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" data-status="<?php echo $key[$i]["status"]; ?>" data-active="<?php echo $key[$i]["activeind"]; ?>" onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"]; ?>">Edit</button>
-                              <button type="button" data-feather="book-open" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" data-status="<?php echo $key[$i]["status"]; ?>" data-active="<?php echo $key[$i]["activeind"]; ?>"  onClick="window.location.href='Pdf'" data-id="<?php echo $key[$i]["modulname"]; ?>">Preview</button>
+                              <button type="button" data-feather="book-open" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" data-status="<?php echo $key[$i]["status"]; ?>" data-active="<?php echo $key[$i]["activeind"]; ?>"  onClick="window.location.href='tabel/pdf'" data-id="<?php echo $key[$i]["modulname"]; ?>">Preview</button>
                             </div>
                           </td>
                         </tr>
