@@ -25,7 +25,6 @@
               <table class="display" id="basic-13">
                 <thead>
                   <tr>
-                  <?php echo $this->session->userdata("menu") ?>
                     <th>Docno</th>
                     <th>Active Ind</th>
                     <th>Status</th>

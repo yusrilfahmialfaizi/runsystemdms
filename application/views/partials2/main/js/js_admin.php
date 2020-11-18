@@ -32,9 +32,7 @@
       function modules(id_li) {
         $("li").removeClass("open");
         $("#" + id_li).even().addClass("open");
-        $.post("<?php echo base_url("tabel/menu_session") ?>", {
-            menuCode: id_li
-          });
+        $.post("<?php echo base_url("tabel/modul_session ") ?>", {modulCode: id_li});
       }
 
       function modules2(id_li) {
