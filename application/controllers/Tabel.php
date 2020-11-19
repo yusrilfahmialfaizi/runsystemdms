@@ -8,7 +8,7 @@ class Tabel extends CI_Controller {
 		parent::__construct();
 		$this->load->library("menu");
 		$this->load->library("documentdtl");
-		$this->load->library("mypdf");
+		// $this->load->library("mypdf");
 	}
 	
 	public function index()
@@ -26,11 +26,9 @@ class Tabel extends CI_Controller {
 	}
 
 	function pdf()
-  {
-	$this->load->view('partials2/main/page/page_pdf');
-  }
-
-  
+  	{
+		$this->load->view('partials2/main/page/page_pdf');
+  	}
 
 	public function getDataDocuments(){
 		$url = "http://127.0.0.1:8080/runsystemdms/getDataDocuments";

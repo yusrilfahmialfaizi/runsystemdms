@@ -5,11 +5,20 @@
               <?php 
                 foreach ($sidebar as $key) { 
                   for ($i=0; $i < count($key); $i++) {
-                    if ($i == 0 && $this->uri->segment("1") != "home"){ ?>
-                      <li id="<?php echo $key[$i]["modulcode"]  ?>" class="open">
-                  <?php  }else{ ?>
-                      <li id="<?php echo $key[$i]["modulcode"]  ?>">
-                  <?php  }  ?>
+                    if ($this->uri->segment("1") == "tabel"){ ?>
+                      <?php if($i == 0) {?>
+                        <li id="<?php echo $key[$i]["modulcode"]  ?>" class="open">
+                      <?php  }else{ ?>
+                          <li id="<?php echo $key[$i]["modulcode"]?>" class="">
+                      <?php } ?>
+                  <?php } elseif ($this->uri->segment("1") == "edit") { ?>
+                  <li id="<?php echo $key[$i]["modulcode"]  ?>" class="open">
+                  <script type="text/javascript">
+                    var modulCode = "<?php echo $this->session->userdata("modul") ?>";
+                    $("li").removeClass("open");
+                      document.getElementById(modulCode).className += "open";
+                  </script>
+                  <?php } ?>
                 <div class="dropdown-basic">
                   <div class="dropdown">
                     <div class="btn-group mb-0">

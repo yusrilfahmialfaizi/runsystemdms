@@ -150,7 +150,7 @@
     <!-- <script src="<?php //echo base_url("assets/js/chart/chartist/chartist.js") 
                       ?>"></script>
     <!-- <script src="<?php //echo base_url("assets/js/chart/chartist/chartist-plugin-tooltip.js") 
-                      ?>"></script> --> -->
+                      ?>"></script> -->
     <script src="<?php echo base_url("assets/js/chart/apex-chart/apex-chart.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/chart/apex-chart/stock-prices.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/prism/prism.min.js") ?>"></script>
