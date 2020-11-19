@@ -111,6 +111,12 @@
             });
         }
       });
+      function preview(ths){
+        var docno = $(ths).attr("data-docno");
+        var modulcode = $(ths).attr("data-modulcode");
+        console.log(docno + modulcode);
+        window.open('tabel/pdf?docno='+docno+'&modulcode='+modulcode+'', '_blank');
+      }
     </script>
 
     <!-- remove sorting data table -->

@@ -31,7 +31,7 @@ $(document).bind('contextmenu cut copy', function (e) {
 });
   </script>
  </head>
-<body class="disable-select" onmousedown="return false" onselectstart="return false" onload="window.print()">
+<body class="disable-select" onmousedown="return false" onselectstart="return false" onload="window.print()" style="margin-left:4cm; margin-right:3cm; margin-top:4cm; margin-bottom:3cm;">
   <table style="width: 100%;">
     <tr>
       <td align="center">
@@ -41,14 +41,15 @@ $(document).bind('contextmenu cut copy', function (e) {
           <hr class="line-title"> 
         </span>
         <span  style="line-height: 1.2;">
-         <h4 align="left"> 1.1.Submodul
-          <br>Yogyakarta Document Management System </hp>
-        </span>
-        
-        </td>
-   
+        <?php foreach($data as $dt){ ?>
+         <h5 style="text-align:left"> <?php echo str_replace("0", ".",intVal($dt['menucode'])) ?> <?php echo $dt["menudesc"] ?></h5>
+         <br>
+         <p><?php echo $dt['description'] ?></p>
+         <br>
+        <?php } ?>
+        </span>  
+      </td>
     </tr>
-    
 </body>
   
 </html>

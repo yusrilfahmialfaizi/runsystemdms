@@ -83,7 +83,7 @@ func GetDocumentDtl(c echo.Context) error {
 	fmt.Println("Getting generate code...")
 	return c.JSON(http.StatusOK, result)
 }
-// function pada controller untuk get documents dtl berdasarkan docno
+// function pada controller untuk get documents dtl berdasarkan docno dan menucode join tabel
 func GetDocumentsDtl(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetDocumentsDtl(cc)

@@ -27,7 +27,16 @@ class Tabel extends CI_Controller {
 
 	function pdf()
   	{
-		$this->load->view('partials2/main/page/page_pdf');
+		$docno 		=  $this->input->get("docno");
+		$modulcode 	= $this->input->get("modulcode");
+		$dt 			= array("docno" => $docno, "modulcode" => $modulcode);
+		$response 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForMenu", $dt);
+		$response 	= json_decode($response, true);
+		$data['data']	= $response['documentsdtl'];
+		// echo "<pre>";
+		// print_r();
+		// echo "</pre>";
+		$this->load->view('partials2/main/page/page_pdf', $data);
   	}
 
 	public function getDataDocuments(){
