@@ -257,12 +257,12 @@ $(document).ready(function(){
         ]
     } );
     $('#basic-fixed-header').DataTable( {
-        fixedHeader: true
+        fixedHeader: true,
+        ordering: false
     } );
     var table = $('#fixed-header-footer').DataTable( {
         fixedHeader: {
-            header: true,
-            footer: true
+            header: true
         }
     } );
 });

@@ -1,5 +1,5 @@
     <script type="text/javascript">
-      $(document).ready(function () {
+      $(document).ready(function() {
         var uri = "<?php echo $this->uri->segment("1"); ?>";
 
         if (uri != "home") {
@@ -7,8 +7,8 @@
         }
 
         if (uri != "home" && uri != "tabel") {
-          var modulCode = "<?php echo $this->session->userdata("modul");?>";
-          if ("<?php echo $this->session->userdata("doc_status ");?>" != "O") {
+          var modulCode = "<?php echo $this->session->userdata("modul"); ?>";
+          if ("<?php echo $this->session->userdata("doc_status "); ?>" != "O") {
             document.getElementById('statushdr').checked = true;
           }
 
@@ -20,7 +20,7 @@
               modulCode: modulCode
             },
             cache: false,
-            success: function (response) {
+            success: function(response) {
               $('#modul-menu-' + modulCode).html(response);
             }
           });
@@ -32,7 +32,9 @@
       function modules(id_li) {
         $("li").removeClass("open");
         $("#" + id_li).even().addClass("open");
-        $.post("<?php echo base_url("tabel/modul_session ") ?>", {modulCode: id_li});
+        $.post("<?php echo base_url("tabel/modul_session ") ?>", {
+          modulCode: id_li
+        });
       }
 
       function modules2(id_li) {
@@ -42,8 +44,8 @@
         var active = $(id_li).attr("data-active");
         var status = $(id_li).attr("data-status");
         $.post("<?php echo base_url("tabel/modul_session") ?>", {
-            modulCode: modulCode
-          });
+          modulCode: modulCode
+        });
         $.ajax({ //to get all data menu from db
           type: 'POST',
           url: '<?php echo base_url("tabel/modulmenubyid") ?>',
@@ -52,7 +54,7 @@
             modulCode: modulCode
           },
           cache: false,
-          success: function (response) {
+          success: function(response) {
             $('#modul-menu-' + modulCode).html(response);
           }
         });
@@ -60,10 +62,10 @@
           document.getElementById('statushdr').checked = true;
         }
         $.post("<?php echo base_url("tabel/doc_session") ?>", {
-            docno: docno,
-            active: active,
-            status: status
-          });
+          docno: docno,
+          active: active,
+          status: status
+        });
         $("#sub-header-" + modulCode).text(docno);
         $("li").removeClass("open");
         document.getElementById(modulCode).className += "open";
@@ -72,7 +74,9 @@
 
       function modulCode(ths) {
         var modulCode = $(ths).attr("data-modul");
-        $.post("<?php echo base_url("tabel/modul_session ") ?>", {modulCode: modulCode});
+        $.post("<?php echo base_url("tabel/modul_session ") ?>", {
+          modulCode: modulCode
+        });
         $.ajax({ //to get all data menu from db
           type: 'POST',
           url: '<?php echo base_url("tabel/modulmenubyid") ?>',
@@ -81,7 +85,7 @@
             modulCode: modulCode
           },
           cache: false,
-          success: function (response) {
+          success: function(response) {
             $('#modul-menu-' + modulCode).html(response);
           }
         });
@@ -90,32 +94,33 @@
       function menuCode(menuCode) {
         var menuName = $(menuCode).data('name');
         var menuCode = $(menuCode).attr('data-id');
-  
+
         $.post("<?php echo base_url("tabel/menu_session") ?>", {
-            menuCode: menuCode,
-            menuName: menuName
-          });
+          menuCode: menuCode,
+          menuName: menuName
+        });
       }
-      $('input[type="checkbox"]').click(function () {
+      $('input[type="checkbox"]').click(function() {
         if ($(this).prop("checked") == true) {
           // console.log("Checkbox is checked.");
           var checked = "F";
           $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
-              checked: checked
-            });
+            checked: checked
+          });
         } else if ($(this).prop("checked") == false) {
           var checked = "O";
           // console.log("Checkbox is unchecked.");
           $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
-              checked: checked
-            });
+            checked: checked
+          });
         }
       });
-      function preview(ths){
+
+      function preview(ths) {
         var docno = $(ths).attr("data-docno");
         var modulcode = $(ths).attr("data-modulcode");
         console.log(docno + modulcode);
-        window.open('tabel/pdf?docno='+docno+'&modulcode='+modulcode+'', '_blank');
+        window.open('tabel/pdf?docno=' + docno + '&modulcode=' + modulcode + '', '_blank');
       }
     </script>
 
@@ -140,7 +145,8 @@
     <script src="<?php echo base_url("assets/js/icons/feather-icon/feather.min.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/icons/feather-icon/feather-icon.js") ?>"></script>
     <!-- Sidebar jquery-->
-    <!-- <script src="<?php //echo base_url("assets/js/sidebar-menu.js") ?>"></script> -->
+    <!-- <script src="<?php //echo base_url("assets/js/sidebar-menu.js") 
+                      ?>"></script> -->
     <script src="<?php echo base_url("assets/js/config.js") ?>"></script>
     <!-- Plugins JS start-->
     <!-- <script src="<?php //echo base_url("assets/js/typeahead/handlebars.js") 
@@ -174,10 +180,29 @@
     <script src="<?php echo base_url("assets/js/chat-menu.js") ?>"></script>
     <!-- Data Table JS -->
     <!-- Plugins JS start-->
-    <script src="<?php echo base_url("assets/js/datatable/datatables/jquery.dataTables.min.js") ?>"></script>
-    <script src="<?php echo base_url("assets/js/datatable/datatables/datatable.custom.js") ?>"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/dataTables.buttons.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/jszip.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/buttons.colVis.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/pdfmake.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/vfs_fonts.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/dataTables.autoFill.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/dataTables.select.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/buttons.html5.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/buttons.print.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/dataTables.responsive.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/dataTables.keyTable.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/dataTables.colReorder.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/dataTables.fixedHeader.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/dataTables.scroller.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/custom.js"></script>
     <script src="<?php echo base_url("assets/js/sweet-alert/sweetalert.min.js") ?>"></script>
-    <!-- <script src="<?php //echo base_url("assets/js/sweet-alert/app.js") ?>"></script> -->
+    <!-- <script src="<?php //echo base_url("assets/js/sweet-alert/app.js") 
+                      ?>"></script> -->
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="<?php echo base_url("assets/js/script.js") ?>"></script>

@@ -21,11 +21,11 @@
         <div class="card">
           <div class="card-body">
             <a style="margin-bottom: 20px;" href="<?php echo base_url("tabel/createDocument") ?>" class="btn btn-success"> + New Document</a>
-            <div class="table-responsive">
-              <table class="display" id="basic-13">
+            <div class="dt-ext table-responsive">
+              <table class="display" id="basic-fixed-header">
                 <thead>
                   <tr>
-                  <?php echo $this->session->userdata("modul") ?>
+                    <?php echo $this->session->userdata("modul") ?>
                     <th>Docno</th>
                     <th>Active Ind</th>
                     <th>Status</th>
@@ -54,7 +54,7 @@
                           <td>
                             <div class="form-group">
                               <button type="button" data-feather="edit" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" data-status="<?php echo $key[$i]["status"]; ?>" data-active="<?php echo $key[$i]["activeind"]; ?>" onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"]; ?>">Edit</button>
-                              <button type="button" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" onClick="preview(this)" data-feather="book-open" >Preview</button> 
+                              <button type="button" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" onClick="preview(this)" data-feather="book-open">Preview</button>
                             </div>
                           </td>
                         </tr>
