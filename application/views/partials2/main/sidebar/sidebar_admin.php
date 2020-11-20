@@ -11,7 +11,7 @@
                       <?php  }else{ ?>
                           <li id="<?php echo $key[$i]["modulcode"]?>" class="">
                       <?php } ?>
-                  <?php } elseif ($this->uri->segment("1") == "edit") { ?>
+                  <?php } elseif ($this->uri->segment("1") == "editor" ||$this->uri->segment("1") == "editor" ) { ?>
                   <li id="<?php echo $key[$i]["modulcode"]  ?>" class="open">
                   <script type="text/javascript">
                     var modulCode = "<?php echo $this->session->userdata("modul") ?>";
