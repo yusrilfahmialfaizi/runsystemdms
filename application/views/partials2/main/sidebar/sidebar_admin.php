@@ -11,7 +11,7 @@
                       <?php  }else{ ?>
                           <li id="<?php echo $key[$i]["modulcode"]?>" class="">
                       <?php } ?>
-                  <?php } elseif ($this->uri->segment("1") == "editor" ||$this->uri->segment("1") == "editor" ) { ?>
+                  <?php } elseif ($this->uri->segment("1") == "edit") { ?>
                   <li id="<?php echo $key[$i]["modulcode"]  ?>" class="open">
                   <script type="text/javascript">
                     var modulCode = "<?php echo $this->session->userdata("modul") ?>";
@@ -33,7 +33,7 @@
                     <?php if ($this->uri->segment("1") != "tabel"){?>
                     <b><p id="sub-header-<?php echo $key[$i]["modulcode"] ?>"><?php echo $this->session->userdata("docno") ?></p></b>
                     <?php }else{ ?>
-                      <b><p id="sub-header-<?php echo $key[$i]["modulcode"] ?>">Sub Module</p></b>
+                      <b><p style="font-size:30px;" id="sub-header-<?php echo $key[$i]["modulcode"] ?>">Sub Module</p></b>
                     <?php } ?>
                     <label><b><p>Final</b>
                         <input class="checkbox_animated" id="statushdr" name="statushdr-<?php echo $key[$i]["modulcode"] ?>" type="checkbox" data-code="<?php echo $key[$i]["modulcode"] ?>"></p>
