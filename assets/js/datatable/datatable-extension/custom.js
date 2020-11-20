@@ -249,7 +249,7 @@ $(document).ready(function(){
     $('#pagelength-btn').DataTable( {
         dom: 'Bfrtip',
         lengthMenu: [
-            [ 10, 25, 50, -1 ],
+            [ 7, 25, 50, -1 ],
             [ '10 rows', '25 rows', '50 rows', 'Show all' ]
         ],
         buttons: [
@@ -257,8 +257,10 @@ $(document).ready(function(){
         ]
     } );
     $('#basic-fixed-header').DataTable( {
+        displayLength: 7,
+        lengthChange: false,
         fixedHeader: true,
-        ordering: false
+        ordering: false,
     } );
     var table = $('#fixed-header-footer').DataTable( {
         fixedHeader: {
