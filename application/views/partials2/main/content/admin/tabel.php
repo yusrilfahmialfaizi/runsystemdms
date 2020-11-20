@@ -19,13 +19,14 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="card">
-          <div class="card-body">
+          <div class="card-header">
             <a style="margin-bottom: 20px;" href="<?php echo base_url("tabel/createDocument") ?>" class="btn btn-success"> + New Document</a>
+          </div>
+          <div class="card-body">
             <div class="dt-ext table-responsive">
               <table class="display" id="basic-fixed-header">
                 <thead>
                   <tr>
-                    <?php echo $this->session->userdata("modul") ?>
                     <th>Docno</th>
                     <th>Active Ind</th>
                     <th>Status</th>

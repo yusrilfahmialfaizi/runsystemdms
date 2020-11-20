@@ -7,9 +7,7 @@
           $("#sidebar").removeClass("iconbar-second-close");
           $("#sidebar").addClass("iconbar-mainmenu-close");
           $("li").removeClass("open");
-
         }
-
         if (uri != "home" && uri != "tabel") {
           var modulCode = "<?php echo $this->session->userdata("modul"); ?>";
           if ("<?php echo $this->session->userdata("doc_status "); ?>" != "O") {
@@ -127,6 +125,18 @@
         window.open('tabel/pdf?docno=' + docno + '&modulcode=' + modulcode + '', '_blank');
       }
     </script>
+
+    <!-- remove sorting data table -->
+    <!-- <script type="text/javascript">
+      $(document).ready(function() {
+        $('#basic-1').DataTable({
+          "scrollY": 200,
+          "scrollX": true,
+          "ordering": false,
+        });
+      });
+    </script> -->
+
 
     <!-- latest jquery-->
     <script src="<?php echo base_url("assets/js/jquery-3.5.1.min.js") ?>"></script>
