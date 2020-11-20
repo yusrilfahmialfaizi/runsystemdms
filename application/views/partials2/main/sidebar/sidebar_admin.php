@@ -35,10 +35,10 @@
                     <?php }else{ ?>
                       <b><p id="sub-header-<?php echo $key[$i]["modulcode"] ?>">Sub Module</p></b>
                     <?php } ?>
-                    <span>Final 
-                      <input class="checkbox_animated" id="statushdr" name="statushdr-<?php echo $key[$i]["modulcode"] ?>" type="checkbox" data-code="<?php echo $key[$i]["modulcode"] ?>">
-                    </span>
-                  </li>
+                    <label><b><p>Final</b>
+                        <input class="checkbox_animated" id="statushdr" name="statushdr-<?php echo $key[$i]["modulcode"] ?>" type="checkbox" data-code="<?php echo $key[$i]["modulcode"] ?>"></p>
+                    </label>
+                  </li>                  
                   <ul id="modul-menu-<?php echo $key[$i]["modulcode"] ?>"></ul>
                 </ul>
               </li>
