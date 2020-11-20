@@ -2,8 +2,11 @@
       $(document).ready(function() {
         var uri = "<?php echo $this->uri->segment("1"); ?>";
 
-        if (uri != "home") {
+        if (uri != "home") { 
           $("#sidebar").removeClass("iconbar-second-close");
+        }else if(uri == "table") {
+          $("#sidebar").removeClass("iconbar-second-close");
+          $("#sidebar").addClass("iconbar-mainmenu-close");
         }
 
         if (uri != "home" && uri != "tabel") {
@@ -123,18 +126,6 @@
         window.open('tabel/pdf?docno=' + docno + '&modulcode=' + modulcode + '', '_blank');
       }
     </script>
-
-    <!-- remove sorting data table -->
-    <!-- <script type="text/javascript">
-      $(document).ready(function() {
-        $('#basic-1').DataTable({
-          "scrollY": 200,
-          "scrollX": true,
-          "ordering": false,
-        });
-      });
-    </script> -->
-
 
     <!-- latest jquery-->
     <script src="<?php echo base_url("assets/js/jquery-3.5.1.min.js") ?>"></script>
