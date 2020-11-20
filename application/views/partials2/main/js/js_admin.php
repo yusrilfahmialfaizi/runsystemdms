@@ -1,12 +1,13 @@
     <script type="text/javascript">
       $(document).ready(function() {
         var uri = "<?php echo $this->uri->segment("1"); ?>";
-
-        if (uri != "home") { 
+        if (uri == "editor" || uri == "edit") { 
           $("#sidebar").removeClass("iconbar-second-close");
-        }else if(uri == "table") {
+        }else if(uri == "tabel") {
           $("#sidebar").removeClass("iconbar-second-close");
           $("#sidebar").addClass("iconbar-mainmenu-close");
+          $("li").removeClass("open");
+
         }
 
         if (uri != "home" && uri != "tabel") {
