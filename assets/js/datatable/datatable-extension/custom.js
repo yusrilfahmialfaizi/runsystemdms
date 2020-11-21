@@ -260,11 +260,11 @@ $(document).ready(function(){
         displayLength: 7,
         lengthChange: false,
         fixedHeader: true,
-        ordering: false,
+        ordering: false
     } );
     var table = $('#fixed-header-footer').DataTable( {
         fixedHeader: {
-            header: true
+            header: true,
         }
     } );
 });
