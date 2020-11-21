@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Edit extends CI_Controller {
+class Edit extends CI_Controller
+{
 
 	public function __construct()
 	{
@@ -17,23 +18,24 @@ class Edit extends CI_Controller {
 		}
 		$menucode = $this->session->userdata("menu");
 		$docno = $this->session->userdata("docno");
-		$doc = $this->documentdtl->getDocumentDtl($docno,$menucode);
+		$doc = $this->documentdtl->getDocumentDtl($docno, $menucode);
 		$data2 = $this->menu->getModulMenu();
 		$data2 = json_decode($data2, true);
 		$doc = json_decode($doc, true);
 		$data["sidebar"] = $data2;
 		$data["doc"] = $doc;
-        	$this->load->view('partials2/main/page/page_edit', $data);
+		$this->load->view('partials2/main/page/page_edit', $data);
 	}
 
-	function EditDocDetail(){
+	function EditDocDetail()
+	{
 		$docno = $this->session->userdata("docno");
 		$menucode = $this->session->userdata("menu");
 		$description = $this->input->post("deskripsi");
 		$stts = $this->input->post("chk-ani");
 		if ($stts == "on") {
 			$status = "F";
-		}else{
+		} else {
 			$status = "O";
 		}
 		$lastupby = $this->session->userdata("usercode");
@@ -55,12 +57,11 @@ class Edit extends CI_Controller {
 			# update
 			$response = $this->documentdtl->callApiDocDtl('PUT', "http://127.0.0.1:8080/runsystemdms/editDataDocuments", $data);
 			echo "update";
+			$this->session->set_flashdata('alert', '<div class="alert alert-primary dark alert-dismissible fade show" role="alert">
+					<p>Deskripsi telah <strong>tersimpan</strong></p>
+                    <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>');
 			redirect(base_url("edit"));
-			
-			
 		}
 	}
-	
-	
 }
-?>

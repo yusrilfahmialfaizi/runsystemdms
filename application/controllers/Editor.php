@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Editor extends CI_Controller {
+class Editor extends CI_Controller
+{
 
 	public function __construct()
 	{
@@ -17,23 +18,24 @@ class Editor extends CI_Controller {
 		}
 		$menucode = $this->session->userdata("menu");
 		$docno = $this->session->userdata("docno");
-		$doc = $this->documentdtl->getDocumentDtl($docno,$menucode);
+		$doc = $this->documentdtl->getDocumentDtl($docno, $menucode);
 		$data2 = $this->menu->getModulMenu();
 		$data2 = json_decode($data2, true);
 		$doc = json_decode($doc, true);
 		$data["sidebar"] = $data2;
 		$data["doc"] = $doc;
-        	$this->load->view('partials2/main/page/page_editor', $data);
+		$this->load->view('partials2/main/page/page_editor', $data);
 	}
 
-	function EditDocDetail(){
+	function EditDocDetail()
+	{
 		$docno = $this->session->userdata("docno");
 		$menucode = $this->session->userdata("menu");
 		$description = $this->input->post("deskripsi");
 		$stts = $this->input->post("chk-ani");
 		if ($stts == "on") {
 			$status = "F";
-		}else{
+		} else {
 			$status = "O";
 		}
 		$lastupby = $this->session->userdata("usercode");
@@ -54,6 +56,5 @@ class Editor extends CI_Controller {
 			$response = $this->documentdtl->callApiDocDtl('PUT', "http://127.0.0.1:8080/runsystemdms/editDataDocuments", $data);
 			redirect(base_url("editor"));
 		}
-	}	
+	}
 }
-?>
