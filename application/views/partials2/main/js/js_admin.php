@@ -1,9 +1,9 @@
     <script type="text/javascript">
       $(document).ready(function() {
         var uri = "<?php echo $this->uri->segment("1"); ?>";
-        if (uri == "editor" || uri == "edit") { 
+        if (uri == "editor" || uri == "edit") {
           $("#sidebar").removeClass("iconbar-second-close");
-        }else if(uri == "tabel") {
+        } else if (uri == "tabel") {
           $("#sidebar").removeClass("iconbar-second-close");
           $("#sidebar").addClass("iconbar-mainmenu-close");
           $("li").removeClass("open");
