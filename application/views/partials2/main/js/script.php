@@ -62,6 +62,8 @@
         });
         if (status != "O") {
           document.getElementById('statushdr').checked = true;
+        }else{
+          document.getElementById('statushdr').checked = false;
         }
         $.post("<?php echo base_url("tabel/doc_session") ?>", {
           docno: docno,
@@ -108,12 +110,16 @@
           var checked = "F";
           $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
             checked: checked
+          }).done(function() {
+              location.reload(true)
           });
         } else if ($(this).prop("checked") == false) {
           var checked = "O";
           // console.log("Checkbox is unchecked.");
           $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
             checked: checked
+          }).done(function() {
+              location.reload(true)
           });
         }
       });

@@ -14,8 +14,8 @@ type CustomContext struct {
 }
 
 type Modul struct {
-	ModulCode string          `json:"modulcode"`
-	ModulName string          `json:"modulname"`
+	ModulCode string         `json:"modulcode"`
+	ModulName string         `json:"modulname"`
 	CreateBy string          `json:"createby"`
 	CreateDt string          `json:"createdt"`
 	LastupBy nullable.String `json:"lastupby"`
@@ -23,14 +23,14 @@ type Modul struct {
 }
 type ModulMenu struct {
 	MenuCode string          `json:"menucode"`
-	ModulCode string          `json:"modulcode"`
+	ModulCode string         `json:"modulcode"`
 	MenuDesc string          `json:"menudesc"`
 	Parent   nullable.String `json:"parent"`
 	CreateBy string          `json:"createby"`
 	CreateDt string          `json:"createdt"`
 	LastupBy nullable.String `json:"lastupby"`
 	LastupDt nullable.String `json:"lastupdt"`
-	Status nullable.String `json:"status"`
+	Status nullable.String   `json:"status"`
 }
 
 
@@ -46,7 +46,7 @@ type ParentLength struct {
 }
 type LastChild struct {
 	MenuCode string          `json:"menucode"`
-	ModulCode string          `json:"modulcode"`
+	ModulCode string         `json:"modulcode"`
 	MenuDesc string          `json:"menudesc"`
 	Parent   nullable.String `json:"parent"`
 	CreateBy string          `json:"createby"`
@@ -64,8 +64,8 @@ type Menu struct {
 }
 
 type DynamicMenu struct {
-	ParentLengths []ParentLength `json:"parentlength"`
-	LastChilds []LastChild `json:"lastChilds"`
+	ParentLengths []ParentLength 	`json:"parentlength"`
+	LastChilds    []LastChild 	`json:"lastChilds"`
 }
 type Parts struct {
 	Parts []DynamicMenu `json:"parts"`
@@ -105,7 +105,7 @@ func GetModuls() Moduls {
 func GetModulsById(c *CustomContext) Menu {
 	modulcode := c.Param("modulcode");
 	connection = config.Connection()
-	query2 := "SELECT tblmodulmenu.MenuCode, tblmodulmenu.ModulCode, tblmodulmenu.MenuDesc, tblmodulmenu.Parent, tblmodulmenu.CreateBy, tblmodulmenu.CreateDt, tblmodulmenu.LastUpBy, tblmodulmenu.LastUpDt, tbldocumentdtl.`Status` FROM tblmodulmenu LEFT JOIN tbldocumentdtl ON tbldocumentdtl.MenuCode = tblmodulmenu.MenuCode WHERE modulcode = ?"
+	query2 := "SELECT A.MenuCode, A.ModulCode, A.MenuDesc, A.Parent, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt, B.`Status` FROM tblmodulmenu A LEFT JOIN tbldocumentdtl B ON B.MenuCode = A.MenuCode WHERE modulcode = ?"
 	rows2, err2 := connection.Query(query2, modulcode)
 	if err2 != nil{
 		fmt.Println(err2)

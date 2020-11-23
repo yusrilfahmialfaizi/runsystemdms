@@ -73,7 +73,8 @@ class Tabel extends CI_Controller {
 		curl_close($ch);
 		
 		$data = json_decode($data, true);
-		$number = $data["docno"];
+		$number = $data["docno"]["Int64"];
+		print_r($data["docno"]["Int64"]);
 		if ($number == null) {
 			$number = 1;
 		}else{
@@ -135,7 +136,11 @@ class Tabel extends CI_Controller {
 		$this->load->library("multi_menu");
 		$docno = $this->input->post('docno');
 		$modulcode = $this->input->post('modulCode');
-		$dt = array("docno" => $docno, "modulcode" => $modulcode);
+		if ($docno != null) {
+			$dt = array("docno" => $docno, "modulcode" => $modulcode);
+		}else{
+			$dt = array("docno" => $this->session->userdata("docno"), "modulcode" => $modulcode);
+		}
 		$response = $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForMenu", $dt);
 		$response = json_decode($response, true);
 		$items = $response["documentsdtl"];

@@ -62,7 +62,6 @@ func GetUser() Users {
 	queryStatement := "Select usercode, username, grpcode, pwd, expdt, notifyind, hasqiscusaccount, avatarimage, deviceid, createby, createdt,lastupby, lastupdt From tbluser"
 
 	rows, err := conn.Query(queryStatement)
-	fmt.Println("ROWS : ", rows)
 	fmt.Println(err)
 	if err != nil {
 		fmt.Println(err)
@@ -78,7 +77,6 @@ func GetUser() Users {
 			&user.CreateBy, &user.CreateDt, &user.LastupBy, &user.LastupDt)
 		if er != nil {
 			fmt.Println("ER : ", er)
-			fmt.Println("err2")
 		}
 		userJSON, err := json.Marshal(&user)
 		if err != nil {
@@ -110,12 +108,8 @@ func GetProjectGroup() PGs {
 			&pg.ProjectCode, &pg.ProjectName, &pg.CtCode, &pg.CreateBy, &pg.CreateDt, &pg.LastupBy, &pg.LastupDt)
 		if er != nil {
 			fmt.Println("ER : ", er)
-			fmt.Println("err2")
 		}
 		result.PGs = append(result.PGs, pg)
 	}
-	var data = result.PGs[0]
-	fmt.Println("Panjang : ", len(result.PGs))
-	fmt.Println("Hasil : ", data.PGCode)
 	return result
 }

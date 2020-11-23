@@ -21,12 +21,6 @@ func GetModulsById(c echo.Context) error {
 	fmt.Println("Getting menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
-// Controller untuk get panjang data parent
-// func GetDynamicMenuParts(c echo.Context) error {
-// 	result := models.GetDynamicMenuParts()
-// 	fmt.Println("Getting parent length...")
-// 	return c.JSON(http.StatusOK, result)
-// }
 // Controller untuk update data
 func UpdateDataSubModules(c echo.Context) error {
 	cc := c.(*models.CustomContext)
