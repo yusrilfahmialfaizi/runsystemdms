@@ -8,7 +8,6 @@ class Tabel extends CI_Controller {
 		parent::__construct();
 		$this->load->library("menu");
 		$this->load->library("documentdtl");
-		// $this->load->library("mypdf");
 	}
 	
 	public function index()
@@ -43,9 +42,6 @@ class Tabel extends CI_Controller {
 		$response 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForMenu", $dt);
 		$response 	= json_decode($response, true);
 		$data['data']	= $response['documentsdtl'];
-		// echo "<pre>";
-		// print_r();
-		// echo "</pre>";
 		$this->load->view('partials2/main/page/page_pdf', $data);
   	}
 
