@@ -54,6 +54,10 @@ class Editor extends CI_Controller
 			);
 			# update
 			$response = $this->documentdtl->callApiDocDtl('PUT', "http://127.0.0.1:8080/runsystemdms/editDataDocuments", $data);
+			$this->session->set_flashdata('alert', '<div class="alert alert-primary dark alert-dismissible fade show" role="alert">
+					<p><strong>Data telah tersimpan</strong></p>
+                    <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>');
 			redirect(base_url("editor"));
 		}
 	}
