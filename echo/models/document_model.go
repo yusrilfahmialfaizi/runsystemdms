@@ -82,10 +82,11 @@ type GenerateCodes struct {
 var con *sql.DB
 
 //function untuk get document yang ditampilkan di view tabel
-func GetDatadocuments() Datadocuments {
+func GetDatadocuments(c *CustomContext) Datadocuments {
 	con = config.Connection()
-	query := "SELECT tbldocumenthdr.Docno, tbldocumenthdr.ModulCode, tblmodul.ModulName, tbldocumenthdr.ActiveInd, tbldocumenthdr.`Status`, tbldocumenthdr.CreateBy, tbldocumenthdr.CreateDt, tbldocumenthdr.LastUpBy, tbldocumenthdr.LastUpDt FROM tbldocumenthdr INNER JOIN tblmodul ON tblmodul.ModulCode = tbldocumenthdr.ModulCode ORDER BY tbldocumenthdr.CreateDt DESC"
-	rows, err := con.Query(query)
+	modulcode := c.Param("modulcode");
+	query := "SELECT A.Docno, A.ModulCode, B.ModulName, A.ActiveInd, A.`Status`, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tbldocumenthdr A INNER JOIN tblmodul B ON B.ModulCode = A.ModulCode WHERE A.modulcode = ? ORDER BY A.CreateDt DESC"
+	rows, err := con.Query(query, modulcode)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -135,8 +136,8 @@ func PostDataDocuments(con *sql.DB, Docno string, ModulCode string, Status strin
 		if er3 != nil {
 			fmt.Println(er3)
 		}
-		fmt.Println(modulmenu.MenuCode, modulmenu.Parent)
-		PostDataDocumentsDtl(con, Docno, modulmenu.MenuCode, CreateBy, CreateDt, LastUpBy, LastUpDt)
+		// fmt.Println(modulmenu.MenuCode, modulmenu.Parent)
+		PostDataDocumentsDtl(con, Docno, modulmenu.MenuCode, CreateBy, CreateDt, LastUpBy, LastUpDt) 
 	}
 
 	// Exit if we get an error

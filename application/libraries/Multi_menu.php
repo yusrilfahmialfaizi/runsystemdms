@@ -299,14 +299,14 @@ class Multi_menu {
     {
 		$html  = "";
 
-		if ( is_array($config) ) {
+		if (is_array($config)) {
 			$this->initialize($config);	
 		}
 		elseif (is_string($config)) {
 			$this->item_active = $config;
 		}
 
-    	if ( count($this->items) ) 
+    	if (count($this->items)) 
     	{
 			$items = $this->prepare_items($this->items);		
 

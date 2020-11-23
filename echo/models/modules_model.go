@@ -126,45 +126,6 @@ func GetModulsById(c *CustomContext) Menu {
 	return result
 }
 
-
-// // function untuk mengambil panjang data parent dari tabel menu berdasarkan parent
-// func GetDynamicMenuParts() Parts {
-// 	connection = config.Connection()
-// 	query1 := "SELECT Length(parent) FROM tblmodulmenu GROUP BY Length(parent) "
-// 	query2 := "SELECT  * FROM tblmodulmenu A WHERE NOT EXISTS(SELECT  NULL	FROM    tblmodulmenu B	WHERE   B.parent = A.MenuCode);"
-// 	rows1, err1 := connection.Query(query1)
-// 	rows2, err2 := connection.Query(query2)
-// 	if err1 != nil && err2 != nil{
-// 		fmt.Println(err1, err2)
-// 	}
-// 	defer rows1.Close()
-// 	defer rows2.Close()
-// 	all_result := Parts{}
-// 	result := DynamicMenu{}
-
-// 	for rows1.Next() {
-// 		parentLength := ParentLength{}
-
-// 		eror := rows1.Scan(&parentLength.ParentLength)
-// 		if eror != nil {
-// 			fmt.Println(eror)
-// 		}
-// 		result.ParentLengths = append(result.ParentLengths, parentLength)
-// 	}
-// 	for rows2.Next() {
-// 		lastChild := LastChild{}
-// 		eror2 := rows2.Scan(&lastChild.MenuCode, &lastChild.ModulCode, &lastChild.MenuDesc, &lastChild.Parent, &lastChild.CreateBy, &lastChild.CreateDt, &lastChild.LastupBy, &lastChild.LastupDt)
-// 		if eror2 != nil {
-// 			fmt.Println("eror 2 : ", eror2)
-// 		}
-// 		result.LastChilds = append(result.LastChilds, lastChild)
-// 	}
-// 	all_result.Parts = append(all_result.Parts, result)
-
-// 	return all_result
-// }
-
-
 // function update data berdasarkan menucode pada tabel menu
 func UpdateDataSubModules(c *CustomContext) Datasubmodules {
 	menucode := c.FormValue("menucode")

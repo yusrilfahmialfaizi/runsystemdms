@@ -44,7 +44,7 @@ func Routes() *echo.Echo {
 	var con *sql.DB
 	e.POST("/runsystemdms/getDocsDtl", controllers.GetDocumentDtl)
 	e.POST("/runsystemdms/getDocsDtlForMenu", controllers.GetDocumentsDtl)
-	e.GET("/runsystemdms/getDataDocuments", controllers.GetDatadocuments)
+	e.GET("/runsystemdms/getDataDocuments/:modulcode", controllers.GetDatadocuments)
 	e.POST("/runsystemdms/postDataDocuments", controllers.PostDataDocuments(con))
 	e.PUT("/runsystemdms/editDataDocuments", controllers.EditDataDocuments(con))
 	e.PUT("/runsystemdms/editDataDocumentshdr", controllers.EditDataDocumentsHdr(con))

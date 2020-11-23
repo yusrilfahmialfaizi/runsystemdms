@@ -39,6 +39,7 @@
                 </thead>
                 <tbody>
                   <!-- js -->
+                  <?php if ($get != null){ ?>
                   <?php foreach ($get as $key) {
                     if ($key != null) {
                       # code...
@@ -59,7 +60,8 @@
                         </tr>
                   <?php }
                     }
-                  } ?>
+                  }
+                 } ?>
                 </tbody>
               </table>
             </div>

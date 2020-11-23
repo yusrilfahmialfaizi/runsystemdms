@@ -11,7 +11,8 @@ import (
 
 //function controller untuk get data document
 func GetDatadocuments(c echo.Context) error {
-	result := models.GetDatadocuments()
+	cc := c.(*models.CustomContext)
+	result := models.GetDatadocuments(cc)
 	fmt.Println("Getting data document...")
 	return c.JSON(http.StatusOK, result)
 }

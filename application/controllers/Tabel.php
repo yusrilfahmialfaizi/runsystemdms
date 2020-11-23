@@ -19,9 +19,19 @@ class Tabel extends CI_Controller {
 		$data2 = $this->menu->getModulMenu();
 		$data2 = json_decode($data2, true);
 		$data["sidebar"] = $data2;
-		$data1 = $this->getDataDocuments();
-		$data1 = json_decode($data1, true);
-		$data["get"] = $data1;
+		$modulcode = $this->input->get("modulcode");
+		if ($modulcode != null) {
+			$this->modul_sessionForIndex($modulcode);
+			$data1 = $this->getDataDocuments($modulcode);
+			$data1 = json_decode($data1, true);
+			if ($data1 != null) {
+				$data["get"] = $data1;
+			}else{
+				$data["get"] = [];
+			}
+		}else{
+			$data["get"] = [];
+		}
 		$this->load->view('partials2/main/page/page_tabel', $data);
 	}
 
@@ -39,8 +49,8 @@ class Tabel extends CI_Controller {
 		$this->load->view('partials2/main/page/page_pdf', $data);
   	}
 
-	public function getDataDocuments(){
-		$url = "http://127.0.0.1:8080/runsystemdms/getDataDocuments";
+	public function getDataDocuments($modulcode){
+		$url = "http://127.0.0.1:8080/runsystemdms/getDataDocuments/".$modulcode;
 		// inisiasi curl
 		$ch = curl_init();
 		// akan mengembalikan nilai respon, jika salah maka respon akan di cetak
@@ -102,12 +112,16 @@ class Tabel extends CI_Controller {
 		$response = curl_exec($ch);
 		echo curl_error($ch);
 		curl_close($ch);
-		redirect(base_url("tabel"));
+		redirect(base_url("tabel?modulcode=").$this->session->userdata("modul"));
 	}
 
 	function modul_session(){
 		$modul = $this->input->post("modulCode");
 		$this->session->set_userdata(array("modul" => $modul));
+	}
+
+	function modul_sessionForIndex($modulcode){
+		$this->session->set_userdata(array("modul" => $modulcode));
 	}
 
 	function menu_session(){
@@ -119,8 +133,9 @@ class Tabel extends CI_Controller {
 	function ModulMenuById(){
 		$this->load->library("menu");
 		$this->load->library("multi_menu");
+		$docno = $this->input->post('docno');
 		$modulcode = $this->input->post('modulCode');
-		$dt = array("docno" => $this->session->userdata("docno"), "modulcode" => $modulcode);
+		$dt = array("docno" => $docno, "modulcode" => $modulcode);
 		$response = $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForMenu", $dt);
 		$response = json_decode($response, true);
 		$items = $response["documentsdtl"];
