@@ -49,15 +49,15 @@ class Tabel extends CI_Controller {
   	{
 		$docno 		=  $this->input->get("docno");
 		$modulcode 	= $this->input->get("modulcode");
-		$dt 		= array("docno" => $docno, "modulcode" => $modulcode);
+		$dt 			= array("docno" => $docno, "modulcode" => $modulcode);
 		$response 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForMenu", $dt);
 		$response 	= json_decode($response, true);
 		$data['data']	= $response['documentsdtl'];
 		$this->load->library('pdf');
 		$this->pdf->get_canvas()->get_cpdf()->setEncryption('trees','frogs',array('copy','print'));
-    	$this->pdf->setPaper('A4', 'potrait');
-    	$this->pdf->filename = "$modulcode.pdf";
-    	$this->pdf->load_view('partials2/main/page/page_print', $data);
+		$this->pdf->setPaper('A4', 'potrait');
+		$this->pdf->filename = "$modulcode.pdf";
+		$this->pdf->load_view('partials2/main/page/page_print', $data);
   	}
 
 	public function getDataDocuments($modulcode){

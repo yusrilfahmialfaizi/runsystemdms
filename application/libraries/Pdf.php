@@ -11,7 +11,10 @@
  * @license        MIT License
  * @link        https://github.com/ardianta/codeigniter-dompdf
  */
+require_once('assets/dompdf/autoload.inc.php');
+
 use Dompdf\Dompdf;
+
 class Pdf extends Dompdf{
     /**
      * PDF filename
@@ -45,8 +48,8 @@ class Pdf extends Dompdf{
         $this->load_html($html);
         // Render the PDF
         $this->render();
-            // Output the generated PDF to Browser
-               $this->stream($this->filename, array("Attachment" => false));
+        // Output the generated PDF to Browser
+        $this->stream($this->filename, array("Attachment" => true));
     }
 }
  

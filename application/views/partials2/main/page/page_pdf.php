@@ -6,7 +6,7 @@ function print(ths) {
         var docno = $(ths).attr("data-docno");
         var modulcode = $(ths).attr("data-modulcode");
         console.log(docno + modulcode);
-        window.open('tabel/pdf?docno=' + docno + '&modulcode=' + modulcode + '', '_blank');
+        window.open('tabel/print?docno=' + docno + '&modulcode=' + modulcode + '', '_blank');
       }
 </script>
 <script type="text/javascript">      window.addEventListener("keydown",function(e){
@@ -77,8 +77,8 @@ return false;
  </head>
 <body class="disable-select" onmousedown="return false" onselectstart="return false"  style="margin-left:4cm; margin-right:3cm; margin-top:4cm; margin-bottom:3cm;">
   <table style="width: 100%;">
+  <button width="20" type="button" data-docno="<?php echo $this->session->userdata("docno"); ?>" data-modulcode="<?php echo $this->session->userdata("modul"); ?>" onClick="print(this)">Cetak PDF</button>
   <?php foreach($data as $d){ ?>
-  <button width="20" type="button" data-docno="<?php echo $d["docno"]; ?>" data-modulcode="<?php echo $d["modulcode"]; ?>" onClick="print(this)" data-feather="book-open">Preview</button>
   <?php } ?> 
       <td align="center">
         <span style="line-height: 1.6; font-weight: bold;">
