@@ -77,7 +77,9 @@ return false;
  </head>
 <body class="disable-select" onmousedown="return false" onselectstart="return false"  style="margin-left:4cm; margin-right:3cm; margin-top:4cm; margin-bottom:3cm;">
   <table style="width: 100%;">
-    <tr>
+  <?php foreach($data as $d){ ?>
+  <button width="20" type="button" data-docno="<?php echo $d["docno"]; ?>" data-modulcode="<?php echo $d["modulcode"]; ?>" onClick="print(this)" data-feather="book-open">Preview</button>
+  <?php } ?> 
       <td align="center">
         <span style="line-height: 1.6; font-weight: bold;">
           Document Management System

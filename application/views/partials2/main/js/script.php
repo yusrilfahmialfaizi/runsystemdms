@@ -148,6 +148,14 @@
          console.log(docno + modulcode);
          window.open('tabel/pdf?docno=' + docno + '&modulcode=' + modulcode + '', '_blank');
        }
+
+       function print(ths) {
+         var docno = $(ths).attr("data-docno");
+         var modulcode = $(ths).attr("data-modulcode");
+         console.log(docno + modulcode);
+         window.open('print?docno=' + docno + '&modulcode=' + modulcode + '', '_blank');
+       }
+
        function sidebar_toggle(){
           var segment = "<?php echo $this->uri->segment("1") ?>";
           var clas = $('#sidebar').attr('class');
