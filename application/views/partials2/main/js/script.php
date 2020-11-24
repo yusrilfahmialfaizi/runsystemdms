@@ -11,9 +11,14 @@
            $("#"+modulactive).addClass("open");
          }
          if (uri != "home" && uri != "tabel") {
-           var modulCode = "<?php echo $this->session->userdata("modul"); ?>";
-           if ("<?php echo $this->session->userdata("doc_status "); ?>" != "O") {
+           var modulCode  = "<?php echo $this->session->userdata("modul"); ?>";
+           var doc_status = "<?php echo $this->session->userdata("doc_status"); ?>";
+           if (doc_status == "F") {
              document.getElementById('statushdr').checked = true;
+           }else if (doc_status == "O"){
+             document.getElementById('statushdr').checked = false;
+           }else{
+             console.log("data null");
            }
 
            $.ajax({ //to get all data menu from db
@@ -78,7 +83,7 @@
            active: active,
            status: status
          });
-         $("#sub-header-" + modulCode).text(docno);
+         $("#sub-header-" + modulCode).text(docno.replace("INVESTASI/", "INVESTASI/\n"));
          $("li").removeClass("open");
          document.getElementById(modulCode).className += "open";
          $("#sidebar").removeClass("iconbar-mainmenu-close");
@@ -112,25 +117,30 @@
            menuName: menuName
          });
        }
-       $('input[type="checkbox"]').click(function() {
-         if ($(this).prop("checked") == true) {
+       if ("<?php echo $this->uri->segment("1"); ?>" == "edit" || "<?php echo $this->uri->segment("1"); ?>" == "edit") {
+         
+       }
+      //  $('input[type="checkbox"]').click(function() {
+        function toggle_checkbox(element){
+         if ($(element).prop("checked") == true) {
            // console.log("Checkbox is checked.");
            var checked = "F";
            $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
              checked: checked
            }).done(function() {
-             location.reload(true)
+            //  location.reload(true)
            });
-         } else if ($(this).prop("checked") == false) {
+         } else if ($(element).prop("checked") == false) {
            var checked = "O";
            // console.log("Checkbox is unchecked.");
            $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
              checked: checked
            }).done(function() {
-             location.reload(true)
+            //  location.reload(true)
            });
          }
-       });
+        }
+      //  });
 
        function preview(ths) {
          var docno = $(ths).attr("data-docno");

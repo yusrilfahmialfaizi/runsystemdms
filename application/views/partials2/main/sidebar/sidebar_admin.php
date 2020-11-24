@@ -37,12 +37,13 @@
                 <ul class="iconbar-mainmenu custom-scrollbar">
                   <li class="iconbar-header">
                     <?php if ($this->uri->segment("1") != "tabel"){?>
-                    <b><p style="font-size:16.5px;" id="sub-header-<?php echo $key[$i]["modulcode"] ?>"><?php echo $this->session->userdata("docno") ?></p></b>
+                    <b><font style="font-size:16px; width:50%;" id="sub-header-<?php echo $key[$i]["modulcode"] ?>"><?php echo str_replace("INVESTASI/", "INVESTASI/\n", $this->session->userdata("docno")) ?></font></b>
                     <?php }else{ ?>
-                      <b><p style="font-size:16.5px;" id="sub-header-<?php echo $key[$i]["modulcode"] ?>">Sub Module</p></b>
+                      <b><font style="font-size:16px;" id="sub-header-<?php echo $key[$i]["modulcode"] ?>">Sub Module</font></b>
                     <?php } ?>
+                    <br>
                     <label><b><p>Final</b>
-                        <input class="checkbox_animated" id="statushdr" name="statushdr-<?php echo $key[$i]["modulcode"] ?>" type="checkbox" data-code="<?php echo $key[$i]["modulcode"] ?>"></p>
+                        <input class="checkbox_animated" onClick="toggle_checkbox(this)" id="statushdr" name="statushdr-<?php echo $key[$i]["modulcode"] ?>" type="checkbox" data-code="<?php echo $key[$i]["modulcode"] ?>"></p>
                     </label>
                   </li>                  
                   <ul id="modul-menu-<?php echo $key[$i]["modulcode"] ?>"></ul>

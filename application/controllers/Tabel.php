@@ -175,7 +175,7 @@ class Tabel extends CI_Controller {
 			"docno" => $docno, 
 			"active" => $active, 
 			"doc_status" => $status));
-		echo $this->session->userdata("docno");
+		echo $this->session->userdata("doc_status");
 	}
 	function update_statushdr(){
 		$url = 'http://127.0.0.1:8080/runsystemdms/editDataDocumentshdr';
@@ -200,6 +200,8 @@ class Tabel extends CI_Controller {
 			$response = curl_exec($ch);
 			echo curl_error($ch);
 			curl_close($ch);
+			$this->session->set_userdata(array(
+			"doc_status" => $checked));
 		}
 	}
 }
