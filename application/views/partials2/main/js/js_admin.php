@@ -1,5 +1,5 @@
     <?php $this->load->view("partials2\main\js\script.php") ?>
-    
+
     <!-- latest jquery-->
     <script src="<?php echo base_url("assets/js/jquery-3.5.1.min.js") ?>"></script>
     <!-- Bootstrap js-->
@@ -10,23 +10,23 @@
     <script src="<?php echo base_url("assets/js/icons/feather-icon/feather-icon.js") ?>"></script>
     <!-- Sidebar jquery-->
     <!-- <script src="<?php //echo base_url("assets/js/sidebar-menu.js") 
-                      ?>"></script> -->
+                        ?>"></script> -->
     <script src="<?php echo base_url("assets/js/config.js") ?>"></script>
     <!-- Plugins JS start-->
     <!-- <script src="<?php //echo base_url("assets/js/typeahead/handlebars.js") 
-                      ?>"></script> -->
+                        ?>"></script> -->
     <!-- <script src="<?php //echo base_url("assets/js/typeahead/typeahead.bundle.js") 
-                      ?>"></script> -->
+                        ?>"></script> -->
     <!-- <script src="<?php //echo base_url("assets/js/typeahead/typeahead.custom.js") 
-                      ?>"></script> -->
+                        ?>"></script> -->
     <!-- <script src="<?php //echo base_url("assets/js/typeahead-search/handlebars.js") 
-                      ?>"></script> -->
+                        ?>"></script> -->
     <!-- <script src="<?php //echo base_url("assets/js/typeahead-search/typeahead-custom.js") 
-                      ?>"></script> -->
+                        ?>"></script> -->
     <!-- <script src="<?php //echo base_url("assets/js/chart/chartist/chartist.js") 
-                      ?>"></script>
+                        ?>"></script>
     <!-- <script src="<?php //echo base_url("assets/js/chart/chartist/chartist-plugin-tooltip.js") 
-                      ?>"></script> -->
+                        ?>"></script> -->
     <script src="<?php echo base_url("assets/js/chart/apex-chart/apex-chart.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/chart/apex-chart/stock-prices.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/prism/prism.min.js") ?>"></script>
@@ -66,7 +66,8 @@
     <script src="<?= base_url() ?>/assets/js/datatable/datatable-extension/custom.js"></script>
     <script src="<?php echo base_url("assets/js/sweet-alert/sweetalert.min.js") ?>"></script>
     <!-- <script src="<?php //echo base_url("assets/js/sweet-alert/app.js") 
-                      ?>"></script> -->
+                        ?>"></script> -->
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="<?php echo base_url("assets/js/script.js") ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
