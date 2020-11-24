@@ -20,8 +20,7 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-header">
-            <a href="<?php echo base_url("tabel/createDocument") ?>" class="btn btn-success"> + New Document</a>
-            <button class="btn btn-outline-warning btnsweet" type="button">Button</button>
+            <a href="#" class="btn btn-success btnsweet"> + New Document</a>
           </div>
           <div class="card-body">
             <div class="dt-ext table-responsive">

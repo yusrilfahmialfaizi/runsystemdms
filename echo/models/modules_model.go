@@ -33,7 +33,6 @@ type ModulMenu struct {
 	Status nullable.String   `json:"status"`
 }
 
-
 type Datasubmodule struct {
 	Parent   nullable.String `json:"parent"`
 	Param    nullable.String `json:"param"`

@@ -5687,7 +5687,7 @@ body.dark-only .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li:h
     padding: 0 30px;
     position: relative;
     background-color: #fdfeff;
-    margin-left: 450px;
+    margin-left: 343px;
     -webkit-transition: .6s;
     transition: .6s;
     -webkit-animation: pagebody 1000ms ease-in-out;
@@ -6647,7 +6647,7 @@ body.dark-only .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li:h
     height: calc(100vh - 95px);
     overflow: auto;
     left: 120px;
-    width: 336px;
+    width: 200px;
     background-color: #fff;
     -webkit-box-shadow: 0 16px 15px 15px rgba(126, 55, 216, 0.03);
     box-shadow: 0 16px 15px 15px rgba(126, 55, 216, 0.03);
@@ -6660,7 +6660,7 @@ body.dark-only .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li:h
 }
 
 .page-wrapper .page-body-wrapper .iconsidebar-menu .iconMenu-bar .iconbar-mainmenu li {
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 .page-wrapper .page-body-wrapper .iconsidebar-menu .iconMenu-bar .iconbar-mainmenu li:last-child {

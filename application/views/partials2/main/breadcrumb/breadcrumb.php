@@ -8,9 +8,13 @@
   <li class="breadcrumb-item <?php echo $is_active ? 'active': '' ?>">
 
     <?php if ($is_active):?>
-     <?php echo ucfirst($segment); ?>\<?php echo $this->session->userdata("menuName") ?> 
-     <?php else: ?>
-      <a href="<?php echo site_url($url) ?>"><?php echo ucfirst($segment) ?>\<?php echo $this->session->userdata("menuName") ?></a>
+      <?php if ($this->uri->segment("1") != "home"):?>
+        <?php echo ucfirst($segment) ." / " ?><?php echo $this->session->userdata("menuName") ?> 
+      <?php else: ?>
+        <a href="#"><i class="pe-7s-home"></i></a>
+      <?php endif; ?>
+    <?php else: ?>
+        <a href="<?php echo site_url($url) ?>"><?php echo ucfirst($segment) ?>\<?php echo $this->session->userdata("menuName") ?></a>
     <?php endif; ?>
   </li>
 <?php endforeach; ?>

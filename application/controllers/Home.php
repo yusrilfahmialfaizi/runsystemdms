@@ -13,6 +13,9 @@ class Home extends CI_Controller {
 		if ($this->session->userdata('status') != "login") {
 			redirect("login");
 		}
+		if ($this->session->userdata("modul") != null) {
+			$this->session->unset_userdata('modul');
+		}
 		$url = "http://127.0.0.1:8080/runsystemdms/getPG";
 
 		$ch =  curl_init();

@@ -70,7 +70,6 @@ class Tabel extends CI_Controller {
 		
 		$data = json_decode($data, true);
 		$number = $data["docno"]["Int64"];
-		print_r($data["docno"]["Int64"]);
 		if ($number == null) {
 			$number = 1;
 		}else{
@@ -87,10 +86,9 @@ class Tabel extends CI_Controller {
 	function createDocument(){
 		$code = $this->GenerateCode();
 		$modulcode = $this->session->userdata("modul");
-		$url = "http://127.0.0.1:8080/runsystemdms/postDataDocuments";
 		date_default_timezone_set('Asia/Jakarta');
 		$now = date('YmdHi');
-		$data = array(
+		$data1 = array(
 			"Docno" =>$code,
 			"ModulCode"=>$modulcode, 
 			"ActiveInd" => "Y", 
@@ -100,16 +98,41 @@ class Tabel extends CI_Controller {
 			"LastUpBy" => "",
 			"LastUpAt" => ""
 		);
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $data); //pass encoded JSON string to post fields
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_VERBOSE, true);
-		curl_setopt($ch, CURLOPT_URL, $url);
-		$response = curl_exec($ch);
-		echo curl_error($ch);
-		curl_close($ch);
-		redirect(base_url("tabel?modulcode=").$this->session->userdata("modul"));
+		$response1 = $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postDataDocuments", $data1);
+		if ($response1) {
+			# code...
+			$data2 		= array('modulcode' => $modulcode);
+			print_r($data2);
+			$response2 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDataMenuCode", $data2);
+			if ($response2 != null) {
+				$response2 = json_decode($response2, true);
+				foreach ($response2['menu'] as $key) {
+					
+					$data3 		= array(
+						"Docno" 		=> $code,
+						"MenuCode"	=> $key["menucode"], 
+						"CreateBy" 	=> $this->session->userdata("usercode"),
+						"CreateDt" 	=> $now,
+						"LastUpBy" 	=> "",
+						"LastUpAt" 	=> ""
+					);
+					// print_r($data3);
+					$response3 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postDataDocumentsDtl", $data3);
+				}
+				# code...
+			}
+		}
+
+		// $ch = curl_init();
+		// curl_setopt($ch, CURLOPT_POST, 1);
+		// curl_setopt($ch, CURLOPT_POSTFIELDS, $data); //pass encoded JSON string to post fields
+		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		// curl_setopt($ch, CURLOPT_VERBOSE, true);
+		// curl_setopt($ch, CURLOPT_URL, $url);
+		// $response = curl_exec($ch);
+		// echo curl_error($ch);
+		// curl_close($ch);
+		// print_r($response);
 	}
 
 	function modul_session(){

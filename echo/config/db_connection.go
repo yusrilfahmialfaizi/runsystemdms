@@ -12,7 +12,7 @@ func Connection() *sql.DB {
 	if err != nil {
 		fmt.Println(err.Error())
 	} else {
-		fmt.Println("DB is Connected")
+		//fmt.Println("DB is Connected")
 	}
 	// defer db.Close() //skip apabila terjadi
 	// pastikan koneksi tersambung

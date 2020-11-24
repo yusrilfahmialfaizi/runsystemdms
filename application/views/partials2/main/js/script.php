@@ -1,12 +1,14 @@
      <script type="text/javascript">
        $(document).ready(function() {
-         var uri = "<?php echo $this->uri->segment("1"); ?>";
+         var uri          = "<?php echo $this->uri->segment("1"); ?>";
+         var modulactive  = "<?php echo $this->session->userdata("modul"); ?>";
          if (uri == "editor" || uri == "edit") {
            $("#sidebar").removeClass("iconbar-second-close");
          } else if (uri == "tabel") {
            $("#sidebar").removeClass("iconbar-second-close");
            $("#sidebar").addClass("iconbar-mainmenu-close");
            $("li").removeClass("open");
+           $("#"+modulactive).addClass("open");
          }
          if (uri != "home" && uri != "tabel") {
            var modulCode = "<?php echo $this->session->userdata("modul"); ?>";
@@ -45,6 +47,11 @@
          var docno = $(id_li).attr("data-docno");
          var active = $(id_li).attr("data-active");
          var status = $(id_li).attr("data-status");
+         var clas = $('#sidebar').attr('class');
+         if ( clas == "iconsidebar-menu iconbar-second-close"){
+            $("#sidebar").removeClass("iconbar-second-close");
+            $("#sidebar").addClass("iconbar-mainmenu-close");
+          }
          $.ajax({ //to get all data menu from db
            type: 'POST',
            url: '<?php echo base_url("tabel/modulmenubyid") ?>',
@@ -131,6 +138,33 @@
          console.log(docno + modulcode);
          window.open('tabel/pdf?docno=' + docno + '&modulcode=' + modulcode + '', '_blank');
        }
+       function sidebar_toggle(){
+          var segment = "<?php echo $this->uri->segment("1") ?>";
+          var clas = $('#sidebar').attr('class');
+          if (segment == "tabel") {  
+            if ( clas == "iconsidebar-menu iconbar-mainmenu-close"){
+              $("#sidebar").removeClass("iconbar-mainmenu-close");
+              $("#sidebar").addClass("iconbar-second-close");
+            }else if (clas == "iconsidebar-menu iconbar-second-close") {
+              $("#sidebar").removeClass("iconbar-second-close");
+              $("#sidebar").addClass("iconbar-mainmenu-close");
+            } else if (clas == "iconsidebar-menu") {
+              $("#sidebar").removeClass("iconbar-second-close");
+              $("#sidebar").addClass("iconbar-mainmenu-close");
+            }
+          }else if (segment == "edit" || segment == "editor") {
+            if ( clas == "iconsidebar-menu iconbar-mainmenu-close"){
+              $("#sidebar").removeClass("iconbar-mainmenu-close");
+              // $("#sidebar").addClass("iconbar-second-close");
+            }else if (clas == "iconsidebar-menu iconbar-second-close") {
+              $("#sidebar").removeClass("iconbar-second-close");
+              $("#sidebar").addClass("iconbar-mainmenu-close");
+            } else if (clas == "iconsidebar-menu") {
+              $("#sidebar").removeClass("iconbar-second-close");
+              $("#sidebar").addClass("iconbar-mainmenu-close");
+            }
+          }
+       }
      </script>
 
      <script type="text/javascript">
@@ -148,16 +182,22 @@
            text: "You won't be able to revert this!",
            icon: 'warning',
            showCancelButton: true,
-           confirmButtonText: 'Yes, delete it!',
+           confirmButtonText: 'Yes, add it!',
            cancelButtonText: 'No, cancel!',
            reverseButtons: true
          }).then((result) => {
            if (result.isConfirmed) {
-             swalWithBootstrapButtons.fire(
-               'Deleted!',
-               'Your file has been deleted.',
-               'success'
-             )
+              $.post("<?php echo base_url("tabel/createDocument") ?>"
+              ).done(function() { 
+                swalWithBootstrapButtons.fire(
+                  'Added!',
+                  'Your file has been Added.',
+                  'success',
+                ).then(function(){
+                  location.reload(true);
+                })
+              })
+             
            } else if (
              /* Read more about handling dismissals below */
              result.dismiss === Swal.DismissReason.cancel

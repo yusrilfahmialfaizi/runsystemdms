@@ -395,7 +395,7 @@ class Multi_menu {
 	        // menu label
 	        if ( isset($item[$this->menu_label], $item[$this->menu_key]) ) 
 	        {
-		        $label = $item[$this->menu_label]. "   Review : ". $item['status'];
+		        $label = $item[$this->menu_label]. " : ". $item['status'];
 
 		        // icon
 		        $icon  = empty($item[$this->menu_icon]) ? '' : $item[$this->menu_icon];

@@ -16,6 +16,12 @@ func GetDatadocuments(c echo.Context) error {
 	fmt.Println("Getting data document...")
 	return c.JSON(http.StatusOK, result)
 }
+func GetDataMenuCode(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.GetdataMenuCode(cc)
+	fmt.Println("Getting data document...")
+	return c.JSON(http.StatusOK, result)
+}
 
 //function controller untuk create data document
 func PostDataDocuments(con *sql.DB) echo.HandlerFunc {
@@ -26,6 +32,24 @@ func PostDataDocuments(con *sql.DB) echo.HandlerFunc {
 		c.Bind(&insDatadocument)
 
 		result, err := models.PostDataDocuments(con, insDatadocument.Docno, insDatadocument.ModulCode, insDatadocument.Status, insDatadocument.ActiveInd, insDatadocument.CreateBy, insDatadocument.CreateDt, insDatadocument.LastUpBy, insDatadocument.LastUpDt)
+
+		if err == nil {
+			return c.JSON(http.StatusCreated, result)
+		} else {
+			return err
+		}
+
+	}
+}
+//function controller untuk create data document
+func PostDataDocumentsDtl(con *sql.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+
+		var insDatadocument models.InsDatadocumentDtl
+
+		c.Bind(&insDatadocument)
+
+		result, err := models.PostDataDocumentsDtl(con, insDatadocument.Docno, insDatadocument.MenuCode, insDatadocument.CreateBy, insDatadocument.CreateDt, insDatadocument.LastUpBy, insDatadocument.LastUpDt)
 
 		if err == nil {
 			return c.JSON(http.StatusCreated, result)

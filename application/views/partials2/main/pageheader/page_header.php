@@ -6,7 +6,9 @@
     </div>
     <div class="mobile-sidebar">
       <div class="media-body text-right switch-sm">
-        <!-- <label class="switch ml-3"><i class="font-primary" id="sidebar-toggle" data-feather="align-center"></i></label> -->
+      <?php if ($this->uri->segment("1") != "home") { ?>
+        <label class="switch ml-3"><i class="font-primary" onClick="sidebar_toggle()" id="sidebar-toggle" data-feather="align-center"></i></label>
+      <?php } ?>
       </div>
     </div>
     <div class="vertical-mobile-sidebar"><i class="fa fa-bars sidebar-bar"> </i></div>
