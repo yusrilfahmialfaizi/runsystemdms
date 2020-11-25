@@ -8,6 +8,7 @@ class Tabel extends CI_Controller {
 		parent::__construct();
 		$this->load->library("menu");
 		$this->load->library("documentdtl");
+		// $this->load->library("Pdf");
 	}
 	
 	public function index()
@@ -34,31 +35,39 @@ class Tabel extends CI_Controller {
 		$this->load->view('partials2/main/page/page_tabel', $data);
 	}
 
-	function pdf()
-  	{
+	
+	function fpdf_output(){
 		$docno 		=  $this->input->get("docno");
 		$modulcode 	= $this->input->get("modulcode");
-		$dt 		= array("docno" => $docno, "modulcode" => $modulcode);
-		$response 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForMenu", $dt);
-		$response 	= json_decode($response, true);
-		$data['data']	= $response['documentsdtl'];
-		$this->load->view('partials2/main/page/page_pdf', $data);
-  	}
-
-	  function print()
-  	{
-		$docno 		=  $this->input->get("docno");
-		$modulcode 	= $this->input->get("modulcode");
+		// $dt 			= array("docno" => "0002/GSS/INVESTASI/FICO/11/2020", "modulcode" => "FICO");
 		$dt 			= array("docno" => $docno, "modulcode" => $modulcode);
-		$response 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForMenu", $dt);
+		$response 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForPrint", $dt);
 		$response 	= json_decode($response, true);
-		$data['data']	= $response['documentsdtl'];
-		$this->load->library('pdf');
-		$this->pdf->get_canvas()->get_cpdf()->setEncryption('trees','frogs',array('copy','print'));
-		$this->pdf->setPaper('A4', 'potrait');
-		$this->pdf->filename = "$modulcode.pdf";
-		$this->pdf->load_view('partials2/main/page/page_print', $data);
-  	}
+		$data	= $response['documentsdtl'];
+		require(APPPATH . '/third_party/fpdf/fpdf_protection.php');
+		error_reporting(0);
+		$pdf = NEW FPDF_Protection();
+		// $pdf = NEW FPDF('P', 'mm', 'A4');
+
+		$pdf->SetProtection(array('print'));
+		$pdf->AddPage();
+		$pdf->SetLeftMargin(3);
+		$pdf->SetTopMargin(3);
+		$pdf->SetRightMargin(3);
+		$pdf->SetAutoPageBreak(true, 3);
+		$pdf->SetFont('Times', 'B', 16);
+		$pdf->Cell(0,0.5,'DOCUMENT MANAGEMENT SYSTEM',0,1,'C');
+		$pdf->Ln();
+
+		foreach ($data as $key ) {
+			$pdf->SetFont('Times','B',14);
+			$pdf->Cell(1,1.5, str_replace("0", ".",intVal($key['menucode']))." ".$key['menudesc'],0,1,'L');
+			$pdf->SetFont('Times','',12);
+			$pdf->MultiCell(0,0.5,$key['description'],0,'J',false);
+			$pdf->Ln();
+		}
+		$pdf->output();
+	}
 
 	public function getDataDocuments($modulcode){
 		$url = "http://127.0.0.1:8080/runsystemdms/getDataDocuments/".$modulcode;

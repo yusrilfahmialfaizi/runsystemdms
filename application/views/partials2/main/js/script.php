@@ -146,7 +146,7 @@
          var docno = $(ths).attr("data-docno");
          var modulcode = $(ths).attr("data-modulcode");
          console.log(docno + modulcode);
-         window.open('tabel/pdf?docno=' + docno + '&modulcode=' + modulcode + '', '_blank');
+         window.open('tabel/fpdf_output?docno=' + docno + '&modulcode=' + modulcode + '', '_blank');
        }
 
        function print(ths) {
