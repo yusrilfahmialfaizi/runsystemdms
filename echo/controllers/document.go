@@ -115,4 +115,10 @@ func GetDocumentsDtl(c echo.Context) error {
 	fmt.Println("Getting generate code...")
 	return c.JSON(http.StatusOK, result)
 }
+func GetDocumentsDtlPrint(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.GetDocumentsDtlPrint(cc)
+	fmt.Println("Getting generate code...")
+	return c.JSON(http.StatusOK, result)
+}
 

@@ -65,12 +65,24 @@ type DocDtlJoin struct {
 	Parent   	  nullable.String `json:"parent"`
 	Status      string          `json:"status"`
 }
+type DocDtlJoinPrint struct {
+	Docno       string          `json:"docno"`
+	MenuCode    string          `json:"menucode"`
+	Description nullable.String `json:"description"`
+	ModulCode   string          `json:"modulcode"`
+	MenuDesc 	  string          `json:"menudesc"`
+	Parent   	  nullable.String `json:"parent"`
+	Status      string          `json:"status"`
+}
 
 type DocumentsDtl struct {
 	DocumentsDtl []DocDtl `json:"documentsdtl"`
 }
 type DocumentsDtlJoin struct {
 	DocumentsDtlJoin []DocDtlJoin `json:"documentsdtl"`
+}
+type DocumentsDtlJoinPrint struct {
+	DocumentsDtlJoinPrint []DocDtlJoinPrint `json:"documentsdtl"`
 }
 type Datadocuments struct {
 	Datadocuments []Datadocument `json:"datadocument"`
@@ -309,6 +321,29 @@ func GetDocumentsDtl(c *CustomContext) DocumentsDtlJoin {
 			fmt.Println(eror)
 		}
 		result.DocumentsDtlJoin = append(result.DocumentsDtlJoin, docdtl)
+	}
+	return result
+}
+func GetDocumentsDtlPrint(c *CustomContext) DocumentsDtlJoinPrint {
+	docno := c.FormValue("docno")
+	modulcode := c.FormValue("modulcode")
+	connection = config.Connection()
+	query2 := "SELECT A.Docno, A.MenuCode, A.Description, B.ModulCode, B.MenuDesc, B.Parent, A.`Status` FROM tbldocumentdtl A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode WHERE Docno = ? &&  ModulCode = ?"
+	rows2, err2 := connection.Query(query2, docno, modulcode)
+	if err2 != nil{
+		fmt.Println(err2)
+	}
+	defer rows2.Close()
+	result := DocumentsDtlJoinPrint{}
+
+	for rows2.Next() {
+		docdtl := DocDtlJoinPrint{}
+
+		eror := rows2.Scan(&docdtl.Docno, &docdtl.MenuCode, &docdtl.Description, &docdtl.ModulCode, &docdtl.MenuDesc, &docdtl.Parent, &docdtl.Status)
+		if eror != nil {
+			fmt.Println(eror)
+		}
+		result.DocumentsDtlJoinPrint = append(result.DocumentsDtlJoinPrint, docdtl)
 	}
 	return result
 }
