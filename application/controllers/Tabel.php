@@ -39,31 +39,28 @@ class Tabel extends CI_Controller {
 	function fpdf_output(){
 		$docno 		=  $this->input->get("docno");
 		$modulcode 	= $this->input->get("modulcode");
-		// $dt 			= array("docno" => "0002/GSS/INVESTASI/FICO/11/2020", "modulcode" => "FICO");
 		$dt 			= array("docno" => $docno, "modulcode" => $modulcode);
 		$response 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForPrint", $dt);
 		$response 	= json_decode($response, true);
 		$data	= $response['documentsdtl'];
-		require(APPPATH . '/third_party/fpdf/fpdf_protection.php');
+		require(APPPATH . '/third_party/tcpdf/tcpdf.php');
 		error_reporting(0);
-		$pdf = NEW FPDF_Protection();
-		// $pdf = NEW FPDF('P', 'mm', 'A4');
-
-		$pdf->SetProtection(array('print'));
-		$pdf->AddPage();
-		$pdf->SetLeftMargin(3);
-		$pdf->SetTopMargin(3);
-		$pdf->SetRightMargin(3);
-		$pdf->SetAutoPageBreak(true, 3);
+		$pdf = new TCPDF();
+		$pdf->SetProtection(array('copy'), '', null, 0, null);
+		$pdf->SetMargins(40, 40, 30, true);
+		$pdf->AddPage('P', 'cm', 'A4');
+		$pdf->SetPrintHeader(false);
+		$pdf->SetPrintFooter(false);
+		$pdf->SetAutoPageBreak(true, 15);
 		$pdf->SetFont('Times', 'B', 16);
 		$pdf->Cell(0,0.5,'DOCUMENT MANAGEMENT SYSTEM',0,1,'C');
 		$pdf->Ln();
-
 		foreach ($data as $key ) {
 			$pdf->SetFont('Times','B',14);
-			$pdf->Cell(1,1.5, str_replace("0", ".",intVal($key['menucode']))." ".$key['menudesc'],0,1,'L');
+			$pdf->Cell(1,15, str_replace("0", ".",intVal($key['menucode']))." ".$key['menudesc'],0,1,'L');
 			$pdf->SetFont('Times','',12);
-			$pdf->MultiCell(0,0.5,$key['description'],0,'J',false);
+			// $pdf->MultiCell(0,0.5,str_replace('style="text-align:', 'align="', $key['description']),0,'J',false);
+			$pdf->WriteHTMLCell(0,10,'','',$key['description'],0,0,false,true,'J',true);
 			$pdf->Ln();
 		}
 		$pdf->output();
