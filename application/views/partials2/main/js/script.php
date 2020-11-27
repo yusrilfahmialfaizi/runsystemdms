@@ -128,7 +128,7 @@
            $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
              checked: checked
            }).done(function() {
-             //  location.reload(true)
+             location.reload(true)
            });
          } else if ($(element).prop("checked") == false) {
            var checked = "O";
@@ -136,7 +136,7 @@
            $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
              checked: checked
            }).done(function() {
-             //  location.reload(true)
+             location.reload(true)
            });
          }
        }
