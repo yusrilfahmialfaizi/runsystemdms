@@ -5684,7 +5684,8 @@ body.dark-only .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li:h
 .page-wrapper .page-body-wrapper .page-body {
     min-height: calc(100vh - 95px);
     margin-top: 95px;
-    padding: 0 30px;
+    padding: 0 95px 150px;
+    padding-right: 0px;
     position: relative;
     background-color: #fdfeff;
     margin-left: 343px;
@@ -6555,7 +6556,7 @@ body.dark-only .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li:h
 
 .page-wrapper .page-body-wrapper .iconsidebar-menu.iconbar-second-close .iconMenu-bar .iconbar-mainmenu {
     display: none;
-    margin-left: -320px
+    margin-left: -420px
 }
 
 .page-wrapper .page-body-wrapper .iconsidebar-menu.iconbar-second-close~.page-body,
@@ -6568,7 +6569,7 @@ body.dark-only .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li:h
 }
 
 .page-wrapper .page-body-wrapper .iconsidebar-menu.iconbar-mainmenu-close .iconMenu-bar .iconbar-mainmenu {
-    margin-left: -225px;
+    margin-left: -300px;
     -webkit-box-shadow: none;
     box-shadow: none
 }
@@ -6647,7 +6648,7 @@ body.dark-only .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li:h
     height: calc(100vh - 95px);
     overflow: auto;
     left: 120px;
-    width: 200px;
+    width: 300px;
     background-color: #fff;
     -webkit-box-shadow: 0 16px 15px 15px rgba(126, 55, 216, 0.03);
     box-shadow: 0 16px 15px 15px rgba(126, 55, 216, 0.03);
