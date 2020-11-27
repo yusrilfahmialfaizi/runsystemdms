@@ -24,8 +24,8 @@
                   <div class="b-r-4 card-body">
                     <div class="media static-top-widget" onClick="project()">
                       <div class="align-self-center text-center"><i data-feather="database"></i></div>
-                      <div class="media-body"><span class="m-0 text-white"><?php echo $data[$i]["pgname"]?></span>
-                        <h4 class="mb-0 text-white"><?php echo $data[$i]["pgcode"]?></h4><i class="icon-bg" data-feather="database"></i>
+                      <div class="media-body"><span class="m-0 text-white"><?php echo $data[$i]["projectname"]?></span>
+                        <h4 class="mb-0 text-white"><?php echo $data[$i]["projectcode"]?></h4><i class="icon-bg" data-feather="database"></i>
                       </div>
                     </div>
                   </div>

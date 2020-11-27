@@ -26,11 +26,9 @@ type User struct {
 	LastupDt         nullable.String `json:"lastupdt"`
 }
 type PG struct {
-	PGCode      string          `json:"pgcode"`
-	PGName      string          `json:"pgname"`
-	ActInd      string          `json:"actind"`
 	ProjectCode nullable.String `json:"projectcode"`
 	ProjectName nullable.String `json:"projectname"`
+	ActInd      string          `json:"actind"`
 	CtCode      nullable.String `json:"ctcode"`
 	CreateBy    string          `json:"createby"`
 	CreateDt    string          `json:"createdt"`
@@ -90,8 +88,8 @@ func GetUser() Users {
 }
 func GetProjectGroup() PGs {
 	conn := config.Connection()
-	queryStatement := "Select pgcode, pgname, actind, projectCode, projectname, ctcode, createby, createdt,lastupby, lastupdt From tblprojectgroup Where actind = 'Y'"
-
+	queryStatement := "Select projectCode, projectname, actind, ctcode, createby, createdt,lastupby, lastupdt From tblproject Where actind = 'Y'"
+	
 	rows, err := conn.Query(queryStatement)
 	fmt.Println("ROWS : ", rows)
 	fmt.Println(err)
@@ -104,8 +102,7 @@ func GetProjectGroup() PGs {
 	for rows.Next() {
 		pg := PG{}
 
-		er := rows.Scan(&pg.PGCode, &pg.PGName, &pg.ActInd,
-			&pg.ProjectCode, &pg.ProjectName, &pg.CtCode, &pg.CreateBy, &pg.CreateDt, &pg.LastupBy, &pg.LastupDt)
+		er := rows.Scan(&pg.ProjectCode, &pg.ProjectName, &pg.ActInd, &pg.CtCode, &pg.CreateBy, &pg.CreateDt, &pg.LastupBy, &pg.LastupDt)
 		if er != nil {
 			fmt.Println("ER : ", er)
 		}
