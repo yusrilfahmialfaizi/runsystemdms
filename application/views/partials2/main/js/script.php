@@ -1,23 +1,23 @@
      <script type="text/javascript">
        $(document).ready(function() {
-         var uri          = "<?php echo $this->uri->segment("1"); ?>";
-         var modulactive  = "<?php echo $this->session->userdata("modul"); ?>";
+         var uri = "<?php echo $this->uri->segment("1"); ?>";
+         var modulactive = "<?php echo $this->session->userdata("modul"); ?>";
          if (uri == "editor" || uri == "edit") {
            $("#sidebar").removeClass("iconbar-second-close");
          } else if (uri == "tabel") {
            $("#sidebar").removeClass("iconbar-second-close");
            $("#sidebar").addClass("iconbar-mainmenu-close");
            $("li").removeClass("open");
-           $("#"+modulactive).addClass("open");
+           $("#" + modulactive).addClass("open");
          }
          if (uri != "home" && uri != "tabel") {
-           var modulCode  = "<?php echo $this->session->userdata("modul"); ?>";
+           var modulCode = "<?php echo $this->session->userdata("modul"); ?>";
            var doc_status = "<?php echo $this->session->userdata("doc_status"); ?>";
            if (doc_status == "F") {
              document.getElementById('statushdr').checked = true;
-           }else if (doc_status == "O"){
+           } else if (doc_status == "O") {
              document.getElementById('statushdr').checked = false;
-           }else{
+           } else {
              console.log("data null");
            }
 
@@ -53,10 +53,10 @@
          var active = $(id_li).attr("data-active");
          var status = $(id_li).attr("data-status");
          var clas = $('#sidebar').attr('class');
-         if ( clas == "iconsidebar-menu iconbar-second-close"){
-            $("#sidebar").removeClass("iconbar-second-close");
-            $("#sidebar").addClass("iconbar-mainmenu-close");
-          }
+         if (clas == "iconsidebar-menu iconbar-second-close") {
+           $("#sidebar").removeClass("iconbar-second-close");
+           $("#sidebar").addClass("iconbar-mainmenu-close");
+         }
          $.ajax({ //to get all data menu from db
            type: 'POST',
            url: '<?php echo base_url("tabel/modulmenubyid") ?>',
@@ -118,17 +118,17 @@
          });
        }
        if ("<?php echo $this->uri->segment("1"); ?>" == "edit" || "<?php echo $this->uri->segment("1"); ?>" == "edit") {
-         
+
        }
-      //  $('input[type="checkbox"]').click(function() {
-        function toggle_checkbox(element){
+       //  $('input[type="checkbox"]').click(function() {
+       function toggle_checkbox(element) {
          if ($(element).prop("checked") == true) {
            // console.log("Checkbox is checked.");
            var checked = "F";
            $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
              checked: checked
            }).done(function() {
-            //  location.reload(true)
+             //  location.reload(true)
            });
          } else if ($(element).prop("checked") == false) {
            var checked = "O";
@@ -136,11 +136,11 @@
            $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
              checked: checked
            }).done(function() {
-            //  location.reload(true)
+             //  location.reload(true)
            });
          }
-        }
-      //  });
+       }
+       //  });
 
        function preview(ths) {
          var docno = $(ths).attr("data-docno");
@@ -156,32 +156,32 @@
          window.open('print?docno=' + docno + '&modulcode=' + modulcode + '', '_blank');
        }
 
-       function sidebar_toggle(){
-          var segment = "<?php echo $this->uri->segment("1") ?>";
-          var clas = $('#sidebar').attr('class');
-          if (segment == "tabel") {  
-            if ( clas == "iconsidebar-menu iconbar-mainmenu-close"){
-              $("#sidebar").removeClass("iconbar-mainmenu-close");
-              $("#sidebar").addClass("iconbar-second-close");
-            }else if (clas == "iconsidebar-menu iconbar-second-close") {
-              $("#sidebar").removeClass("iconbar-second-close");
-              $("#sidebar").addClass("iconbar-mainmenu-close");
-            } else if (clas == "iconsidebar-menu") {
-              $("#sidebar").removeClass("iconbar-second-close");
-              $("#sidebar").addClass("iconbar-mainmenu-close");
-            }
-          }else if (segment == "edit" || segment == "editor") {
-            if ( clas == "iconsidebar-menu iconbar-mainmenu-close"){
-              $("#sidebar").removeClass("iconbar-mainmenu-close");
-              // $("#sidebar").addClass("iconbar-second-close");
-            }else if (clas == "iconsidebar-menu iconbar-second-close") {
-              $("#sidebar").removeClass("iconbar-second-close");
-              $("#sidebar").addClass("iconbar-mainmenu-close");
-            } else if (clas == "iconsidebar-menu") {
-              $("#sidebar").removeClass("iconbar-second-close");
-              $("#sidebar").addClass("iconbar-mainmenu-close");
-            }
-          }
+       function sidebar_toggle() {
+         var segment = "<?php echo $this->uri->segment("1") ?>";
+         var clas = $('#sidebar').attr('class');
+         if (segment == "tabel") {
+           if (clas == "iconsidebar-menu iconbar-mainmenu-close") {
+             $("#sidebar").removeClass("iconbar-mainmenu-close");
+             $("#sidebar").addClass("iconbar-second-close");
+           } else if (clas == "iconsidebar-menu iconbar-second-close") {
+             $("#sidebar").removeClass("iconbar-second-close");
+             $("#sidebar").addClass("iconbar-mainmenu-close");
+           } else if (clas == "iconsidebar-menu") {
+             $("#sidebar").removeClass("iconbar-second-close");
+             $("#sidebar").addClass("iconbar-mainmenu-close");
+           }
+         } else if (segment == "edit" || segment == "editor") {
+           if (clas == "iconsidebar-menu iconbar-mainmenu-close") {
+             $("#sidebar").removeClass("iconbar-mainmenu-close");
+             // $("#sidebar").addClass("iconbar-second-close");
+           } else if (clas == "iconsidebar-menu iconbar-second-close") {
+             $("#sidebar").removeClass("iconbar-second-close");
+             $("#sidebar").addClass("iconbar-mainmenu-close");
+           } else if (clas == "iconsidebar-menu") {
+             $("#sidebar").removeClass("iconbar-second-close");
+             $("#sidebar").addClass("iconbar-mainmenu-close");
+           }
+         }
        }
      </script>
 
@@ -205,17 +205,27 @@
            reverseButtons: true
          }).then((result) => {
            if (result.isConfirmed) {
-              $.post("<?php echo base_url("tabel/createDocument") ?>"
-              ).done(function() { 
-                swalWithBootstrapButtons.fire(
-                  'Added!',
-                  'Your file has been Added.',
-                  'success',
-                ).then(function(){
-                  location.reload(true);
-                })
-              })
-             
+             swalWithBootstrapButtons.fire({
+               title: 'Loading..!',
+               text: 'Process..',
+               allowOutsideClick: false,
+               allowEscapeKey: false,
+               allowEnterKey: false,
+               onOpen: () => {
+                 swal.showLoading()
+               }
+             })
+             $.post("<?php echo base_url("tabel/createDocument") ?>")
+               .done(function() {
+                 swalWithBootstrapButtons.fire(
+                   'Added!',
+                   'Your file has been Added.',
+                   'success',
+                 ).then(function() {
+                   location.reload(true);
+                 })
+               })
+
            } else if (
              /* Read more about handling dismissals below */
              result.dismiss === Swal.DismissReason.cancel
