@@ -57,14 +57,15 @@
                                 echo "InActive";
                               } ?>
                             </td>
-                            <td><?php if ($key[$i]["status"] == "F") {
-                                  echo "Final";
-                                } else if ($key[$i]["status"] == "O") {
-                                  echo "Outstanding";
-                                } else {
-                                  echo "Cancel";
-                                }
-                                ?></td>
+                            <td>
+                              <?php if ($key[$i]["status"] == "F") {
+                                echo "Final";
+                              } else if ($key[$i]["status"] == "O") {
+                                echo "Outstanding";
+                              } else {
+                                echo "Cancel";
+                              } ?>
+                            </td>
                             <td><?php echo $key[$i]["createby"]; ?></td>
                             <td><?php echo date("d-m-Y H:i", $createdt); ?></td>
                             <td><?php echo $key[$i]["lastupby"]; ?></td>
