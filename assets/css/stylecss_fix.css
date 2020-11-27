@@ -12783,7 +12783,7 @@ input[type=file] {
     width: 1.3rem;
     height: 1.3rem;
     background: #fff;
-    border: 2px solid #e8ebf2;
+    border: 2px solid #7e37d8;
     cursor: pointer
 }
 
@@ -21173,7 +21173,7 @@ body.dark-only .product-box .product-img .product-hover ul li:hover .btn {
 body.dark-only .radio_animated:after,
 body.dark-only .checkbox_animated:after {
     background: #333a62;
-    border: 2px solid #333a62
+    border: 2px solid #9237d8
 }
 
 body.dark-only .slider-product {
