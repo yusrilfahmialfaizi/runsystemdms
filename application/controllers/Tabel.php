@@ -8,7 +8,6 @@ class Tabel extends CI_Controller {
 		parent::__construct();
 		$this->load->library("menu");
 		$this->load->library("documentdtl");
-		// $this->load->library("Pdf");
 	}
 	
 	public function index()
@@ -19,10 +18,28 @@ class Tabel extends CI_Controller {
 		$data2 = $this->menu->getModulMenu();
 		$data2 = json_decode($data2, true);
 		$data["sidebar"] = $data2;
+		foreach ($data2 as $key) {
+			for ($i=0; $i < count($key); $i++) { 
+				if ($i == 0) {
+					$modul = $key[$i]['modulcode'];
+					$this->session->set_userdata(array("modul" => $modul ));
+				}
+			}
+		}
+		$sesi = $this->session->userdata('modul');
 		$modulcode = $this->input->get("modulcode");
 		if ($modulcode != null) {
 			$this->modul_sessionForIndex($modulcode);
 			$data1 = $this->getDataDocuments($modulcode);
+			$data1 = json_decode($data1, true);
+			if ($data1 != null) {
+				$data["get"] = $data1;
+			}else{
+				$data["get"] = [];
+			}
+		}else if ($sesi != null){
+			$this->modul_sessionForIndex($sesi);
+			$data1 = $this->getDataDocuments($sesi);
 			$data1 = json_decode($data1, true);
 			if ($data1 != null) {
 				$data["get"] = $data1;
@@ -137,23 +154,10 @@ class Tabel extends CI_Controller {
 						"LastUpBy" 	=> "",
 						"LastUpAt" 	=> ""
 					);
-					// print_r($data3);
 					$response3 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postDataDocumentsDtl", $data3);
 				}
-				# code...
 			}
 		}
-
-		// $ch = curl_init();
-		// curl_setopt($ch, CURLOPT_POST, 1);
-		// curl_setopt($ch, CURLOPT_POSTFIELDS, $data); //pass encoded JSON string to post fields
-		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		// curl_setopt($ch, CURLOPT_VERBOSE, true);
-		// curl_setopt($ch, CURLOPT_URL, $url);
-		// $response = curl_exec($ch);
-		// echo curl_error($ch);
-		// curl_close($ch);
-		// print_r($response);
 	}
 
 	function modul_session(){
