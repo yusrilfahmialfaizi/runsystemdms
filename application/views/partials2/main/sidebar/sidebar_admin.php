@@ -2,6 +2,7 @@
         <div id="sidebar" class="iconsidebar-menu iconbar-second-close">
           <div class="sidebar">
             <ul id="module" class="iconMenu-bar custom-scrollbar">
+            <?php if ($this->uri->segment("1") != "home") { ?>
               <?php 
                 foreach ($sidebar as $key) { 
                   for ($i=0; $i < count($key); $i++) {
@@ -56,6 +57,7 @@
                 </ul>
               </li>
               <?php }} ?>
+            <?php } ?>
             </ul>
           </div>
         </div>

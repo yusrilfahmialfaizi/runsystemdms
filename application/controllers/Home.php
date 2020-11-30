@@ -15,6 +15,7 @@ class Home extends CI_Controller {
 		}
 		if ($this->session->userdata("modul") != null) {
 			$this->session->unset_userdata('modul');
+			$this->session->unset_userdata('projectcode');
 		}
 		$url = "http://127.0.0.1:8080/runsystemdms/getPG";
 
@@ -27,12 +28,13 @@ class Home extends CI_Controller {
 		if ($eror == null) {
 			$data = json_decode($data, true);
 			$data['get'] = $data;
-			$data2 = $this->menu->getModulMenu();
-			$data2 = json_decode($data2, true);
-			$data['sidebar'] = $data2;
 			$this->load->view('partials2/main/page/page_home', $data);	
 		}else{
 			$this->load->view('partials2/main/page/page_error');	
 		}
+	}
+	function session_projectcode(){
+		$projectcode = $this->input->post("projectcode");
+		$this->session->set_userdata(array("projectcode" => $projectcode));
 	}
 }

@@ -15,7 +15,8 @@ class Tabel extends CI_Controller {
 		if ($this->session->userdata('status') != "login") {
 			redirect("login");
 		}
-		$data2 = $this->menu->getModulMenu();
+		$projectcode = $this->session->userdata("projectcode");
+		$data2 = $this->menu->getModulById($projectcode);
 		$data2 = json_decode($data2, true);
 		$data["sidebar"] = $data2;
 		if ($data2 != null) {

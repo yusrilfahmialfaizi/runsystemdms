@@ -14,12 +14,13 @@ type CustomContext struct {
 }
 
 type Modul struct {
-	ModulCode string         `json:"modulcode"`
-	ModulName string         `json:"modulname"`
-	CreateBy string          `json:"createby"`
-	CreateDt string          `json:"createdt"`
-	LastupBy nullable.String `json:"lastupby"`
-	LastupDt nullable.String `json:"lastupdt"`
+	ModulCode 	string          `json:"modulcode"`
+	ModulName 	string          `json:"modulname"`
+	ProjectCode 	string		 `json:"projectcode"`
+	CreateBy 		string          `json:"createby"`
+	CreateDt 		string          `json:"createdt"`
+	LastupBy 		nullable.String `json:"lastupby"`
+	LastupDt 		nullable.String `json:"lastupdt"`
 }
 type ModulMenu struct {
 	MenuCode string          `json:"menucode"`
@@ -78,9 +79,8 @@ var connection *sql.DB
 
 // function untuk mengambil data dari tabel menu berdasarkan parent yang memiliki 2 digit angka
 func GetModuls() Moduls {
-	// modulcode := c.Param("modulcode");
 	connection = config.Connection()
-	query1 := "SELECT ModulCode, ModulName, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmodul "
+	query1 := "SELECT ModulCode, ModulName, CreateBy, ProjectCode, CreateDt, LastUpBy, LastUpDt FROM tblmodul"
 	rows1, err1 := connection.Query(query1)
 	if err1 != nil {
 		fmt.Println(err1)
@@ -92,7 +92,30 @@ func GetModuls() Moduls {
 	for rows1.Next() {
 		modul := Modul{}
 
-		eror := rows1.Scan(&modul.ModulCode, &modul.ModulName, &modul.CreateBy, &modul.CreateDt, &modul.LastupBy, &modul.LastupDt)
+		eror := rows1.Scan(&modul.ModulCode, &modul.ModulName, &modul.ProjectCode, &modul.CreateBy, &modul.CreateDt, &modul.LastupBy, &modul.LastupDt)
+		if eror != nil {
+			fmt.Println(eror)
+		}
+		result.Moduls = append(result.Moduls, modul)
+	}
+	return result
+}
+func GetModulsWithId(c *CustomContext) Moduls {
+	projectcode := c.Param("projectcode");
+	connection = config.Connection()
+	query1 := "SELECT ModulCode, ModulName, CreateBy, ProjectCode, CreateDt, LastUpBy, LastUpDt FROM tblmodul WHERE ProjectCode = ?"
+	rows1, err1 := connection.Query(query1, projectcode)
+	if err1 != nil {
+		fmt.Println(err1)
+		// fmt.Println(err2)
+	}
+	defer rows1.Close()
+	result := Moduls{}
+
+	for rows1.Next() {
+		modul := Modul{}
+
+		eror := rows1.Scan(&modul.ModulCode, &modul.ModulName, &modul.ProjectCode, &modul.CreateBy, &modul.CreateDt, &modul.LastupBy, &modul.LastupDt)
 		if eror != nil {
 			fmt.Println(eror)
 		}

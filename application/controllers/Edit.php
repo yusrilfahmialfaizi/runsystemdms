@@ -19,7 +19,8 @@ class Edit extends CI_Controller
 		$menucode = $this->session->userdata("menu");
 		$docno = $this->session->userdata("docno");
 		$doc = $this->documentdtl->getDocumentDtl($docno, $menucode);
-		$data2 = $this->menu->getModulMenu();
+		$projectcode = $this->session->userdata("projectcode");
+		$data2 = $this->menu->getModulById($projectcode);
 		$data2 = json_decode($data2, true);
 		$doc = json_decode($doc, true);
 		$data["sidebar"] = $data2;
