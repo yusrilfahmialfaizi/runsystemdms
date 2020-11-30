@@ -22,12 +22,17 @@ class Home extends CI_Controller {
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_URL, $url);
 		$data = curl_exec($ch);
+		$eror =  curl_error($ch);
 		curl_close($ch);
-		$data = json_decode($data, true);
-		$data['get'] = $data;
-		$data2 = $this->menu->getModulMenu();
-		$data2 = json_decode($data2, true);
-		$data['sidebar'] = $data2;
-		$this->load->view('partials2/main/page/page_home', $data);	
+		if ($eror == null) {
+			$data = json_decode($data, true);
+			$data['get'] = $data;
+			$data2 = $this->menu->getModulMenu();
+			$data2 = json_decode($data2, true);
+			$data['sidebar'] = $data2;
+			$this->load->view('partials2/main/page/page_home', $data);	
+		}else{
+			$this->load->view('partials2/main/page/page_error');	
+		}
 	}
 }

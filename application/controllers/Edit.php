@@ -24,7 +24,11 @@ class Edit extends CI_Controller
 		$doc = json_decode($doc, true);
 		$data["sidebar"] = $data2;
 		$data["doc"] = $doc;
-		$this->load->view('partials2/main/page/page_edit', $data);
+		if ($data2 == null) {
+			$this->load->view('partials2/main/page/page_error');
+		}else{
+			$this->load->view('partials2/main/page/page_edit', $data);
+		}
 	}
 
 	function EditDocDetail()
