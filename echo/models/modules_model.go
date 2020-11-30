@@ -33,6 +33,16 @@ type ModulMenu struct {
 	LastupDt nullable.String `json:"lastupdt"`
 	Status nullable.String   `json:"status"`
 }
+type MenuAddDocument struct {
+	MenuCode string          `json:"menucode"`
+	ModulCode string         `json:"modulcode"`
+	MenuDesc string          `json:"menudesc"`
+	Parent   nullable.String `json:"parent"`
+	CreateBy string          `json:"createby"`
+	CreateDt string          `json:"createdt"`
+	LastupBy nullable.String `json:"lastupby"`
+	LastupDt nullable.String `json:"lastupdt"`
+}
 
 type Datasubmodule struct {
 	Parent   nullable.String `json:"parent"`
@@ -61,6 +71,9 @@ type Moduls struct {
 
 type Menu struct {
 	Menu []ModulMenu `json:"menu"`
+}
+type Add struct {
+	Add []MenuAddDocument `json:"add"`
 }
 
 type DynamicMenu struct {

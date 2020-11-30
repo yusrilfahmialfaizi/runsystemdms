@@ -151,27 +151,25 @@ func PostDataDocuments(con *sql.DB, Docno string, ModulCode string, Status strin
 	
 	return result.RowsAffected()
 }
-func GetdataMenuCode(c *CustomContext) Menu {
+func GetdataMenuCode(c *CustomContext) Add {
 	con = config.Connection()
 	ModulCode := c.FormValue("modulcode");
-	query3 := "SELECT A.MenuCode, A.ModulCode, A.MenuDesc, A.Parent, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt, B.`Status` FROM tblmodulmenu A LEFT JOIN tbldocumentdtl B ON B.MenuCode = A.MenuCode WHERE modulcode = ?"
+	query3 := "SELECT A.MenuCode, A.ModulCode, A.MenuDesc, A.Parent, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblmodulmenu A WHERE modulcode = ?"
 	stmt3, err3 := con.Query(query3, ModulCode)
 	if err3 != nil {
 		panic(err3)
 	}
 	defer stmt3.Close()
-	result := Menu{}
+	result := Add{}
 
 	for stmt3.Next() {
-		modulmenu := ModulMenu{}
+		modulmenu := MenuAddDocument{}
 
-		er3 := stmt3.Scan(&modulmenu.MenuCode, &modulmenu.ModulCode, &modulmenu.MenuDesc, &modulmenu.Parent, &modulmenu.CreateBy, &modulmenu.CreateDt, &modulmenu.LastupBy, &modulmenu.LastupDt, &modulmenu.Status)
+		er3 := stmt3.Scan(&modulmenu.MenuCode, &modulmenu.ModulCode, &modulmenu.MenuDesc, &modulmenu.Parent, &modulmenu.CreateBy, &modulmenu.CreateDt, &modulmenu.LastupBy, &modulmenu.LastupDt)
 		if er3 != nil {
 			panic(er3)
 		}
-		result.Menu = append(result.Menu, modulmenu)
-		fmt.Println(modulmenu.MenuCode)
-		// PostDataDocumentsDtl(con, Docno, modulmenu.MenuCode, CreateBy, CreateDt, LastUpBy, LastUpDt) 
+		result.Add = append(result.Add, modulmenu)
 	}
 	return result
 }

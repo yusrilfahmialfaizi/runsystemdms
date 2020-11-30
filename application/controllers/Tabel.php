@@ -145,11 +145,11 @@ class Tabel extends CI_Controller {
 		if ($response1) {
 			# code...
 			$data2 		= array('modulcode' => $modulcode);
-			print_r($data2);
 			$response2 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDataMenuCode", $data2);
 			if ($response2 != null) {
 				$response2 = json_decode($response2, true);
-				foreach ($response2['menu'] as $key) {
+				$response2 = $response2['add'];
+				foreach ($response2 as $key) {
 					
 					$data3 		= array(
 						"Docno" 		=> $code,
