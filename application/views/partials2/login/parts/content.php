@@ -81,8 +81,12 @@
                             document.getElementById("pwd").style.color = "#ff0000";
                             document.getElementById("usercode").style.color = "#ff0000";
                         }
-                    }
-                });
+                    }        
+                }).fail(function () {
+                    var text = "CONNECTION TO SERVER REFUSED"
+                    document.getElementById("wrong").innerHTML = text;
+                    document.getElementById("wrong").style.color = "#FF0000";
+                })
             }
 
             function session(result) {
