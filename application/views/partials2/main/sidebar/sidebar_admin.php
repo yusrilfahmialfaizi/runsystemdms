@@ -28,15 +28,9 @@
                         <i></i><span><?php echo $key[$i]["modulname"] ?></span>
                       </a>
                     <?php }elseif ($this->uri->segment("1") == "edit" || $this->uri->segment("1") == "editor") { ?>
-                      <?php if ($this->session->userdata("modul") == $key[$i]['modulcode']){?>
                       <a class="bar-icons" href="javascript:modules('<?php echo $key[$i]["modulcode"] ?>')" >
                         <i></i><span><?php echo $key[$i]["modulname"] ?></span>
                       </a>
-                      <?php } else { ?>
-                      <a class="bar-icons" href="<?php echo base_url("tabel") ?>" >
-                        <i></i><span><?php echo $key[$i]["modulname"] ?></span>
-                      </a>
-                      <?php } ?>
                     <?php } ?>
                     </div>
                   </div>

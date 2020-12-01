@@ -39,11 +39,27 @@
      <script type="text/javascript">
        // add and remove class open on sidebar
        function modules(id_li) {
-         $("li").removeClass("open");
-         $("#" + id_li).even().addClass("open");
-         $.post("<?php echo base_url("tabel/modul_session ") ?>", {
-           modulCode: id_li
-         });
+         if ("<?php echo $this->uri->segment("1"); ?>" == "edit" || "<?php echo $this->uri->segment("1"); ?>" == "editor") {
+          if ("<?php echo $this->session->userdata("modul"); ?>" == id_li) {
+            $("li").removeClass("open");
+            $("#" + id_li).even().addClass("open");  
+          }else{
+            Swal.fire({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#d33',
+              cancelButtonColor: '#3085d6',
+              confirmButtonText: 'Yes, change it!',
+              reverseButtons: true
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location = "<?php echo base_url("tabel?modulcode=") ?>"+id_li;
+              }
+            })
+          }
+         }
        }
 
        function modules2(id_li) {
