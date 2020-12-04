@@ -15,5 +15,12 @@ class User extends CI_Controller {
 		// }
 		$this->load->view('partials2/main/page2/page_user');
 	}
+
+	public function Add_user()
+	{
+		// if ($this->session->userdata('status') != "login") {
+		// 	redirect("login");
+		// }
+		$this->load->view('partials2/main/page2/page_add_user');
+	}
 }
-?>
