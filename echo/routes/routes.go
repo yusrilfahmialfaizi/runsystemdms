@@ -12,6 +12,7 @@ import (
 
 func Routes() *echo.Echo {
 	// echo instance
+	var con *sql.DB
 	e := echo.New()
 
 	// middleware
@@ -31,17 +32,28 @@ func Routes() *echo.Echo {
 	e.GET("/", func(c echo.Context) error {
 		return c.JSON(http.StatusCreated, "Welcome mvc echo")
 	})
-	e.GET("/runsystemdms/getUsers", controllers.GetUser)
 	e.POST("/runsystemdms/login", controllers.Login)
+
+	e.GET("/runsystemdms/getUsers", controllers.GetUser)
+	e.POST("/runsystemdms/postUsers", controllers.PostUser(con))
+	e.PUT("/runsystemdms/updateUsers", controllers.UpdateUsers(con))
+	
 	e.GET("/runsystemdms/getPG", controllers.GetProjectGroup)
+	e.POST("/runsystemdms/postProject", controllers.PostProject(con))
+	e.PUT("/runsystemdms/updateProject", controllers.UpdateProject(con))
+	
+	e.GET("/runsystemdms/getMenu", controllers.GetMenu)
+	e.POST("/runsystemdms/postMenu", controllers.PostMenu(con))
+	e.PUT("/runsystemdms/updateMenu", controllers.UpdateMenu(con))
+	
 	e.GET("/runsystemdms/getModuls", controllers.GetModuls)
+	e.POST("/runsystemdms/postModuls", controllers.PostModul(con))
+	e.PUT("/runsystemdms/updateModuls", controllers.UpdateModuls(con))
 	e.GET("/runsystemdms/getModulsWithId/:projectcode", controllers.GetModulsWithId)
 	e.GET("/runsystemdms/getModulsByID/:modulcode", controllers.GetModulsById)
-	e.GET("/runsystemdms/getGenerateCode/:modulcode", controllers.GenerateCode)
-	e.PUT("/runsystemdms/updateDataSubModules", controllers.UpdateDataSubModules)
 	
 	//routes document
-	var con *sql.DB
+	e.GET("/runsystemdms/getGenerateCode/:modulcode", controllers.GenerateCode)
 	e.POST("/runsystemdms/getDocsDtl", controllers.GetDocumentDtl)
 	e.POST("/runsystemdms/getDocsDtlForMenu", controllers.GetDocumentsDtl)
 	e.POST("/runsystemdms/getDocsDtlForPrint", controllers.GetDocumentsDtlPrint)

@@ -1,0 +1,101 @@
+package models
+
+import (
+	"database/sql"
+	"echo/config"
+	"fmt"
+
+	_"github.com/labstack/echo/v4"
+	nullable "gopkg.in/guregu/null.v3"
+)
+
+type PG struct {
+	ProjectCode nullable.String `json:"projectcode"`
+	ProjectName nullable.String `json:"projectname"`
+	ActInd      string          `json:"actind"`
+	CtCode      nullable.String `json:"ctcode"`
+	CreateBy    string          `json:"createby"`
+	CreateDt    string          `json:"createdt"`
+	LastupBy    nullable.String `json:"lastupby"`
+	LastupDt    nullable.String `json:"lastupdt"`
+}
+type ActionProject struct {
+	ProjectCode string `json:"projectcode"`
+	ProjectName string `json:"projectname"`
+	ActInd      string `json:"actind"`
+	CtCode      string `json:"ctcode"`
+	CreateBy    string `json:"createby"`
+	CreateDt    string `json:"createdt"`
+	LastupBy    string `json:"lastupby"`
+	LastupDt    string `json:"lastupdt"`
+}
+
+type PGs struct {
+	PGs []PG `json:"pg"`
+}
+
+func GetProjectGroup() PGs {
+	con := config.Connection()
+	queryStatement := "Select projectCode, projectname, actind, ctcode, createby, createdt,lastupby, lastupdt From tblproject Where actind = 'Y'"
+	
+	rows, err := con.Query(queryStatement)
+	fmt.Println("ROWS : ", rows)
+	fmt.Println(err)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer rows.Close()
+	result := PGs{}
+
+	for rows.Next() {
+		pg := PG{}
+
+		er := rows.Scan(&pg.ProjectCode, &pg.ProjectName, &pg.ActInd, &pg.CtCode, &pg.CreateBy, &pg.CreateDt, &pg.LastupBy, &pg.LastupDt)
+		if er != nil {
+			fmt.Println("ER : ", er)
+		}
+		result.PGs = append(result.PGs, pg)
+	}
+	return result
+}
+// for Insert User
+func PostProject(con *sql.DB, ProjectCode string, Projectname string, ActInd string, CtCode string, CreateBy string, CreateDt string)(int64, error){
+	con = config.Connection()
+
+	query := "INSERT INTO tblproject (ProjectCode, ProjectName, ActInd, CtCode,  CreateBy, CreateDt) VALUES (?,?,?,?,?,?,?)"
+
+	stmt, err := con.Prepare(query)
+
+	if err != nil{
+		fmt.Println(err)
+	}
+
+	defer stmt.Close()
+
+	result, eror := stmt.Exec(ProjectCode, Projectname, ActInd, CtCode, CreateBy, CreateDt)
+
+	if eror != nil{
+		fmt.Println(eror)
+	}
+
+	return result.RowsAffected()
+}
+// Update data Projects
+func UpdateProjects(con *sql.DB, ProjectCode string, Projectname string, ActInd string, CtCode string, LastupBy string, LastupDt string)(int64, error){
+	con = config.Connection()
+
+	query := "UPDATE tblproject set ProjectCode = ?, ProjectName = ?, ActInd = ?, CtCode = ?, LastUpBy = ?, LastUpDt = ? WHERE ProjectCode = ?"
+
+	stmt, err := con.Prepare(query)
+
+	if err != nil {
+		panic(err)
+	}
+
+	result, eror := stmt.Exec(ProjectCode, Projectname, ActInd, CtCode, LastupBy, LastupDt, ProjectCode)
+
+	if eror != nil{
+		panic(eror)
+	}
+	return result.RowsAffected()
+}

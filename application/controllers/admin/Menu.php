@@ -14,7 +14,15 @@ class Menu extends CI_Controller
 		// if ($this->session->userdata('status') != "login") {
 		// 	redirect("login");
 		// }
-		$this->load->view('partials2/main/page2/page_menu');
+		$url = "http://127.0.0.1:8080/runsystemdms/getMenu";
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_URL, $url);
+		$response = curl_exec($ch);
+		curl_close($ch);
+		$data = json_decode($response, true);
+		$data['dt'] = $data['menu'];
+		$this->load->view('partials2/main/page2/page_menu',$data);
 	}
 
 	public function Add_modul()

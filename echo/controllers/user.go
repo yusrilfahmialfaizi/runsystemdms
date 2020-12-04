@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strings"
 	"time"
+	"database/sql"
 
 	"github.com/dgrijalva/jwt-go"
 
@@ -20,6 +21,37 @@ func GetUser(c echo.Context) error {
 	result := models.GetUser()
 	fmt.Println("Getting data ...")
 	return c.JSON(http.StatusOK, result)
+}
+
+// POST method to INSERT User
+func PostUser(con *sql.DB) echo.HandlerFunc {
+	return func(c echo.Context) error  {
+		var user models.ActionUser
+
+		c.Bind(&user)
+		result, err := models.PostUser(con, user.UserCode, user.Username, user.GrpCode, user.Pwd, user.ExpDt, user.CreateBy, user.CreateDt)
+
+		if err != nil {
+			return c.JSON(http.StatusCreated, result)
+		}else{
+			return err
+		}
+	}
+}
+
+// Update data user
+func UpdateUsers(con *sql.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		var user models.ActionUser
+
+		c.Bind(&user)
+		result, err := models.UpdateUsers(con, user.UserCode, user.Username, user.GrpCode, user.Pwd, user.ExpDt, user.NotifyInd, user.HasQiscusAccount, user.AvatarImage, user.DeviceId, user.LastupBy, user.LastupDt)
+		if err != nil{
+			return err
+		}else{
+			return c.JSON(http.StatusOK, result)
+		}
+	}
 }
 
 func Login(c echo.Context) (err error) {
@@ -63,9 +95,4 @@ func Login(c echo.Context) (err error) {
 	// return c.JSON(http.StatusOK, response)
 }
 
-func GetProjectGroup(c echo.Context) error {
-	result := models.GetProjectGroup()
-	fmt.Println("Getting data ...")
-	fmt.Println(result)
-	return c.JSON(http.StatusOK, result)
-}
+

@@ -256,7 +256,6 @@ func EditDocHdr(con *sql.DB, Docno string, Status string,  LastUpBy string, Last
 func GenerateCode(c *CustomContext) GenerateCodes{
 	modulcode := c.Param("modulcode")
 	con = config.Connection()
-	// query := "SELECT MAX(LEFT(tbldocumenthdr.Docno,4)) AS DocNo FROM tbldocumenthdr ORDER BY DocNo DESC"
 	query := "SELECT MAX(LEFT(tbldocumenthdr.Docno,4)) AS DocNo FROM tbldocumenthdr WHERE modulcode = ? ORDER BY DocNo DESC"
 	
 	rows, err := con.Query(query, modulcode)

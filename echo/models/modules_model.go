@@ -22,17 +22,16 @@ type Modul struct {
 	LastupBy 		nullable.String `json:"lastupby"`
 	LastupDt 		nullable.String `json:"lastupdt"`
 }
-type ModulMenu struct {
-	MenuCode string          `json:"menucode"`
-	ModulCode string         `json:"modulcode"`
-	MenuDesc string          `json:"menudesc"`
-	Parent   nullable.String `json:"parent"`
-	CreateBy string          `json:"createby"`
-	CreateDt string          `json:"createdt"`
-	LastupBy nullable.String `json:"lastupby"`
-	LastupDt nullable.String `json:"lastupdt"`
-	Status nullable.String   `json:"status"`
+type ActionModul struct {
+	ModulCode 	string         `json:"modulcode"`
+	ModulName 	string         `json:"modulname"`
+	ProjectCode 	string		`json:"projectcode"`
+	CreateBy 		string         `json:"createby"`
+	CreateDt 		string         `json:"createdt"`
+	LastupBy 		string 		`json:"lastupby"`
+	LastupDt 		string 		`json:"lastupdt"`
 }
+
 type MenuAddDocument struct {
 	MenuCode string          `json:"menucode"`
 	ModulCode string         `json:"modulcode"`
@@ -93,7 +92,7 @@ var connection *sql.DB
 // function untuk mengambil data dari tabel menu berdasarkan parent yang memiliki 2 digit angka
 func GetModuls() Moduls {
 	connection = config.Connection()
-	query1 := "SELECT ModulCode, ModulName, CreateBy, ProjectCode, CreateDt, LastUpBy, LastUpDt FROM tblmodul"
+	query1 := "SELECT ModulCode, ModulName,  ProjectCode, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmodul"
 	rows1, err1 := connection.Query(query1)
 	if err1 != nil {
 		fmt.Println(err1)
@@ -160,32 +159,43 @@ func GetModulsById(c *CustomContext) Menu {
 	}
 	return result
 }
+// Insert data modul
+func PostModul(con *sql.DB, ModulCode string, ModulName string, ProjectCode string, CreateBy string, CreateDt string)(int64, error){
+	con = config.Connection()
 
-// function update data berdasarkan menucode pada tabel menu
-func UpdateDataSubModules(c *CustomContext) Datasubmodules {
-	menucode := c.FormValue("menucode")
-	parent := c.FormValue("parent")
-	param := c.FormValue("param")
-	icon := c.FormValue("icon")
-	lastupby := c.FormValue("lastupby")
-	lastupdt := c.FormValue("lastupdt")
-	connection := config.Connection()
-	query := "UPDATE tblmenu SET parent = " + parent + ", param = " + param + ", icon = " + icon + ", lastupBy = " + lastupby + ", lastupDt = " + lastupdt + " WHERE menucode = " + menucode
-	rows, eror := connection.Query(query)
+	query := "INSERT INTO tblmodul (ModulCode, ModulName, ProjectCode, CreateBy, CreateDt) VALUES(?, ?, ?, ?, ?)"
+
+	stmt, err := con.Prepare(query)
+
+	if err != nil{
+		panic(err)
+	}
+	defer stmt.Close()
+
+	result, eror := stmt.Exec(ModulCode, ModulName, ProjectCode, CreateBy, CreateDt)
+
 	if eror != nil {
-		fmt.Println(eror)
+		panic(eror)
 	}
-	defer rows.Close()
-	result := Datasubmodules{}
-
-	if rows.Next() {
-		datasubmodule := Datasubmodule{}
-		eror2 := rows.Scan(&datasubmodule.Parent, &datasubmodule.Param,
-			&datasubmodule.Icon, &datasubmodule.LastupBy, &datasubmodule.LastupDt)
-		if eror2 != nil {
-			fmt.Println(eror2)
-		}
-		result.Datasubmodules = append(result.Datasubmodules, datasubmodule)
-	}
-	return result
+	return result.RowsAffected()
 }
+
+func UpdateModul(con *sql.DB, ModulCode string, ModulName string, ProjectCode string, LastupBy string, LastupDt string)(int64, error){
+	con = config.Connection()
+
+	query := "UPDATE tblmodul set ModulCode = ?, ModulName = ?, ProjectCode = ?, LastUpBy = ?, LastUpDt = ? WHERE ModulCode = ?"
+
+	stmt, err := con.Prepare(query)
+
+	if err != nil {
+		panic(err)
+	}
+
+	result, eror := stmt.Exec(ModulCode, ModulName, ProjectCode, LastupBy, LastupDt, ModulCode)
+
+	if eror != nil{
+		panic(eror)
+	}
+	return result.RowsAffected()
+}
+

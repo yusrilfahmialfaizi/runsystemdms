@@ -36,28 +36,28 @@
                 </thead>
                 <tbody>
                   <!-- js -->
-                  <!-- <?php if ($get != null) { ?>
-                    <?php foreach ($get as $key) {
+                  <?php //if ($get != null) { ?>
+                    <?php foreach ($dt as $key) {
                       if ($key != null) {
-                        # code...
-                        for ($i = 0; $i < count($key); $i++) {
-                          $createdt = strtotime($key[$i]["createdt"]);
-                          $lastupdt = strtotime($key[$i]["lastupdt"]);
-                    ?> -->
+                        // # code...
+                        // for ($i = 0; $i < count($key); $i++) {
+                        //   $createdt = strtotime($key[$i]["createdt"]);
+                        //   $lastupdt = strtotime($key[$i]["lastupdt"]);
+                    ?>
 
                           <tr>
-                            <td>asu</td>
-                            <td>asu</td>
-                            <td>asu</td>
-                            <td>asu</td>
+                            <td><?php echo $key['menucode'] ?></td>
+                            <td><?php echo $key['modulcode'] ?></td>
+                            <td><?php echo $key['menudesc'] ?></td>
+                            <td><?php echo $key['parent'] ?></td>
                             <td>
                               <!-- <button data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" data-status="<?php echo $key[$i]["status"]; ?>" data-active="<?php echo $key[$i]["activeind"]; ?>" onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"]; ?>">Edit</button>
                               <button data-toggle="tooltip" title="Preview" width="20" type="button" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" onClick="preview(this)" data-feather="book-open">Preview</button> -->
                             </td>
                           </tr>
                   <?php }
-                      }
-                    }
+                      //}
+                    //}
                   } ?>
                 </tbody>
               </table>
