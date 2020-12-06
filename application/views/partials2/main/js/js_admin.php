@@ -42,6 +42,7 @@
     <script src="<?php echo base_url("assets/js/datepicker/date-picker/datepicker.en.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/datepicker/date-picker/datepicker.custom.js") ?>"></script>
     <script src="<?php echo base_url("assets/js/chat-menu.js") ?>"></script>
+    <script src="<?php echo base_url("assets/js/form-validation-custom.js") ?>"></script>
     <!-- Data Table JS -->
     <!-- Plugins JS start-->
     <script src="<?= base_url() ?>/assets/js/datatable/datatables/jquery.dataTables.min.js"></script>

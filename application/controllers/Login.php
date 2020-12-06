@@ -8,7 +8,13 @@ class Login extends CI_Controller
 	public function index()
 	{
 		if ($this->session->userdata('status') == "login") {
-			redirect("home");
+			if ($this->session->userdata('grpcode') == "Adm") {
+				# code...
+				redirect("home");
+			}elseif ($this->session->userdata('grpcode') == "SysAdm") {
+				# code...
+				redirect(base_url("admin/user"));
+			}
 		}
 		$this->load->view('partials2/login/page');
 	}

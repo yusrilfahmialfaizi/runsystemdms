@@ -10,7 +10,7 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		if ($this->session->userdata('status') != "login") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "Adm") {
 			redirect("login");
 		}
 		if ($this->session->userdata("modul") != null) {

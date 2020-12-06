@@ -10,9 +10,9 @@ class Module extends CI_Controller {
 	
 	public function index()
 	{
-		// if ($this->session->userdata('status') != "login") {
-		// 	redirect("login");
-		// }
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+			redirect("login");
+		}
 		$url 		= "http://127.0.0.1:8080/runsystemdms/getModuls";
 		$ch 			= curl_init();
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

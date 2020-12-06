@@ -6,8 +6,15 @@
     </div>
     <div class="mobile-sidebar">
       <div class="media-body text-right switch-sm">
-      <?php if ($this->uri->segment("1") != "home") { ?>
-        <label class="switch ml-3"><i class="font-primary" onClick="sidebar_toggle()" id="sidebar-toggle" data-feather="align-center"></i></label>
+      <?php 
+        $uri1 = $this->uri->segment("1");
+        $uri2 = $this->uri->segment("2");
+        $uri3 = $this->uri->segment("3");
+      ?>
+      <?php if ($uri1 != "home") { ?>
+        <?php if ($uri3 == null) { ?>
+          <label class="switch ml-3"><i class="font-primary" onClick="sidebar_toggle()" id="sidebar-toggle" data-feather="align-center"></i></label>
+        <?php } ?>
       <?php } ?>
       </div>
     </div>

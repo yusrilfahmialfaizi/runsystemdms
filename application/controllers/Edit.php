@@ -13,7 +13,7 @@ class Edit extends CI_Controller
 
 	public function index()
 	{
-		if ($this->session->userdata('status') != "login") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "Adm") {
 			redirect("login");
 		}
 		$menucode = $this->session->userdata("menu");
@@ -48,8 +48,6 @@ class Edit extends CI_Controller
 		$lastupdt = date('YmdHi');
 		$doc = $this->documentdtl->getDocumentDtl($docno, $menucode);
 		$doc = json_decode($doc, true);
-		// print_r($doc["documentsdtl"]);
-		// print_r($doc);
 		if ($doc['documentsdtl'] != null) {
 			$data = array(
 				"docno" => $docno,

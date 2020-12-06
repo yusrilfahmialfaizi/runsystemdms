@@ -109,7 +109,11 @@
                     cache: false,
                     success: function(data) {
                         if (data.message == true) {
-                            window.location.href = "home";
+                            if (grpcode == 'Adm') {
+                                window.location.href = "<?php echo base_url("home") ?>";
+                            }else if (grpcode == "SysAdm") {
+                                window.location.href = "<?php echo base_url("admin/user") ?>";
+                            }
                         }
                     }
                 });

@@ -1,7 +1,12 @@
      <script type="text/javascript">
        $(document).ready(function() {
          var uri = "<?php echo $this->uri->segment("1"); ?>";
+         var uri2 = "<?php echo $this->uri->segment("2"); ?>";
          var modulactive = "<?php echo $this->session->userdata("modul"); ?>";
+         if (uri == "admin"){
+           $("li").removeClass("open");
+           $("#" + uri2).addClass("open");
+         }
          if (uri == "editor" || uri == "edit") {
            $("#sidebar").removeClass("iconbar-second-close");
          } else if (uri == "tabel") {
@@ -10,7 +15,8 @@
            $("li").removeClass("open");
            $("#" + modulactive).addClass("open");
          }
-         if (uri != "home" && uri != "tabel") {
+         
+         if (uri != "home" && uri != "tabel" && uri != "admin") {
            var modulCode = "<?php echo $this->session->userdata("modul"); ?>";
            var doc_status = "<?php echo $this->session->userdata("doc_status"); ?>";
            if (doc_status == "F") {
@@ -173,30 +179,45 @@
        }
 
        function sidebar_toggle() {
-         var segment = "<?php echo $this->uri->segment("1") ?>";
-         var clas = $('#sidebar').attr('class');
-         if (segment == "tabel") {
-           if (clas == "iconsidebar-menu iconbar-mainmenu-close") {
-             $("#sidebar").removeClass("iconbar-mainmenu-close");
-             $("#sidebar").addClass("iconbar-second-close");
-           } else if (clas == "iconsidebar-menu iconbar-second-close") {
-             $("#sidebar").removeClass("iconbar-second-close");
-             $("#sidebar").addClass("iconbar-mainmenu-close");
-           } else if (clas == "iconsidebar-menu") {
-             $("#sidebar").removeClass("iconbar-second-close");
-             $("#sidebar").addClass("iconbar-mainmenu-close");
-           }
-         } else if (segment == "edit" || segment == "editor") {
-           if (clas == "iconsidebar-menu iconbar-mainmenu-close") {
-             $("#sidebar").removeClass("iconbar-mainmenu-close");
-             // $("#sidebar").addClass("iconbar-second-close");
-           } else if (clas == "iconsidebar-menu iconbar-second-close") {
-             $("#sidebar").removeClass("iconbar-second-close");
-             $("#sidebar").addClass("iconbar-mainmenu-close");
-           } else if (clas == "iconsidebar-menu") {
-             $("#sidebar").removeClass("iconbar-second-close");
-             $("#sidebar").addClass("iconbar-mainmenu-close");
-           }
+         var segment  = "<?php echo $this->uri->segment("1") ?>";
+         var segment2 = "<?php echo $this->uri->segment("2") ?>";
+         var clas     = $('#sidebar').attr('class');
+         var clas2     = $('#side').attr('class');
+         if (segment != "admin") {  
+          if (segment == "tabel") {
+            if (clas == "iconsidebar-menu iconbar-mainmenu-close") {
+              $("#sidebar").removeClass("iconbar-mainmenu-close");
+              $("#sidebar").addClass("iconbar-second-close");
+            } else if (clas == "iconsidebar-menu iconbar-second-close") {
+              $("#sidebar").removeClass("iconbar-second-close");
+              $("#sidebar").addClass("iconbar-mainmenu-close");
+            } else if (clas == "iconsidebar-menu") {
+              $("#sidebar").removeClass("iconbar-second-close");
+              $("#sidebar").addClass("iconbar-mainmenu-close");
+            }
+          } else if (segment == "edit" || segment == "editor") {
+            if (clas == "iconsidebar-menu iconbar-mainmenu-close") {
+              $("#sidebar").removeClass("iconbar-mainmenu-close");
+              // $("#sidebar").addClass("iconbar-second-close");
+            } else if (clas == "iconsidebar-menu iconbar-second-close") {
+              $("#sidebar").removeClass("iconbar-second-close");
+              $("#sidebar").addClass("iconbar-mainmenu-close");
+            } else if (clas == "iconsidebar-menu") {
+              $("#sidebar").removeClass("iconbar-second-close");
+              $("#sidebar").addClass("iconbar-mainmenu-close");
+            }
+          }
+         }else{
+          if (clas2 == "iconsidebar-menu iconbar-mainmenu-close") {
+              $("#side").removeClass("iconbar-mainmenu-close");
+              $("#side").addClass("iconbar-second-close");
+          } else if (clas2 == "iconsidebar-menu iconbar-second-close") {
+              $("#side").removeClass("iconbar-second-close");
+              $("#side").addClass("iconbar-mainmenu-close");
+          } else if (clas2 == "iconsidebar-menu") {
+              $("#side").removeClass("iconbar-second-close");
+              $("#side").addClass("iconbar-mainmenu-close");
+          }
          }
        }
      </script>

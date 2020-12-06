@@ -20,7 +20,7 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-header">
-            <a href="#" class="btn btn-success btnsweet"> + New Document</a>
+            <a href="<?php echo base_url("admin/user/add_user") ?>" class="btn btn-success "> + New User</a>
           </div>
           <div class="card-body">
             <div class="dt-ext table-responsive">
@@ -39,15 +39,9 @@
                 </thead>
                 <tbody>
                   <!-- js -->
-                   <?php //if ($get != null) { ?>
                     <?php foreach ($dt as $key) {
                       if ($key != null) {
-                        # code...
-                        // for ($i = 0; $i < count($key); $i++) {
-                        //   $createdt = strtotime($key[$i]["createdt"]);
-                        //   $lastupdt = strtotime($key[$i]["lastupdt"]);
                     ?>
-
                           <tr>
                             <td><?php echo $key['usercode'] ?></td>
                             <td><?php echo $key['username'] ?></td>
@@ -57,14 +51,13 @@
                             <td><?php echo $key['avatarimage'] ?></td>
                             <td><?php echo $key['deviceid'] ?></td>
                             <td>
-                              <!-- <button data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" data-status="<?php echo $key[$i]["status"]; ?>" data-active="<?php echo $key[$i]["activeind"]; ?>" onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"]; ?>">Edit</button>
-                              <button data-toggle="tooltip" title="Preview" width="20" type="button" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" onClick="preview(this)" data-feather="book-open">Preview</button> -->
+                              <a href="<?php echo base_url("admin/user/edit_user?usercode=").$key["usercode"]; ?>">
+                                <button data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3"  data-id="<?php echo $key["usercode"]; ?>">Edit</button>
+                              </a>
+                              <button data-toggle="tooltip" title="Delete" width="20" type="button" data-id="<?php echo $key["usercode"]; ?>"data-feather="x">Delete</button>
                             </td>
                           </tr>
-                  <?php }
-                      //}
-                    //}
-                  } ?>
+                  <?php } } ?>
                 </tbody>
               </table>
             </div>

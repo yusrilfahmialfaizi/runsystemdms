@@ -20,7 +20,7 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-header">
-            <a href="#" class="btn btn-success btnsweet"> + New Document</a>
+            <a href="<?php echo base_url("admin/menu/add_modul_menu") ?>" class="btn btn-success "> + New Menu</a>
           </div>
           <div class="card-body">
             <div class="dt-ext table-responsive">

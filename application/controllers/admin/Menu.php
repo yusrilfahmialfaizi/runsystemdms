@@ -11,9 +11,9 @@ class Menu extends CI_Controller
 
 	public function index()
 	{
-		// if ($this->session->userdata('status') != "login") {
-		// 	redirect("login");
-		// }
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+			redirect("login");
+		}
 		$url = "http://127.0.0.1:8080/runsystemdms/getMenu";
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -27,32 +27,32 @@ class Menu extends CI_Controller
 
 	public function Add_modul()
 	{
-		// if ($this->session->userdata('status') != "login") {
-		// 	redirect("login");
-		// }
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+			redirect("login");
+		}
 		$this->load->view('partials2/main/page2/page_add_modul');
 	}
 
 	public function Add_modul_menu()
 	{
-		// if ($this->session->userdata('status') != "login") {
-		// 	redirect("login");
-		// }
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+			redirect("login");
+		}
 		$this->load->view('partials2/main/page2/page_add_modul_menu');
 	}
 
 	public function Add_group()
 	{
-		// if ($this->session->userdata('status') != "login") {
-		// 	redirect("login");
-		// }
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+			redirect("login");
+		}
 		$this->load->view('partials2/main/page2/page_add_group');
 	}
 	public function Add_group_menu()
 	{
-		// if ($this->session->userdata('status') != "login") {
-		// 	redirect("login");
-		// }
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+			redirect("login");
+		}
 		$this->load->view('partials2/main/page2/page_add_group_menu');
 	}
 }
