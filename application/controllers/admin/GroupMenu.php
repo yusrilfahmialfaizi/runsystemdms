@@ -71,8 +71,8 @@ class GroupMenu extends CI_Controller {
 			"CreateDt" 	=> $now,
 		);
 		print_r($data);
-		// $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postProject", $data);
-		// redirect(base_url('admin/groupmenu'));
+		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postGroupMenu", $data);
+		redirect(base_url('admin/groupmenu'));
 	}
 	function edit(){
 		$menucode 		= $this->input->post('menucode');
@@ -86,8 +86,8 @@ class GroupMenu extends CI_Controller {
 			"LastupDt" 	=> $now,
 		);
 		print_r($data);
-		// $this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateProject", $data);
-		// redirect(base_url('admin/groupmenu'));
+		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateGroupMenu", $data);
+		redirect(base_url('admin/groupmenu'));
 	}
 
 }

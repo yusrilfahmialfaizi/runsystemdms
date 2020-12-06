@@ -53,8 +53,8 @@ class Group extends CI_Controller {
 			"CreateDt" 	=> $now,
 		);
 		print_r($data);
-		// $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postProject", $data);
-		// redirect(base_url('admin/group'));
+		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms//runsystemdms/postGroup", $data);
+		redirect(base_url('admin/group'));
 	}
 	function edit(){
 		$grpcode 		= $this->input->post('grpcode');
@@ -68,8 +68,8 @@ class Group extends CI_Controller {
 			"LastupDt" 	=> $now,
 		);
 		print_r($data);
-		// $this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateProject", $data);
-		// redirect(base_url('admin/group'));
+		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateGroup", $data);
+		redirect(base_url('admin/group'));
 	}
 
 }
