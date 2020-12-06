@@ -34,6 +34,7 @@ type GroupMenu struct {
 	MenuDesc 		string          `json:"menudesc"`
 	GrpCode 		string          `json:"grpcode"`
 	GrpName 		string          `json:"grpname"`
+	AccessInd 	string          `json:"accessind"`
 	CreateBy 		string          `json:"createby"`
 	CreateDt 		string          `json:"createdt"`
 	LastupBy 		string 		 `json:"lastupby"`
@@ -42,6 +43,7 @@ type GroupMenu struct {
 type ActionGroupMenu struct {
 	MenuCode 		string          `json:"menucode"`
 	GrpCode 		string          `json:"grpcode"`
+	AccessInd 	string          `json:"accessind"`
 	CreateBy 		string          `json:"createby"`
 	CreateDt 		string          `json:"createdt"`
 	LastupBy 		nullable.String `json:"lastupby"`
@@ -108,7 +110,7 @@ func GetGroupsMenu() GroupMenus {
 	for rows1.Next() {
 		groupmenu := GroupMenu{}
 
-		eror := rows1.Scan(&groupmenu.MenuCode, &groupmenu.MenuDesc,&groupmenu.GrpCode, &groupmenu.GrpName, &groupmenu.CreateBy, &groupmenu.CreateDt, &groupmenu.LastupBy, &groupmenu.LastupDt)
+		eror := rows1.Scan(&groupmenu.MenuCode, &groupmenu.MenuDesc,&groupmenu.GrpCode, &groupmenu.GrpName, &groupmenu.AccessInd, &groupmenu.CreateBy, &groupmenu.CreateDt, &groupmenu.LastupBy, &groupmenu.LastupDt)
 		if eror != nil {
 			fmt.Println(eror)
 		}
@@ -131,7 +133,7 @@ func GetGroupsMenuById(c *CustomContext) GroupMenus {
 	for rows1.Next() {
 		groupmenu := GroupMenu{}
 
-		eror := rows1.Scan(&groupmenu.MenuCode, &groupmenu.MenuDesc,&groupmenu.GrpCode, &groupmenu.GrpName, &groupmenu.CreateBy, &groupmenu.CreateDt, &groupmenu.LastupBy, &groupmenu.LastupDt)
+		eror := rows1.Scan(&groupmenu.MenuCode, &groupmenu.MenuDesc,&groupmenu.GrpCode, &groupmenu.GrpName, &groupmenu.AccessInd, &groupmenu.CreateBy, &groupmenu.CreateDt, &groupmenu.LastupBy, &groupmenu.LastupDt)
 		if eror != nil {
 			fmt.Println(eror)
 		}

@@ -15,10 +15,10 @@ class GroupMenu extends CI_Controller {
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
 			redirect("login");
 		}
-		$url = "http://127.0.0.1:8080/runsystemdms/getPG";
+		$url = "http://127.0.0.1:8080/runsystemdms/getGroupMenu";
 		$response = $this->api->get($url);
 		$data = json_decode($response, true);
-		$data['dt'] = $data['pg'];
+		$data['dt'] = $data['groupmenu'];
 		$this->load->view('partials2/main/page2/page_groupmenu',$data);
 	}
 	public function add_groupmenu()
