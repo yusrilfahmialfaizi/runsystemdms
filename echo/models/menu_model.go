@@ -21,14 +21,15 @@ type ModulMenu struct {
 	Status nullable.String   `json:"status"`
 }
 type ActionModulMenu struct {
-	MenuCode 	string	`json:"menucode"`
-	ModulCode	string	`json:"modulcode"`
-	MenuDesc 	string	`json:"menudesc"`
-	Parent   	string	`json:"parent"`
-	CreateBy 	string	`json:"createby"`
-	CreateDt 	string	`json:"createdt"`
-	LastupBy 	string	`json:"lastupby"`
-	LastupDt 	string	`json:"lastupdt"`
+	MenuCode 		string	`json:"menucode"`
+	ModulCode		string	`json:"modulcode"`
+	MenuDesc 		string	`json:"menudesc"`
+	Parent   		string	`json:"parent"`
+	CreateBy 		string	`json:"createby"`
+	CreateDt 		string	`json:"createdt"`
+	LastupBy 		string	`json:"lastupby"`
+	LastupDt 		string	`json:"lastupdt"`
+	MenuCode_old 	string	`json:"menucode_old"`
 }
 
 
@@ -57,11 +58,37 @@ func GetMenu() Menu {
 	}
 	return result
 }
+// get menu by menucode
+func GetMenuWithId(c *CustomContext) Menu {
+	menucode := c.Param("menucode")
+	con := config.Connection()
+	queryStatement := "SELECT A.MenuCode, A.ModulCode, A.MenuDesc, A.Parent, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblmodulmenu A WHERE A.MenuCode = ?"
+	
+	rows, err := con.Query(queryStatement, menucode)
+	fmt.Println(err)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer rows.Close()
+	result := Menu{}
+
+	for rows.Next() {
+		modulmenu := ModulMenu{}
+
+		eror := rows.Scan(&modulmenu.MenuCode, &modulmenu.ModulCode, &modulmenu.MenuDesc, &modulmenu.Parent, &modulmenu.CreateBy, &modulmenu.CreateDt, &modulmenu.LastupBy, &modulmenu.LastupDt)
+		if eror != nil {
+			fmt.Println(eror)
+		}
+		fmt.Println(modulmenu.MenuCode, modulmenu.Parent)
+		result.Menu = append(result.Menu, modulmenu)
+	}
+	return result
+}
 // for Insert User
 func PostMenu(con *sql.DB, MenuCode string, ModulCode string, MenuDesc string, Parent string, CreateBy string, CreateDt string)(int64, error){
 	con = config.Connection()
 
-	query := "INSERT INTO tblModulMenu (MenuCode, ModulCode, MenuDesc, Parent,  CreateBy, CreateDt) VALUES (?,?,?,?,?,?,?)"
+	query := "INSERT INTO tblModulMenu (MenuCode, ModulCode, MenuDesc, Parent,  CreateBy, CreateDt) VALUES (?,?,?,?,?,?)"
 
 	stmt, err := con.Prepare(query)
 
@@ -80,7 +107,7 @@ func PostMenu(con *sql.DB, MenuCode string, ModulCode string, MenuDesc string, P
 	return result.RowsAffected()
 }
 // Update data Menus
-func UpdateMenu(con *sql.DB, MenuCode string, ModulCode string, MenuDesc string, Parent string, LastupBy string, LastupDt string)(int64, error){
+func UpdateMenu(con *sql.DB, MenuCode string, ModulCode string, MenuDesc string, Parent string, LastupBy string, LastupDt string, MenuCode_old string)(int64, error){
 	con = config.Connection()
 
 	query := "UPDATE tblModulMenu set MenuCode = ?, ModulCode = ?, MenuDesc = ?, Parent = ?, LastUpBy = ?, LastUpDt = ? WHERE MenuCode = ?"
@@ -91,7 +118,7 @@ func UpdateMenu(con *sql.DB, MenuCode string, ModulCode string, MenuDesc string,
 		panic(err)
 	}
 
-	result, eror := stmt.Exec(MenuCode, ModulCode, MenuDesc, Parent, LastupBy, LastupDt, MenuCode)
+	result, eror := stmt.Exec(MenuCode, ModulCode, MenuDesc, Parent, LastupBy, LastupDt, MenuCode_old)
 
 	if eror != nil{
 		panic(eror)

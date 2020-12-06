@@ -14,6 +14,13 @@ func GetMenu(c echo.Context) error {
 	fmt.Println("Getting data ...")
 	return c.JSON(http.StatusOK, result)
 }
+// get menu by menucode
+func GetMenuWithId(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.GetMenuWithId(cc)
+	fmt.Println("Getting data ...")
+	return c.JSON(http.StatusOK, result)
+}
 // POST method to INSERT Project
 func PostMenu(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error  {
@@ -36,7 +43,7 @@ func UpdateMenu(con *sql.DB) echo.HandlerFunc {
 		var menu models.ActionModulMenu
 
 		c.Bind(&menu)
-		result, err := models.UpdateMenu(con, menu.MenuCode, menu.ModulCode, menu.MenuDesc, menu.Parent, menu.LastupBy, menu.LastupDt)
+		result, err := models.UpdateMenu(con, menu.MenuCode, menu.ModulCode, menu.MenuDesc, menu.Parent, menu.LastupBy, menu.LastupDt, menu.MenuCode_old)
 		if err != nil{
 			return err
 		}else{

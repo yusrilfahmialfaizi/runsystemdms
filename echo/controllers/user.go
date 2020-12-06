@@ -17,9 +17,17 @@ type Response struct {
 	Message string `json:"message"`
 }
 
+// function untuk get user
 func GetUser(c echo.Context) error {
 	result := models.GetUser()
 	fmt.Println("Getting data ...")
+	return c.JSON(http.StatusOK, result)
+}
+
+// function untuk get user
+func GetUserById(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.GetUserById(cc)
 	return c.JSON(http.StatusOK, result)
 }
 
@@ -45,7 +53,7 @@ func UpdateUsers(con *sql.DB) echo.HandlerFunc {
 		var user models.ActionUser
 
 		c.Bind(&user)
-		result, err := models.UpdateUsers(con, user.UserCode, user.Username, user.GrpCode, user.Pwd, user.ExpDt, user.NotifyInd, user.HasQiscusAccount, user.AvatarImage, user.DeviceId, user.LastupBy, user.LastupDt)
+		result, err := models.UpdateUsers(con, user.UserCode, user.Username, user.GrpCode, user.Pwd, user.ExpDt, user.NotifyInd, user.HasQiscusAccount, user.AvatarImage, user.DeviceId, user.LastupBy, user.LastupDt, user.UserCode_old)
 		if err != nil{
 			return err
 		}else{
@@ -62,7 +70,7 @@ func Login(c echo.Context) (err error) {
 	result 	:= models.GetUser()
 	response 	:= Response{}
 	for i := 0; i < len(result.Users); i++ {
-		fmt.Println(result.Users[i].UserCode)
+		fmt.Println(result.Users[i].GrpCode)
 		if usr == result.Users[i].UserCode || usr2 == result.Users[i].UserCode {
 			if pwd == result.Users[i].Pwd {
 				// membuat token

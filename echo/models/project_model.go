@@ -58,11 +58,36 @@ func GetProjectGroup() PGs {
 	}
 	return result
 }
+func GetProjectById(c *CustomContext) PGs {
+	projectcode := c.Param("projectcode")
+	con := config.Connection()
+	queryStatement := "Select projectCode, projectname, actind, ctcode, createby, createdt,lastupby, lastupdt From tblproject Where projectcode = ?"
+	
+	rows, err := con.Query(queryStatement, projectcode)
+	fmt.Println("ROWS : ", rows)
+	fmt.Println(err)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer rows.Close()
+	result := PGs{}
+
+	for rows.Next() {
+		pg := PG{}
+
+		er := rows.Scan(&pg.ProjectCode, &pg.ProjectName, &pg.ActInd, &pg.CtCode, &pg.CreateBy, &pg.CreateDt, &pg.LastupBy, &pg.LastupDt)
+		if er != nil {
+			fmt.Println("ER : ", er)
+		}
+		result.PGs = append(result.PGs, pg)
+	}
+	return result
+}
 // for Insert User
 func PostProject(con *sql.DB, ProjectCode string, Projectname string, ActInd string, CtCode string, CreateBy string, CreateDt string)(int64, error){
 	con = config.Connection()
 
-	query := "INSERT INTO tblproject (ProjectCode, ProjectName, ActInd, CtCode,  CreateBy, CreateDt) VALUES (?,?,?,?,?,?,?)"
+	query := "INSERT INTO tblproject (ProjectCode, ProjectName, ActInd, CtCode,  CreateBy, CreateDt) VALUES (?,?,?,?,?,?)"
 
 	stmt, err := con.Prepare(query)
 

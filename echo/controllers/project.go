@@ -15,6 +15,12 @@ func GetProjectGroup(c echo.Context) error {
 	fmt.Println(result)
 	return c.JSON(http.StatusOK, result)
 }
+// Get project by id
+func GetProjectById(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.GetProjectById(cc)
+	return c.JSON(http.StatusOK, result)
+}
 // POST method to INSERT Project
 func PostProject(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error  {

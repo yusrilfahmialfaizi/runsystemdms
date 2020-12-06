@@ -30,16 +30,22 @@
                   <span>Module</span>
                 </a>
               </li>
-              <li id="group"  >
-                <a class="bar-icons" href="javascript:void(0)">
-                  <i class="pe-7s-home"></i>
-                  <span>Group</span>
-                </a>
-              </li>
               <li id="menu"  >
                 <a class="bar-icons" href="<?php echo base_url("admin/menu") ?>">
                   <i class="pe-7s-home"></i>
                   <span>Menu</span>
+                </a>
+              </li>
+              <li id="group"  >
+                <a class="bar-icons" href="<?php echo base_url("admin/group") ?>">
+                  <i class="pe-7s-home"></i>
+                  <span>Group</span>
+                </a>
+              </li>
+              <li id="groupmenu"  >
+                <a class="bar-icons" href="<?php echo base_url("admin/groupmenu") ?>">
+                  <i class="pe-7s-home"></i>
+                  <span>Group Menu</span>
                 </a>
               </li>
             </ul>

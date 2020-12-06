@@ -35,14 +35,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- js -->
-                  <?php //if ($get != null) { ?>
                     <?php foreach ($dt as $key) {
                       if ($key != null) {
-                        // # code...
-                        // for ($i = 0; $i < count($key); $i++) {
-                        //   $createdt = strtotime($key[$i]["createdt"]);
-                        //   $lastupdt = strtotime($key[$i]["lastupdt"]);
                     ?>
 
                           <tr>
@@ -58,8 +52,6 @@
                             </td>
                           </tr>
                   <?php }
-                      // }
-                    // }
                   } ?>
                 </tbody>
               </table>

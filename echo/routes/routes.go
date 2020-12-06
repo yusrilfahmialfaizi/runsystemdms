@@ -35,14 +35,17 @@ func Routes() *echo.Echo {
 	e.POST("/runsystemdms/login", controllers.Login)
 
 	e.GET("/runsystemdms/getUsers", controllers.GetUser)
+	e.GET("/runsystemdms/getUsersById/:usercode", controllers.GetUserById)
 	e.POST("/runsystemdms/postUsers", controllers.PostUser(con))
 	e.PUT("/runsystemdms/updateUsers", controllers.UpdateUsers(con))
 	
 	e.GET("/runsystemdms/getPG", controllers.GetProjectGroup)
+	e.GET("/runsystemdms/getProjectById/:projectcode", controllers.GetProjectById)
 	e.POST("/runsystemdms/postProject", controllers.PostProject(con))
 	e.PUT("/runsystemdms/updateProject", controllers.UpdateProject(con))
 	
 	e.GET("/runsystemdms/getMenu", controllers.GetMenu)
+	e.GET("/runsystemdms/getMenuWithId/:menucode", controllers.GetMenuWithId)
 	e.POST("/runsystemdms/postMenu", controllers.PostMenu(con))
 	e.PUT("/runsystemdms/updateMenu", controllers.UpdateMenu(con))
 	
@@ -50,8 +53,15 @@ func Routes() *echo.Echo {
 	e.POST("/runsystemdms/postModuls", controllers.PostModul(con))
 	e.PUT("/runsystemdms/updateModuls", controllers.UpdateModuls(con))
 	e.GET("/runsystemdms/getModulsWithId/:projectcode", controllers.GetModulsWithId)
-	e.GET("/runsystemdms/getModulsByID/:modulcode", controllers.GetModulsById)
+	e.GET("/runsystemdms/getMenusByID/:modulcode", controllers.GetMenusById)
+	e.GET("/runsystemdms/getModulByID/:modulcode", controllers.GetModulsById)
 	
+	e.GET("/runsystemdms/getGroup", controllers.GetGroup)
+	e.GET("/runsystemdms/getGroupById/:grpcode", controllers.GetGroupById)
+
+	e.GET("/runsystemdms/getGroupMenu", controllers.GetGroupMenu)
+	e.GET("/runsystemdms/getGroupMenuById", controllers.GetGroupMenuById)
+
 	//routes document
 	e.GET("/runsystemdms/getGenerateCode/:modulcode", controllers.GenerateCode)
 	e.POST("/runsystemdms/getDocsDtl", controllers.GetDocumentDtl)

@@ -37,7 +37,7 @@ func UpdateModuls(con *sql.DB) echo.HandlerFunc {
 		var modul models.ActionModul
 
 		c.Bind(&modul)
-		result, err := models.UpdateModul(con, modul.ModulCode, modul.ModulName, modul.ProjectCode,modul.LastupBy, modul.LastupDt)
+		result, err := models.UpdateModul(con, modul.ModulCode, modul.ModulName, modul.ProjectCode,modul.LastupBy, modul.LastupDt, modul.ModulCode_old)
 		if err != nil{
 			return err
 		}else{
@@ -51,7 +51,13 @@ func GetModulsWithId(c echo.Context) error {
 	fmt.Println("Getting menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
-// function untuk get moduls berdasarkan modulcode
+// function untuk get menu berdasarkan modulcode
+func GetMenusById(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.GetMenusById(cc)
+	return c.JSON(http.StatusOK, result)
+}
+// get modul by id
 func GetModulsById(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetModulsById(cc)

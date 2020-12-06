@@ -39,6 +39,7 @@ type ActionUser struct {
 	CreateDt         string          	`json:"createdt"`
 	LastupBy         string 			`json:"lastupby"`
 	LastupDt         string 			`json:"lastupdt"`
+	UserCode_old     string          	`json:"usercode_old"`
 }
 
 type Users struct {
@@ -62,6 +63,38 @@ func GetUser() Users {
 	queryStatement := "Select usercode, username, grpcode, pwd, expdt, notifyind, hasqiscusaccount, avatarimage, deviceid, createby, createdt,lastupby, lastupdt From tbluser"
 
 	rows, err := con.Query(queryStatement)
+	fmt.Println(err)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer rows.Close()
+	result := Users{}
+
+	for rows.Next() {
+		user := User{}
+
+		er := rows.Scan(&user.UserCode, &user.Username, &user.GrpCode,
+			&user.Pwd, &user.ExpDt, &user.NotifyInd, &user.HasQiscusAccount, &user.AvatarImage, &user.DeviceId,
+			&user.CreateBy, &user.CreateDt, &user.LastupBy, &user.LastupDt)
+		if er != nil {
+			fmt.Println("ER : ", er)
+		}
+		userJSON, err := json.Marshal(&user)
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			log.Printf("json marshal := %s\n\n", userJSON)
+		}
+		result.Users = append(result.Users, user)
+	}
+	return result
+}
+func GetUserById(c *CustomContext) Users {
+	usercode := c.Param("usercode");
+	con := config.Connection()
+	queryStatement := "Select usercode, username, grpcode, pwd, expdt, notifyind, hasqiscusaccount, avatarimage, deviceid, createby, createdt,lastupby, lastupdt From tbluser WHERE usercode = ?"
+
+	rows, err := con.Query(queryStatement, usercode)
 	fmt.Println(err)
 	if err != nil {
 		fmt.Println(err)
@@ -112,7 +145,7 @@ func PostUser(con *sql.DB, UserCode string, Username string,GrpCode string, Pwd 
 	return result.RowsAffected()
 }
 // Update data users
-func UpdateUsers(con *sql.DB, UserCode string, Username string,GrpCode string, Pwd string, ExpDt string, NotifyInd string, HasQiscusAccount string, AvatarImage string, DeviceId string, LastupBy string, LastupDt string)(int64, error){
+func UpdateUsers(con *sql.DB, UserCode string, Username string,GrpCode string, Pwd string, ExpDt string, NotifyInd string, HasQiscusAccount string, AvatarImage string, DeviceId string, LastupBy string, LastupDt string, UserCode_old string)(int64, error){
 	con = config.Connection()
 
 	query := "UPDATE tbluser set UserCode = ?, UserName = ?, GrpCode = ?, Pwd = ?, ExpDt = ?, NotifyInd = ?, HasQiscusAccount = ?, AvatarImage = ?, deviceid = ?, LastUpBy = ?, LastUpDt = ? WHERE UserCode = ?"
@@ -123,7 +156,7 @@ func UpdateUsers(con *sql.DB, UserCode string, Username string,GrpCode string, P
 		panic(err)
 	}
 
-	result, eror := stmt.Exec(UserCode, Username, GrpCode, Pwd, ExpDt, NotifyInd, HasQiscusAccount, AvatarImage, DeviceId, LastupBy, LastupDt, UserCode)
+	result, eror := stmt.Exec(UserCode, Username, GrpCode, Pwd, ExpDt, NotifyInd, HasQiscusAccount, AvatarImage, DeviceId, LastupBy, LastupDt, UserCode_old)
 
 	if eror != nil{
 		panic(eror)
