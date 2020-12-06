@@ -32,7 +32,7 @@ func GetGroupMenuById(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
-//function controller untuk create data document
+//function controller untuk create
 func PostGroup(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
 
@@ -41,6 +41,24 @@ func PostGroup(con *sql.DB) echo.HandlerFunc {
 		c.Bind(&actiongroup)
 
 		result, err := models.PostGroups(con, actiongroup.GrpCode, actiongroup.GrpName, actiongroup.CreateBy, actiongroup.CreateDt, actiongroup.LastupBy, actiongroup.LastupDt)
+
+		if err == nil {
+			return c.JSON(http.StatusCreated, result)
+		} else {
+			return err
+		}
+
+	}
+}
+
+func PostGroupMenu(con *sql.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+
+		var actiongroupmenu models.ActionGroupMenu
+
+		c.Bind(&actiongroupmenu)
+
+		result, err := models.PostGroupMenus(con, actiongroupmenu.MenuCode, actiongroupmenu.GrpCode, actiongroupmenu.AccessInd, actiongroupmenu.CreateBy, actiongroupmenu.CreateDt, actiongroupmenu.LastupBy, actiongroupmenu.LastupDt)
 
 		if err == nil {
 			return c.JSON(http.StatusCreated, result)
@@ -62,6 +80,22 @@ func UpdateGroup(con *sql.DB) echo.HandlerFunc {
 
 		if err == nil {
 			return c.JSON(http.StatusOK, updategroup)
+		} else {
+			return err
+		}
+	}
+}
+
+func UpdateGroupMenu(con *sql.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+
+		var updategroupmenu models.ActionGroupMenu
+		c.Bind(&updategroupmenu)
+
+		_, err := models.UpdateGroupMenus(con, updategroupmenu.MenuCode, updategroupmenu.GrpCode, updategroupmenu.AccessInd, updategroupmenu.CreateBy, updategroupmenu.CreateDt, updategroupmenu.LastupBy, updategroupmenu.LastupDt)
+
+		if err == nil {
+			return c.JSON(http.StatusOK, updategroupmenu)
 		} else {
 			return err
 		}

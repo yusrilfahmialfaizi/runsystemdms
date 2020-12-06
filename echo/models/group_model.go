@@ -42,13 +42,13 @@ type GroupMenu struct {
 	LastupDt  string `json:"lastupdt"`
 }
 type ActionGroupMenu struct {
-	MenuCode  string          `json:"menucode"`
-	GrpCode   string          `json:"grpcode"`
-	AccessInd string          `json:"accessind"`
-	CreateBy  string          `json:"createby"`
-	CreateDt  string          `json:"createdt"`
-	LastupBy  nullable.String `json:"lastupby"`
-	LastupDt  nullable.String `json:"lastupdt"`
+	MenuCode  string `json:"menucode"`
+	GrpCode   string `json:"grpcode"`
+	AccessInd string `json:"accessind"`
+	CreateBy  string `json:"createby"`
+	CreateDt  string `json:"createdt"`
+	LastupBy  string `json:"lastupby"`
+	LastupDt  string `json:"lastupdt"`
 }
 
 type GroupMenus struct {
@@ -164,7 +164,27 @@ func PostGroups(con *sql.DB, GrpCode string, GrpName string, CreateBy string, Cr
 	return result.RowsAffected()
 }
 
-// function untuk edit doc header
+func PostGroupMenus(con *sql.DB, MenuCode string, GrpCode string, AccessInd string, CreateBy string, CreateDt string, LastupBy string, LastupDt string) (int64, error) {
+	con = config.Connection()
+
+	query := "INSERT INTO tblgroup (MenuCode, GrpCode, AccessInd, CreateBy, CreateDt, LastUpBy, LastUpDt) values (?,?,?,?,?,?)"
+	stmt1, err1 := con.Prepare(query)
+
+	if err1 != nil {
+		panic(err1)
+	}
+	defer stmt1.Close()
+
+	result, er1 := stmt1.Exec(MenuCode, GrpCode, AccessInd, CreateBy, CreateDt, LastupBy, LastupDt)
+
+	if er1 != nil {
+		panic(er1)
+	}
+
+	return result.RowsAffected()
+}
+
+// function untuk update
 func UpdateGroups(con *sql.DB, GrpCode string, GrpName string, CreateBy string, CreateDt string, LastupBy string, LastupDt string) (int64, error) {
 	con = config.Connection()
 	query := "UPDATE tblgroup set GrpCode = ?, GrpName = ?, CreateBy = ?, CreateDt = ?, LastUpBy = ?, LastUpDt = ?"
@@ -176,6 +196,25 @@ func UpdateGroups(con *sql.DB, GrpCode string, GrpName string, CreateBy string, 
 	}
 
 	result, err2 := stmt.Exec(GrpCode, GrpName, CreateBy, CreateDt, LastupBy, LastupDt)
+
+	if err2 != nil {
+		fmt.Println(err2)
+	}
+
+	return result.RowsAffected()
+}
+
+func UpdateGroupMenus(con *sql.DB, MenuCode string, GrpCode string, AccessInd string, CreateBy string, CreateDt string, LastupBy string, LastupDt string) (int64, error) {
+	con = config.Connection()
+	query := "UPDATE tblgroup set MenuCode = ?, GrpCode = ?, AccessInd = ?, CreateBy = ?, CreateDt = ?, LastUpBy = ?, LastUpDt = ?"
+
+	stmt, err := con.Prepare(query)
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	result, err2 := stmt.Exec(MenuCode, GrpCode, AccessInd, CreateBy, CreateDt, LastupBy, LastupDt)
 
 	if err2 != nil {
 		fmt.Println(err2)
