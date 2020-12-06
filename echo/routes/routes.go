@@ -60,7 +60,7 @@ func Routes() *echo.Echo {
 	e.GET("/runsystemdms/getGroupById/:grpcode", controllers.GetGroupById)
 
 	e.GET("/runsystemdms/getGroupMenu", controllers.GetGroupMenu)
-	e.GET("/runsystemdms/getGroupMenuById", controllers.GetGroupMenuById)
+	e.POST("/runsystemdms/getGroupMenuById", controllers.GetGroupMenuById)
 
 	//routes document
 	e.GET("/runsystemdms/getGenerateCode/:modulcode", controllers.GenerateCode)
