@@ -38,7 +38,7 @@
           }
 
           function getModulMenuByID($modulcode){
-               $url = "http://127.0.0.1:8080/runsystemdms/getModulsByID/".$modulcode;
+               $url = "http://127.0.0.1:8080/runsystemdms/getMenusByID/".$modulcode;
                // inisiasi curl
                $ch = curl_init();
                // akan mengembalikan nilai respon, jika salah maka respon akan di cetak

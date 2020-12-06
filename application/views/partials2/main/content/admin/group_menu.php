@@ -30,6 +30,7 @@
                     <th>Menu Description</th>
                     <th>Group Name</th>
                     <th>Access Indicator</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -42,10 +43,10 @@
                             <td><?php echo $key['grpname'] ?></td>
                             <td><?php echo $key['accessind'] ?></td>
                             <td>
-                              <!-- <a href="<?php echo base_url("admin/groupmenu/edit_grp?grpcode=").$key["grpcode"]; ?>">
+                              <a href="<?php echo base_url("admin/groupmenu/edit_grpmenu?menucode=".$key['menucode']."&grpcode=".$key["grpcode"]); ?>">
                                 <button data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3"  data-id="<?php echo $key["grpcode"]; ?>">Edit</button>
                               </a>
-                              <button data-toggle="tooltip" title="Delete" width="20" type="button" data-id="<?php echo $key["projectcode"]; ?>"data-feather="x">Delete</button> -->
+                              <button data-toggle="tooltip" title="Delete" width="20" type="button" data-id="<?php echo $key["grpcode"]; ?>"data-feather="x">Delete</button>
                             </td>
                           </tr>
                   <?php }

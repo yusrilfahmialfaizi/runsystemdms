@@ -37,8 +37,8 @@ type GroupMenu struct {
 	AccessInd 	string          `json:"accessind"`
 	CreateBy 		string          `json:"createby"`
 	CreateDt 		string          `json:"createdt"`
-	LastupBy 		string 		 `json:"lastupby"`
-	LastupDt 		string 		 `json:"lastupdt"`
+	LastupBy 		nullable.String `json:"lastupby"`
+	LastupDt 		nullable.String `json:"lastupdt"`
 }
 type ActionGroupMenu struct {
 	MenuCode 		string          `json:"menucode"`
@@ -122,7 +122,7 @@ func GetGroupsMenuById(c *CustomContext) GroupMenus {
 	menucode 	:= c.FormValue("menucode")
 	grpcode 	:= c.FormValue("grpcode")
 	connection = config.Connection()
-	query1 := "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.AccessInd, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode WHERE MenuCode = ? && GrpCode = ?"
+	query1 := "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.AccessInd, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode WHERE A.MenuCode = ? && A.GrpCode = ?"
 	rows1, err1 := connection.Query(query1, menucode, grpcode)
 	if err1 != nil {
 		fmt.Println(err1)

@@ -39,7 +39,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label class="col-form-label pt-0" for="modulcode">Modul Code</label>
+                                        <label class="col-form-label pt-0" for="modulcode">Modul Name</label>
                                         <select class="custom-select" id="modulcode" name="modulcode" required="">
                                             <option value="">--Pilih--</option>
                                             <?php print_r($dt); 

@@ -4,7 +4,7 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-lg-6 main-header">
-                    <h2>Add<span>Modul Menu</span></h2>
+                    <h2>Edit<span>Modul Menu</span></h2>
                     <h6 class="mb-0">admin dms</h6>
                 </div>
                 <div class="col-lg-6 breadcrumb-right">
@@ -41,7 +41,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label class="col-form-label pt-0" for="modulcode">Modul Code</label>
+                                        <label class="col-form-label pt-0" for="modulcode">Modul Name</label>
                                         <select class="custom-select" id="modulcode" name="modulcode" required="">
                                             <option value="">--Pilih--</option>
                                             <?php foreach ($dt as $key){ ?>
