@@ -30,9 +30,11 @@
 									<div class="col-md-4 offset-md-10">
 										<label class="d-block" for="chk-ani">
 											<?php if ($value[0]['status'] == "O" || $value[0]['status'] == null) { ?>
-												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox">Review
+												<label><b><p>
+												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox">Review</p></b></label>
 											<?php } else { ?>
-												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" checked="checked">Review
+												<label><b><p>
+												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" checked="checked">Review</b></label>
 											<?php } ?>
 										</label>
 									</div>
@@ -48,9 +50,11 @@
 									<div class="col-md-4 offset-md-10">
 										<label class="d-block" for="chk-ani">
 											<?php if ($value[0]['status'] == "O" || $value[0]['status'] == null) { ?>
-												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" disabled>Review
+												<label><b><p>
+												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" disabled>Review</b></label>
 											<?php } else { ?>
-												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" checked="checked" disabled>Review
+												<label><b><p>
+												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" checked="checked" disabled>Review</b></label>
 											<?php } ?>
 										</label>
 									</div>
