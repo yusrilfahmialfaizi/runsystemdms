@@ -1,60 +1,92 @@
-        <!-- Page Sidebar Start-->
-        <?php 
-          $uri3 = $this->uri->segment("3");
-          if ($uri3 == null) {
-        ?>
-        <div id="side" class="iconsidebar-menu iconbar-mainmenu-close">
-          <div class="sidebar">
-            <ul class="iconMenu-bar custom-scrollbar">
-              <li id="home" >
-                <a class="bar-icons" href="<?php echo base_url("admin/home") ?>">
-                  <i class="pe-7s-home"></i>
-                  <span>Home</span>
-                </a>
-              </li>
-              <li id="user" >
-                <a class="bar-icons" href="<?php echo base_url("admin/user") ?>">
-                  <i class="pe-7s-add-user"></i>
-                  <span>User</span>
-                </a>
-              </li>
-              <li id="project"  >
-                <a class="bar-icons" href="<?php echo base_url("admin/project") ?>">
-                  <i class="pe-7s-note2"></i>
-                  <span>Project</span>
-                </a>
-              </li>
-              <li id="module"  >
-                <a class="bar-icons" href="<?php echo base_url("admin/module") ?>">
-                  <i class="pe-7s-box1"></i>
-                  <span>Module</span>
-                </a>
-              </li>
-              <li id="menu"  >
-                <a class="bar-icons" href="<?php echo base_url("admin/menu") ?>">
-                  <i class="pe-7s-menu"></i>
-                  <span>Menu</span>
-                </a>
-              </li>
-              <li id="group"  >
-                <a class="bar-icons" href="<?php echo base_url("admin/group") ?>">
-                  <i class="pe-7s-diskette"></i>
-                  <span>Group</span>
-                </a>
-              </li>
-              <li id="groupmenu"  >
-                <a class="bar-icons" href="<?php echo base_url("admin/groupmenu") ?>">
-                  <i class="pe-7s-display2"></i>
-                  <span>Group Menu</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <?php }else {?>
-        <div id="side" class="iconsidebar-menu iconbar-second-close">
-          <div class="sidebar">
-          </div>
-        </div>
-        <?php } ?>
-        <!-- Page Sidebar Ends -->
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-icon rotate-n-15">
+      <i class="fas fa-laugh-wink"></i>
+    </div>
+    <div class="sidebar-brand-text mx-3">DMS</div>
+  </a>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+    <a class="nav-link" href="index.html">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Home</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Daftar Menu
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+      aria-expanded="true" aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-user"></i>
+      <span>User</span>
+    </a>
+  </li>
+
+  <!-- Nav Item - Utilities Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+    aria-expanded="true" aria-controls="collapseUtilities">
+    <i class="fas fa-fw fa-briefcase"></i>
+    <span>Project</span>
+  </a>
+</li>
+
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+  aria-expanded="true" aria-controls="collapseUtilities">
+  <i class="fas fa-fw fa-folder"></i>
+  <span>Module</span>
+</a>
+</li>
+
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+  aria-expanded="true" aria-controls="collapseUtilities">
+  <i class="fas fa-fw fa-folder-open"></i>
+  <span>Menu</span>
+</a>
+</li>
+
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+  aria-expanded="true" aria-controls="collapseUtilities">
+  <i class="fas fa-fw fa-users"></i>
+  <span>Group</span>
+</a>
+</li>
+
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+  aria-expanded="true" aria-controls="collapseUtilities">
+  <i class="fas fa-fw fa-copy"></i>
+  <span>Group Menu</span>
+</a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Sidebar Toggler (Sidebar) -->
+<div class="text-center d-none d-md-inline">
+  <button class="rounded-circle border-0" id="sidebarToggle"></button>
+</div>
+</ul>
+  <!-- End of Sidebar -->
