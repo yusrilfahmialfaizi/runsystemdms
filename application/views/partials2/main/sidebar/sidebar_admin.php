@@ -14,7 +14,7 @@
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="<?php echo base_url("admin/home") ?>">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Home</span></a>
     </li>
@@ -29,8 +29,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-      aria-expanded="true" aria-controls="collapseTwo">
+      <a class="nav-link collapsed" href="<?php echo base_url("admin/user2")?>"  aria-expanded="true" aria-controls="collapseTwo">
       <i class="fas fa-fw fa-user"></i>
       <span>User</span>
     </a>
@@ -38,8 +37,7 @@
 
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-    aria-expanded="true" aria-controls="collapseUtilities">
+    <a class="nav-link collapsed" href="<?php echo base_url("admin/project2")?>" aria-expanded="true" aria-controls="collapseUtilities">
     <i class="fas fa-fw fa-briefcase"></i>
     <span>Project</span>
   </a>
@@ -47,8 +45,7 @@
 
 <!-- Nav Item - Utilities Collapse Menu -->
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-  aria-expanded="true" aria-controls="collapseUtilities">
+  <a class="nav-link collapsed" href="<?php echo base_url("admin/module2")?>" aria-expanded="true" aria-controls="collapseUtilities">
   <i class="fas fa-fw fa-folder"></i>
   <span>Module</span>
 </a>
@@ -56,8 +53,7 @@
 
 <!-- Nav Item - Utilities Collapse Menu -->
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-  aria-expanded="true" aria-controls="collapseUtilities">
+  <a class="nav-link collapsed" href="<?php echo base_url("admin/menu2")?>" aria-expanded="true" aria-controls="collapseUtilities">
   <i class="fas fa-fw fa-folder-open"></i>
   <span>Menu</span>
 </a>
@@ -65,8 +61,7 @@
 
 <!-- Nav Item - Utilities Collapse Menu -->
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-  aria-expanded="true" aria-controls="collapseUtilities">
+  <a class="nav-link collapsed" href="<?php echo base_url("admin/group2")?>"  aria-expanded="true" aria-controls="collapseUtilities">
   <i class="fas fa-fw fa-users"></i>
   <span>Group</span>
 </a>
@@ -74,8 +69,7 @@
 
 <!-- Nav Item - Utilities Collapse Menu -->
 <li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-  aria-expanded="true" aria-controls="collapseUtilities">
+  <a class="nav-link collapsed" href="<?php echo base_url("admin/groupmenu2")?>" aria-expanded="true" aria-controls="collapseUtilities">
   <i class="fas fa-fw fa-copy"></i>
   <span>Group Menu</span>
 </a>
