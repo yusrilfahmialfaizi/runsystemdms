@@ -19,7 +19,11 @@ class Project extends CI_Controller {
 		$response = $this->api->get($url);
 		$data = json_decode($response, true);
 		$data['dt'] = $data['pg'];
-		$this->load->view('partials2/main/page2/page_project',$data);
+		if ($data != null) {
+			$this->load->view('partials2/main/page2/page_project2',$data);
+		}else{
+			$this->load->view('partials2/main/page2/page_notfound');
+		}
 	}
 	public function add_project()
 	{
@@ -30,15 +34,19 @@ class Project extends CI_Controller {
 	}
 	public function edit_project()
 	{
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+			redirect("login");
+		}
 		$projectcode = $this->input->get("projectcode");
 		$url = "http://127.0.0.1:8080/runsystemdms/getProjectById/".$projectcode;
 		$response = $this->api->get($url);
 		$response = json_decode($response, true);
 		$data['dt'] = $response["pg"];
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
-			redirect("login");
+		if ($data != null) {
+			$this->load->view('partials2/main/page2/page_edit_project', $data);
+		}else{
+			$this->load->view('partials2/main/page2/page_notfound');
 		}
-		$this->load->view('partials2/main/page2/page_edit_project', $data);
 	}
 
 	function add(){
@@ -57,7 +65,7 @@ class Project extends CI_Controller {
 			"CreateDt" 	=> $now,
 		);
 		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postProject", $data);
-		redirect(base_url('admin/project'));
+		redirect(base_url('admin/project2'));
 	}
 	function edit(){
 		$projectcode 		= $this->input->post('projectcode');
@@ -76,8 +84,7 @@ class Project extends CI_Controller {
 		);
 		print_r($data);
 		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateProject", $data);
-		redirect(base_url('admin/project'));
+		redirect(base_url('admin/project2'));
 	}
-
 }
 ?>

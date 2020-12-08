@@ -19,7 +19,11 @@ class Group extends CI_Controller {
 		$response = $this->api->get($url);
 		$data = json_decode($response, true);
 		$data['dt'] = $data['group'];
-		$this->load->view('partials2/main/page2/page_group',$data);
+		if ($data != null ) {
+			$this->load->view('partials2/main/page2/page_group2',$data);
+		}else{
+			$this->load->view('partials2/main/page2/page_notfound');
+		}
 	}
 	public function add_group()
 	{
@@ -38,7 +42,11 @@ class Group extends CI_Controller {
 		$response = $this->api->get($url);
 		$response = json_decode($response, true);
 		$data['dt'] = $response["group"];
-		$this->load->view('partials2/main/page2/page_edit_group', $data);
+		if ($response != null) {
+			$this->load->view('partials2/main/page2/page_edit_group', $data);
+		}else{
+			$this->load->view('partials2/main/page2/page_notfound');
+		}
 	}
 
 	function add(){
@@ -54,7 +62,7 @@ class Group extends CI_Controller {
 		);
 		print_r($data);
 		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms//runsystemdms/postGroup", $data);
-		redirect(base_url('admin/group'));
+		redirect(base_url('admin/group2'));
 	}
 	function edit(){
 		$grpcode 		= $this->input->post('grpcode');
@@ -69,8 +77,7 @@ class Group extends CI_Controller {
 		);
 		print_r($data);
 		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateGroup", $data);
-		redirect(base_url('admin/group'));
+		redirect(base_url('admin/group2'));
 	}
-
 }
 ?>

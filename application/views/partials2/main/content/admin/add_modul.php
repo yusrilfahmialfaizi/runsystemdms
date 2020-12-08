@@ -1,30 +1,21 @@
-<!-- Right sidebar Ends-->
-<div class="page-body">
+<!-- Begin Page Content -->
     <div class="container-fluid">
-        <div class="page-header">
-            <div class="row">
-                <div class="col-lg-6 main-header">
-                    <h2>Add<span>Modul</span></h2>
-                    <h6 class="mb-0">admin dms</h6>
-                </div>
-                <div class="col-lg-6 breadcrumb-right">
-                    <ol class="breadcrumb">
-                        <?php $this->load->view("partials2/main/breadcrumb/breadcrumb2") ?>
-                    </ol>
-                </div>
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Add Module</h1>
+            <div class="col-lg-4 breadcrumb-right">
+                <ol class="breadcrumb">
+                    <?php $this->load->view("partials2/main/breadcrumb/breadcrumb2") ?>
+                </ol>
             </div>
         </div>
     </div>
-    <!-- Container-fluid starts-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header">
-                        <!-- <h5>Basic form control</h5> -->
-                    </div>
-                    <form class="needs-validation" novalidate="" action="<?php echo base_url("admin/module2/add") ?>"
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 ">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <form action="<?php echo base_url("admin/module2/add") ?>"
                         method="POST">
                         <div class="card-body">
                             <div class="row">
@@ -72,7 +63,5 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3"></div>
     </div>
-</div>
-</div>
-</div>

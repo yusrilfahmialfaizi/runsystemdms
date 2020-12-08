@@ -23,10 +23,13 @@ class User extends CI_Controller {
 		curl_close($ch);
 		$data = json_decode($response, true);
 		$data['dt'] = $data['user'];
+		if ($data != null) {
+			$this->load->view('partials2/main/page2/page_user2',$data);
+		}else{
+			$this->load->view('partials2/main/page2/page_notfound');
+		}
 
-		$this->load->view('partials2/main/page2/page_user', $data);
 	}
-
 	public function Add_user()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
@@ -40,7 +43,11 @@ class User extends CI_Controller {
 		curl_close($ch);
 		$data = json_decode($response, true);
 		$data['dt'] = $data['group'];
-		$this->load->view('partials2/main/page2/page_add_user', $data);
+		if ($data != null) {
+			$this->load->view('partials2/main/page2/page_add_user', $data);
+		}else{
+			$this->load->view('partials2/main/page2/page_notfound');
+		}
 	}
 
 	public function edit_user()
@@ -57,7 +64,11 @@ class User extends CI_Controller {
 		$response1 	= $this->api->get($url1);
 		$data1		= json_decode($response1, true);
 		$data['user']	= $data1['user'];
-		$this->load->view('partials2/main/page2/page_edit_user', $data);
+		if ($data != null && $data1) {
+			$this->load->view('partials2/main/page2/page_edit_user', $data);
+		}else{
+			$this->load->view('partials2/main/page2/page_notfound');
+		}
 	}
 
 	function add(){
@@ -111,6 +122,7 @@ class User extends CI_Controller {
 		print_r($data);
 		echo "</pre>";
 		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateUsers", $data);
-		redirect(base_url('admin/user'));
+		redirect(base_url('admin/user2'));
 	}
 }
+?>

@@ -1,30 +1,21 @@
-<!-- Right sidebar Ends-->
-<div class="page-body">
+<!-- Begin Page Content -->
     <div class="container-fluid">
-        <div class="page-header">
-            <div class="row">
-                <div class="col-lg-6 main-header">
-                    <h2>Edit<span>Modul</span></h2>
-                    <h6 class="mb-0">admin dms</h6>
-                </div>
-                <div class="col-lg-6 breadcrumb-right">
-                    <ol class="breadcrumb">
-                        <?php $this->load->view("partials2/main/breadcrumb/breadcrumb2") ?>
-                    </ol>
-                </div>
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Edit Module</h1>
+            <div class="col-lg-4 breadcrumb-right">
+                <ol class="breadcrumb">
+                    <?php $this->load->view("partials2/main/breadcrumb/breadcrumb2") ?>
+                </ol>
             </div>
         </div>
     </div>
-    <!-- Container-fluid starts-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header">
-                        <!-- <h5>Basic form control</h5> -->
-                    </div>
-                    <form class="needs-validation" novalidate="" action="<?php echo base_url("admin/module/edit") ?>"
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 ">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <form action="<?php echo base_url("admin/module/edit") ?>"
                         method="POST">
                         <div class="card-body">
                         <?php foreach ($dt as $data) { ?>
@@ -33,9 +24,7 @@
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="modulcode">Modul Code</label>
                                         <input class="form-control" id="modulcode" name="modulcode" type="text" placeholder="modul code..." value="<?php echo $data['modulcode'] ?>" required="">
-                                        <input class="form-control" id="modulcode_old" name="modulcode_old" readonly="" hidden="" type="text" placeholder="modul code..." value="<?php echo $data['modulcode'] ?>" required="">
-                                        <div class="valid-feedback">Looks good!</div>
-                                        <div class="invalid-feedback">Please provide a valid Modulcode.</div>
+                                        <input class="form-control" id="modulcode_old" name="modulcode_old" readonly="" hidden="" type="text" placeholder="modul code..." value="<?php echo $data['modulcode'] ?>" required=""> 
                                     </div>
                                 </div>
                             </div>
@@ -43,9 +32,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="modulname">Modul Name</label>
-                                        <input class="form-control" id="modulname" name="modulname" type="text" placeholder="modul name..." value="<?php echo $data['modulname'] ?>" required="">
-                                        <div class="valid-feedback">Looks good!</div>
-                                        <div class="invalid-feedback">Please provide a valid Modulname.</div>
+                                        <input class="form-control" id="modulname" name="modulname" type="text" placeholder="modul name..." value="<?php echo $data['modulname'] ?>" required=""> 
                                     </div>
                                 </div>
                             </div>
@@ -64,9 +51,7 @@
                                             <option value="<?php echo $key['projectcode'] ?>"><?php echo $key['projectname'] ?>
                                             </option>
                                             <?php } ?>
-                                            <?php } ?>
-                                            <div class="valid-feedback">Looks good!</div>
-                                            <div class="invalid-feedback">Please select.</div>
+                                            <?php } ?> 
                                         </select>
                                     </div>
                                 </div>
@@ -80,7 +65,5 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3"></div>
     </div>
-</div>
-</div>
-</div>
