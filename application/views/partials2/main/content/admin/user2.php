@@ -55,10 +55,10 @@
                                 <td><?php echo $key['avatarimage'] ?></td>
                                 <td><?php echo $key['deviceid'] ?></td>
                                 <td>
-                                <a href="<?php echo base_url("admin/user/edit_user?usercode=").$key["usercode"]; ?>">
-                                    <button data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3"  data-id="<?php echo $key["usercode"]; ?>"><i class="fas fa-edit"></i></button>
+                                <a href="<?php echo base_url("admin/user2/edit_user?usercode=").$key["usercode"]; ?>">
+                                    <button class="btn btn-warning" data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3"  data-id="<?php echo $key["usercode"]; ?>"><i class="fas fa-edit"></i></button>
                                 </a>
-                                <button data-toggle="tooltip" title="Delete" width="20" type="button" data-id="<?php echo $key["usercode"]; ?>"data-feather="x"><i class="fas fa-trash"></i></button>
+                                <button class="btn btn-danger" data-toggle="tooltip" title="Delete" width="20" type="button" data-id="<?php echo $key["usercode"]; ?>"data-feather="x"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                     <?php } } ?>

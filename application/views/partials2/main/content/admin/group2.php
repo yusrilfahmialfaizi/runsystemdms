@@ -12,7 +12,7 @@
     </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?php echo base_url("admin/user2/add_user") ?>" class="btn btn-success "> + New User</a>
+            <a href="<?php echo base_url("admin/group2/add_group") ?>" class="btn btn-success "> + New User</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -40,9 +40,9 @@
                                     <td><?php echo $key['grpname'] ?></td>
                                     <td>
                                         <a>
-                                            <button data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3"  ><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-warning" data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3"  ><i class="fas fa-edit"></i></button>
                                         </a>
-                                        <button data-toggle="tooltip" title="Delete" width="20" type="button" ><i class="fas fa-trash"></i></button>
+                                        <button class="btn btn-danger" data-toggle="tooltip" title="Delete" width="20" type="button" ><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                             <?php }

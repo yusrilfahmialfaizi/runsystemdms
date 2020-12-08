@@ -78,7 +78,7 @@ class User extends CI_Controller {
 			"CreateDt" => $now,
 		);
 		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postUsers", $data);
-		redirect(base_url('admin/user'));
+		redirect(base_url('admin/user2'));
 	}
 	function edit(){
 		$usercode 		= $this->input->post('usercode');
