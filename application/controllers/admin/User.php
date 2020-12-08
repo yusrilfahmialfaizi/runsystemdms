@@ -124,5 +124,13 @@ class User extends CI_Controller {
 		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateUsers", $data);
 		redirect(base_url('admin/user2'));
 	}
+
+	function delete_user()
+	{
+		$usercode = $this->input->get("usercode");
+		echo $usercode;
+		$url = "http://127.0.0.1:8080/runsystemdms/deleteUser?usercode=" . $usercode;
+		$this->api->delete($url);
+		redirect(base_url('admin/menu'));
+	}
 }
-?>

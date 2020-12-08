@@ -5,7 +5,11 @@
         <h1 class="h3 mb-0 text-gray-800">Edit Group</h1>
         <div class="col-lg-4 breadcrumb-right">
             <ol class="breadcrumb">
-                <?php $this->load->view("partials2/main/breadcrumb/breadcrumb2") ?>
+                <?php
+
+                use PhpParser\Node\Stmt\Foreach_;
+
+                $this->load->view("partials2/main/breadcrumb/breadcrumb2") ?>
             </ol>
         </div>
     </div>
@@ -15,25 +19,26 @@
     <div class="col-md-6 ">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <form action="<?php echo base_url("admin/group/edit") ?>"
-                    method="POST">
+                <form action="<?php echo base_url("admin/group/edit") ?>" method="POST">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label class="col-form-label pt-0" for="grpcode">Group Code</label>
-                                    <input class="form-control" id="grpcode" name="grpcode" type="text" placeholder="group code..." required="">
+                        <?php foreach ($dt as $key) { ?>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0" for="grpcode">Group Code</label>
+                                        <input class="form-control" id="grpcode" name="grpcode" value="<?php echo $key['grpcode'] ?>" type="text" placeholder="group code..." required="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label class="col-form-label pt-0" for="grpname">Group Name</label>
-                                    <input class="form-control" id="grpname" name="grpname" type="text" placeholder="group name..." required="">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0" for="grpname">Group Name</label>
+                                        <input class="form-control" id="grpname" name="grpname" value="<?php echo $key['grpcode'] ?>" type="text" placeholder="group name..." required="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php } ?>
                         <div class="card-footer">
                             <button class="btn btn-primary btn-pill">Submit</button>
                         </div>

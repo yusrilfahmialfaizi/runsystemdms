@@ -14,34 +14,34 @@ type CustomContext struct {
 }
 
 type Modul struct {
-	ModulCode 	string          `json:"modulcode"`
-	ModulName 	string          `json:"modulname"`
-	ProjectCode 	string		 `json:"projectcode"`
-	CreateBy 		string          `json:"createby"`
-	CreateDt 		string          `json:"createdt"`
-	LastupBy 		nullable.String `json:"lastupby"`
-	LastupDt 		nullable.String `json:"lastupdt"`
+	ModulCode   string          `json:"modulcode"`
+	ModulName   string          `json:"modulname"`
+	ProjectCode string          `json:"projectcode"`
+	CreateBy    string          `json:"createby"`
+	CreateDt    string          `json:"createdt"`
+	LastupBy    nullable.String `json:"lastupby"`
+	LastupDt    nullable.String `json:"lastupdt"`
 }
 type ActionModul struct {
-	ModulCode 	string         `json:"modulcode"`
-	ModulName 	string         `json:"modulname"`
-	ProjectCode 	string		`json:"projectcode"`
-	CreateBy 		string         `json:"createby"`
-	CreateDt 		string         `json:"createdt"`
-	LastupBy 		string 		`json:"lastupby"`
-	LastupDt 		string 		`json:"lastupdt"`
-	ModulCode_old 	string         `json:"modulcode_old"`
+	ModulCode     string `json:"modulcode"`
+	ModulName     string `json:"modulname"`
+	ProjectCode   string `json:"projectcode"`
+	CreateBy      string `json:"createby"`
+	CreateDt      string `json:"createdt"`
+	LastupBy      string `json:"lastupby"`
+	LastupDt      string `json:"lastupdt"`
+	ModulCode_old string `json:"modulcode_old"`
 }
 
 type MenuAddDocument struct {
-	MenuCode string          `json:"menucode"`
-	ModulCode string         `json:"modulcode"`
-	MenuDesc string          `json:"menudesc"`
-	Parent   nullable.String `json:"parent"`
-	CreateBy string          `json:"createby"`
-	CreateDt string          `json:"createdt"`
-	LastupBy nullable.String `json:"lastupby"`
-	LastupDt nullable.String `json:"lastupdt"`
+	MenuCode  string          `json:"menucode"`
+	ModulCode string          `json:"modulcode"`
+	MenuDesc  string          `json:"menudesc"`
+	Parent    nullable.String `json:"parent"`
+	CreateBy  string          `json:"createby"`
+	CreateDt  string          `json:"createdt"`
+	LastupBy  nullable.String `json:"lastupby"`
+	LastupDt  nullable.String `json:"lastupdt"`
 }
 
 type Datasubmodule struct {
@@ -55,14 +55,14 @@ type ParentLength struct {
 	ParentLength nullable.String `json:"parentlength"`
 }
 type LastChild struct {
-	MenuCode string          `json:"menucode"`
-	ModulCode string         `json:"modulcode"`
-	MenuDesc string          `json:"menudesc"`
-	Parent   nullable.String `json:"parent"`
-	CreateBy string          `json:"createby"`
-	CreateDt string          `json:"createdt"`
-	LastupBy nullable.String `json:"lastupby"`
-	LastupDt nullable.String `json:"lastupdt"`
+	MenuCode  string          `json:"menucode"`
+	ModulCode string          `json:"modulcode"`
+	MenuDesc  string          `json:"menudesc"`
+	Parent    nullable.String `json:"parent"`
+	CreateBy  string          `json:"createby"`
+	CreateDt  string          `json:"createdt"`
+	LastupBy  nullable.String `json:"lastupby"`
+	LastupDt  nullable.String `json:"lastupdt"`
 }
 
 type Moduls struct {
@@ -77,8 +77,8 @@ type Add struct {
 }
 
 type DynamicMenu struct {
-	ParentLengths []ParentLength 	`json:"parentlength"`
-	LastChilds    []LastChild 	`json:"lastChilds"`
+	ParentLengths []ParentLength `json:"parentlength"`
+	LastChilds    []LastChild    `json:"lastChilds"`
 }
 type Parts struct {
 	Parts []DynamicMenu `json:"parts"`
@@ -114,7 +114,7 @@ func GetModuls() Moduls {
 	return result
 }
 func GetModulsById(c *CustomContext) Moduls {
-	modulcode := c.Param("modulcode");
+	modulcode := c.Param("modulcode")
 	connection = config.Connection()
 	query1 := "SELECT ModulCode, ModulName,  ProjectCode, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmodul WHERE modulcode = ?"
 	rows1, err1 := connection.Query(query1, modulcode)
@@ -137,7 +137,7 @@ func GetModulsById(c *CustomContext) Moduls {
 	return result
 }
 func GetModulsWithId(c *CustomContext) Moduls {
-	projectcode := c.Param("projectcode");
+	projectcode := c.Param("projectcode")
 	connection = config.Connection()
 	query1 := "SELECT ModulCode, ModulName, CreateBy, ProjectCode, CreateDt, LastUpBy, LastUpDt FROM tblmodul WHERE ProjectCode = ?"
 	rows1, err1 := connection.Query(query1, projectcode)
@@ -159,13 +159,14 @@ func GetModulsWithId(c *CustomContext) Moduls {
 	}
 	return result
 }
+
 // function untuk get data menu berdasarkan modulcode
 func GetMenusById(c *CustomContext) Menu {
-	modulcode := c.Param("modulcode");
+	modulcode := c.Param("modulcode")
 	connection = config.Connection()
 	query2 := "SELECT A.MenuCode, A.ModulCode, A.MenuDesc, A.Parent, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt, B.`Status` FROM tblmodulmenu A LEFT JOIN tbldocumentdtl B ON B.MenuCode = A.MenuCode WHERE modulcode = ?"
 	rows2, err2 := connection.Query(query2, modulcode)
-	if err2 != nil{
+	if err2 != nil {
 		fmt.Println(err2)
 	}
 	defer rows2.Close()
@@ -183,15 +184,16 @@ func GetMenusById(c *CustomContext) Menu {
 	}
 	return result
 }
+
 // Insert data modul
-func PostModul(con *sql.DB, ModulCode string, ModulName string, ProjectCode string, CreateBy string, CreateDt string)(int64, error){
+func PostModul(con *sql.DB, ModulCode string, ModulName string, ProjectCode string, CreateBy string, CreateDt string) (int64, error) {
 	con = config.Connection()
 
 	query := "INSERT INTO tblmodul (ModulCode, ModulName, ProjectCode, CreateBy, CreateDt) VALUES(?, ?, ?, ?, ?)"
 
 	stmt, err := con.Prepare(query)
 
-	if err != nil{
+	if err != nil {
 		panic(err)
 	}
 	defer stmt.Close()
@@ -204,7 +206,7 @@ func PostModul(con *sql.DB, ModulCode string, ModulName string, ProjectCode stri
 	return result.RowsAffected()
 }
 
-func UpdateModul(con *sql.DB, ModulCode string, ModulName string, ProjectCode string, LastupBy string, LastupDt string,  ModulCode_old string)(int64, error){
+func UpdateModul(con *sql.DB, ModulCode string, ModulName string, ProjectCode string, LastupBy string, LastupDt string, ModulCode_old string) (int64, error) {
 	con = config.Connection()
 
 	query := "UPDATE tblmodul set ModulCode = ?, ModulName = ?, ProjectCode = ?, LastUpBy = ?, LastUpDt = ? WHERE ModulCode = ?"
@@ -217,9 +219,31 @@ func UpdateModul(con *sql.DB, ModulCode string, ModulName string, ProjectCode st
 
 	result, eror := stmt.Exec(ModulCode, ModulName, ProjectCode, LastupBy, LastupDt, ModulCode_old)
 
-	if eror != nil{
+	if eror != nil {
 		panic(eror)
 	}
 	return result.RowsAffected()
 }
 
+func DeleteModules(c *CustomContext) Moduls {
+	connection := config.Connection()
+	modulcode := c.FormValue("modulcode")
+	query := "DELETE FROM tblmodul WHERE tblmodul.ModulCode = ?"
+
+	rows, eror := connection.Query(query, modulcode)
+	if eror != nil {
+		fmt.Println(eror)
+	}
+	defer rows.Close()
+	result := Moduls{}
+
+	if rows.Next() {
+		modul := Modul{}
+		eror2 := rows.Scan(&modul.ModulCode)
+		if eror2 != nil {
+			fmt.Println(eror2)
+		}
+		result.Moduls = append(result.Moduls, modul)
+	}
+	return result
+}

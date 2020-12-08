@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	_ "database/sql"
 	"echo/models"
+	"fmt"
 	_ "fmt"
 	"net/http"
 
@@ -100,4 +101,19 @@ func UpdateGroupMenu(con *sql.DB) echo.HandlerFunc {
 			return err
 		}
 	}
+}
+
+//delete data group
+func DeleteGroup(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.DeleteGroup(cc)
+	fmt.Println("Delete ...")
+	return c.JSON(http.StatusOK, result)
+}
+
+func DeleteGroupMenu(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.DeleteGroupMenus(cc)
+	fmt.Println("Delete ...")
+	return c.JSON(http.StatusOK, result)
 }

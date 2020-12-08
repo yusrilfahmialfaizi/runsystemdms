@@ -38,26 +38,28 @@
                     <tbody>
                         <?php foreach ($dt as $key) {
                             if ($key != null) {
-                                ?>
+                        ?>
                                 <tr>
                                     <td><?php echo $key['projectcode'] ?></td>
                                     <td><?php echo $key['projectname'] ?></td>
                                     <td><?php echo $key['actind'] ?></td>
                                     <td><?php echo $key['ctcode'] ?></td>
                                     <td>
-                                      <a href="<?php echo base_url("admin/project/edit_project?projectcode=").$key["projectcode"]; ?>">
-                                        <button class="btn btn-warning" data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3"  data-id="<?php echo $key["projectcode"]; ?>"><i class="fas fa-edit"></i></button>
-                                    </a>
-                                    <button class="btn btn-danger" data-toggle="tooltip" title="Delete" width="20" type="button" data-id="<?php echo $key["projectcode"]; ?>"data-feather="x"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
+                                        <a href="<?php echo base_url("admin/project/edit_project?projectcode=") . $key["projectcode"]; ?>">
+                                            <button class="btn btn-warning" data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3" data-id="<?php echo $key["projectcode"]; ?>"><i class="fas fa-edit"></i></button>
+                                        </a>
+                                        <!-- <a href="<?php echo base_url("admin/project/delete_project?projectcode=") . $key["projectcode"]; ?>"> -->
+                                        <button disabled class="btn btn-danger" data-toggle="tooltip" title="Delete" width="20" type="button" data-id="<?php echo $key["projectcode"]; ?>" data-feather="x"><i class="fas fa-trash"></i></button>
+                                        <!-- </a> -->
+                                    </td>
+                                </tr>
                         <?php }
-                    } ?>
-                </tbody>
-            </table>
+                        } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
 </div>
 <!-- /.container-fluid -->

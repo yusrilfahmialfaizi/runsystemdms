@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Module extends CI_Controller {
+class Module extends CI_Controller
+{
 
 	public function __construct()
 	{
@@ -9,7 +10,7 @@ class Module extends CI_Controller {
 		$this->load->library('documentdtl');
 		$this->load->library('api');
 	}
-	
+
 	public function index()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
@@ -20,8 +21,8 @@ class Module extends CI_Controller {
 		$data1			= json_decode($response1, true);
 		$data['dt'] 		= $data1['modul'];
 		if ($data != null) {
-			$this->load->view('partials2/main/page2/page_module2',$data);
-		}else{
+			$this->load->view('partials2/main/page2/page_module2', $data);
+		} else {
 			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
@@ -30,13 +31,13 @@ class Module extends CI_Controller {
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
 			redirect("login");
 		}
-		$url 			= "http://127.0.0.1:8080/runsystemdms/getPG";
-		$response 		= $this->api->get($url);
-		$data 			= json_decode($response, true);
-		$data['project'] 	= $data2['pg'];
+		$url 				= "http://127.0.0.1:8080/runsystemdms/getPG";
+		$response 			= $this->api->get($url);
+		$data 				= json_decode($response, true);
+		$data['project'] 	= $data['pg'];
 		if ($data != null) {
 			$this->load->view('partials2/main/page2/page_add_modul', $data);
-		}else{
+		} else {
 			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
@@ -46,7 +47,7 @@ class Module extends CI_Controller {
 			redirect("login");
 		}
 		$modulcode 		= $this->input->get("modulcode");
-		$url 			= "http://127.0.0.1:8080/runsystemdms/getModulByID/".$modulcode;
+		$url 			= "http://127.0.0.1:8080/runsystemdms/getModulByID/" . $modulcode;
 		$response 		= $this->api->get($url);
 		$response 		= json_decode($response, true);
 		$data['dt'] 		= $response["modul"];
@@ -56,7 +57,7 @@ class Module extends CI_Controller {
 		$data['project'] 	= $data2['pg'];
 		if ($response != null && $response2 != null) {
 			$this->load->view('partials2/main/page2/page_edit_modul', $data);
-		}else{
+		} else {
 			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
@@ -75,7 +76,7 @@ class Module extends CI_Controller {
 			"CreateDt" 	=> $now,
 		);
 		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postModuls", $data);
-		redirect(base_url('admin/module2'));
+		redirect(base_url('admin/module'));
 	}
 	function edit()
 	{
@@ -94,7 +95,15 @@ class Module extends CI_Controller {
 			'modulcode_old' 	=> $modulcode_old,
 		);
 		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateModuls", $data);
-		redirect(base_url('admin/module2'));
+		redirect(base_url('admin/module'));
+	}
+
+	function delete_modul()
+	{
+		$modulcode = $this->input->get("modulcode");
+		echo $modulcode;
+		$url = "http://127.0.0.1:8080/runsystemdms/deleteModule?modulcode=" . $modulcode;
+		$this->api->delete($url);
+		redirect(base_url('admin/module'));
 	}
 }
-?>

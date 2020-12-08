@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class GroupMenu extends CI_Controller {
+class GroupMenu extends CI_Controller
+{
 
 	public function __construct()
 	{
@@ -10,7 +11,7 @@ class GroupMenu extends CI_Controller {
 		$this->load->library("api");
 	}
 
-	
+
 	public function index()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
@@ -20,9 +21,9 @@ class GroupMenu extends CI_Controller {
 		$response = $this->api->get($url);
 		$data = json_decode($response, true);
 		$data['dt'] = $data['groupmenu'];
-		if ($data != null ) {
-			$this->load->view('partials2/main/page2/page_groupmenu2',$data);
-		}else{
+		if ($data != null) {
+			$this->load->view('partials2/main/page2/page_groupmenu2', $data);
+		} else {
 			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
@@ -41,7 +42,7 @@ class GroupMenu extends CI_Controller {
 		$data['menu'] 	= $data1['menu'];
 		if ($data != null && $data1 != null) {
 			$this->load->view('partials2/main/page2/page_add_groupmenu', $data);
-		}else{
+		} else {
 			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
@@ -67,12 +68,23 @@ class GroupMenu extends CI_Controller {
 		$data['grpmn'] = $data2['groupmenu'];
 		if ($data != null && $data1 != null && $data2 != null) {
 			$this->load->view('partials2/main/page2/page_edit_groupmenu', $data);
-		}else{
+		} else {
 			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
 
-	function add(){
+	function delete_grpmenu()
+	{
+		$menucode = $this->input->get("menucode");
+		$grpcode  = $this->input->get("grpcode");
+		echo $grpcode;
+		$url = "http://127.0.0.1:8080/runsystemdms/deleteGroupMenu?menucode=" . $menucode . "&grpcode=" . $grpcode;
+		$this->api->delete($url);
+		redirect(base_url('admin/groupmenu'));
+	}
+
+	function add()
+	{
 		$menucode 		= $this->input->post('menucode');
 		$grpcode 		= $this->input->post('grpcode');
 		date_default_timezone_set('Asia/Jakarta');
@@ -87,7 +99,8 @@ class GroupMenu extends CI_Controller {
 		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postGroupMenu", $data);
 		redirect(base_url('admin/groupmenu2'));
 	}
-	function edit(){
+	function edit()
+	{
 		$menucode 		= $this->input->post('menucode');
 		$grpcode 			= $this->input->post('grpcode');
 		date_default_timezone_set('Asia/Jakarta');
@@ -103,4 +116,3 @@ class GroupMenu extends CI_Controller {
 		redirect(base_url('admin/groupmenu2'));
 	}
 }
-?>

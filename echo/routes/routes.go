@@ -79,10 +79,18 @@ func Routes() *echo.Echo {
 	//group
 	e.POST("/runsystemdms/postGroup", controllers.PostGroup(con))
 	e.PUT("/runsystemdms/updateGroup", controllers.UpdateGroup(con))
+	e.DELETE("/runsystemdms/deleteGroup", controllers.DeleteGroup)
 
 	//group menu
 	e.POST("/runsystemdms/postGroupMenu", controllers.PostGroupMenu(con))
 	e.PUT("/runsystemdms/updateGroupMenu", controllers.UpdateGroupMenu(con))
+	e.DELETE("/runsystemdms/deleteGroupMenu", controllers.DeleteGroupMenu)
+
+	//route delete
+	e.DELETE("/runsystemdms/deleteModulMenu", controllers.DeleteModulMenu)
+	e.DELETE("/runsystemdms/deleteModule", controllers.DeleteModule)
+	e.DELETE("/runsystemdms/deleteProject", controllers.DeleteProject)
+	e.DELETE("/runsystemdms/deleteUser", controllers.DeleteUser)
 
 	return e
 }

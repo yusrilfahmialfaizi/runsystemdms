@@ -1,12 +1,12 @@
 package controllers
 
 import (
+	"database/sql"
 	"echo/models"
 	"fmt"
 	"net/http"
 	"strings"
 	"time"
-	"database/sql"
 
 	"github.com/dgrijalva/jwt-go"
 
@@ -33,7 +33,7 @@ func GetUserById(c echo.Context) error {
 
 // POST method to INSERT User
 func PostUser(con *sql.DB) echo.HandlerFunc {
-	return func(c echo.Context) error  {
+	return func(c echo.Context) error {
 		var user models.ActionUser
 
 		c.Bind(&user)
@@ -41,7 +41,7 @@ func PostUser(con *sql.DB) echo.HandlerFunc {
 
 		if err != nil {
 			return c.JSON(http.StatusCreated, result)
-		}else{
+		} else {
 			return err
 		}
 	}
@@ -54,21 +54,21 @@ func UpdateUsers(con *sql.DB) echo.HandlerFunc {
 
 		c.Bind(&user)
 		result, err := models.UpdateUsers(con, user.UserCode, user.Username, user.GrpCode, user.Pwd, user.ExpDt, user.NotifyInd, user.HasQiscusAccount, user.AvatarImage, user.DeviceId, user.LastupBy, user.LastupDt, user.UserCode_old)
-		if err != nil{
+		if err != nil {
 			return err
-		}else{
+		} else {
 			return c.JSON(http.StatusOK, result)
 		}
 	}
 }
 
 func Login(c echo.Context) (err error) {
-	usercode 	:= c.FormValue("usercode")
-	usr 		:= strings.ToLower(usercode)
-	usr2 	:= strings.ToUpper(usercode)
-	pwd 		:= c.FormValue("pwd")
-	result 	:= models.GetUser()
-	response 	:= Response{}
+	usercode := c.FormValue("usercode")
+	usr := strings.ToLower(usercode)
+	usr2 := strings.ToUpper(usercode)
+	pwd := c.FormValue("pwd")
+	result := models.GetUser()
+	response := Response{}
 	for i := 0; i < len(result.Users); i++ {
 		fmt.Println(result.Users[i].GrpCode)
 		if usr == result.Users[i].UserCode || usr2 == result.Users[i].UserCode {
@@ -78,10 +78,10 @@ func Login(c echo.Context) (err error) {
 
 				// set claims yang bisa digunakn di frontend
 				claims := token.Claims.(jwt.MapClaims)
-				claims["usercode"] 	= result.Users[i].UserCode
-				claims["username"] 	= result.Users[i].Username
-				claims["grpcode"] 	= result.Users[i].GrpCode
-				claims["exp"] 		= time.Now().Add(time.Hour * 72).Unix()
+				claims["usercode"] = result.Users[i].UserCode
+				claims["username"] = result.Users[i].Username
+				claims["grpcode"] = result.Users[i].GrpCode
+				claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
 
 				// mencari kombinasi token dan mengirimkannya sebagai response
 				t, err := token.SignedString([]byte("secret"))
@@ -103,4 +103,10 @@ func Login(c echo.Context) (err error) {
 	// return c.JSON(http.StatusOK, response)
 }
 
-
+//delete data
+func DeleteUser(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.DeleteUsers(cc)
+	fmt.Println("Delete ...")
+	return c.JSON(http.StatusOK, result)
+}

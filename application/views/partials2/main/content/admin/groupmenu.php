@@ -16,7 +16,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable"  cellspacing="0">
+                <table class="table table-bordered" id="dataTable" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Menu Description</th>
@@ -41,13 +41,15 @@
                                     <td><?php echo $key['grpname'] ?></td>
                                     <td><?php echo $key['accessind'] ?></td>
                                     <td>
-                                        <a href="<?php echo base_url("admin/groupmenu/edit_grpmenu?menucode=".$key['menucode']."&grpcode=".$key["grpcode"]); ?>">
-                                            <button class="btn btn-warning" data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3"  ><i class="fas fa-edit"></i></button>
+                                        <a href="<?php echo base_url("admin/groupmenu/edit_grpmenu?menucode=" . $key['menucode'] . "&grpcode=" . $key["grpcode"]); ?>">
+                                            <button class="btn btn-warning" data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3"><i class="fas fa-edit"></i></button>
                                         </a>
-                                        <button class="btn btn-danger" data-toggle="tooltip" title="Delete" width="20" type="button" ><i class="fas fa-trash"></i></button>
+                                        <!-- <a href="<?php echo base_url("admin/groupmenu/delete_grpmenu?menucode=" . $key['menucode'] . "&grpcode=" . $key["grpcode"]); ?>"> -->
+                                        <button class="btn btn-danger" data-toggle="tooltip" title="Delete" width="20" type="button" disabled><i class="fas fa-trash"></i></button>
+                                        <!-- </a> -->
                                     </td>
                                 </tr>
-                            <?php }
+                        <?php }
                         } ?>
                     </tbody>
                 </table>

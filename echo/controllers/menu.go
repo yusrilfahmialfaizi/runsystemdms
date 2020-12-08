@@ -1,19 +1,21 @@
 package controllers
 
 import (
+	"database/sql"
 	"echo/models"
 	"fmt"
 	"net/http"
-	"database/sql"
 
 	"github.com/labstack/echo/v4"
 )
+
 // Get Data Project
 func GetMenu(c echo.Context) error {
 	result := models.GetMenu()
 	fmt.Println("Getting data ...")
 	return c.JSON(http.StatusOK, result)
 }
+
 // get menu by menucode
 func GetMenuWithId(c echo.Context) error {
 	cc := c.(*models.CustomContext)
@@ -21,9 +23,10 @@ func GetMenuWithId(c echo.Context) error {
 	fmt.Println("Getting data ...")
 	return c.JSON(http.StatusOK, result)
 }
+
 // POST method to INSERT Project
 func PostMenu(con *sql.DB) echo.HandlerFunc {
-	return func(c echo.Context) error  {
+	return func(c echo.Context) error {
 		var menu models.ActionModulMenu
 
 		c.Bind(&menu)
@@ -31,7 +34,7 @@ func PostMenu(con *sql.DB) echo.HandlerFunc {
 
 		if err != nil {
 			return c.JSON(http.StatusCreated, result)
-		}else{
+		} else {
 			return err
 		}
 	}
@@ -44,10 +47,17 @@ func UpdateMenu(con *sql.DB) echo.HandlerFunc {
 
 		c.Bind(&menu)
 		result, err := models.UpdateMenu(con, menu.MenuCode, menu.ModulCode, menu.MenuDesc, menu.Parent, menu.LastupBy, menu.LastupDt, menu.MenuCode_old)
-		if err != nil{
+		if err != nil {
 			return err
-		}else{
+		} else {
 			return c.JSON(http.StatusOK, result)
 		}
 	}
+}
+
+func DeleteModulMenu(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.DeleteMenu(cc)
+	fmt.Println("Delete ...")
+	return c.JSON(http.StatusOK, result)
 }

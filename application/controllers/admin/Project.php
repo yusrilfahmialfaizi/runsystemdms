@@ -86,5 +86,13 @@ class Project extends CI_Controller {
 		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateProject", $data);
 		redirect(base_url('admin/project2'));
 	}
+
+	function delete_project()
+	{
+		$projectcode = $this->input->get("projectcode");
+		echo $projectcode;
+		$url = "http://127.0.0.1:8080/runsystemdms/deleteProject?projectcode=" . $projectcode;
+		$this->api->delete($url);
+		redirect(base_url('admin/menu'));
+	}
 }
-?>

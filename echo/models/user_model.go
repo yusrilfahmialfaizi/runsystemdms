@@ -26,20 +26,20 @@ type User struct {
 	LastupDt         nullable.String `json:"lastupdt"`
 }
 type ActionUser struct {
-	UserCode         string          	`json:"usercode"`
-	Username         string          	`json:"username"`
-	GrpCode          string          	`json:"grpcode"`
-	Pwd              string          	`json:"pwd"`
-	ExpDt		  string 		   	`json:"expdt"`
-	NotifyInd        string          	`json:"notifyind"`
-	HasQiscusAccount string 		   	`json:"hasqiscusaccout"`
-	AvatarImage      string 			`json:"avatarimage"`
-	DeviceId         string 			`json:"deviceid"`
-	CreateBy         string          	`json:"createby"`
-	CreateDt         string          	`json:"createdt"`
-	LastupBy         string 			`json:"lastupby"`
-	LastupDt         string 			`json:"lastupdt"`
-	UserCode_old     string          	`json:"usercode_old"`
+	UserCode         string `json:"usercode"`
+	Username         string `json:"username"`
+	GrpCode          string `json:"grpcode"`
+	Pwd              string `json:"pwd"`
+	ExpDt            string `json:"expdt"`
+	NotifyInd        string `json:"notifyind"`
+	HasQiscusAccount string `json:"hasqiscusaccout"`
+	AvatarImage      string `json:"avatarimage"`
+	DeviceId         string `json:"deviceid"`
+	CreateBy         string `json:"createby"`
+	CreateDt         string `json:"createdt"`
+	LastupBy         string `json:"lastupby"`
+	LastupDt         string `json:"lastupdt"`
+	UserCode_old     string `json:"usercode_old"`
 }
 
 type Users struct {
@@ -90,7 +90,7 @@ func GetUser() Users {
 	return result
 }
 func GetUserById(c *CustomContext) Users {
-	usercode := c.Param("usercode");
+	usercode := c.Param("usercode")
 	con := config.Connection()
 	queryStatement := "Select usercode, username, grpcode, pwd, expdt, notifyind, hasqiscusaccount, avatarimage, deviceid, createby, createdt,lastupby, lastupdt From tbluser WHERE usercode = ?"
 
@@ -123,14 +123,14 @@ func GetUserById(c *CustomContext) Users {
 }
 
 // for Insert User
-func PostUser(con *sql.DB, UserCode string, Username string,GrpCode string, Pwd string, ExpDt string,  CreateBy string, CreateDt string)(int64, error){
+func PostUser(con *sql.DB, UserCode string, Username string, GrpCode string, Pwd string, ExpDt string, CreateBy string, CreateDt string) (int64, error) {
 	con = config.Connection()
 
 	query := "INSERT INTO tbluser (UserCode, UserName, GrpCode, Pwd, ExpDt,  CreateBy, CreateDt) VALUES (?,?,?,?,?,?,?)"
 
 	stmt, err := con.Prepare(query)
 
-	if err != nil{
+	if err != nil {
 		fmt.Println(err)
 	}
 
@@ -138,14 +138,15 @@ func PostUser(con *sql.DB, UserCode string, Username string,GrpCode string, Pwd 
 
 	result, eror := stmt.Exec(UserCode, Username, GrpCode, Pwd, ExpDt, CreateBy, CreateDt)
 
-	if eror != nil{
+	if eror != nil {
 		fmt.Println(eror)
 	}
 
 	return result.RowsAffected()
 }
+
 // Update data users
-func UpdateUsers(con *sql.DB, UserCode string, Username string,GrpCode string, Pwd string, ExpDt string, NotifyInd string, HasQiscusAccount string, AvatarImage string, DeviceId string, LastupBy string, LastupDt string, UserCode_old string)(int64, error){
+func UpdateUsers(con *sql.DB, UserCode string, Username string, GrpCode string, Pwd string, ExpDt string, NotifyInd string, HasQiscusAccount string, AvatarImage string, DeviceId string, LastupBy string, LastupDt string, UserCode_old string) (int64, error) {
 	con = config.Connection()
 
 	query := "UPDATE tbluser set UserCode = ?, UserName = ?, GrpCode = ?, Pwd = ?, ExpDt = ?, NotifyInd = ?, HasQiscusAccount = ?, AvatarImage = ?, deviceid = ?, LastUpBy = ?, LastUpDt = ? WHERE UserCode = ?"
@@ -158,8 +159,31 @@ func UpdateUsers(con *sql.DB, UserCode string, Username string,GrpCode string, P
 
 	result, eror := stmt.Exec(UserCode, Username, GrpCode, Pwd, ExpDt, NotifyInd, HasQiscusAccount, AvatarImage, DeviceId, LastupBy, LastupDt, UserCode_old)
 
-	if eror != nil{
+	if eror != nil {
 		panic(eror)
 	}
 	return result.RowsAffected()
+}
+
+func DeleteUsers(c *CustomContext) Users {
+	connection := config.Connection()
+	usercode := c.FormValue("usercode")
+	query := "DELETE FROM tbluser WHERE tbluser.UserCode = ?"
+
+	rows, eror := connection.Query(query, usercode)
+	if eror != nil {
+		fmt.Println(eror)
+	}
+	defer rows.Close()
+	result := Users{}
+
+	if rows.Next() {
+		user := User{}
+		eror2 := rows.Scan(&user.UserCode)
+		if eror2 != nil {
+			fmt.Println(eror2)
+		}
+		result.Users = append(result.Users, user)
+	}
+	return result
 }

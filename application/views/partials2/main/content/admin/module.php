@@ -34,29 +34,31 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                      <!-- js -->
-                      <?php foreach ($dt as $key) {
-                          if ($key != null) {
-                            ?> 
+                        <!-- js -->
+                        <?php foreach ($dt as $key) {
+                            if ($key != null) {
+                        ?>
 
-                            <tr>
-                                <td><?php echo $key['modulcode'] ?></td>
-                                <td><?php echo $key['modulname'] ?></td>
-                                <td><?php echo $key['projectcode'] ?></td>
-                                <td>
-                                  <a href="<?php echo base_url("admin/module/edit_module?modulcode=").$key["modulcode"]; ?>">
-                                    <button class="btn btn-warning" data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3"  data-id="<?php echo $key["modulcode"]; ?>"><i class="fas fa-edit"></i></button>
-                                </a>
-                                <button class="btn btn-danger" data-toggle="tooltip" title="Delete" width="20" type="button" data-id="<?php echo $key["modulcode"]; ?>"data-feather="x"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr>
-                    <?php }
-                } ?>
-            </tbody>
-        </table>
+                                <tr>
+                                    <td><?php echo $key['modulcode'] ?></td>
+                                    <td><?php echo $key['modulname'] ?></td>
+                                    <td><?php echo $key['projectcode'] ?></td>
+                                    <td>
+                                        <a href="<?php echo base_url("admin/module/edit_module?modulcode=") . $key["modulcode"]; ?>">
+                                            <button class="btn btn-warning" data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3" data-id="<?php echo $key["modulcode"]; ?>"><i class="fas fa-edit"></i></button>
+                                        </a>
+                                        <!-- <a href="<?php echo base_url("admin/module/delete_modul?modulcode=") . $key["modulcode"]; ?>"> -->
+                                        <button disabled class="btn btn-danger" data-toggle="tooltip" title="Delete" width="20" type="button" data-id="<?php echo $key["modulcode"]; ?>" data-feather="x"><i class="fas fa-trash"></i></button>
+                                        <!-- </a> -->
+                                    </td>
+                                </tr>
+                        <?php }
+                        } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-</div>
-</div>
 
 </div>
 <!-- /.container-fluid -->
