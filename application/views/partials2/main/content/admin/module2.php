@@ -12,7 +12,7 @@
     </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?php echo base_url("admin/user2/add_user") ?>" class="btn btn-success "> + New User</a>
+            <a href="<?php echo base_url("admin/module2/add_modul") ?>" class="btn btn-success "> + New User</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -44,10 +44,10 @@
                                 <td><?php echo $key['modulname'] ?></td>
                                 <td><?php echo $key['projectcode'] ?></td>
                                 <td>
-                                  <a href="<?php echo base_url("admin/module/edit_module?modulcode=").$key["modulcode"]; ?>">
-                                    <button data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3"  data-id="<?php echo $key["modulcode"]; ?>"><i class="fas fa-edit"></i></button>
+                                  <a href="<?php echo base_url("admin/module2/edit_module?modulcode=").$key["modulcode"]; ?>">
+                                    <button class="btn btn-warning" data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3"  data-id="<?php echo $key["modulcode"]; ?>"><i class="fas fa-edit"></i></button>
                                 </a>
-                                <button data-toggle="tooltip" title="Delete" width="20" type="button" data-id="<?php echo $key["modulcode"]; ?>"data-feather="x"><i class="fas fa-trash"></i></button>
+                                <button class="btn btn-danger" data-toggle="tooltip" title="Delete" width="20" type="button" data-id="<?php echo $key["modulcode"]; ?>"data-feather="x"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                     <?php }

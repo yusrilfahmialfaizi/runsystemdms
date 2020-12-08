@@ -24,7 +24,7 @@
                     <div class="card-header">
                         <!-- <h5>Basic form control</h5> -->
                     </div>
-                    <form class="needs-validation" novalidate="" action="<?php echo base_url("admin/user/add") ?>" method="POST">
+                    <form class="needs-validation" novalidate="" action="<?php echo base_url("admin/user2/add") ?>" method="POST">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
