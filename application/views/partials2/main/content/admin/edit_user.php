@@ -68,23 +68,17 @@
                                 <div class="form-group">
                                     <label class="col-form-label pt-0" for="expdt">Exp Date</label>
                                     <?php $expdt = strtotime($us["expdt"]);?>
-                                    <input class="datepicker-here form-control digits" id="expdt" name="expdt" type="date" data-language="en" value="<?php echo date("m/d/Y", $expdt) ?>"
-                                        required="">
+                                    <input class="datepicker-here form-control digits" id="expdt" name="expdt" type="date" data-language="en" value="<?php echo date("Y-m-d", $expdt) ?>" required="">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <input class="form-control" id="NotifyInd" name="NotifyInd" type="text"
-                                        placeholder="user code..." value="<?php echo $us['notifyind'] ?>" >
-                                    <input class="form-control" id="HasQiscusAccount" name="HasQiscusAccount"
-                                        type="text" placeholder="user code..."
-                                        value="<?php echo $us['hasqiscusaccout'] ?>" >
-                                    <input class="form-control" id="AvatarImage" name="AvatarImage" type="text"
-                                        placeholder="user code..." value="<?php echo $us['avatarimage'] ?>" >
-                                    <input class="form-control" id="deviceid" name="deviceid" type="text"
-                                        placeholder="user code..." value="<?php echo $us['deviceid'] ?>" >
+                                    <input class="form-control" id="NotifyInd" name="NotifyInd" type="text" placeholder="user code..." value="<?php echo $us['notifyind'] ?>" hidden="">
+                                    <input class="form-control" id="HasQiscusAccount" name="HasQiscusAccount" type="text" placeholder="user code..." value="<?php echo $us['hasqiscusaccout'] ?>" hidden="">
+                                    <input class="form-control" id="AvatarImage" name="AvatarImage" type="text" placeholder="user code..." value="<?php echo $us['avatarimage'] ?>" hidden="">
+                                    <input class="form-control" id="deviceid" name="deviceid" type="text" placeholder="user code..." value="<?php echo $us['deviceid'] ?>" hidden="">
                                 </div>
                             </div>
                             <?php } ?>
