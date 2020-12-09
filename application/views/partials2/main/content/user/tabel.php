@@ -34,7 +34,7 @@
                     <th>Create Date</th>
                     <th>Last Update By</th>
                     <th>Last Update Date</th>
-                    <th>Action</th>
+                    <th style="width:10%">Action </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -69,7 +69,11 @@
                             <td><?php echo $key[$i]["createby"]; ?></td>
                             <td><?php echo date("d-m-Y H:i", $createdt); ?></td>
                             <td><?php echo $key[$i]["lastupby"]; ?></td>
+                            <?php if ($key[$i]["lastupby"] != null){ ?>
                             <td><?php echo date("d-m-Y H:i", $lastupdt); ?></td>
+                            <?php }else{ ?>
+                            <td></td>
+                            <?php } ?>
                             <td>
                               <button data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" data-status="<?php echo $key[$i]["status"]; ?>" data-active="<?php echo $key[$i]["activeind"]; ?>" onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"]; ?>">Edit</button>
                               <button data-toggle="tooltip" title="Preview" width="20" type="button" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" onClick="preview(this)" data-feather="book-open">Preview</button>
