@@ -77,14 +77,14 @@
                             <div class="col">
                                 <div class="form-group">
                                     <input class="form-control" id="NotifyInd" name="NotifyInd" type="text"
-                                        placeholder="user code..." value="<?php echo $us['notifyind'] ?>" hidden="">
+                                        placeholder="user code..." value="<?php echo $us['notifyind'] ?>" >
                                     <input class="form-control" id="HasQiscusAccount" name="HasQiscusAccount"
                                         type="text" placeholder="user code..."
-                                        value="<?php echo $us['hasqiscusaccout'] ?>" hidden="">
-                                    <input class="form-control" id="NotifyInd" name="NotifyInd" type="text"
-                                        placeholder="user code..." value="<?php echo $us['avatarimage'] ?>" hidden="">
-                                    <input class="form-control" id="NotifyInd" name="NotifyInd" type="text"
-                                        placeholder="user code..." value="<?php echo $us['deviceid'] ?>" hidden="">
+                                        value="<?php echo $us['hasqiscusaccout'] ?>" >
+                                    <input class="form-control" id="AvatarImage" name="AvatarImage" type="text"
+                                        placeholder="user code..." value="<?php echo $us['avatarimage'] ?>" >
+                                    <input class="form-control" id="deviceid" name="deviceid" type="text"
+                                        placeholder="user code..." value="<?php echo $us['deviceid'] ?>" >
                                 </div>
                             </div>
                             <?php } ?>

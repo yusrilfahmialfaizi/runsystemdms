@@ -34,6 +34,7 @@
                                             <?php } ?>
                                             <?php } ?>
                                     </select>
+                                    <input class="form-control" id="menucode_old"  name="menucode_old" type="text" placeholder="access indicator..." value="<?php echo $g['menucode'] ?>"required="" hidden="">
                                 </div>
                             </div>
                         </div>
@@ -54,6 +55,7 @@
                                         <?php } ?>
                                         <?php } ?>
                                     </select>
+                                    <input class="form-control" id="grpcode_old" name="grpcode_old" type="text" placeholder="access indicator..." value="<?php echo $g['grpcode'] ?>"required="" hidden="">
                                 </div>
                             </div>
                         </div>
@@ -61,9 +63,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label class="col-form-label pt-0" for="accessind">Access Indicator</label>
-                                    <input class="form-control" id="accessind" name="accessind" type="text"
-                                        placeholder="access indicator..." value="<?php echo $g['accessind'] ?>"
-                                        required="">
+                                    <input class="form-control" id="accessind" name="accessind" type="text" placeholder="access indicator..." value="<?php echo $g['accessind'] ?>"required="">
                                 </div>
                             </div>
                         </div>

@@ -72,13 +72,14 @@ class Group extends CI_Controller
 			"CreateDt" 	=> $now,
 		);
 		print_r($data);
-		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms//runsystemdms/postGroup", $data);
-		redirect(base_url('admin/group2'));
+		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postGroup", $data);
+		redirect(base_url('admin/group'));
 	}
 	function edit()
 	{
 		$grpcode 		= $this->input->post('grpcode');
 		$grpname 		= $this->input->post('grpname');
+		$grpcode_old 	= $this->input->post('grpcode_old');
 		date_default_timezone_set('Asia/Jakarta');
 		$now = date('YmdHi');
 		$data = array(
@@ -86,9 +87,10 @@ class Group extends CI_Controller
 			'grpname'		=> $grpname,
 			"LastupBy" 	=> $this->session->userdata("usercode"),
 			"LastupDt" 	=> $now,
+			'grpcode_old' 	=> $grpcode_old,
 		);
 		print_r($data);
 		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateGroup", $data);
-		redirect(base_url('admin/group2'));
+		redirect(base_url('admin/group'));
 	}
 }

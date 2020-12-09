@@ -37,7 +37,7 @@ func PostUser(con *sql.DB) echo.HandlerFunc {
 		var user models.ActionUser
 
 		c.Bind(&user)
-		result, err := models.PostUser(con, user.UserCode, user.Username, user.GrpCode, user.Pwd, user.ExpDt, user.CreateBy, user.CreateDt)
+		result, err := models.PostUser(con, user.UserCode, user.Username, user.GrpCode, user.Pwd, user.ExpDt, user.HasQiscusAccount, user.CreateBy, user.CreateDt)
 
 		if err != nil {
 			return c.JSON(http.StatusCreated, result)

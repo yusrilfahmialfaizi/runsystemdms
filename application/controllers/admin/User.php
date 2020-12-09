@@ -80,16 +80,17 @@ class User extends CI_Controller {
 		date_default_timezone_set('Asia/Jakarta');
 		$now = date('YmdHi');
 		$data = array(
-			'usercode' 	=> $usercode,
-			'username'	=> $username,
-			'grpcode'		=> $grpcode,
-			'pwd'		=> $pwd,
-			'expdt'		=> date('Ymd', strtotime($expdt)),
-			"CreateBy" => $this->session->userdata("usercode"),
-			"CreateDt" => $now,
+			'usercode' 		=> $usercode,
+			'username'		=> $username,
+			'grpcode'			=> $grpcode,
+			'pwd'			=> $pwd,
+			'expdt'			=> date('Ymd', strtotime($expdt)),
+			'HasQiscusAccount'	=> "0",
+			"CreateBy" 		=> $this->session->userdata("usercode"),
+			"CreateDt" 		=> $now,
 		);
 		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postUsers", $data);
-		redirect(base_url('admin/user2'));
+		redirect(base_url('admin/user'));
 	}
 	function edit(){
 		$usercode 		= $this->input->post('usercode');
@@ -122,7 +123,7 @@ class User extends CI_Controller {
 		print_r($data);
 		echo "</pre>";
 		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateUsers", $data);
-		redirect(base_url('admin/user2'));
+		redirect(base_url('admin/user'));
 	}
 
 	function delete_user()
@@ -131,6 +132,6 @@ class User extends CI_Controller {
 		echo $usercode;
 		$url = "http://127.0.0.1:8080/runsystemdms/deleteUser?usercode=" . $usercode;
 		$this->api->delete($url);
-		redirect(base_url('admin/menu'));
+		redirect(base_url('admin/user'));
 	}
 }

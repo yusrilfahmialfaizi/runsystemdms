@@ -87,32 +87,40 @@ class GroupMenu extends CI_Controller
 	{
 		$menucode 		= $this->input->post('menucode');
 		$grpcode 		= $this->input->post('grpcode');
+		$accessind		= $this->input->post("accessind");
 		date_default_timezone_set('Asia/Jakarta');
 		$now = date('YmdHi');
 		$data = array(
 			'menucode' 	=> $menucode,
 			'grpcode'		=> $grpcode,
+			'accessind'	=> $accessind,
 			"CreateBy" 	=> $this->session->userdata("usercode"),
 			"CreateDt" 	=> $now,
 		);
 		print_r($data);
 		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postGroupMenu", $data);
-		redirect(base_url('admin/groupmenu2'));
+		redirect(base_url('admin/groupmenu'));
 	}
 	function edit()
 	{
 		$menucode 		= $this->input->post('menucode');
 		$grpcode 			= $this->input->post('grpcode');
+		$menucode_old 		= $this->input->post('menucode_old');
+		$grpcode_old 			= $this->input->post('grpcode_old');
+		$accessind		= $this->input->post("accessind");
 		date_default_timezone_set('Asia/Jakarta');
 		$now = date('YmdHi');
 		$data = array(
 			'menucode' 	=> $menucode,
 			'grpcode'		=> $grpcode,
+			'accessind'	=> $accessind,
 			"LastupBy" 	=> $this->session->userdata("usercode"),
 			"LastupDt" 	=> $now,
+			'menucode_old'	=> $menucode_old,
+			'grpcode_old'	=> $grpcode_old,
 		);
 		print_r($data);
 		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateGroupMenu", $data);
-		redirect(base_url('admin/groupmenu2'));
+		redirect(base_url('admin/groupmenu'));
 	}
 }

@@ -123,10 +123,10 @@ func GetUserById(c *CustomContext) Users {
 }
 
 // for Insert User
-func PostUser(con *sql.DB, UserCode string, Username string, GrpCode string, Pwd string, ExpDt string, CreateBy string, CreateDt string) (int64, error) {
+func PostUser(con *sql.DB, UserCode string, Username string, GrpCode string, Pwd string, ExpDt string, HasQiscusAccount string, CreateBy string, CreateDt string) (int64, error) {
 	con = config.Connection()
 
-	query := "INSERT INTO tbluser (UserCode, UserName, GrpCode, Pwd, ExpDt,  CreateBy, CreateDt) VALUES (?,?,?,?,?,?,?)"
+	query := "INSERT INTO tbluser (UserCode, UserName, GrpCode, Pwd, ExpDt, HasqiscusAccount,  CreateBy, CreateDt) VALUES (?,?,?,?,?,?,?,?)"
 
 	stmt, err := con.Prepare(query)
 
@@ -136,7 +136,7 @@ func PostUser(con *sql.DB, UserCode string, Username string, GrpCode string, Pwd
 
 	defer stmt.Close()
 
-	result, eror := stmt.Exec(UserCode, Username, GrpCode, Pwd, ExpDt, CreateBy, CreateDt)
+	result, eror := stmt.Exec(UserCode, Username, GrpCode, Pwd, ExpDt, HasQiscusAccount,CreateBy, CreateDt)
 
 	if eror != nil {
 		fmt.Println(eror)

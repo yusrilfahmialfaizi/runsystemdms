@@ -112,7 +112,7 @@
                             if (grpcode == 'Adm') {
                                 window.location.href = "<?php echo base_url("home") ?>";
                             }else if (grpcode == "SysAdm") {
-                                window.location.href = "<?php echo base_url("admin/user2") ?>";
+                                window.location.href = "<?php echo base_url("admin/home") ?>";
                             }
                         }
                     }

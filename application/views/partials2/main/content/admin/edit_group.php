@@ -27,6 +27,7 @@
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="grpcode">Group Code</label>
                                         <input class="form-control" id="grpcode" name="grpcode" value="<?php echo $key['grpcode'] ?>" type="text" placeholder="group code..." required="">
+                                        <input class="form-control" id="grpcode_old" name="grpcode_old" value="<?php echo $key['grpcode'] ?>" type="text" placeholder="group code..." hidden="" required="">
                                     </div>
                                 </div>
                             </div>
