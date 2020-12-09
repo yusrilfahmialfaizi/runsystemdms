@@ -22,8 +22,8 @@ class User extends CI_Controller {
 		$response = curl_exec($ch);
 		curl_close($ch);
 		$data = json_decode($response, true);
-		$data['dt'] = $data['user'];
 		if ($data != null) {
+			$data['dt'] = $data['user'];
 			$this->load->view('partials2/main/page2/page_user2',$data);
 		}else{
 			$this->load->view('partials2/main/page2/page_notfound');
@@ -35,15 +35,15 @@ class User extends CI_Controller {
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
 			redirect("login");
 		}
-		$url = 'http://127.0.0.1:8080/runsystemdms/getGroup';
-		$ch = curl_init();
+		$url 		= 'http://127.0.0.1:8080/runsystemdms/getGroup';
+		$ch 			= curl_init();
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_URL, $url);
-		$response = curl_exec($ch);
+		$response 	= curl_exec($ch);
 		curl_close($ch);
-		$data = json_decode($response, true);
-		$data['dt'] = $data['group'];
+		$data 		= json_decode($response, true);
 		if ($data != null) {
+			$data['dt'] = $data['group'];
 			$this->load->view('partials2/main/page2/page_add_user', $data);
 		}else{
 			$this->load->view('partials2/main/page2/page_notfound');
@@ -59,12 +59,12 @@ class User extends CI_Controller {
 		$url 		= 'http://127.0.0.1:8080/runsystemdms/getGroup';
 		$response 	= $this->api->get($url);
 		$data 		= json_decode($response, true);
-		$data['dt'] 	= $data['group'];
 		$url1 		= "http://127.0.0.1:8080/runsystemdms/getUsersById/".$usercode;
 		$response1 	= $this->api->get($url1);
 		$data1		= json_decode($response1, true);
-		$data['user']	= $data1['user'];
 		if ($data != null && $data1) {
+			$data['dt'] 	= $data['group'];
+			$data['user']	= $data1['user'];
 			$this->load->view('partials2/main/page2/page_edit_user', $data);
 		}else{
 			$this->load->view('partials2/main/page2/page_notfound');

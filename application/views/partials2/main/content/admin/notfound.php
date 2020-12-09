@@ -18,7 +18,7 @@
     <div class="error mx-auto" data-text="404">404</div>
     <p class="lead text-gray-800 mb-5">Page Not Found</p>
     <p class="text-gray-500 mb-0">Not Connected with Database</p>
-    <a href="">&larr; Back to Dashboard</a>
+    <a href="#" onclick='location.reload(true); return false;'>&larr; Back to Dashboard</a>
 </div>
 
 </div>

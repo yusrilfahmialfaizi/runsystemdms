@@ -18,8 +18,8 @@ class Project extends CI_Controller {
 		$url = "http://127.0.0.1:8080/runsystemdms/getPG";
 		$response = $this->api->get($url);
 		$data = json_decode($response, true);
-		$data['dt'] = $data['pg'];
 		if ($data != null) {
+			$data['dt'] = $data['pg'];
 			$this->load->view('partials2/main/page2/page_project2',$data);
 		}else{
 			$this->load->view('partials2/main/page2/page_notfound');
@@ -41,8 +41,8 @@ class Project extends CI_Controller {
 		$url = "http://127.0.0.1:8080/runsystemdms/getProjectById/".$projectcode;
 		$response = $this->api->get($url);
 		$response = json_decode($response, true);
-		$data['dt'] = $response["pg"];
 		if ($data != null) {
+			$data['dt'] = $response["pg"];
 			$this->load->view('partials2/main/page2/page_edit_project', $data);
 		}else{
 			$this->load->view('partials2/main/page2/page_notfound');

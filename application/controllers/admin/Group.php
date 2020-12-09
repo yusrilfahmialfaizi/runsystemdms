@@ -16,11 +16,11 @@ class Group extends CI_Controller
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
 			redirect("login");
 		}
-		$url = "http://127.0.0.1:8080/runsystemdms/getGroup";
-		$response = $this->api->get($url);
-		$data = json_decode($response, true);
-		$data['dt'] = $data['group'];
+		$url 		= "http://127.0.0.1:8080/runsystemdms/getGroup";
+		$response 	= $this->api->get($url);
+		$data 		= json_decode($response, true);
 		if ($data != null) {
+			$data['dt'] 	= $data['group'];
 			$this->load->view('partials2/main/page2/page_group2', $data);
 		} else {
 			$this->load->view('partials2/main/page2/page_notfound');
@@ -38,12 +38,12 @@ class Group extends CI_Controller
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
 			redirect("login");
 		}
-		$grpcode = $this->input->get("grpcode");
-		$url = "http://127.0.0.1:8080/runsystemdms/getGroupById/" . $grpcode;
-		$response = $this->api->get($url);
-		$response = json_decode($response, true);
-		$data['dt'] = $response["group"];
+		$grpcode 		= $this->input->get("grpcode");
+		$url 		= "http://127.0.0.1:8080/runsystemdms/getGroupById/" . $grpcode;
+		$response 	= $this->api->get($url);
+		$response 	= json_decode($response, true);
 		if ($response != null) {
+			$data['dt'] = $response["group"];
 			$this->load->view('partials2/main/page2/page_edit_group', $data);
 		} else {
 			$this->load->view('partials2/main/page2/page_notfound');
