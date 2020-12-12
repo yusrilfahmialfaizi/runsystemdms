@@ -15,18 +15,14 @@ class User extends CI_Controller {
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
 			redirect("login");
 		}
-		$url = "http://127.0.0.1:8080/runsystemdms/getUsers";
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL, $url);
-		$response = curl_exec($ch);
-		curl_close($ch);
-		$data = json_decode($response, true);
-		if ($data != null) {
+		$url 		= "http://127.0.0.1:8080/runsystemdms/getUsers";
+		$response 	= $this->api->get($url);
+		$data 		= json_decode($response, true);
+		if ($data == null  || $data['message'] == 'Internal Server Error') {
+			$this->load->view('partials2/main/page2/page_notfound');
+		}else{
 			$data['dt'] = $data['user'];
 			$this->load->view('partials2/main/page2/page_user2',$data);
-		}else{
-			$this->load->view('partials2/main/page2/page_notfound');
 		}
 
 	}
@@ -36,17 +32,13 @@ class User extends CI_Controller {
 			redirect("login");
 		}
 		$url 		= 'http://127.0.0.1:8080/runsystemdms/getGroup';
-		$ch 			= curl_init();
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL, $url);
-		$response 	= curl_exec($ch);
-		curl_close($ch);
+		$response 	= $this->api->get($url);
 		$data 		= json_decode($response, true);
-		if ($data != null) {
+		if ($data == null  || $data['message'] == 'Internal Server Error') {
+			$this->load->view('partials2/main/page2/page_notfound');
+		}else{
 			$data['dt'] = $data['group'];
 			$this->load->view('partials2/main/page2/page_add_user', $data);
-		}else{
-			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
 
@@ -78,8 +70,8 @@ class User extends CI_Controller {
 		$pwd 			= $this->input->post('pwd');
 		$expdt 			= $this->input->post('expdt');
 		date_default_timezone_set('Asia/Jakarta');
-		$now = date('YmdHi');
-		$data = array(
+		$now 			= date('YmdHi');
+		$data 			= array(
 			'usercode' 		=> $usercode,
 			'username'		=> $username,
 			'grpcode'			=> $grpcode,
@@ -104,8 +96,8 @@ class User extends CI_Controller {
 		$AvatarImage 		= $this->input->post('AvatarImage');
 		$deviceid 		= $this->input->post('deviceid');
 		date_default_timezone_set('Asia/Jakarta');
-		$now = date('YmdHi');
-		$data = array(
+		$now 			= date('YmdHi');
+		$data 			= array(
 			'UserCode' 		=> $usercode,
 			'username'		=> $username,
 			'grpcode'			=> $grpcode,
@@ -119,18 +111,14 @@ class User extends CI_Controller {
 			"LastupDt" 		=> $now,
 			'UserCode_old'		=> $usercode_old
 		);
-		echo "<pre>";
-		print_r($data);
-		echo "</pre>";
 		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateUsers", $data);
 		redirect(base_url('admin/user'));
 	}
 
 	function delete_user()
 	{
-		$usercode = $this->input->get("usercode");
-		echo $usercode;
-		$url = "http://127.0.0.1:8080/runsystemdms/deleteUser?usercode=" . $usercode;
+		$usercode 	= $this->input->get("usercode");
+		$url 		= "http://127.0.0.1:8080/runsystemdms/deleteUser?usercode=" . $usercode;
 		$this->api->delete($url);
 		redirect(base_url('admin/user'));
 	}

@@ -21,48 +21,41 @@
                         <tr>
                             <th>UserCode</th>
                             <th>Username</th>
-                            <th>Password</th>
+                            <th>GroupCode</th>
                             <th>Expired Date</th>
-                            <th>Notivy Indicator</th>
+                            <th>Notivy</th>
                             <th>Avatar Image</th>
                             <th>Device id</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>UserCode</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Expired Date</th>
-                            <th>Notivy Indicator</th>
-                            <th>Avatar Image</th>
-                            <th>Device id</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         <!-- js -->
                         <?php foreach ($dt as $key) {
                             if ($key != null) {
                         ?>
-                                <tr>
-                                    <td><?php echo $key['usercode'] ?></td>
-                                    <td><?php echo $key['username'] ?></td>
-                                    <td><?php echo $key['grpcode'] ?></td>
-                                    <td><?php echo $key['expdt'] ?></td>
-                                    <td><?php echo $key['notifyind'] ?></td>
-                                    <td><?php echo $key['avatarimage'] ?></td>
-                                    <td><?php echo $key['deviceid'] ?></td>
-                                    <td>
-                                        <a href="<?php echo base_url("admin/user/edit_user?usercode=") . $key["usercode"]; ?>">
-                                            <button class="btn btn-warning" data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3" data-id="<?php echo $key["usercode"]; ?>"><i class="fas fa-edit"></i></button>
-                                        </a>
-                                        <!-- <a href="<?php echo base_url("admin/user/delete_user?usercode=") . $key["usercode"]; ?>"> -->
-                                        <button disabled class="btn btn-danger" data-toggle="tooltip" title="Delete" width="20" type="button" data-id="<?php echo $key["usercode"]; ?>" data-feather="x"><i class="fas fa-trash"></i></button>
-                                        <!-- </a> -->
-                                    </td>
-                                </tr>
+                        <tr>
+                            <td align="center"><?php echo $key['usercode'] ?></td>
+                            <td align="center"><?php echo $key['username'] ?></td>
+                            <td align="center"><?php echo $key['grpcode'] ?></td>
+                            <td align="center"><?php echo $key['expdt'] ?></td>
+                            <td align="center"><?php echo $key['notifyind'] ?></td>
+                            <td align="center"><?php echo $key['avatarimage'] ?></td>
+                            <td align="center"><?php echo $key['deviceid'] ?></td>
+                            <td align="center">
+                                <a href="<?php echo base_url("admin/user/edit_user?usercode=") . $key["usercode"]; ?>">
+                                    <button class="btn btn-warning btn-circle" data-toggle="tooltip" title="Edit"
+                                        width="20" type="button" data-feather="edit-3"
+                                        data-id="<?php echo $key["usercode"]; ?>"><i
+                                            class="fas fa-edit"></i></button>
+                                </a>
+                                <!-- <a href="<?php echo base_url("admin/user/delete_user?usercode=") . $key["usercode"]; ?>"> -->
+                                <button disabled class="btn btn-danger btn-circle" data-toggle="tooltip" title="Delete"
+                                    width="20" type="button" data-id="<?php echo $key["usercode"]; ?>"
+                                    data-feather="x"><i class="fas fa-trash"></i></button>
+                                <!-- </a> -->
+                            </td>
+                        </tr>
                         <?php }
                         } ?>
                     </tbody>

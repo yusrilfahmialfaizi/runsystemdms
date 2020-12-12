@@ -19,11 +19,11 @@ class Module extends CI_Controller
 		$url1 			= "http://127.0.0.1:8080/runsystemdms/getModuls";
 		$response1 		= $this->api->get($url1);
 		$data1			= json_decode($response1, true);
-		if ($data != null) {
-			$data['dt'] 		= $data1['modul'];
-			$this->load->view('partials2/main/page2/page_module2', $data);
-		} else {
+		if ($data1 == null  || $data1['message'] == 'Internal Server Error') {
 			$this->load->view('partials2/main/page2/page_notfound');
+		} else {
+			$data['dt'] 	= $data1['modul'];
+			$this->load->view('partials2/main/page2/page_module2', $data);
 		}
 	}
 	public function Add_modul()
@@ -34,11 +34,11 @@ class Module extends CI_Controller
 		$url 				= "http://127.0.0.1:8080/runsystemdms/getPG";
 		$response 			= $this->api->get($url);
 		$data 				= json_decode($response, true);
-		if ($data != null) {
+		if ($data == null  || $data['message'] == 'Internal Server Error') {
+			$this->load->view('partials2/main/page2/page_notfound');
+		} else {
 			$data['project'] 	= $data['pg'];
 			$this->load->view('partials2/main/page2/page_add_modul', $data);
-		} else {
-			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
 	public function edit_module()
@@ -53,12 +53,13 @@ class Module extends CI_Controller
 		$url2 			= "http://127.0.0.1:8080/runsystemdms/getPG";
 		$response2 		= $this->api->get($url2);
 		$data2 			= json_decode($response2, true);
-		if ($response != null && $response2 != null) {
+		print_r($response);
+		if ($response == null && $response2 == null  || $data2['message'] == 'Internal Server Error') {
+			$this->load->view('partials2/main/page2/page_notfound');
+		} else {
 			$data['dt'] 		= $response["modul"];
 			$data['project'] 	= $data2['pg'];
 			$this->load->view('partials2/main/page2/page_edit_modul', $data);
-		} else {
-			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
 	function add()
@@ -67,8 +68,8 @@ class Module extends CI_Controller
 		$modulname 		= $this->input->post('modulname');
 		$projectcode 		= $this->input->post('projectcode');
 		date_default_timezone_set('Asia/Jakarta');
-		$now = date('YmdHi');
-		$data = array(
+		$now 			= date('YmdHi');
+		$data 			= array(
 			'modulcode' 	=> $modulcode,
 			'modulname'	=> $modulname,
 			'projectcode' 	=> $projectcode,
@@ -85,14 +86,14 @@ class Module extends CI_Controller
 		$projectcode 		= $this->input->post('projectcode');
 		$modulcode_old 	= $this->input->post('modulcode_old');
 		date_default_timezone_set('Asia/Jakarta');
-		$now = date('YmdHi');
-		$data = array(
+		$now 			= date('YmdHi');
+		$data 			= array(
 			'modulcode' 	=> $modulcode,
 			'modulname'	=> $modulname,
 			'projectcode' 	=> $projectcode,
 			"LastupBy" 	=> $this->session->userdata("usercode"),
 			"LastupDt" 	=> $now,
-			'modulcode_old' 	=> $modulcode_old,
+			'modulcode_old'=> $modulcode_old,
 		);
 		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateModuls", $data);
 		redirect(base_url('admin/module'));
@@ -100,9 +101,8 @@ class Module extends CI_Controller
 
 	function delete_modul()
 	{
-		$modulcode = $this->input->get("modulcode");
-		echo $modulcode;
-		$url = "http://127.0.0.1:8080/runsystemdms/deleteModule?modulcode=" . $modulcode;
+		$modulcode 	= $this->input->get("modulcode");
+		$url 		= "http://127.0.0.1:8080/runsystemdms/deleteModule?modulcode=" . $modulcode;
 		$this->api->delete($url);
 		redirect(base_url('admin/module'));
 	}

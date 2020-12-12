@@ -19,11 +19,11 @@ class Group extends CI_Controller
 		$url 		= "http://127.0.0.1:8080/runsystemdms/getGroup";
 		$response 	= $this->api->get($url);
 		$data 		= json_decode($response, true);
-		if ($data != null) {
+		if ($data == null || $data['message'] == 'Internal Server Error') {
+			$this->load->view('partials2/main/page2/page_notfound');
+		} else {
 			$data['dt'] 	= $data['group'];
 			$this->load->view('partials2/main/page2/page_group2', $data);
-		} else {
-			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
 	public function add_group()
@@ -42,11 +42,11 @@ class Group extends CI_Controller
 		$url 		= "http://127.0.0.1:8080/runsystemdms/getGroupById/" . $grpcode;
 		$response 	= $this->api->get($url);
 		$response 	= json_decode($response, true);
-		if ($response != null) {
+		if ($response == null  || $response['message'] == 'Internal Server Error') {
+			$this->load->view('partials2/main/page2/page_notfound');
+		} else {
 			$data['dt'] = $response["group"];
 			$this->load->view('partials2/main/page2/page_edit_group', $data);
-		} else {
-			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
 

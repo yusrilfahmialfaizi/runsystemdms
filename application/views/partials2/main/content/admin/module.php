@@ -44,12 +44,14 @@
                                     <td><?php echo $key['modulname'] ?></td>
                                     <td><?php echo $key['projectcode'] ?></td>
                                     <td>
+                                    <div class="row">
                                         <a href="<?php echo base_url("admin/module/edit_module?modulcode=") . $key["modulcode"]; ?>">
                                             <button class="btn btn-warning" data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3" data-id="<?php echo $key["modulcode"]; ?>"><i class="fas fa-edit"></i></button>
                                         </a>
                                         <!-- <a href="<?php echo base_url("admin/module/delete_modul?modulcode=") . $key["modulcode"]; ?>"> -->
                                         <button disabled class="btn btn-danger" data-toggle="tooltip" title="Delete" width="20" type="button" data-id="<?php echo $key["modulcode"]; ?>" data-feather="x"><i class="fas fa-trash"></i></button>
                                         <!-- </a> -->
+                                    </div>
                                     </td>
                                 </tr>
                         <?php }

@@ -20,11 +20,11 @@ class GroupMenu extends CI_Controller
 		$url = "http://127.0.0.1:8080/runsystemdms/getGroupMenu";
 		$response = $this->api->get($url);
 		$data = json_decode($response, true);
-		if ($data != null) {
+		if ($data == null  || $data['message'] == 'Internal Server Error') {
+			$this->load->view('partials2/main/page2/page_notfound');
+		} else {
 			$data['dt'] = $data['groupmenu'];
 			$this->load->view('partials2/main/page2/page_groupmenu2', $data);
-		} else {
-			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
 	public function add_groupmenu()
@@ -38,12 +38,12 @@ class GroupMenu extends CI_Controller
 		$url1 		= "http://127.0.0.1:8080/runsystemdms/getMenu";
 		$response1	= $this->api->get($url1);
 		$data1		= json_decode($response1, true);
-		if ($data != null && $data1 != null) {
+		if ($data == null && $data1 == null  || $data['message'] == 'Internal Server Error') {
+			$this->load->view('partials2/main/page2/page_notfound');
+		} else {
 			$data['dt'] 	= $data['group'];
 			$data['menu'] 	= $data1['menu'];
 			$this->load->view('partials2/main/page2/page_add_groupmenu', $data);
-		} else {
-			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
 	public function edit_grpmenu()
@@ -63,13 +63,13 @@ class GroupMenu extends CI_Controller
 		$dt 			= array('menucode' => $menucode, 'grpcode' => $grpcode);
 		$response2	= $this->documentdtl->callApiDocDtl("POST", $url2, $dt);
 		$data2		= json_decode($response2, true);
-		if ($data != null && $data1 != null && $data2 != null) {
+		if ($data == null && $data1 == null && $data2 == null  || $data['message'] == 'Internal Server Error') {
+			$this->load->view('partials2/main/page2/page_notfound');
+		} else {
 			$data['dt'] 	= $data['group'];
 			$data['menu'] 	= $data1['menu'];
 			$data['grpmn'] = $data2['groupmenu'];
 			$this->load->view('partials2/main/page2/page_edit_groupmenu', $data);
-		} else {
-			$this->load->view('partials2/main/page2/page_notfound');
 		}
 	}
 
