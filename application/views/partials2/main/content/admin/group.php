@@ -35,20 +35,21 @@
                         <?php foreach ($dt as $key) {
                             if ($key != null) {
                         ?>
-                                <tr>
-                                    <td><?php echo $key['grpcode'] ?></td>
-                                    <td><?php echo $key['grpname'] ?></td>
-                                    <td>
-                                    <div class="row">
-                                        <a href="<?php echo base_url("admin/group/edit_grp?grpcode=") . $key["grpcode"]; ?>">
-                                            <button class="btn btn-warning" data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit-3"><i class="fas fa-edit"></i></button>
-                                        </a>
-                                        <!-- <a href="<?php echo base_url("admin/group/delete_grp?grpcode=") . $key["grpcode"]; ?>" > -->
-                                        <button class="btn btn-danger" data-toggle="tooltip" title="Delete" width="20" type="button" disabled><i class="fas fa-trash"></i></button>
-                                        <!-- </a> -->
-                                    </div>
-                                    </td>
-                                </tr>
+                        <tr>
+                            <td><?php echo $key['grpcode'] ?></td>
+                            <td><?php echo $key['grpname'] ?></td>
+                            <td align="center">
+                                <a href="<?php echo base_url("admin/group/edit_grp?grpcode=") . $key["grpcode"]; ?>">
+                                    <button class="btn btn-warning btn-circle" data-toggle="tooltip" title="Edit"
+                                        width="20" type="button" data-feather="edit-3"><i
+                                            class="fas fa-edit"></i></button>
+                                </a>
+                                <!-- <a href="<?php echo base_url("admin/group/delete_grp?grpcode=") . $key["grpcode"]; ?>" > -->
+                                <button class="btn btn-danger btn-circle" data-toggle="tooltip" title="Delete"
+                                    width="20" type="button" disabled><i class="fas fa-trash"></i></button>
+                                <!-- </a> -->
+                            </td>
+                        </tr>
                         <?php }
                         } ?>
                     </tbody>

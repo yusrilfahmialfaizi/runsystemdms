@@ -35,19 +35,18 @@
                             if ($key != null) {
                         ?>
                         <tr>
-                            <td align="center"><?php echo $key['usercode'] ?></td>
-                            <td align="center"><?php echo $key['username'] ?></td>
-                            <td align="center"><?php echo $key['grpcode'] ?></td>
-                            <td align="center"><?php echo $key['expdt'] ?></td>
-                            <td align="center"><?php echo $key['notifyind'] ?></td>
-                            <td align="center"><?php echo $key['avatarimage'] ?></td>
-                            <td align="center"><?php echo $key['deviceid'] ?></td>
+                            <td><?php echo $key['usercode'] ?></td>
+                            <td><?php echo $key['username'] ?></td>
+                            <td><?php echo $key['grpcode'] ?></td>
+                            <td><?php echo $key['expdt'] ?></td>
+                            <td><?php echo $key['notifyind'] ?></td>
+                            <td><?php echo $key['avatarimage'] ?></td>
+                            <td><?php echo $key['deviceid'] ?></td>
                             <td align="center">
                                 <a href="<?php echo base_url("admin/user/edit_user?usercode=") . $key["usercode"]; ?>">
                                     <button class="btn btn-warning btn-circle" data-toggle="tooltip" title="Edit"
                                         width="20" type="button" data-feather="edit-3"
-                                        data-id="<?php echo $key["usercode"]; ?>"><i
-                                            class="fas fa-edit"></i></button>
+                                        data-id="<?php echo $key["usercode"]; ?>"><i class="fas fa-edit"></i></button>
                                 </a>
                                 <!-- <a href="<?php echo base_url("admin/user/delete_user?usercode=") . $key["usercode"]; ?>"> -->
                                 <button disabled class="btn btn-danger btn-circle" data-toggle="tooltip" title="Delete"

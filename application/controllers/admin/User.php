@@ -18,11 +18,17 @@ class User extends CI_Controller {
 		$url 		= "http://127.0.0.1:8080/runsystemdms/getUsers";
 		$response 	= $this->api->get($url);
 		$data 		= json_decode($response, true);
-		if ($data == null  || $data['message'] == 'Internal Server Error') {
+		// print_r($data);
+		// || $data['message'] == 'Internal Server Error'
+		if ($data == null ) {
 			$this->load->view('partials2/main/page2/page_notfound');
 		}else{
-			$data['dt'] = $data['user'];
-			$this->load->view('partials2/main/page2/page_user2',$data);
+			if (isset($data['message'])) {
+				$this->load->view('partials2/main/page2/page_notfound');
+			}else{
+				$data['dt'] = $data['user'];
+				$this->load->view('partials2/main/page2/page_user2',$data);
+			}
 		}
 
 	}
@@ -34,11 +40,15 @@ class User extends CI_Controller {
 		$url 		= 'http://127.0.0.1:8080/runsystemdms/getGroup';
 		$response 	= $this->api->get($url);
 		$data 		= json_decode($response, true);
-		if ($data == null  || $data['message'] == 'Internal Server Error') {
+		if ($data == null ) {
 			$this->load->view('partials2/main/page2/page_notfound');
 		}else{
-			$data['dt'] = $data['group'];
-			$this->load->view('partials2/main/page2/page_add_user', $data);
+			if (isset($data['message'])) {
+				$this->load->view('partials2/main/page2/page_notfound');
+			}else{		
+				$data['dt'] = $data['group'];
+				$this->load->view('partials2/main/page2/page_add_user', $data);
+			}
 		}
 	}
 

@@ -39,22 +39,23 @@
                         <?php foreach ($dt as $key) {
                             if ($key != null) {
                         ?>
-                                <tr>
-                                    <td><?php echo $key['menucode'] ?></td>
-                                    <td><?php echo $key['modulcode'] ?></td>
-                                    <td><?php echo $key['menudesc'] ?></td>
-                                    <td><?php echo $key['parent'] ?></td>
-                                    <td>
-                                    <div class="row">
-                                        <a href="<?php echo base_url("admin/menu/edit_menu?menucode=") . $key["menucode"]; ?>">
-                                            <button class="btn btn-warning" data-toggle="tooltip" title="Edit" width="0" type="button" data-feather="edit-3"><i class="fas fa-edit"></i></button>
-                                        </a>
-                                        <!-- <a href="<?php echo base_url("admin/menu/delete_menu?menucode=") . $key["menucode"]; ?>"> -->
-                                        <button class="btn btn-danger" data-toggle="tooltip" title="Delete" width="0" type="button" disabled><i class="fas fa-trash"></i></button>
-                                        <!-- </a> -->
-                                    </div>
-                                    </td>
-                                </tr>
+                        <tr>
+                            <td><?php echo $key['menucode'] ?></td>
+                            <td><?php echo $key['modulcode'] ?></td>
+                            <td><?php echo $key['menudesc'] ?></td>
+                            <td><?php echo $key['parent'] ?></td>
+                            <td align="center">
+                                <a href="<?php echo base_url("admin/menu/edit_menu?menucode=") . $key["menucode"]; ?>">
+                                    <button class="btn btn-warning btn-circle" data-toggle="tooltip" title="Edit"
+                                        width="0" type="button" data-feather="edit-3"><i
+                                            class="fas fa-edit"></i></button>
+                                </a>
+                                <!-- <a href="<?php echo base_url("admin/menu/delete_menu?menucode=") . $key["menucode"]; ?>"> -->
+                                <button class="btn btn-danger btn-circle" data-toggle="tooltip" title="Delete" width="0"
+                                    type="button" disabled><i class="fas fa-trash"></i></button>
+                                <!-- </a> -->
+                            </td>
+                        </tr>
                         <?php }
                         } ?>
                     </tbody>

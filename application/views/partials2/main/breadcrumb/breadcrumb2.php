@@ -11,7 +11,11 @@
     <?php if ($is_active):?>
      <?php echo ucfirst($segment); ?>
      <?php else: ?>
+     <?php if (ucfirst($segment) == "Admin") { ?>
+      <a href="<?php echo site_url($url."/home") ?>"><?php echo ucfirst($segment) ?></a>
+      <?php }else{ ?>
       <a href="<?php echo site_url($url) ?>"><?php echo ucfirst($segment) ?></a>
+      <?php } ?>
     <?php endif; ?>
   </li>
 

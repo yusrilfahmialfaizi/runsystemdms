@@ -19,11 +19,15 @@ class Module extends CI_Controller
 		$url1 			= "http://127.0.0.1:8080/runsystemdms/getModuls";
 		$response1 		= $this->api->get($url1);
 		$data1			= json_decode($response1, true);
-		if ($data1 == null  || $data1['message'] == 'Internal Server Error') {
+		if ($data1 == null ) {
 			$this->load->view('partials2/main/page2/page_notfound');
-		} else {
-			$data['dt'] 	= $data1['modul'];
-			$this->load->view('partials2/main/page2/page_module2', $data);
+		}else{
+			if (isset($data1['message'])) {
+				$this->load->view('partials2/main/page2/page_notfound');
+			} else {
+				$data['dt'] 	= $data1['modul'];
+				$this->load->view('partials2/main/page2/page_module2', $data);
+			}
 		}
 	}
 	public function Add_modul()
@@ -34,11 +38,15 @@ class Module extends CI_Controller
 		$url 				= "http://127.0.0.1:8080/runsystemdms/getPG";
 		$response 			= $this->api->get($url);
 		$data 				= json_decode($response, true);
-		if ($data == null  || $data['message'] == 'Internal Server Error') {
+		if ($data == null ) {
 			$this->load->view('partials2/main/page2/page_notfound');
-		} else {
-			$data['project'] 	= $data['pg'];
-			$this->load->view('partials2/main/page2/page_add_modul', $data);
+		}else{
+			if (isset($data['message'])) {
+				$this->load->view('partials2/main/page2/page_notfound');
+			} else {
+				$data['project'] 	= $data['pg'];
+				$this->load->view('partials2/main/page2/page_add_modul', $data);
+			}
 		}
 	}
 	public function edit_module()
@@ -49,17 +57,20 @@ class Module extends CI_Controller
 		$modulcode 		= $this->input->get("modulcode");
 		$url 			= "http://127.0.0.1:8080/runsystemdms/getModulByID/" . $modulcode;
 		$response 		= $this->api->get($url);
-		$response 		= json_decode($response, true);
+		$data 			= json_decode($response, true);
 		$url2 			= "http://127.0.0.1:8080/runsystemdms/getPG";
 		$response2 		= $this->api->get($url2);
 		$data2 			= json_decode($response2, true);
-		print_r($response);
-		if ($response == null && $response2 == null  || $data2['message'] == 'Internal Server Error') {
+		if ($data == null ) {
 			$this->load->view('partials2/main/page2/page_notfound');
-		} else {
-			$data['dt'] 		= $response["modul"];
-			$data['project'] 	= $data2['pg'];
-			$this->load->view('partials2/main/page2/page_edit_modul', $data);
+		}else{
+			if (isset($data['message']) || isset($data2['message'])) {
+				$this->load->view('partials2/main/page2/page_notfound');
+			} else {
+				$data['dt'] 		= $data["modul"];
+				$data['project'] 	= $data2['pg'];
+				$this->load->view('partials2/main/page2/page_edit_modul', $data);
+			}
 		}
 	}
 	function add()

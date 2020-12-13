@@ -20,11 +20,15 @@ class Menu extends CI_Controller
 		$url 		= "http://127.0.0.1:8080/runsystemdms/getMenu";
 		$response		= $this->api->get($url);
 		$data 		= json_decode($response, true);
-		if ($data == null  || $data['message'] == 'Internal Server Error') {
+		if ($data == null ) {
 			$this->load->view('partials2/main/page2/page_notfound');
-		} else {
-			$data['dt'] 	= $data['menu'];
-			$this->load->view('partials2/main/page2/page_menu2', $data);
+		}else{
+			if (isset($data['message'])) {
+				$this->load->view('partials2/main/page2/page_notfound');
+			} else {
+				$data['dt'] 	= $data['menu'];
+				$this->load->view('partials2/main/page2/page_menu2', $data);
+			}
 		}
 	}
 	public function Add_modul_menu()
@@ -38,12 +42,16 @@ class Menu extends CI_Controller
 		$url1 			= "http://127.0.0.1:8080/runsystemdms/getModuls";
 		$response1 		= $this->api->get($url1);
 		$data1			= json_decode($response1, true);
-		if ($data == null && $data1 == null  || $data['message'] == 'Internal Server Error') {
+		if ($data == null && $data1 == null) {
 			$this->load->view('partials2/main/page2/page_notfound');
-		} else {
-			$data['menu'] 		= $data['menu'];
-			$data['dt'] 		= $data1['modul'];
-			$this->load->view('partials2/main/page2/page_add_modul_menu', $data);
+		}else{
+			if (isset($data['message']) || isset($data1['message'])) {
+				$this->load->view('partials2/main/page2/page_notfound');
+			} else {
+				$data['menu'] 		= $data['menu'];
+				$data['dt'] 		= $data1['modul'];
+				$this->load->view('partials2/main/page2/page_add_modul_menu', $data);
+			}
 		}
 	}
 	public function edit_menu()
@@ -61,13 +69,17 @@ class Menu extends CI_Controller
 		$url2 			= "http://127.0.0.1:8080/runsystemdms/getMenuWithId/" . $menucode;
 		$response2 		= $this->api->get($url2);
 		$data2			= json_decode($response2, true);
-		if ($data == null && $data1 == null && $data2 == null  || $data['message'] == 'Internal Server Error') {
+		if ($data == null && $data1 == null && $data2 == null) {
 			$this->load->view('partials2/main/page2/page_notfound');
-		} else {
-			$data['menu'] 		= $data['menu'];
-			$data['dt'] 		= $data1['modul'];
-			$data['data'] 		= $data2['menu'];
-			$this->load->view('partials2/main/page2/page_edit_modul_menu', $data);
+		}else{
+			if (isset($data['message']) || isset($data1['message']) || isset($data2['message'])) {
+				$this->load->view('partials2/main/page2/page_notfound');
+			} else {
+				$data['menu'] 		= $data['menu'];
+				$data['dt'] 		= $data1['modul'];
+				$data['data'] 		= $data2['menu'];
+				$this->load->view('partials2/main/page2/page_edit_modul_menu', $data);
+			}
 		}
 	}
 

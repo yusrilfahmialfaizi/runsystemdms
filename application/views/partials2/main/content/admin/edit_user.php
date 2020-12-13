@@ -22,7 +22,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label class="col-form-label pt-0" for="usercode">User Code</label>
-                                    <input class="form-control" id="usercode" name="usercode" type="text" placeholder="user code..." value="<?php echo $us['usercode'] ?>" required="">
+                                    <input class="form-control" id="usercode" name="usercode" type="text" placeholder="user code..." value="<?php echo $us['usercode'] ?>" required="" readonly="">
                                     <input class="form-control" id="usercode_old" name="usercode_old" type="text" placeholder="user code..." value="<?php echo $us['usercode'] ?>" hidden="">
                                 </div>
                             </div>
