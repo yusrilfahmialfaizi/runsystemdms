@@ -17,70 +17,83 @@
     <a class="nav-link" href="<?php echo base_url("admin/home") ?>">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Home</span></a>
-    </li>
+  </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+  <!-- Divider -->
+  <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-      Daftar Menu
-    </div>
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Daftar Menu
+  </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="<?php echo base_url("admin/user")?>"  aria-expanded="true" aria-controls="collapseTwo">
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="<?php echo base_url("admin/user")?>" aria-expanded="true"
+      aria-controls="collapseTwo">
       <i class="fas fa-fw fa-user"></i>
       <span>User</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="<?php echo base_url("admin/privilege")?>" aria-expanded="true"
+      aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-user"></i>
+      <span>Privilege</span>
     </a>
   </li>
 
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item">
-    <a class="nav-link collapsed" href="<?php echo base_url("admin/project")?>" aria-expanded="true" aria-controls="collapseUtilities">
-    <i class="fas fa-fw fa-briefcase"></i>
-    <span>Project</span>
-  </a>
-</li>
+    <a class="nav-link collapsed" href="<?php echo base_url("admin/project")?>" aria-expanded="true"
+      aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-briefcase"></i>
+      <span>Project</span>
+    </a>
+  </li>
 
-<!-- Nav Item - Utilities Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="<?php echo base_url("admin/module")?>" aria-expanded="true" aria-controls="collapseUtilities">
-  <i class="fas fa-fw fa-folder"></i>
-  <span>Module</span>
-</a>
-</li>
+  <!-- Nav Item - Utilities Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="<?php echo base_url("admin/module")?>" aria-expanded="true"
+      aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-folder"></i>
+      <span>Module</span>
+    </a>
+  </li>
 
-<!-- Nav Item - Utilities Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="<?php echo base_url("admin/menu")?>" aria-expanded="true" aria-controls="collapseUtilities">
-  <i class="fas fa-fw fa-folder-open"></i>
-  <span>Menu</span>
-</a>
-</li>
+  <!-- Nav Item - Utilities Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="<?php echo base_url("admin/menu")?>" aria-expanded="true"
+      aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-folder-open"></i>
+      <span>Menu</span>
+    </a>
+  </li>
 
-<!-- Nav Item - Utilities Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="<?php echo base_url("admin/group")?>"  aria-expanded="true" aria-controls="collapseUtilities">
-  <i class="fas fa-fw fa-users"></i>
-  <span>Group</span>
-</a>
-</li>
+  <!-- Nav Item - Utilities Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="<?php echo base_url("admin/group")?>" aria-expanded="true"
+      aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-users"></i>
+      <span>Group</span>
+    </a>
+  </li>
 
-<!-- Nav Item - Utilities Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="<?php echo base_url("admin/groupmenu")?>" aria-expanded="true" aria-controls="collapseUtilities">
-  <i class="fas fa-fw fa-copy"></i>
-  <span>Group Menu</span>
-</a>
-</li>
+  <!-- Nav Item - Utilities Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="<?php echo base_url("admin/groupmenu")?>" aria-expanded="true"
+      aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-copy"></i>
+      <span>Group Menu</span>
+    </a>
+  </li>
 
-<!-- Divider -->
-<hr class="sidebar-divider">
+  <!-- Divider -->
+  <hr class="sidebar-divider">
 
-<!-- Sidebar Toggler (Sidebar) -->
-<div class="text-center d-none d-md-inline">
-  <button class="rounded-circle border-0" id="sidebarToggle"></button>
-</div>
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+  </div>
 </ul>
-  <!-- End of Sidebar -->
+<!-- End of Sidebar -->

@@ -26,14 +26,6 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Menu Description</th>
-                            <th>Group Name</th>
-                            <th>Acces Indicator</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         <?php foreach ($dt as $key) {
                             if ($key != null) { ?>

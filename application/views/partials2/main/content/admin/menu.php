@@ -26,15 +26,6 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Menu Code</th>
-                            <th>Modul Code</th>
-                            <th>Menu Description</th>
-                            <th>Parent</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         <?php foreach ($dt as $key) {
                             if ($key != null) {

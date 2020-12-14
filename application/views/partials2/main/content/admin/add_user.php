@@ -15,61 +15,101 @@
         <div class="col-md-6 ">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                <form action="<?php echo base_url("admin/user/add") ?>" method="POST">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label class="col-form-label pt-0" for="usercode">User Code</label>
-                                    <input class="form-control" id="usercode" name="usercode" type="text" placeholder="user code..." required="">
+                    <form action="<?php echo base_url("admin/user/add") ?>" method="POST">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0" for="usercode">User Code</label>
+                                        <input class="form-control" id="usercode" name="usercode" type="text"
+                                            placeholder="user code..." required="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label class="col-form-label pt-0" for="username">User Name</label>
-                                    <input class="form-control" id="username" name="username" type="text" placeholder="user name..." required="">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0" for="username">User Name</label>
+                                        <input class="form-control" id="username" name="username" type="text"
+                                            placeholder="user name..." required="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label class="col-form-label pt-0" for="grpcode">Group Code</label>
-                                    <select class="custom-select" id="grpcode" name="grpcode" required="">
-                                        <option value="">--Pilih--</option>
-                                        <?php foreach ($dt as $key){ ?>
-                                        <option value="<?php echo $key['grpcode'] ?>"><?php echo $key['grpname'] ?>
-                                        </option>
-                                        <?php } ?>
-                                    </select>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0" for="grpcode">Group Code</label>
+                                        <select class="custom-select" id="grpcode" name="grpcode" required="">
+                                            <option value="">--Pilih--</option>
+                                            <?php foreach ($dt as $key){ ?>
+                                            <option value="<?php echo $key['grpcode'] ?>"><?php echo $key['grpname'] ?>
+                                            </option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label class="col-form-label pt-0" for="pwd">Password</label>
-                                    <input class="form-control" id="pwd" name="pwd" type="password" placeholder="password..." required="">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0" for="pwd">Password</label>
+                                        <input class="form-control" id="pwd" name="pwd" type="password"
+                                            placeholder="password..." required="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label class="col-form-label pt-0" for="expdt">Exp Date</label>
-                                    <input class="datepicker-here form-control digits" id="expdt" name="expdt" type="date" data-language="en" required="">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0" for="expdt">Exp Date</label>
+                                        <input class="datepicker-here form-control digits" id="expdt" name="expdt"
+                                            type="date" data-language="en" required="">
 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0" for="expdt">Notify</label>
+                                        <input class="form-control" id="NotifyInd" name="NotifyInd" type="checkbox"
+                                            placeholder="user code...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0" for="expdt">Has Qiscus Account</label>
+                                        <input class="form-control" id="HasQiscusAccount" name="HasQiscusAccount"
+                                            type="text" placeholder="user code...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0" for="expdt">Avatar Image</label>
+                                        <input class="form-control" id="AvatarImage" name="AvatarImage" type="text"
+                                            placeholder="user code...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0" for="expdt">Device Id</label>
+                                        <input class="form-control" id="deviceid" name="deviceid" type="text"
+                                            placeholder="user code...">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary btn-pill">Submit</button>
-                    </div>
-                </form>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-pill">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
+            <div class="col-md-3"></div>
         </div>
-        <div class="col-md-3"></div>
-    </div>

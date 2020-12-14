@@ -3,8 +3,8 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data Module</h1>
-        <div class="col-lg-3 breadcrumb-right">
+        <h1 class="h3 mb-0 text-gray-800">Data Privilege</h1>
+        <div class="col-lg-2 breadcrumb-right">
             <ol class="breadcrumb">
                 <?php $this->load->view("partials2/main/breadcrumb/breadcrumb2") ?>
             </ol>
@@ -12,46 +12,43 @@
     </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?php echo base_url("admin/module/add_modul") ?>" class="btn btn-success "> + New Module</a>
+            <a href="<?php echo base_url("admin/privilege/add_privilege") ?>" class="btn btn-success "> + New Privilege</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Modul Code</th>
-                            <th>Modul Name</th>
-                            <th>Project Code</th>
+                            <th>Privilege Code</th>
+                            <th>Privilege Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- js -->
-                        <?php foreach ($dt as $key) {
-                            if ($key != null) {
+                        <?php //foreach ($dt as $key) {
+                            //if ($key != null) {
                         ?>
-
                         <tr>
-                            <td><?php echo $key['modulcode'] ?></td>
-                            <td><?php echo $key['modulname'] ?></td>
-                            <td><?php echo $key['projectcode'] ?></td>
+                            <td><?php //echo $key['usercode'] ?></td>
+                            <td><?php //echo $key['username'] ?></td>
                             <td align="center">
-                                <a
-                                    href="<?php echo base_url("admin/module/edit_module?modulcode=") . $key["modulcode"]; ?>">
+                                <a href="<?php //echo base_url("admin/privilege/edit_privilege?usercode=") . $key["usercode"]; ?>">
                                     <button class="btn btn-warning btn-circle" data-toggle="tooltip" title="Edit"
                                         width="20" type="button" data-feather="edit-3"
-                                        data-id="<?php echo $key["modulcode"]; ?>"><i class="fas fa-edit"></i></button>
+                                        data-id="<?php //echo $key["usercode"]; ?>"><i class="fas fa-edit"></i></button>
                                 </a>
-                                <!-- <a href="<?php echo base_url("admin/module/delete_modul?modulcode=") . $key["modulcode"]; ?>"> -->
+                                <!-- <a href="<?php echo base_url("admin/privilege/delete_privilege?usercode=") . $key["usercode"]; ?>"> -->
                                 <button disabled class="btn btn-danger btn-circle" data-toggle="tooltip" title="Delete"
-                                    width="20" type="button" data-id="<?php echo $key["modulcode"]; ?>"
+                                    width="20" type="button" data-id="<?php //echo $key["usercode"]; ?>"
                                     data-feather="x"><i class="fas fa-trash"></i></button>
                                 <!-- </a> -->
                             </td>
                         </tr>
-                        <?php }
-                        } ?>
+                        <?php //}
+                        //} ?>
                     </tbody>
+
                 </table>
             </div>
         </div>

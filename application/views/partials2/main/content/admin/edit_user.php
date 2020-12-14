@@ -22,8 +22,11 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label class="col-form-label pt-0" for="usercode">User Code</label>
-                                    <input class="form-control" id="usercode" name="usercode" type="text" placeholder="user code..." value="<?php echo $us['usercode'] ?>" required="" readonly="">
-                                    <input class="form-control" id="usercode_old" name="usercode_old" type="text" placeholder="user code..." value="<?php echo $us['usercode'] ?>" hidden="">
+                                    <input class="form-control" id="usercode" name="usercode" type="text"
+                                        placeholder="user code..." value="<?php echo $us['usercode'] ?>" required=""
+                                        readonly="">
+                                    <input class="form-control" id="usercode_old" name="usercode_old" type="text"
+                                        placeholder="user code..." value="<?php echo $us['usercode'] ?>" hidden="">
                                 </div>
                             </div>
                         </div>
@@ -31,7 +34,8 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label class="col-form-label pt-0" for="username">User Name</label>
-                                    <input class="form-control" id="username" name="username" type="text" placeholder="user name..." value="<?php echo $us['username'] ?>" required="">
+                                    <input class="form-control" id="username" name="username" type="text"
+                                        placeholder="user name..." value="<?php echo $us['username'] ?>" required="">
                                 </div>
                             </div>
                         </div>
@@ -59,7 +63,8 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label class="col-form-label pt-0" for="pwd">Password</label>
-                                    <input class="form-control" id="pwd" name="pwd" type="password" placeholder="password..." value="<?php echo $us['pwd'] ?>" required="">
+                                    <input class="form-control" id="pwd" name="pwd" type="password"
+                                        placeholder="password..." value="<?php echo $us['pwd'] ?>" required="">
                                 </div>
                             </div>
                         </div>
@@ -68,21 +73,28 @@
                                 <div class="form-group">
                                     <label class="col-form-label pt-0" for="expdt">Exp Date</label>
                                     <?php $expdt = strtotime($us["expdt"]);?>
-                                    <input class="datepicker-here form-control digits" id="expdt" name="expdt" type="date" data-language="en" value="<?php echo date("Y-m-d", $expdt) ?>" required="">
+                                    <input class="datepicker-here form-control digits" id="expdt" name="expdt"
+                                        type="date" data-language="en" value="<?php echo date("Y-m-d", $expdt) ?>"
+                                        required="">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <input class="form-control" id="NotifyInd" name="NotifyInd" type="text" placeholder="user code..." value="<?php echo $us['notifyind'] ?>" hidden="">
-                                    <input class="form-control" id="HasQiscusAccount" name="HasQiscusAccount" type="text" placeholder="user code..." value="<?php echo $us['hasqiscusaccout'] ?>" hidden="">
-                                    <input class="form-control" id="AvatarImage" name="AvatarImage" type="text" placeholder="user code..." value="<?php echo $us['avatarimage'] ?>" hidden="">
-                                    <input class="form-control" id="deviceid" name="deviceid" type="text" placeholder="user code..." value="<?php echo $us['deviceid'] ?>" hidden="">
+                                    <input class="form-control" id="NotifyInd" name="NotifyInd" type="text"
+                                        placeholder="user code..." value="<?php echo $us['notifyind'] ?>" hidden="">
+                                    <input class="form-control" id="HasQiscusAccount" name="HasQiscusAccount"
+                                        type="text" placeholder="user code..."
+                                        value="<?php echo $us['hasqiscusaccout'] ?>" hidden="">
+                                    <input class="form-control" id="AvatarImage" name="AvatarImage" type="text"
+                                        placeholder="user code..." value="<?php echo $us['avatarimage'] ?>" hidden="">
+                                    <input class="form-control" id="deviceid" name="deviceid" type="text"
+                                        placeholder="user code..." value="<?php echo $us['deviceid'] ?>" hidden="">
                                 </div>
                             </div>
-                            <?php } ?>
                         </div>
+                        <?php } ?>
                         <div class="card-footer">
                             <button class="btn btn-primary btn-pill">Submit</button>
                         </div>
