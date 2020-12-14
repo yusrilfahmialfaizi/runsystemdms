@@ -73,7 +73,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="expdt">Exp Date</label>
-                                        <input class="datepicker-here form-control digits" id="expdt" name="expdt" type="date" data-language="en" required="">
+                                        <input class="datepicker-here form-control digits" id="expdt" name="expdt" type="date" data-language="en">
 
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                                         <label class="col-form-label pt-0" for="expdt">Notify</label>
                                         <div class="checkbox">
                                             <label>
-                                                <input style="margin-left: 5px;" id="NotifyInd" name="NotifyInd" type="checkbox">
+                                                <input style="margin-left: 5px;" id="NotifyInd" name="NotifyInd" type="checkbox" required>
                                                 Fill in the checkbox if yes
                                             </label>
                                         </div>
