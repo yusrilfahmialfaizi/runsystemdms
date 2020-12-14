@@ -21,8 +21,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="usercode">User Code</label>
-                                        <input class="form-control" id="usercode" name="usercode" type="text"
-                                            placeholder="user code..." required="">
+                                        <input class="form-control" id="usercode" name="usercode" type="text" placeholder="user code..." required="">
                                     </div>
                                 </div>
                             </div>
@@ -30,8 +29,21 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="username">User Name</label>
-                                        <input class="form-control" id="username" name="username" type="text"
-                                            placeholder="user name..." required="">
+                                        <input class="form-control" id="username" name="username" type="text" placeholder="user name..." required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0" for="grpcode">Privilege Code</label>
+                                        <select class="custom-select" id="grpcode" name="grpcode" required="">
+                                            <option value="">--Pilih--</option>
+                                            <!-- <?php foreach ($dt as $key) { ?>
+                                                <option value="<?php echo $key['grpcode'] ?>"><?php echo $key['grpname'] ?>
+                                                </option>
+                                            <?php } ?> -->
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -41,9 +53,9 @@
                                         <label class="col-form-label pt-0" for="grpcode">Group Code</label>
                                         <select class="custom-select" id="grpcode" name="grpcode" required="">
                                             <option value="">--Pilih--</option>
-                                            <?php foreach ($dt as $key){ ?>
-                                            <option value="<?php echo $key['grpcode'] ?>"><?php echo $key['grpname'] ?>
-                                            </option>
+                                            <?php foreach ($dt as $key) { ?>
+                                                <option value="<?php echo $key['grpcode'] ?>"><?php echo $key['grpname'] ?>
+                                                </option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -53,8 +65,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="pwd">Password</label>
-                                        <input class="form-control" id="pwd" name="pwd" type="password"
-                                            placeholder="password..." required="">
+                                        <input class="form-control" id="pwd" name="pwd" type="password" placeholder="password..." required="">
                                     </div>
                                 </div>
                             </div>
@@ -62,8 +73,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="expdt">Exp Date</label>
-                                        <input class="datepicker-here form-control digits" id="expdt" name="expdt"
-                                            type="date" data-language="en" required="">
+                                        <input class="datepicker-here form-control digits" id="expdt" name="expdt" type="date" data-language="en" required="">
 
                                     </div>
                                 </div>
@@ -72,26 +82,33 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="expdt">Notify</label>
-                                        <input class="form-control" id="NotifyInd" name="NotifyInd" type="checkbox"
-                                            placeholder="user code...">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input style="margin-left: 5px;" id="NotifyInd" name="NotifyInd" type="checkbox">
+                                                Fill in the checkbox if yes
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0" for="expdt">HasQiscusAccount</label>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input style="margin-left: 5px;" id="HasQiscusAccount" name="HasQiscusAccount" type="checkbox">
+                                                Fill in the checkbox if yes
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label class="col-form-label pt-0" for="expdt">Has Qiscus Account</label>
-                                        <input class="form-control" id="HasQiscusAccount" name="HasQiscusAccount"
-                                            type="text" placeholder="user code...">
-                                    </div>
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="expdt">Avatar Image</label>
-                                        <input class="form-control" id="AvatarImage" name="AvatarImage" type="text"
-                                            placeholder="user code...">
+                                        <input class="form-control" id="AvatarImage" name="AvatarImage" type="text" placeholder="user code...">
                                     </div>
                                 </div>
                             </div>
@@ -99,8 +116,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="expdt">Device Id</label>
-                                        <input class="form-control" id="deviceid" name="deviceid" type="text"
-                                            placeholder="user code...">
+                                        <input class="form-control" id="deviceid" name="deviceid" type="text" placeholder="user code...">
                                     </div>
                                 </div>
                             </div>

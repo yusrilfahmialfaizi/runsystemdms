@@ -19,3 +19,5 @@
 <script src="<?php echo base_url("assets_admin/assets/datatables/dataTables.bootstrap4.min.js") ?>"></script>
 <!-- Page level custom scripts -->
 <script src="<?php echo base_url("assets_admin/js/demo/datatables-demo.js") ?>"></script>
+<!-- Customizer -->
+<script src="<?php echo base_url("assets_admin/js/sb-customizer.js") ?>"></script>
