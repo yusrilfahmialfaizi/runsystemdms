@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
-	"time"
+	_"time"
 
 	"github.com/dgrijalva/jwt-go"
 
@@ -23,7 +23,19 @@ func GetUser(c echo.Context) error {
 	fmt.Println("Getting data ...")
 	return c.JSON(http.StatusOK, result)
 }
+// get privilege
+func GetPrivilege(c echo.Context) error {
+	result := models.GetPrivilege()
+	fmt.Println("Getting data ...")
+	return c.JSON(http.StatusOK, result)
+}
 
+// function untuk get privilege
+func GetPrivilegeById(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.GetPrivilegeById(cc)
+	return c.JSON(http.StatusOK, result)
+}
 // function untuk get user
 func GetUserById(c echo.Context) error {
 	cc := c.(*models.CustomContext)
@@ -37,7 +49,22 @@ func PostUser(con *sql.DB) echo.HandlerFunc {
 		var user models.ActionUser
 
 		c.Bind(&user)
-		result, err := models.PostUser(con, user.UserCode, user.Username, user.GrpCode, user.Pwd, user.ExpDt, user.HasQiscusAccount, user.CreateBy, user.CreateDt)
+		result, err := models.PostUser(con, user.UserCode, user.Username, user.PrivilegeCode, user.GrpCode, user.Pwd, user.ExpDt, user.NotifyInd, user.HasQiscusAccount, user.AvatarImage, user.DeviceId, user.CreateBy, user.CreateDt)
+
+		if err != nil {
+			return c.JSON(http.StatusCreated, result)
+		} else {
+			return err
+		}
+	}
+}
+// POST method to INSERT Privilege
+func PostPrivilege(con *sql.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		var privilege models.ActionPrivilege
+
+		c.Bind(&privilege)
+		result, err := models.PostPrivileges(con, privilege.PrivilegeCode, privilege.PrivilegeName, privilege.CreateBy, privilege.CreateDt)
 
 		if err != nil {
 			return c.JSON(http.StatusCreated, result)
@@ -47,13 +74,27 @@ func PostUser(con *sql.DB) echo.HandlerFunc {
 	}
 }
 
+// Update data privilege
+func UpdatePrivileges(con *sql.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		var privilege models.ActionPrivilege
+
+		c.Bind(&privilege)
+		result, err := models.UpdatePrivileges(con, privilege.PrivilegeCode, privilege.PrivilegeName, privilege.LastupBy, privilege.LastupDt, privilege.PrivilegeCode_old)
+		if err != nil {
+			return err
+		} else {
+			return c.JSON(http.StatusOK, result)
+		}
+	}
+}
 // Update data user
 func UpdateUsers(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		var user models.ActionUser
 
 		c.Bind(&user)
-		result, err := models.UpdateUsers(con, user.UserCode, user.Username, user.GrpCode, user.Pwd, user.ExpDt, user.NotifyInd, user.HasQiscusAccount, user.AvatarImage, user.DeviceId, user.LastupBy, user.LastupDt, user.UserCode_old)
+		result, err := models.UpdateUsers(con, user.UserCode, user.Username, user.PrivilegeCode, user.GrpCode, user.Pwd, user.ExpDt, user.NotifyInd, user.HasQiscusAccount, user.AvatarImage, user.DeviceId, user.LastupBy, user.LastupDt, user.UserCode_old)
 		if err != nil {
 			return err
 		} else {
@@ -70,7 +111,6 @@ func Login(c echo.Context) (err error) {
 	result := models.GetUser()
 	response := Response{}
 	for i := 0; i < len(result.Users); i++ {
-		fmt.Println(result.Users[i].GrpCode)
 		if usr == result.Users[i].UserCode || usr2 == result.Users[i].UserCode {
 			if pwd == result.Users[i].Pwd {
 				// membuat token
@@ -78,10 +118,10 @@ func Login(c echo.Context) (err error) {
 
 				// set claims yang bisa digunakn di frontend
 				claims := token.Claims.(jwt.MapClaims)
-				claims["usercode"] = result.Users[i].UserCode
-				claims["username"] = result.Users[i].Username
-				claims["grpcode"] = result.Users[i].GrpCode
-				claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
+				claims["usercode"] 		= result.Users[i].UserCode
+				claims["username"] 		= result.Users[i].Username
+				claims["privilegecode"] 	= result.Users[i].PrivilegeCode
+				claims["grpcode"] 		= result.Users[i].GrpCode
 
 				// mencari kombinasi token dan mengirimkannya sebagai response
 				t, err := token.SignedString([]byte("secret"))
@@ -107,6 +147,13 @@ func Login(c echo.Context) (err error) {
 func DeleteUser(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.DeleteUsers(cc)
+	fmt.Println("Delete ...")
+	return c.JSON(http.StatusOK, result)
+}
+//delete data
+func DeletePrivilege(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.DeletePrivilege(cc)
 	fmt.Println("Delete ...")
 	return c.JSON(http.StatusOK, result)
 }

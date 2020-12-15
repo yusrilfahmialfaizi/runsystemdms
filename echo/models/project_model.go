@@ -39,7 +39,6 @@ func GetProjectGroup() PGs {
 	queryStatement := "Select projectCode, projectname, actind, ctcode, createby, createdt,lastupby, lastupdt From tblproject Where actind = 'Y'"
 
 	rows, err := con.Query(queryStatement)
-	fmt.Println("ROWS : ", rows)
 	fmt.Println(err)
 	if err != nil {
 		fmt.Println(err)

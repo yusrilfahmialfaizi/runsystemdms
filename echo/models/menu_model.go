@@ -54,7 +54,6 @@ func GetMenu() Menu {
 		if eror != nil {
 			fmt.Println(eror)
 		}
-		fmt.Println(modulmenu.MenuCode, modulmenu.Parent)
 		result.Menu = append(result.Menu, modulmenu)
 	}
 	return result

@@ -147,10 +147,10 @@ func GetGroupsMenuById(c *CustomContext) GroupMenus {
 }
 
 //function untuk untuk post data
-func PostGroups(con *sql.DB, GrpCode string, GrpName string, CreateBy string, CreateDt string, LastupBy string, LastupDt string) (int64, error) {
+func PostGroups(con *sql.DB, GrpCode string, GrpName string, CreateBy string, CreateDt string) (int64, error) {
 	con = config.Connection()
 
-	query := "INSERT INTO tblgroup (GrpCode, GrpName, CreateBy, CreateDt, LastUpBy, LastUpDt) values (?,?,?,?,?,?)"
+	query := "INSERT INTO tblgroup (GrpCode, GrpName, CreateBy, CreateDt) values (?,?,?,?)"
 	stmt1, err1 := con.Prepare(query)
 
 	if err1 != nil {
@@ -158,7 +158,7 @@ func PostGroups(con *sql.DB, GrpCode string, GrpName string, CreateBy string, Cr
 	}
 	defer stmt1.Close()
 
-	result, er1 := stmt1.Exec(GrpCode, GrpName, CreateBy, CreateDt, LastupBy, LastupDt)
+	result, er1 := stmt1.Exec(GrpCode, GrpName, CreateBy, CreateDt)
 
 	if er1 != nil {
 		panic(er1)
@@ -188,9 +188,9 @@ func PostGroupMenus(con *sql.DB, MenuCode string, GrpCode string, AccessInd stri
 }
 
 // function untuk update
-func UpdateGroups(con *sql.DB, GrpCode string, GrpName string, CreateBy string, CreateDt string, LastupBy string, LastupDt string, GrpCode_old string) (int64, error) {
+func UpdateGroups(con *sql.DB, GrpCode string, GrpName string, LastupBy string, LastupDt string, GrpCode_old string) (int64, error) {
 	con = config.Connection()
-	query := "UPDATE tblgroup set GrpCode = ?, GrpName = ?, CreateBy = ?, CreateDt = ?, LastUpBy = ?, LastUpDt = ? WHERE GrpCode = ?"
+	query := "UPDATE tblgroup set GrpCode = ?, GrpName = ?, LastUpBy = ?, LastUpDt = ? WHERE GrpCode = ?"
 
 	stmt, err := con.Prepare(query)
 
@@ -198,7 +198,7 @@ func UpdateGroups(con *sql.DB, GrpCode string, GrpName string, CreateBy string, 
 		fmt.Println(err)
 	}
 
-	result, err2 := stmt.Exec(GrpCode, GrpName, CreateBy, CreateDt, LastupBy, LastupDt, GrpCode_old)
+	result, err2 := stmt.Exec(GrpCode, GrpName, LastupBy, LastupDt, GrpCode_old)
 
 	if err2 != nil {
 		fmt.Println(err2)

@@ -41,7 +41,7 @@ func PostGroup(con *sql.DB) echo.HandlerFunc {
 
 		c.Bind(&actiongroup)
 
-		result, err := models.PostGroups(con, actiongroup.GrpCode, actiongroup.GrpName, actiongroup.CreateBy, actiongroup.CreateDt, actiongroup.LastupBy, actiongroup.LastupDt)
+		result, err := models.PostGroups(con, actiongroup.GrpCode, actiongroup.GrpName, actiongroup.CreateBy, actiongroup.CreateDt)
 
 		if err == nil {
 			return c.JSON(http.StatusCreated, result)
@@ -77,7 +77,7 @@ func UpdateGroup(con *sql.DB) echo.HandlerFunc {
 		var updategroup models.ActionGroup
 		c.Bind(&updategroup)
 
-		_, err := models.UpdateGroups(con, updategroup.GrpCode, updategroup.GrpName, updategroup.CreateBy, updategroup.CreateDt, updategroup.LastupBy, updategroup.LastupDt, updategroup.GrpCode_old)
+		_, err := models.UpdateGroups(con, updategroup.GrpCode, updategroup.GrpName, updategroup.LastupBy, updategroup.LastupDt, updategroup.GrpCode_old)
 
 		if err == nil {
 			return c.JSON(http.StatusOK, updategroup)

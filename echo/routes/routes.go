@@ -38,6 +38,10 @@ func Routes() *echo.Echo {
 	e.GET("/runsystemdms/getUsersById/:usercode", controllers.GetUserById)
 	e.POST("/runsystemdms/postUsers", controllers.PostUser(con))
 	e.PUT("/runsystemdms/updateUsers", controllers.UpdateUsers(con))
+	e.GET("/runsystemdms/getPrivileges", controllers.GetPrivilege)
+	e.GET("/runsystemdms/getPrivilegesById/:privilegecode", controllers.GetPrivilegeById)
+	e.POST("/runsystemdms/postPrivileges", controllers.PostPrivilege(con))
+	e.PUT("/runsystemdms/updatePrivileges", controllers.UpdatePrivileges(con))
 
 	e.GET("/runsystemdms/getPG", controllers.GetProjectGroup)
 	e.GET("/runsystemdms/getProjectById/:projectcode", controllers.GetProjectById)
@@ -91,6 +95,7 @@ func Routes() *echo.Echo {
 	e.DELETE("/runsystemdms/deleteModule", controllers.DeleteModule)
 	e.DELETE("/runsystemdms/deleteProject", controllers.DeleteProject)
 	e.DELETE("/runsystemdms/deleteUser", controllers.DeleteUser)
+	e.DELETE("/runsystemdms/deletePrivileges", controllers.DeletePrivilege)
 
 	return e
 }
