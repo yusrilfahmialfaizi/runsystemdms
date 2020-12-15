@@ -36,16 +36,17 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label class="col-form-label pt-0" for="actind">Act Indicator</label>
-                                        <select class="custom-select" id="actind" name="actind" required="">
-                                            <option value="">--Pilih--</option>
-                                            <option value="Y">Yes</option>
-                                            <option value="N">No</option>
-                                        </select>
+                                        <label class="col-form-label pt-0" for="expdt">Active</label>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input style="margin-left: 5px;" id="actind" name="actind"
+                                                    type="checkbox">
+                                                Fill in the checkbox if yes
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+                            <!-- <div class="row"> -->
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="ctcode">CtCode</label>

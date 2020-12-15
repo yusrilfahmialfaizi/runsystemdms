@@ -13,7 +13,7 @@ class Module extends CI_Controller
 
 	public function index()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
 			redirect("login");
 		}
 		$url1 			= "http://127.0.0.1:8080/runsystemdms/getModuls";
@@ -32,7 +32,7 @@ class Module extends CI_Controller
 	}
 	public function Add_modul()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
 			redirect("login");
 		}
 		$url 				= "http://127.0.0.1:8080/runsystemdms/getPG";
@@ -51,7 +51,7 @@ class Module extends CI_Controller
 	}
 	public function edit_module()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
 			redirect("login");
 		}
 		$modulcode 		= $this->input->get("modulcode");

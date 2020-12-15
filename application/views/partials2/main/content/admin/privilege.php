@@ -12,7 +12,8 @@
     </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?php echo base_url("admin/privilege/add_privilege") ?>" class="btn btn-success "> + New Privilege</a>
+            <a href="<?php echo base_url("admin/privilege/add_privilege") ?>" class="btn btn-success "> + New
+                Privilege</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -26,27 +27,27 @@
                     </thead>
                     <tbody>
                         <!-- js -->
-                        <?php //foreach ($dt as $key) {
-                            //if ($key != null) {
+                        <?php foreach ($dt as $key) {
                         ?>
                         <tr>
-                            <td><?php //echo $key['usercode'] ?></td>
-                            <td><?php //echo $key['username'] ?></td>
+                            <td><?php echo $key['privilegecode'] ?></td>
+                            <td><?php echo $key['privilegename'] ?></td>
                             <td align="center">
-                                <a href="<?php //echo base_url("admin/privilege/edit_privilege?usercode=") . $key["usercode"]; ?>">
+                                <a
+                                    href="<?php echo base_url("admin/privilege/edit_privilege?privilegecode=") . $key["privilegecode"]; ?>">
                                     <button class="btn btn-warning btn-circle" data-toggle="tooltip" title="Edit"
                                         width="20" type="button" data-feather="edit-3"
-                                        data-id="<?php //echo $key["usercode"]; ?>"><i class="fas fa-edit"></i></button>
+                                        data-id="<?php echo $key["privilegecode"]; ?>"><i
+                                            class="fas fa-edit"></i></button>
                                 </a>
-                                <!-- <a href="<?php echo base_url("admin/privilege/delete_privilege?usercode=") . $key["usercode"]; ?>"> -->
+                                <!-- <a href="<?php echo base_url("admin/privilege/delete?privilegecode=") . $key["privilegecode"]; ?>"> -->
                                 <button disabled class="btn btn-danger btn-circle" data-toggle="tooltip" title="Delete"
-                                    width="20" type="button" data-id="<?php //echo $key["usercode"]; ?>"
+                                    width="20" type="button" data-id="<?php echo $key["privilegecode"]; ?>"
                                     data-feather="x"><i class="fas fa-trash"></i></button>
                                 <!-- </a> -->
                             </td>
                         </tr>
-                        <?php //}
-                        //} ?>
+                        <?php } ?>
                     </tbody>
 
                 </table>

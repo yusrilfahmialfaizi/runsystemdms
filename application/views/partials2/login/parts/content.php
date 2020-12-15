@@ -90,11 +90,11 @@
             }
 
             function session(result) {
-                var usercode = result.usercode;
-                var username = result.username;
-                var grpcode = result.grpcode;
-                var status = "login"
-                var exp = result.exp;
+                var usercode        = result.usercode;
+                var username        = result.username;
+                var privilegecode   = result.privilegecode;
+                var grpcode         = result.grpcode;
+                var status          = "login"
                 $.ajax({
                     type: "POST",
                     url: "http://localhost/runsystemdms/login/session",
@@ -102,16 +102,16 @@
                     data: {
                         usercode: usercode,
                         username: username,
+                        privilegecode: privilegecode,
                         grpcode: grpcode,
-                        status: status,
-                        exp: exp
+                        status: status
                     },
                     cache: false,
                     success: function(data) {
                         if (data.message == true) {
-                            if (grpcode == 'Adm') {
+                            if (privilegecode == '003' ) {
                                 window.location.href = "<?php echo base_url("home") ?>";
-                            }else if (grpcode == "SysAdm") {
+                            }else if (privilegecode == "002") {
                                 window.location.href = "<?php echo base_url("admin/home") ?>";
                             }
                         }

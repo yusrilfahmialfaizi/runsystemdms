@@ -42,6 +42,26 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
+                                    <label class="col-form-label pt-0" for="privilegecode">Privilege Code</label>
+                                    <select class="custom-select" id="privilegecode" name="privilegecode" required="">
+                                        <option value="">--Pilih--</option>
+                                        <?php foreach ($prvl as $key) { ?>
+                                        <?php if ($key['privilegecode'] == $us['privilegecode']){ ?>
+                                        <option value="<?php echo $key['privilegecode'] ?>" selected>
+                                            <?php echo $key['privilegename'] ?>
+                                        </option>
+                                        <?php }else { ?>
+                                        <option value="<?php echo $key['privilegecode'] ?>"><?php echo $key['privilegename'] ?>
+                                        </option>
+                                        <?php } ?>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
                                     <label class="col-form-label pt-0" for="grpcode">Group Code</label>
                                     <select class="custom-select" id="grpcode" name="grpcode" required="">
                                         <option value="">--Pilih--</option>
@@ -72,25 +92,70 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label class="col-form-label pt-0" for="expdt">Exp Date</label>
+                                    <?php if ($us['expdt'] != null) { ?>
                                     <?php $expdt = strtotime($us["expdt"]);?>
                                     <input class="datepicker-here form-control digits" id="expdt" name="expdt"
                                         type="date" data-language="en" value="<?php echo date("Y-m-d", $expdt) ?>"
-                                        required="">
+                                        >
+                                    <?php }else{ ?>
+                                    <input class="datepicker-here form-control digits" id="expdt" name="expdt" type="date" data-language="en" value="">
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <input class="form-control" id="NotifyInd" name="NotifyInd" type="text"
-                                        placeholder="user code..." value="<?php echo $us['notifyind'] ?>" hidden="">
-                                    <input class="form-control" id="HasQiscusAccount" name="HasQiscusAccount"
-                                        type="text" placeholder="user code..."
-                                        value="<?php echo $us['hasqiscusaccout'] ?>" hidden="">
+                                    <label class="col-form-label pt-0" for="expdt">Notify</label>
+                                    <div class="checkbox">
+                                        <label>
+                                            <?php if ($us['notifyind'] == 'N') { ?>
+                                            <input style="margin-left: 5px;" id="NotifyInd" name="NotifyInd"
+                                                type="checkbox">
+                                            Fill in the checkbox if yes
+                                            <?php }else{ ?>
+                                            <input style="margin-left: 5px;" id="NotifyInd" name="NotifyInd" checked
+                                                type="checkbox">
+                                            Fill in the checkbox if yes
+                                            <?php } ?>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0" for="expdt">HasQiscusAccount</label>
+                                    <div class="checkbox">
+                                        <label>
+                                            <?php if ($us['hasqiscusaccout'] == '1'){ ?>
+                                            <input style="margin-left: 5px;" id="HasQiscusAccount"
+                                                name="HasQiscusAccount" type="checkbox" checked>
+                                            Fill in the checkbox if yes
+                                            <?php }else{ ?>
+                                            <input style="margin-left: 5px;" id="HasQiscusAccount"
+                                                name="HasQiscusAccount" type="checkbox">
+                                            Fill in the checkbox if yes
+                                            <?php } ?>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0" for="expdt">Avatar Image</label>
                                     <input class="form-control" id="AvatarImage" name="AvatarImage" type="text"
-                                        placeholder="user code..." value="<?php echo $us['avatarimage'] ?>" hidden="">
+                                        value="<?php echo $us['avatarimage'] ?>" placeholder="avatar image...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0" for="expdt">Device Id</label>
                                     <input class="form-control" id="deviceid" name="deviceid" type="text"
-                                        placeholder="user code..." value="<?php echo $us['deviceid'] ?>" hidden="">
+                                        value="<?php echo $us['deviceid'] ?>" placeholder="device id...">
                                 </div>
                             </div>
                         </div>

@@ -12,7 +12,7 @@ class User extends CI_Controller {
 	
 	public function index()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
 			redirect("login");
 		}
 		$url 		= "http://127.0.0.1:8080/runsystemdms/getUsers";
@@ -34,19 +34,23 @@ class User extends CI_Controller {
 	}
 	public function Add_user()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
 			redirect("login");
 		}
 		$url 		= 'http://127.0.0.1:8080/runsystemdms/getGroup';
 		$response 	= $this->api->get($url);
 		$data 		= json_decode($response, true);
-		if ($data == null ) {
+		$url2 		= "http://127.0.0.1:8080/runsystemdms/getPrivileges";
+		$response2 	= $this->api->get($url2);
+		$data2 		= json_decode($response2, true);
+		if ($data == null && $data2 != null) {
 			$this->load->view('partials2/main/page2/page_notfound');
 		}else{
 			if (isset($data['message'])) {
 				$this->load->view('partials2/main/page2/page_notfound');
 			}else{		
-				$data['dt'] = $data['group'];
+				$data['dt'] 	= $data['group'];
+				$data['prvl']	= $data2['privilege'];
 				$this->load->view('partials2/main/page2/page_add_user', $data);
 			}
 		}
@@ -54,7 +58,7 @@ class User extends CI_Controller {
 
 	public function edit_user()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
 			redirect("login");
 		}
 		$usercode 	= $this->input->get("usercode");
@@ -64,9 +68,13 @@ class User extends CI_Controller {
 		$url1 		= "http://127.0.0.1:8080/runsystemdms/getUsersById/".$usercode;
 		$response1 	= $this->api->get($url1);
 		$data1		= json_decode($response1, true);
-		if ($data != null && $data1) {
+		$url2 		= "http://127.0.0.1:8080/runsystemdms/getPrivileges";
+		$response2 	= $this->api->get($url2);
+		$data2 		= json_decode($response2, true);
+		if ($data != null && $data1 != null && $data2 != null) {
 			$data['dt'] 	= $data['group'];
 			$data['user']	= $data1['user'];
+			$data['prvl']	= $data2['privilege'];
 			$this->load->view('partials2/main/page2/page_edit_user', $data);
 		}else{
 			$this->load->view('partials2/main/page2/page_notfound');
@@ -74,20 +82,44 @@ class User extends CI_Controller {
 	}
 
 	function add(){
+		date_default_timezone_set('Asia/Jakarta');
 		$usercode 		= $this->input->post('usercode');
 		$username 		= $this->input->post('username');
+		$privilegecode 	= $this->input->post('privilegecode');
 		$grpcode 			= $this->input->post('grpcode');
 		$pwd 			= $this->input->post('pwd');
 		$expdt 			= $this->input->post('expdt');
-		date_default_timezone_set('Asia/Jakarta');
+		if ($expdt != null) {
+			$expdt = date('Ymd', strtotime($expdt));
+		}elseif ($expdt == null) {
+			$expdt = $expdt;
+		}
+		$NotifyInd 		= $this->input->post('NotifyInd');
+		if ($NotifyInd == null) {
+			$NotifyInd = "N";
+		}elseif ($NotifyInd == 'on') {
+			$NotifyInd = "Y";
+		}
+		$HasQiscusAccount 	= $this->input->post('HasQiscusAccount');
+		if ($HasQiscusAccount == null) {
+			$HasQiscusAccount = "0";
+		}elseif ($HasQiscusAccount == 'on') {
+			$HasQiscusAccount = "1";
+		}
+		$AvatarImage 		= $this->input->post('AvatarImage');
+		$deviceid 		= $this->input->post('deviceid');
 		$now 			= date('YmdHi');
 		$data 			= array(
 			'usercode' 		=> $usercode,
 			'username'		=> $username,
+			'privilegecode'	=> $privilegecode,
 			'grpcode'			=> $grpcode,
 			'pwd'			=> $pwd,
-			'expdt'			=> date('Ymd', strtotime($expdt)),
-			'HasQiscusAccount'	=> "0",
+			'expdt'			=> $expdt,
+			'notifyind'		=> $NotifyInd,
+			'HasQiscusAccount'	=> $HasQiscusAccount,
+			'avatarimage'		=> $AvatarImage,
+			'deviceid'		=> $deviceid,
 			"CreateBy" 		=> $this->session->userdata("usercode"),
 			"CreateDt" 		=> $now,
 		);
@@ -98,11 +130,27 @@ class User extends CI_Controller {
 		$usercode 		= $this->input->post('usercode');
 		$usercode_old 		= $this->input->post('usercode_old');
 		$username 		= $this->input->post('username');
+		$privilegecode 	= $this->input->post('privilegecode');
 		$grpcode 			= $this->input->post('grpcode');
 		$pwd 			= $this->input->post('pwd');
 		$expdt 			= $this->input->post('expdt');
+		if ($expdt != null) {
+			$expdt = date('Ymd', strtotime($expdt));
+		}elseif ($expdt == null) {
+			$expdt = $expdt;
+		}
 		$NotifyInd 		= $this->input->post('NotifyInd');
+		if ($NotifyInd == null) {
+			$NotifyInd = "N";
+		}elseif ($NotifyInd == 'on') {
+			$NotifyInd = "Y";
+		}
 		$HasQiscusAccount 	= $this->input->post('HasQiscusAccount');
+		if ($HasQiscusAccount == null) {
+			$HasQiscusAccount = "0";
+		}elseif ($HasQiscusAccount == 'on') {
+			$HasQiscusAccount = "1";
+		}
 		$AvatarImage 		= $this->input->post('AvatarImage');
 		$deviceid 		= $this->input->post('deviceid');
 		date_default_timezone_set('Asia/Jakarta');
@@ -110,9 +158,10 @@ class User extends CI_Controller {
 		$data 			= array(
 			'UserCode' 		=> $usercode,
 			'username'		=> $username,
+			'privilegecode'	=> $privilegecode,
 			'grpcode'			=> $grpcode,
 			'pwd'			=> $pwd,
-			'expdt'			=> date('Ymd', strtotime($expdt)),
+			'expdt'			=> $expdt,
 			'NotifyInd'		=> $NotifyInd,
 			'HasQiscusAccount'	=> $HasQiscusAccount,
 			'AvatarImage'		=> $AvatarImage,

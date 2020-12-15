@@ -8,10 +8,10 @@ class Login extends CI_Controller
 	public function index()
 	{
 		if ($this->session->userdata('status') == "login") {
-			if ($this->session->userdata('grpcode') == "Adm") {
+			if ($this->session->userdata('previlegecode') == "003") {
 				# code...
 				redirect("home");
-			}elseif ($this->session->userdata('grpcode') == "SysAdm") {
+			}elseif ($this->session->userdata('previlegecode') == "002") {
 				# code...
 				redirect(base_url("admin/user"));
 			}
@@ -48,18 +48,18 @@ class Login extends CI_Controller
 
 	function session()
 	{
-		$usercode = $this->input->post("usercode");
-		$username = $this->input->post("username");
-		$grpcode = $this->input->post("grpcode");
-		$status = $this->input->post("status");
-		$exp = $this->input->post("exp");
+		$usercode 	= $this->input->post("usercode");
+		$username 	= $this->input->post("username");
+		$privilegecode	= $this->input->post("privilegecode");
+		$grpcode 		= $this->input->post("grpcode");
+		$status 		= $this->input->post("status");
 
 		$data = array(
 			'usercode' 	=> $usercode,
 			'username' 	=> $username,
+			'privilegecode'=> $privilegecode,
 			'grpcode'		=> $grpcode,
-			'status'		=> $status,
-			'exp'		=> $exp
+			'status'		=> $status
 		);
 		$this->session->set_userdata($data);
 		$message = array('message' => true);

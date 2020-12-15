@@ -12,7 +12,7 @@ class Tabel extends CI_Controller {
 	
 	public function index()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "Adm") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "003" && $this->session->userdata('privilegecode') != "001") {
 			redirect("login");
 		}
 		$projectcode = $this->session->userdata("projectcode");

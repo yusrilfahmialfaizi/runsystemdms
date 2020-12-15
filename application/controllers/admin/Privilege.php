@@ -12,10 +12,10 @@ class Privilege extends CI_Controller {
 	
 	public function index()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
 			redirect("login");
 		}
-		$url 		= "http://127.0.0.1:8080/runsystemdms/getUsers";
+		$url 		= "http://127.0.0.1:8080/runsystemdms/getPrivileges";
 		$response 	= $this->api->get($url);
 		$data 		= json_decode($response, true);
 		// || $data['message'] == 'Internal Server Error'
@@ -25,7 +25,7 @@ class Privilege extends CI_Controller {
 			if (isset($data['message'])) {
 				$this->load->view('partials2/main/page2/page_notfound');
 			}else{
-				$data['dt'] = $data['user'];
+				$data['dt'] = $data['privilege'];
 				$this->load->view('partials2/main/page2/page_privilege',$data);
 			}
 		}
@@ -33,39 +33,25 @@ class Privilege extends CI_Controller {
 	}
 	public function Add_privilege()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
 			redirect("login");
 		}
-		$url 		= 'http://127.0.0.1:8080/runsystemdms/getGroup';
-		$response 	= $this->api->get($url);
-		$data 		= json_decode($response, true);
-		if ($data == null ) {
-			$this->load->view('partials2/main/page2/page_notfound');
-		}else{
-			if (isset($data['message'])) {
-				$this->load->view('partials2/main/page2/page_notfound');
-			}else{		
-				$data['dt'] = $data['group'];
-				$this->load->view('partials2/main/page2/page_add_privilege', $data);
-			}
-		}
+		
+		$this->load->view('partials2/main/page2/page_add_privilege');
 	}
 
 	public function edit_privilege()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('grpcode') != "SysAdm") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
 			redirect("login");
 		}
-		$usercode 	= $this->input->get("usercode");
-		$url 		= 'http://127.0.0.1:8080/runsystemdms/getGroup';
+		$privilegecode 	= $this->input->get("privilegecode");
+		$url 		= "http://127.0.0.1:8080/runsystemdms/getPrivilegesById/".$privilegecode;
 		$response 	= $this->api->get($url);
 		$data 		= json_decode($response, true);
-		$url1 		= "http://127.0.0.1:8080/runsystemdms/getUsersById/".$usercode;
-		$response1 	= $this->api->get($url1);
-		$data1		= json_decode($response1, true);
-		if ($data != null && $data1) {
-			$data['dt'] 	= $data['group'];
-			$data['user']	= $data1['user'];
+		
+		if ($data != null) {
+			$data['dt'] 	= $data['privilege'];
 			$this->load->view('partials2/main/page2/page_edit_privilege', $data);
 		}else{
 			$this->load->view('partials2/main/page2/page_notfound');
@@ -73,62 +59,41 @@ class Privilege extends CI_Controller {
 	}
 
 	function add(){
-		$usercode 		= $this->input->post('usercode');
-		$username 		= $this->input->post('username');
-		$grpcode 			= $this->input->post('grpcode');
-		$pwd 			= $this->input->post('pwd');
-		$expdt 			= $this->input->post('expdt');
+		$privilegecode 		= $this->input->post('privilegecode');
+		$privilegename 		= $this->input->post('privilegename');
 		date_default_timezone_set('Asia/Jakarta');
 		$now 			= date('YmdHi');
 		$data 			= array(
-			'usercode' 		=> $usercode,
-			'username'		=> $username,
-			'grpcode'			=> $grpcode,
-			'pwd'			=> $pwd,
-			'expdt'			=> date('Ymd', strtotime($expdt)),
-			'HasQiscusAccount'	=> "0",
+			'privilegecode' 	=> $privilegecode,
+			'privilegename'	=> $privilegename,
 			"CreateBy" 		=> $this->session->userdata("usercode"),
 			"CreateDt" 		=> $now,
 		);
-		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postUsers", $data);
-		redirect(base_url('admin/user'));
+		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postPrivileges", $data);
+		redirect(base_url('admin/privilege'));
 	}
 	function edit(){
-		$usercode 		= $this->input->post('usercode');
-		$usercode_old 		= $this->input->post('usercode_old');
-		$username 		= $this->input->post('username');
-		$grpcode 			= $this->input->post('grpcode');
-		$pwd 			= $this->input->post('pwd');
-		$expdt 			= $this->input->post('expdt');
-		$NotifyInd 		= $this->input->post('NotifyInd');
-		$HasQiscusAccount 	= $this->input->post('HasQiscusAccount');
-		$AvatarImage 		= $this->input->post('AvatarImage');
-		$deviceid 		= $this->input->post('deviceid');
+		$privilegecode 		= $this->input->post('privilegecode');
+		$privilegecode_old 		= $this->input->post('privilegecode_old');
+		$privilegename 		= $this->input->post('privilegename');
 		date_default_timezone_set('Asia/Jakarta');
 		$now 			= date('YmdHi');
 		$data 			= array(
-			'UserCode' 		=> $usercode,
-			'username'		=> $username,
-			'grpcode'			=> $grpcode,
-			'pwd'			=> $pwd,
-			'expdt'			=> date('Ymd', strtotime($expdt)),
-			'NotifyInd'		=> $NotifyInd,
-			'HasQiscusAccount'	=> $HasQiscusAccount,
-			'AvatarImage'		=> $AvatarImage,
-			'deviceid'		=> $deviceid,
+			'privilegeCode' 	=> $privilegecode,
+			'privilegename'	=> $privilegename,
 			"LastupBy" 		=> $this->session->userdata("usercode"),
 			"LastupDt" 		=> $now,
-			'UserCode_old'		=> $usercode_old
+			'PrivilegeCode_old'	=> $privilegecode_old
 		);
-		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateUsers", $data);
-		redirect(base_url('admin/user'));
+		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updatePrivileges", $data);
+		redirect(base_url('admin/privilege'));
 	}
 
-	function delete_user()
+	function delete()
 	{
-		$usercode 	= $this->input->get("usercode");
-		$url 		= "http://127.0.0.1:8080/runsystemdms/deleteUser?usercode=" . $usercode;
+		$privilegecode 	= $this->input->get("privilegecode");
+		$url 			= "http://127.0.0.1:8080/runsystemdms/deletePrivileges?privilegecode=" . $privilegecode;
 		$this->api->delete($url);
-		redirect(base_url('admin/user'));
+		redirect(base_url('admin/privilege'));
 	}
 }
