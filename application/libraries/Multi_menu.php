@@ -323,9 +323,10 @@ class Multi_menu {
      * 
      * @param array $items data which would be rendered
      */
-    public function set_items($items = array())
+    public function set_items($items = array(), $group = array())
     {
     	$this->items = $items;
+    	$this->group = $group;
     }
 
     /**
@@ -392,88 +393,92 @@ class Multi_menu {
 	  
 	    foreach ($items as $item)
 	    {
-	        // menu label
-	        if ( isset($item[$this->menu_label], $item[$this->menu_key]) ) 
-	        {
-		        $label = $item[$this->menu_label]. " : ". $item['status'];
+		    foreach ($this->group as $value) {
+				if ($item[$this->menu_id] == $value['menucode']) {
+				// menu label
+					if ( isset($item[$this->menu_label], $item[$this->menu_key]) ) 
+					{
+						$label = $item[$this->menu_label]. " : ". $item['status'];
 
-		        // icon
-		        $icon  = empty($item[$this->menu_icon]) ? '' : $item[$this->menu_icon];
-		        if ( isset($this->menu_icons_list[($item[$this->menu_key])]) ) {
-		        	$icon = $this->menu_icons_list[($item[$this->menu_key])];
-		        }		        
+						// icon
+						$icon  = empty($item[$this->menu_icon]) ? '' : $item[$this->menu_icon];
+						if ( isset($this->menu_icons_list[($item[$this->menu_key])]) ) {
+							$icon = $this->menu_icons_list[($item[$this->menu_key])];
+						}		        
 
-		        if ($icon) 
-		        {
-		        	$icon = "<i class='{$icon}'></i>";
-		        	$label = trim( $this->icon_position == 'right' ? ($label . " " . $icon ) : ($icon . " " . $label) );
-		        }
+						if ($icon) 
+						{
+							$icon = "<i class='{$icon}'></i>";
+							$label = trim( $this->icon_position == 'right' ? ($label . " " . $icon ) : ($icon . " " . $label) );
+						}
 
 
-		        // menu slug
-		     //    $slug  = $item[$this->menu_key];
-		        $slug  = 'editor';
+						// menu slug
+						//    $slug  = $item[$this->menu_key];
+						$slug  = 'editor';
 
-		        // has children or not
-		        $has_children = ! empty($item['children']);	        
+						// has children or not
+						$has_children = ! empty($item['children']);	        
 
-		        // if menu item need separator 
-		        if ($this->divided_items_list_count > 0 && in_array($slug, $this->divided_items_list)) {
-		        	$html .= $this->item_divider;	
-		        }
+						// if menu item need separator 
+						if ($this->divided_items_list_count > 0 && in_array($slug, $this->divided_items_list)) {
+							$html .= $this->item_divider;	
+						}
 
-		        if ($has_children) 
-		        {
-		        	if ( is_null($item[$this->menu_parent]) && $this->parentl1_tag_open != '' ) 
-		        	{
-						$tag_open    =  $this->parentl1_tag_open;
-						// $item_anchor = $this->parentl1_anchor != '' ? $this->parentl1_anchor : $this->parent_anchor.'<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" href="%s">%s</a>';
-						$item_anchor = $this->parentl1_anchor != '' ? $this->parentl1_anchor : '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" href="%s">%s</a>';
-		        	}
-		        	else 
-		        	{
-						$tag_open     = $this->parent_tag_open;
-						// $item_anchor = $this->parent_anchor;
-						$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" href="%s">%s</a>';
-		        	}
+						if ($has_children) 
+						{
+							if ( is_null($item[$this->menu_parent]) && $this->parentl1_tag_open != '' ) 
+							{
+									$tag_open    =  $this->parentl1_tag_open;
+									// $item_anchor = $this->parentl1_anchor != '' ? $this->parentl1_anchor : $this->parent_anchor.'<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" href="%s">%s</a>';
+									$item_anchor = $this->parentl1_anchor != '' ? $this->parentl1_anchor : '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" href="%s">%s</a>';
+							}
+							else 
+							{
+									$tag_open     = $this->parent_tag_open;
+									// $item_anchor = $this->parent_anchor;
+									$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" href="%s">%s</a>';
+							}
 
-					$href  = base_url('edit');				
-		        }
-		        else 
-		        {
-		        	$tag_open    = $this->item_tag_open;
-					$href        = site_url($slug);
-					// $item_anchor = $this->item_anchor;
-					$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" href="%s">%s</a>';
-		        }
+								$href  = base_url('edit');				
+						}
+						else 
+						{
+							$tag_open    = $this->item_tag_open;
+								$href        = site_url($slug);
+								// $item_anchor = $this->item_anchor;
+								$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" href="%s">%s</a>';
+						}
 
-				$html .= $this->set_active($tag_open, $slug);	      
-				
-				// $onclick = 'onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'"';
+							$html .= $this->set_active($tag_open, $slug);	      
+							
+							// $onclick = 'onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'"';
 
-				if (substr_count($item_anchor, '%s') == 2) {
-					$html .= sprintf($item_anchor, $href, $label);
+							if (substr_count($item_anchor, '%s') == 2) {
+								$html .= sprintf($item_anchor, $href, $label);
+							}
+							else {
+								$html .= sprintf($item_anchor, $label);	
+							}
+
+						if ( $has_children ) 
+						{	        	
+							$this->render_item($item['children'], $html);
+
+							if ( is_null($item[$this->menu_parent]) && $this->parentl1_tag_close != '' ) {
+								$html .= $this->parentl1_tag_close;
+							}
+							else {
+									$html  .= $this->parent_tag_close;
+							}	            
+						}
+						else {
+							$html .= $this->item_tag_close; 
+						}
+
+					}
 				}
-				else {
-					$html .= sprintf($item_anchor, $label);	
-				}
-
-		        if ( $has_children ) 
-		        {	        	
-		            $this->render_item($item['children'], $html);
-
-		            if ( is_null($item[$this->menu_parent]) && $this->parentl1_tag_close != '' ) {
-		        		$html .= $this->parentl1_tag_close;
-		        	}
-		        	else {
-						$html  .= $this->parent_tag_close;
-		        	}	            
-		        }
-		        else {
-		        	$html .= $this->item_tag_close; 
-		        }
-
-	        }
+			}
 	    }
 	    
 	    if (isset($nav_tag_opened)) 
