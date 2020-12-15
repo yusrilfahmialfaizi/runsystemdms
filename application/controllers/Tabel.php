@@ -8,6 +8,7 @@ class Tabel extends CI_Controller {
 		parent::__construct();
 		$this->load->library("menu");
 		$this->load->library("documentdtl");
+		$this->load->library("api");
 	}
 	
 	public function index()
@@ -90,26 +91,14 @@ class Tabel extends CI_Controller {
 
 	public function getDataDocuments($modulcode){
 		$url = "http://127.0.0.1:8080/runsystemdms/getDataDocuments/".$modulcode;
-		// inisiasi curl
-		$ch = curl_init();
-		// akan mengembalikan nilai respon, jika salah maka respon akan di cetak
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		// set url
-		curl_setopt($ch, CURLOPT_URL, $url);
-		// eksekusi
-		$data = curl_exec($ch);
-		curl_close($ch);
+		$data = $this->api->get($url);
 		return $data;
 	}
 
 	
 	function GenerateCode(){
 		$url = "http://127.0.0.1:8080/runsystemdms/getGenerateCode/".$this->session->userdata("modul");
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL, $url);
-		$data = curl_exec($ch);
-		curl_close($ch);
+		$data = $this->api->get($url);
 		
 		$data = json_decode($data, true);
 		$number = $data["docno"]["Int64"];
@@ -190,10 +179,15 @@ class Tabel extends CI_Controller {
 		}else{
 			$dt = array("docno" => $this->session->userdata("docno"), "modulcode" => $modulcode);
 		}
-		$response = $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForMenu", $dt);
-		$response = json_decode($response, true);
-		$items = $response["documentsdtl"];
-		$this->multi_menu->set_items($items); 
+		$response 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlForMenu", $dt);
+		$response 	= json_decode($response, true);
+		$grpcode		= $this->session->userdata("grpcode");
+		$url2 		= "http://127.0.0.1:8080/runsystemdms/getGroupMenuWithId/" . $grpcode;
+		$response2	= $this->api->get($url2);
+		$data3		= json_decode($response2, true);
+		$items 		= $response["documentsdtl"];
+		$group 		= $data3["groupmenu"];
+		$this->multi_menu->set_items($items, $group); 
 		echo json_encode($this->multi_menu->render('Item-0')); 
 	}
 

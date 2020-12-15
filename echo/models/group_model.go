@@ -122,12 +122,35 @@ func GetGroupsMenu() GroupMenus {
 	}
 	return result
 }
+
 func GetGroupsMenuById(c *CustomContext) GroupMenus {
 	menucode := c.FormValue("menucode")
 	grpcode := c.FormValue("grpcode")
 	connection = config.Connection()
 	query1 := "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.AccessInd, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode WHERE A.MenuCode = ? && A.GrpCode = ?"
 	rows1, err1 := connection.Query(query1, menucode, grpcode)
+	if err1 != nil {
+		fmt.Println(err1)
+	}
+	defer rows1.Close()
+	result := GroupMenus{}
+
+	for rows1.Next() {
+		groupmenu := GroupMenu{}
+
+		eror := rows1.Scan(&groupmenu.MenuCode, &groupmenu.MenuDesc, &groupmenu.GrpCode, &groupmenu.GrpName, &groupmenu.AccessInd, &groupmenu.CreateBy, &groupmenu.CreateDt, &groupmenu.LastupBy, &groupmenu.LastupDt)
+		if eror != nil {
+			fmt.Println(eror)
+		}
+		result.GroupMenus = append(result.GroupMenus, groupmenu)
+	}
+	return result
+}
+func GetGroupsMenuWithId(c *CustomContext) GroupMenus {
+	grpcode := c.Param("grpcode")
+	connection = config.Connection()
+	query1 := "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.AccessInd, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode WHERE A.GrpCode = ?"
+	rows1, err1 := connection.Query(query1, grpcode)
 	if err1 != nil {
 		fmt.Println(err1)
 	}

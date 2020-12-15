@@ -32,6 +32,11 @@ func GetGroupMenuById(c echo.Context) error {
 	result := models.GetGroupsMenuById(cc)
 	return c.JSON(http.StatusOK, result)
 }
+func GetGroupMenuWithId(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.GetGroupsMenuWithId(cc)
+	return c.JSON(http.StatusOK, result)
+}
 
 //function controller untuk create
 func PostGroup(con *sql.DB) echo.HandlerFunc {
