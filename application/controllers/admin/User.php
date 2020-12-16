@@ -13,7 +13,7 @@ class User extends CI_Controller {
 	public function index()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		$url 		= "http://127.0.0.1:8080/runsystemdms/getUsers";
 		$response 	= $this->api->get($url);
@@ -35,7 +35,7 @@ class User extends CI_Controller {
 	public function Add_user()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		$url 		= 'http://127.0.0.1:8080/runsystemdms/getGroup';
 		$response 	= $this->api->get($url);
@@ -59,7 +59,7 @@ class User extends CI_Controller {
 	public function edit_user()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		$usercode 	= $this->input->get("usercode");
 		$url 		= 'http://127.0.0.1:8080/runsystemdms/getGroup';

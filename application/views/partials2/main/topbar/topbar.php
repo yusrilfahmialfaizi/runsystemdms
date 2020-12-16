@@ -65,7 +65,7 @@ aria-labelledby="userDropdown">
     Profile
 </a>
 
-<a class="dropdown-item" href="<?php echo base_url('login/logout') ?>">
+<a class="dropdown-item" href="<?php echo base_url('admin/login/logout') ?>">
     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
     Logout
 </a>

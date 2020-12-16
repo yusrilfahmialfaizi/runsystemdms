@@ -109,10 +109,14 @@
                     cache: false,
                     success: function(data) {
                         if (data.message == true) {
-                            if (privilegecode == '003' ) {
+                            if (privilegecode == '003' || privilegecode == '001' ) {
                                 window.location.href = "<?php echo base_url("home") ?>";
-                            }else if (privilegecode == "002") {
-                                window.location.href = "<?php echo base_url("admin/home") ?>";
+                            }else {
+                                var text = "Anda bukan user !!!"
+                                document.getElementById("wrong").innerHTML = text;
+                                document.getElementById("wrong").style.color = "#ff0000";
+                                document.getElementById("pwd").style.color = "#ff0000";
+                                document.getElementById("usercode").style.color = "#ff0000";
                             }
                         }
                     }

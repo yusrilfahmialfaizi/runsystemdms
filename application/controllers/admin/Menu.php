@@ -15,7 +15,7 @@ class Menu extends CI_Controller
 	public function index()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		$url 		= "http://127.0.0.1:8080/runsystemdms/getMenu";
 		$response		= $this->api->get($url);
@@ -34,7 +34,7 @@ class Menu extends CI_Controller
 	public function Add_modul_menu()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		$url 			= "http://127.0.0.1:8080/runsystemdms/getMenu";
 		$response			= $this->api->get($url);
@@ -57,7 +57,7 @@ class Menu extends CI_Controller
 	public function edit_menu()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		$menucode			= $this->input->get("menucode");
 		$url 			= "http://127.0.0.1:8080/runsystemdms/getMenu";
@@ -127,14 +127,14 @@ class Menu extends CI_Controller
 	public function Add_group()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		$this->load->view('partials2/main/page2/page_add_group');
 	}
 	public function Add_group_menu()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		$this->load->view('partials2/main/page2/page_add_group_menu');
 	}

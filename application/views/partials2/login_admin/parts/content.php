@@ -41,7 +41,7 @@
 
     </div>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $(document).ready(function() {
             $("#submit").on("click", function() {
                 login();
@@ -50,7 +50,7 @@
             function login() {
                 var usercode = $('#usercode').val();
                 var pwd = $("#pwd").val();
-                var url = 'http://127.0.0.1:8080/runsystemdms/loginadmin';
+                var url = 'http://127.0.0.1:8080/runsystemdms/login';
                 $.ajax({
                     type: "POST",
                     url: url,
@@ -120,6 +120,91 @@
                         if (data.message == true) {
                             if (privilegecode == '001' ) {
                                 window.location.href = "<?php echo base_url("admin/home") ?>";
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script> -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#submit").on("click", function() {
+                login();
+            });
+
+            function login() {
+                var usercode = $('#usercode').val();
+                var pwd = $("#pwd").val();
+                var url = 'http://127.0.0.1:8080/runsystemdms/login';
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    dataType: "JSON",
+                    data: {
+                        usercode: usercode,
+                        pwd: pwd
+                    },
+                    cache: false,
+                    success: function(data) {
+                        if (data.token != null) {
+                            var base64Url = data.token.split('.')[1];
+                            var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                            var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                            }).join(''));
+
+                            var result = JSON.parse(jsonPayload);
+                            session(result);
+                        } else if (data.message == "username tidak terdaftar") {
+                            var text = "Username anda belum terdaftar atau salah !!!"
+                            document.getElementById("wrong").innerHTML = text;
+                            document.getElementById("wrong").style.color = "#FFFFFF";
+                            document.getElementById("pwd").style.color = "#ff0000";
+                            document.getElementById("usercode").style.color = "#ff0000";
+                        } else if (data.message == "password salah") {
+                            var text = "Password anda salah !!!"
+                            document.getElementById("wrong").innerHTML = text;
+                            document.getElementById("wrong").style.color = "#FFFFFF";
+                            document.getElementById("pwd").style.color = "#ff0000";
+                            document.getElementById("usercode").style.color = "#ff0000";
+                        }
+                    }        
+                }).fail(function () {
+                    var text = "CONNECTION TO SERVER REFUSED"
+                    document.getElementById("wrong").innerHTML = text;
+                    document.getElementById("wrong").style.color = "#FF0000";
+                })
+            }
+
+            function session(result) {
+                var usercode        = result.usercode;
+                var username        = result.username;
+                var privilegecode   = result.privilegecode;
+                var grpcode         = result.grpcode;
+                var status          = "login"
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/runsystemdms/admin/login/session",
+                    dataType: "JSON",
+                    data: {
+                        usercode: usercode,
+                        username: username,
+                        privilegecode: privilegecode,
+                        grpcode: grpcode,
+                        status: status
+                    },
+                    cache: false,
+                    success: function(data) {
+                        if (data.message == true) {
+                            if (privilegecode == '002' || privilegecode == '001' ) {
+                                window.location.href = "<?php echo base_url("admin/home") ?>";
+                            }else {
+                                var text = "Anda bukan admin !!!"
+                                document.getElementById("wrong").innerHTML = text;
+                                document.getElementById("wrong").style.color = "#ff0000";
+                                document.getElementById("pwd").style.color = "#ff0000";
+                                document.getElementById("usercode").style.color = "#ff0000";
                             }
                         }
                     }

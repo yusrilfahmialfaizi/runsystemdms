@@ -8,7 +8,7 @@ class Login extends CI_Controller
 		if ($this->session->userdata('status') == "login") {
 			if ($this->session->userdata('previlegecode') == "001") {
 				# code...
-				redirect(base_url("admin/user"));
+				redirect(base_url("admin/home"));
 			}
 		}
         $this->load->view('partials2/login_admin/login');
@@ -38,6 +38,6 @@ class Login extends CI_Controller
 	function logout()
 	{
 		$this->session->sess_destroy();
-		redirect("login");
+		redirect("admin/login");
 	}
 }

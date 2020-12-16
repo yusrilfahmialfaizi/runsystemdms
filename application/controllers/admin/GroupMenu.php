@@ -15,7 +15,7 @@ class GroupMenu extends CI_Controller
 	public function index()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		$url = "http://127.0.0.1:8080/runsystemdms/getGroupMenu";
 		$response = $this->api->get($url);
@@ -34,7 +34,7 @@ class GroupMenu extends CI_Controller
 	public function add_groupmenu()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		$url 		= 'http://127.0.0.1:8080/runsystemdms/getGroup';
 		$response 	= $this->api->get($url);
@@ -57,7 +57,7 @@ class GroupMenu extends CI_Controller
 	public function edit_grpmenu()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		$menucode 	= $this->input->get("menucode");
 		$grpcode 		= $this->input->get("grpcode");

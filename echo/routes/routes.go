@@ -33,7 +33,6 @@ func Routes() *echo.Echo {
 		return c.JSON(http.StatusCreated, "Welcome mvc echo")
 	})
 	e.POST("/runsystemdms/login", controllers.Login)
-	e.POST("/runsystemdms/loginadmin", controllers.LoginAdmin)
 
 	e.GET("/runsystemdms/getUsers", controllers.GetUser)
 	e.GET("/runsystemdms/getUsersById/:usercode", controllers.GetUserById)

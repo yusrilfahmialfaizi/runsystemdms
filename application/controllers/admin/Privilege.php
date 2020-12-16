@@ -13,7 +13,7 @@ class Privilege extends CI_Controller {
 	public function index()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		$url 		= "http://127.0.0.1:8080/runsystemdms/getPrivileges";
 		$response 	= $this->api->get($url);
@@ -34,7 +34,7 @@ class Privilege extends CI_Controller {
 	public function Add_privilege()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		
 		$this->load->view('partials2/main/page2/page_add_privilege');
@@ -43,7 +43,7 @@ class Privilege extends CI_Controller {
 	public function edit_privilege()
 	{
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("login");
+			redirect("admin/login");
 		}
 		$privilegecode 	= $this->input->get("privilegecode");
 		$url 		= "http://127.0.0.1:8080/runsystemdms/getPrivilegesById/".$privilegecode;
