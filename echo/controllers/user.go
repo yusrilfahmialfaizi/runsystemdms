@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
-	_"time"
+	_ "time"
 
 	"github.com/dgrijalva/jwt-go"
 
@@ -23,6 +23,7 @@ func GetUser(c echo.Context) error {
 	fmt.Println("Getting data ...")
 	return c.JSON(http.StatusOK, result)
 }
+
 // get privilege
 func GetPrivilege(c echo.Context) error {
 	result := models.GetPrivilege()
@@ -36,6 +37,7 @@ func GetPrivilegeById(c echo.Context) error {
 	result := models.GetPrivilegeById(cc)
 	return c.JSON(http.StatusOK, result)
 }
+
 // function untuk get user
 func GetUserById(c echo.Context) error {
 	cc := c.(*models.CustomContext)
@@ -58,6 +60,7 @@ func PostUser(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
+
 // POST method to INSERT Privilege
 func PostPrivilege(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -88,6 +91,7 @@ func UpdatePrivileges(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
+
 // Update data user
 func UpdateUsers(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -118,10 +122,10 @@ func Login(c echo.Context) (err error) {
 
 				// set claims yang bisa digunakn di frontend
 				claims := token.Claims.(jwt.MapClaims)
-				claims["usercode"] 		= result.Users[i].UserCode
-				claims["username"] 		= result.Users[i].Username
-				claims["privilegecode"] 	= result.Users[i].PrivilegeCode
-				claims["grpcode"] 		= result.Users[i].GrpCode
+				claims["usercode"] = result.Users[i].UserCode
+				claims["username"] = result.Users[i].Username
+				claims["privilegecode"] = result.Users[i].PrivilegeCode
+				claims["grpcode"] = result.Users[i].GrpCode
 
 				// mencari kombinasi token dan mengirimkannya sebagai response
 				t, err := token.SignedString([]byte("secret"))
@@ -143,6 +147,50 @@ func Login(c echo.Context) (err error) {
 	// return c.JSON(http.StatusOK, response)
 }
 
+func LoginAdmin(c echo.Context) (err error) {
+	usercode := c.FormValue("usercode")
+	usr := strings.ToLower(usercode)
+	usr2 := strings.ToUpper(usercode)
+	pwd := c.FormValue("pwd")
+	result := models.GetUser()
+	priv := "001"
+	response := Response{}
+	for i := 0; i < len(result.Users); i++ {
+		if usr == result.Users[i].UserCode || usr2 == result.Users[i].UserCode {
+			if pwd == result.Users[i].Pwd {
+				if priv == result.Users[i].PrivilegeCode {
+					// membuat token
+					token := jwt.New(jwt.SigningMethodHS256)
+
+					// set claims yang bisa digunakn di frontend
+					claims := token.Claims.(jwt.MapClaims)
+					claims["usercode"] = result.Users[i].UserCode
+					claims["username"] = result.Users[i].Username
+					claims["privilegecode"] = result.Users[i].PrivilegeCode
+					claims["grpcode"] = result.Users[i].GrpCode
+
+					// mencari kombinasi token dan mengirimkannya sebagai response
+					t, err := token.SignedString([]byte("secret"))
+					if err != nil {
+						return err
+					}
+
+					return c.JSON(http.StatusOK, map[string]string{
+						"token": t,
+					})
+				}
+				response = Response{Message: "role anda bukan admin"}
+				return c.JSON(http.StatusOK, response)
+			}
+			response = Response{Message: "password salah"}
+			return c.JSON(http.StatusOK, response)
+		}
+	}
+	response = Response{Message: "username tidak terdaftar"}
+	return c.JSON(http.StatusOK, response)
+	// return c.JSON(http.StatusOK, response)
+}
+
 //delete data
 func DeleteUser(c echo.Context) error {
 	cc := c.(*models.CustomContext)
@@ -150,6 +198,7 @@ func DeleteUser(c echo.Context) error {
 	fmt.Println("Delete ...")
 	return c.JSON(http.StatusOK, result)
 }
+
 //delete data
 func DeletePrivilege(c echo.Context) error {
 	cc := c.(*models.CustomContext)
