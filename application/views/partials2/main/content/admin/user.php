@@ -22,10 +22,6 @@
                             <th>UserCode</th>
                             <th>Username</th>
                             <th>GroupCode</th>
-                            <th>Expired Date</th>
-                            <th>Notivy</th>
-                            <th>Avatar Image</th>
-                            <th>Device id</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -38,10 +34,6 @@
                             <td><?php echo $key['usercode'] ?></td>
                             <td><?php echo $key['username'] ?></td>
                             <td><?php echo $key['grpcode'] ?></td>
-                            <td><?php echo $key['expdt'] ?></td>
-                            <td><?php echo $key['notifyind'] ?></td>
-                            <td><?php echo $key['avatarimage'] ?></td>
-                            <td><?php echo $key['deviceid'] ?></td>
                             <td align="center">
                                 <a href="<?php echo base_url("admin/user/edit_user?usercode=") . $key["usercode"]; ?>">
                                     <button class="btn btn-warning btn-circle" data-toggle="tooltip" title="Edit"

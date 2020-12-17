@@ -15,7 +15,7 @@
         <div class="col-md-6 ">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <form action="<?php echo base_url("admin/module2/add") ?>"
+                    <form action="<?php echo base_url("admin/module/add") ?>"
                         method="POST">
                         <div class="card-body">
                             <div class="row">

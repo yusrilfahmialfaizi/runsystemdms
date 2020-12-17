@@ -54,7 +54,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label class="col-form-label pt-0" for="menudesc">Menu Description</label>
-                                    <textarea class="form-control" name="menudesc" id="menudesc" cols="30" rows="10"
+                                    <textarea class="form-control" name="menudesc" id="menudesc" cols="30" rows="2"
                                         required=""><?php echo $d['menudesc'] ?></textarea>
                                 </div>
                             </div>

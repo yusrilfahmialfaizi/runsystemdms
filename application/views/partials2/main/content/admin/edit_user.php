@@ -51,7 +51,8 @@
                                             <?php echo $key['privilegename'] ?>
                                         </option>
                                         <?php }else { ?>
-                                        <option value="<?php echo $key['privilegecode'] ?>"><?php echo $key['privilegename'] ?>
+                                        <option value="<?php echo $key['privilegecode'] ?>">
+                                            <?php echo $key['privilegename'] ?>
                                         </option>
                                         <?php } ?>
                                         <?php } ?>
@@ -95,10 +96,10 @@
                                     <?php if ($us['expdt'] != null) { ?>
                                     <?php $expdt = strtotime($us["expdt"]);?>
                                     <input class="datepicker-here form-control digits" id="expdt" name="expdt"
-                                        type="date" data-language="en" value="<?php echo date("Y-m-d", $expdt) ?>"
-                                        >
+                                        type="date" data-language="en" value="<?php echo date("Y-m-d", $expdt) ?>">
                                     <?php }else{ ?>
-                                    <input class="datepicker-here form-control digits" id="expdt" name="expdt" type="date" data-language="en" value="">
+                                    <input class="datepicker-here form-control digits" id="expdt" name="expdt"
+                                        type="date" data-language="en" value="">
                                     <?php } ?>
                                 </div>
                             </div>
@@ -106,37 +107,28 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label class="col-form-label pt-0" for="expdt">Notify</label>
                                     <div class="checkbox">
-                                        <label>
-                                            <?php if ($us['notifyind'] == 'N') { ?>
-                                            <input style="margin-left: 5px;" id="NotifyInd" name="NotifyInd"
-                                                type="checkbox">
-                                            Fill in the checkbox if yes
-                                            <?php }else{ ?>
-                                            <input style="margin-left: 5px;" id="NotifyInd" name="NotifyInd" checked
-                                                type="checkbox">
-                                            Fill in the checkbox if yes
-                                            <?php } ?>
-                                        </label>
+                                        <label class="col-form-label pt-0" for="expdt">Notify</label>
+                                        <?php if ($us['notifyind'] == 'N') { ?>
+                                        <input style="margin-left: 5px;" id="NotifyInd" type="checkbox">
+                                        <?php }else{ ?>
+                                        <input style="margin-left: 5px;" id="NotifyInd" name="NotifyInd" checked
+                                            type="checkbox">
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label class="col-form-label pt-0" for="expdt">HasQiscusAccount</label>
                                     <div class="checkbox">
-                                        <label>
-                                            <?php if ($us['hasqiscusaccout'] == '1'){ ?>
-                                            <input style="margin-left: 5px;" id="HasQiscusAccount"
-                                                name="HasQiscusAccount" type="checkbox" checked>
-                                            Fill in the checkbox if yes
-                                            <?php }else{ ?>
-                                            <input style="margin-left: 5px;" id="HasQiscusAccount"
-                                                name="HasQiscusAccount" type="checkbox">
-                                            Fill in the checkbox if yes
-                                            <?php } ?>
-                                        </label>
+                                        <label class="col-form-label pt-0" for="expdt">HasQiscusAccount</label>
+                                        <?php if ($us['hasqiscusaccout'] == '1'){ ?>
+                                        <input style="margin-left: 5px;" id="HasQiscusAccount" name="HasQiscusAccount"
+                                            type="checkbox" checked>
+                                        <?php }else{ ?>
+                                        <input style="margin-left: 5px;" id="HasQiscusAccount" name="HasQiscusAccount"
+                                            type="checkbox">
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>

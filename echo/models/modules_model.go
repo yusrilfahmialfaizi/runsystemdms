@@ -21,6 +21,7 @@ type Modul struct {
 	CreateDt    string          `json:"createdt"`
 	LastupBy    nullable.String `json:"lastupby"`
 	LastupDt    nullable.String `json:"lastupdt"`
+	ProjectName nullable.String `json:"projectname"`
 }
 type ActionModul struct {
 	ModulCode     string `json:"modulcode"`
@@ -93,7 +94,7 @@ var connection *sql.DB
 // function untuk mengambil data dari tabel menu berdasarkan parent yang memiliki 2 digit angka
 func GetModuls() Moduls {
 	connection = config.Connection()
-	query1 := "SELECT ModulCode, ModulName,  ProjectCode, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmodul"
+	query1 := "SELECT A.*, B.ProjectName FROM tblmodul A LEFT JOIN tblproject B ON A.ProjectCode = B.ProjectCode"
 	rows1, err1 := connection.Query(query1)
 	if err1 != nil {
 		fmt.Println(err1)
@@ -105,7 +106,7 @@ func GetModuls() Moduls {
 	for rows1.Next() {
 		modul := Modul{}
 
-		eror := rows1.Scan(&modul.ModulCode, &modul.ModulName, &modul.ProjectCode, &modul.CreateBy, &modul.CreateDt, &modul.LastupBy, &modul.LastupDt)
+		eror := rows1.Scan(&modul.ModulCode, &modul.ModulName, &modul.ProjectCode, &modul.CreateBy, &modul.CreateDt, &modul.LastupBy, &modul.LastupDt, &modul.ProjectName)
 		if eror != nil {
 			fmt.Println(eror)
 		}
@@ -116,7 +117,7 @@ func GetModuls() Moduls {
 func GetModulsById(c *CustomContext) Moduls {
 	modulcode := c.Param("modulcode")
 	connection = config.Connection()
-	query1 := "SELECT ModulCode, ModulName,  ProjectCode, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblmodul WHERE modulcode = ?"
+	query1 := "SELECT A.*, B.ProjectName FROM tblmodul A LEFT JOIN tblproject B ON A.ProjectCode = B.ProjectCode WHERE A.modulcode = ?"
 	rows1, err1 := connection.Query(query1, modulcode)
 	if err1 != nil {
 		fmt.Println(err1)
@@ -128,7 +129,7 @@ func GetModulsById(c *CustomContext) Moduls {
 	for rows1.Next() {
 		modul := Modul{}
 
-		eror := rows1.Scan(&modul.ModulCode, &modul.ModulName, &modul.ProjectCode, &modul.CreateBy, &modul.CreateDt, &modul.LastupBy, &modul.LastupDt)
+		eror := rows1.Scan(&modul.ModulCode, &modul.ModulName, &modul.ProjectCode, &modul.CreateBy, &modul.CreateDt, &modul.LastupBy, &modul.LastupDt, &modul.ProjectName)
 		if eror != nil {
 			fmt.Println(eror)
 		}
@@ -139,7 +140,7 @@ func GetModulsById(c *CustomContext) Moduls {
 func GetModulsWithId(c *CustomContext) Moduls {
 	projectcode := c.Param("projectcode")
 	connection = config.Connection()
-	query1 := "SELECT ModulCode, ModulName, CreateBy, ProjectCode, CreateDt, LastUpBy, LastUpDt FROM tblmodul WHERE ProjectCode = ?"
+	query1 := "SELECT A.*, B.ProjectName FROM tblmodul A LEFT JOIN tblproject B ON A.ProjectCode = B.ProjectCode WHERE modulcode = ? WHERE A.ProjectCode = ?"
 	rows1, err1 := connection.Query(query1, projectcode)
 	if err1 != nil {
 		fmt.Println(err1)

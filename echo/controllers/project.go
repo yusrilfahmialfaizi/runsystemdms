@@ -30,7 +30,7 @@ func PostProject(con *sql.DB) echo.HandlerFunc {
 		var project models.ActionProject
 
 		c.Bind(&project)
-		result, err := models.PostProject(con, project.ProjectCode, project.ProjectName, project.ActInd, project.CtCode, project.CreateBy, project.CreateDt)
+		result, err := models.PostProject(con, project.ProjectCode, project.ProjectName, project.ActInd, project.CreateBy, project.CreateDt)
 
 		if err != nil {
 			return c.JSON(http.StatusCreated, result)
@@ -46,7 +46,7 @@ func UpdateProject(con *sql.DB) echo.HandlerFunc {
 		var project models.ActionProject
 
 		c.Bind(&project)
-		result, err := models.UpdateProjects(con, project.ProjectCode, project.ProjectName, project.ActInd, project.CtCode, project.LastupBy, project.LastupDt)
+		result, err := models.UpdateProjects(con, project.ProjectCode, project.ProjectName, project.ActInd, project.LastupBy, project.LastupDt)
 		if err != nil {
 			return err
 		} else {

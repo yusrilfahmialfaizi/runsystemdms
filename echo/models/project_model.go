@@ -13,7 +13,6 @@ type PG struct {
 	ProjectCode nullable.String `json:"projectcode"`
 	ProjectName nullable.String `json:"projectname"`
 	ActInd      string          `json:"actind"`
-	CtCode      nullable.String `json:"ctcode"`
 	CreateBy    string          `json:"createby"`
 	CreateDt    string          `json:"createdt"`
 	LastupBy    nullable.String `json:"lastupby"`
@@ -23,7 +22,6 @@ type ActionProject struct {
 	ProjectCode string `json:"projectcode"`
 	ProjectName string `json:"projectname"`
 	ActInd      string `json:"actind"`
-	CtCode      string `json:"ctcode"`
 	CreateBy    string `json:"createby"`
 	CreateDt    string `json:"createdt"`
 	LastupBy    string `json:"lastupby"`
@@ -36,7 +34,7 @@ type PGs struct {
 
 func GetProjectGroup() PGs {
 	con := config.Connection()
-	queryStatement := "Select projectCode, projectname, actind, ctcode, createby, createdt,lastupby, lastupdt From tblproject Where actind = 'Y'"
+	queryStatement := "Select projectCode, projectname, actind, createby, createdt,lastupby, lastupdt From tblproject Where actind = 'Y'"
 
 	rows, err := con.Query(queryStatement)
 	fmt.Println(err)
@@ -49,7 +47,7 @@ func GetProjectGroup() PGs {
 	for rows.Next() {
 		pg := PG{}
 
-		er := rows.Scan(&pg.ProjectCode, &pg.ProjectName, &pg.ActInd, &pg.CtCode, &pg.CreateBy, &pg.CreateDt, &pg.LastupBy, &pg.LastupDt)
+		er := rows.Scan(&pg.ProjectCode, &pg.ProjectName, &pg.ActInd, &pg.CreateBy, &pg.CreateDt, &pg.LastupBy, &pg.LastupDt)
 		if er != nil {
 			fmt.Println("ER : ", er)
 		}
@@ -60,7 +58,7 @@ func GetProjectGroup() PGs {
 func GetProjectById(c *CustomContext) PGs {
 	projectcode := c.Param("projectcode")
 	con := config.Connection()
-	queryStatement := "Select projectCode, projectname, actind, ctcode, createby, createdt,lastupby, lastupdt From tblproject Where projectcode = ?"
+	queryStatement := "Select projectCode, projectname, actind, createby, createdt,lastupby, lastupdt From tblproject Where projectcode = ?"
 
 	rows, err := con.Query(queryStatement, projectcode)
 	fmt.Println("ROWS : ", rows)
@@ -74,7 +72,7 @@ func GetProjectById(c *CustomContext) PGs {
 	for rows.Next() {
 		pg := PG{}
 
-		er := rows.Scan(&pg.ProjectCode, &pg.ProjectName, &pg.ActInd, &pg.CtCode, &pg.CreateBy, &pg.CreateDt, &pg.LastupBy, &pg.LastupDt)
+		er := rows.Scan(&pg.ProjectCode, &pg.ProjectName, &pg.ActInd, &pg.CreateBy, &pg.CreateDt, &pg.LastupBy, &pg.LastupDt)
 		if er != nil {
 			fmt.Println("ER : ", er)
 		}
@@ -84,10 +82,10 @@ func GetProjectById(c *CustomContext) PGs {
 }
 
 // for Insert User
-func PostProject(con *sql.DB, ProjectCode string, Projectname string, ActInd string, CtCode string, CreateBy string, CreateDt string) (int64, error) {
+func PostProject(con *sql.DB, ProjectCode string, Projectname string, ActInd string, CreateBy string, CreateDt string) (int64, error) {
 	con = config.Connection()
 
-	query := "INSERT INTO tblproject (ProjectCode, ProjectName, ActInd, CtCode,  CreateBy, CreateDt) VALUES (?,?,?,?,?,?)"
+	query := "INSERT INTO tblproject (ProjectCode, ProjectName, ActInd,  CreateBy, CreateDt) VALUES (?,?,?,?,?)"
 
 	stmt, err := con.Prepare(query)
 
@@ -97,7 +95,7 @@ func PostProject(con *sql.DB, ProjectCode string, Projectname string, ActInd str
 
 	defer stmt.Close()
 
-	result, eror := stmt.Exec(ProjectCode, Projectname, ActInd, CtCode, CreateBy, CreateDt)
+	result, eror := stmt.Exec(ProjectCode, Projectname, ActInd, CreateBy, CreateDt)
 
 	if eror != nil {
 		fmt.Println(eror)
@@ -107,10 +105,10 @@ func PostProject(con *sql.DB, ProjectCode string, Projectname string, ActInd str
 }
 
 // Update data Projects
-func UpdateProjects(con *sql.DB, ProjectCode string, Projectname string, ActInd string, CtCode string, LastupBy string, LastupDt string) (int64, error) {
+func UpdateProjects(con *sql.DB, ProjectCode string, Projectname string, ActInd string, LastupBy string, LastupDt string) (int64, error) {
 	con = config.Connection()
 
-	query := "UPDATE tblproject set ProjectCode = ?, ProjectName = ?, ActInd = ?, CtCode = ?, LastUpBy = ?, LastUpDt = ? WHERE ProjectCode = ?"
+	query := "UPDATE tblproject set ProjectCode = ?, ProjectName = ?, ActInd = ?, LastUpBy = ?, LastUpDt = ? WHERE ProjectCode = ?"
 
 	stmt, err := con.Prepare(query)
 
@@ -118,7 +116,7 @@ func UpdateProjects(con *sql.DB, ProjectCode string, Projectname string, ActInd 
 		panic(err)
 	}
 
-	result, eror := stmt.Exec(ProjectCode, Projectname, ActInd, CtCode, LastupBy, LastupDt, ProjectCode)
+	result, eror := stmt.Exec(ProjectCode, Projectname, ActInd, LastupBy, LastupDt, ProjectCode)
 
 	if eror != nil {
 		panic(eror)

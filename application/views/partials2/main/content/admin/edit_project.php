@@ -37,28 +37,12 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label class="col-form-label pt-0" for="actind">Act Indicator</label>
-                                        <select class="custom-select" id="actind" name="actind" required="">
-                                            <option value="">--Pilih--</option>
+                                        <label class="col-form-label pt-0" for="actind">Active</label>
                                             <?php if ($data['actind'] == "Y"){ ?>
-                                            <option value="Y" selected>Yes</option>
-                                            <?php }else{ ?>
-                                            <option value="Y">Yes</option>
-                                            <?php } ?>
-                                            <?php if ($data['actind'] == "N"){ ?>
-                                            <option value="N" selected>No</option>
-                                            <?php }else{ ?>
-                                            <option value="N">No</option>
+                                            <input style="margin-left: 5px;" id="actind" name="actind" type="checkbox" checked>
+                                            <?php }elseif ($data['actind'] == "N"){ ?><input style="margin-left: 5px;" id="actind" name="actind" type="checkbox">
                                             <?php } ?>
                                         </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label class="col-form-label pt-0" for="ctcode">CtCode</label>
-                                        <input class="form-control" id="ctcode" name="ctcode" value="<?php echo $data['ctcode'] ?>" type="text" placeholder="CtCode..." >
                                     </div>
                                 </div>
                             </div>

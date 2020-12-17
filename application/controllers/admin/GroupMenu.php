@@ -97,9 +97,12 @@ class GroupMenu extends CI_Controller
 
 	function add()
 	{
-		$menucode 		= $this->input->post('menucode');
+		$menucode 	= $this->input->post('menucode');
 		$grpcode 		= $this->input->post('grpcode');
-		$accessind		= $this->input->post("accessind");
+		$accessind	= $this->input->post("accessind");
+		if ($accessind == null) {
+			$accessind = "NNNNN";
+		}
 		date_default_timezone_set('Asia/Jakarta');
 		$now = date('YmdHi');
 		$data = array(

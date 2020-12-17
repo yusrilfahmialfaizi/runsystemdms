@@ -22,7 +22,6 @@
                             <th>Project Code</th>
                             <th>Project Name</th>
                             <th>Active</th>
-                            <th>CT Code</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -38,7 +37,6 @@
                             <?php }else if ($key['actind'] == 'N'){ ?>
                             <td>No</td>
                             <?php } ?>
-                            <td><?php echo $key['ctcode'] ?></td>
                             <td align="center">
                                 <a
                                     href="<?php echo base_url("admin/project/edit_project?projectcode=") . $key["projectcode"]; ?>">

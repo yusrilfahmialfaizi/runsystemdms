@@ -87,25 +87,19 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label class="col-form-label pt-0" for="expdt">Notify</label>
                                         <div class="checkbox">
-                                            <label>
-                                                <input style="margin-left: 5px;" id="NotifyInd" name="NotifyInd"
-                                                    type="checkbox">
-                                                Fill in the checkbox if yes
-                                            </label>
+                                            <label class="col-form-label pt-0" for="expdt">Notify</label>
+                                            <input style="margin-left: 5px;" id="NotifyInd" name="NotifyInd"
+                                                type="checkbox">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label class="col-form-label pt-0" for="expdt">HasQiscusAccount</label>
                                         <div class="checkbox">
-                                            <label>
-                                                <input style="margin-left: 5px;" id="HasQiscusAccount"
-                                                    name="HasQiscusAccount" type="checkbox">
-                                                Fill in the checkbox if yes
-                                            </label>
+                                            <label class="col-form-label pt-0" for="expdt">HasQiscusAccount</label>
+                                            <input style="margin-left: 5px;" id="HasQiscusAccount"
+                                                name="HasQiscusAccount" type="checkbox">
                                         </div>
                                     </div>
                                 </div>

@@ -22,6 +22,7 @@
                             <th>Modul Code</th>
                             <th>Modul Name</th>
                             <th>Project Code</th>
+                            <th>Project Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -35,6 +36,7 @@
                             <td><?php echo $key['modulcode'] ?></td>
                             <td><?php echo $key['modulname'] ?></td>
                             <td><?php echo $key['projectcode'] ?></td>
+                            <td><?php echo $key['projectname'] ?></td>
                             <td align="center">
                                 <a
                                     href="<?php echo base_url("admin/module/edit_module?modulcode=") . $key["modulcode"]; ?>">
