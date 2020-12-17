@@ -188,20 +188,19 @@ class User extends CI_Controller {
 		}elseif ($HasQiscusAccount == 'on') {
 			$HasQiscusAccount = "1";
 		}
-		// $AvatarImage 		= $this->input->post('AvatarImage');
 		$deviceid 		= $this->input->post('deviceid');
 		date_default_timezone_set('Asia/Jakarta');
 		$now 			= date('YmdHi');
 
-		if (!empty($_FILES["AvatarImage"]["name"])) {
 			$config['upload_path']		= './upload/avatarimage/';  // folder upload 
-			$config['allowed_types']		= 'gif|jpg|png|jpeg'; // jenis file
+			$config['allowed_types']	= 'gif|jpg|png|jpeg'; // jenis file
 			$config['max_size']			= 1024;
 			$config['file_name']		= $this->input->post('usercode');
 			$config['overwrite']		= true;    
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('AvatarImage')) //sesuai dengan name pada form 
 			{
+				echo "asd";
 				if (!empty($_FILES['AvatarImage']['name'])) {
 					// Name isn't empty so a file must have been selected
 					$message = str_replace("<p>", "",$this->upload->display_errors());
@@ -210,7 +209,7 @@ class User extends CI_Controller {
 					echo "<script>window.history.back();</script>";
 				} else {
 					// No file selected - set default image
-					$AvatarImage = 'default.png';
+					$AvatarImage = $this->input->post('AvatarImage_old');
 					$data 			= array(
 						'UserCode' 		=> $usercode,
 						'username'		=> $username,
@@ -231,7 +230,7 @@ class User extends CI_Controller {
 				}
 			}else{
 				$file 			= $this->upload->data();
-				$AvatarImage 		= $file['file_name'];
+				$AvatarImage 	= $file['file_name'];
 				$data 			= array(
 					'UserCode' 		=> $usercode,
 					'username'		=> $username,
@@ -250,26 +249,6 @@ class User extends CI_Controller {
 				$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateUsers", $data);
 				redirect(base_url('admin/user'));
 			}
-		} else {
-			$AvatarImage = $this->input->post('AvatarImage_old');
-			$data 			= array(
-				'UserCode' 		=> $usercode,
-				'username'		=> $username,
-				'privilegecode'	=> $privilegecode,
-				'grpcode'			=> $grpcode,
-				'pwd'			=> $pwd,
-				'expdt'			=> $expdt,
-				'NotifyInd'		=> $NotifyInd,
-				'HasQiscusAccount'	=> $HasQiscusAccount,
-				'AvatarImage'		=> $AvatarImage,
-				'deviceid'		=> $deviceid,
-				"LastupBy" 		=> $this->session->userdata("usercode"),
-				"LastupDt" 		=> $now,
-				'UserCode_old'		=> $usercode_old
-			);
-			$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateUsers", $data);
-			redirect(base_url('admin/user'));
-		}
 	}
 
 	function delete_user()

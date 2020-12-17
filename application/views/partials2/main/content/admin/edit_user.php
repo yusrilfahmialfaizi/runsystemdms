@@ -15,7 +15,7 @@
     <div class="col-md-6 ">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <form action="<?php echo base_url("admin/user/edit") ?>" method="POST">
+                <form action="<?php echo base_url("admin/user/edit") ?>" method="POST" enctype="multipart/form-data">
                     <div class="card-body">
                         <?php foreach($user as $us){ ?>
                         <div class="row">
