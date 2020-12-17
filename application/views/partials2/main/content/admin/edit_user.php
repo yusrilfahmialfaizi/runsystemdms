@@ -138,7 +138,7 @@
                                 <div class="form-group">
                                     <label class="col-form-label pt-0" for="expdt">Avatar Image</label>
                                     <input class="form-control-file" type="file" name="AvatarImage" id="AvatarImage">
-                                    <input class="form-control" id="AvatarImage_old" name="AvatarImage_old" type="text"value="<?php echo $us['avatarimage'] ?>" placeholder="avatar image...">
+                                    <input class="form-control" id="AvatarImage_old" name="AvatarImage_old" type="text"value="<?php echo $us['avatarimage'] ?>" hidden placeholder="avatar image...">
                                 </div>
                             </div>
                         </div>
