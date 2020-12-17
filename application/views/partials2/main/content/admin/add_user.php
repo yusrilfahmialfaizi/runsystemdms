@@ -108,7 +108,8 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="expdt">Avatar Image</label>
-                                        <input  class="form-control-file" type="file" name="AvatarImage" id="AvatarImage">
+                                        <input class="form-control-file" type="file" name="AvatarImage"
+                                            id="AvatarImage">
                                     </div>
                                 </div>
                             </div>

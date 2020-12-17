@@ -82,62 +82,87 @@ class User extends CI_Controller {
 	}
 
 	function add(){
-		$config['upload_path']         = './gambar/';  // folder upload 
-        $config['allowed_types']        = 'gif|jpg|png|jpeg'; // jenis file
-        $config['max_size']             = 5000;
-        $config['file_name']			= $this->input->post('usercode');
-        $config['overwrite']   			= true;    
-        $this->load->library('upload', $config);
- 		if ( ! $this->upload->do_upload('AvatarImage')) //sesuai dengan name pada form 
-        {
-        echo 'ukuran gambar terlalu besar';
-        }
-		else
-		{ 
-		date_default_timezone_set('Asia/Jakarta');
-		$usercode 		= $this->input->post('usercode');
-		$username 		= $this->input->post('username');
-		$privilegecode 	= $this->input->post('privilegecode');
-		$grpcode 			= $this->input->post('grpcode');
-		$pwd 			= $this->input->post('pwd');
-		$expdt 			= $this->input->post('expdt');
-		if ($expdt != null) {
-			$expdt = date('Ymd', strtotime($expdt));
-		}elseif ($expdt == null) {
-			$expdt = $expdt;
-		}
-		$NotifyInd 		= $this->input->post('NotifyInd');
-		if ($NotifyInd == null) {
-			$NotifyInd = "N";
-		}elseif ($NotifyInd == 'on') {
-			$NotifyInd = "Y";
-		}
-		$HasQiscusAccount 	= $this->input->post('HasQiscusAccount');
-		if ($HasQiscusAccount == null) {
-			$HasQiscusAccount = "0";
-		}elseif ($HasQiscusAccount == 'on') {
-			$HasQiscusAccount = "1";
-		}
-		$file = $this->upload->data();
-        $AvatarImage = $file['file_name'];
-		$deviceid 		= $this->input->post('deviceid');
-		$now 			= date('YmdHi');
-		$data 			= array(
-			'usercode' 		=> $usercode,
-			'username'		=> $username,
-			'privilegecode'	=> $privilegecode,
-			'grpcode'			=> $grpcode,
-			'pwd'			=> $pwd,
-			'expdt'			=> $expdt,
-			'notifyind'		=> $NotifyInd,
-			'HasQiscusAccount'	=> $HasQiscusAccount,
-			'AvatarImage'		=> $AvatarImage,
-			'deviceid'		=> $deviceid,
-			"CreateBy" 		=> $this->session->userdata("usercode"),
-			"CreateDt" 		=> $now,
-		);
-		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postUsers", $data);
-		redirect(base_url('admin/user'));
+			date_default_timezone_set('Asia/Jakarta');
+			$usercode 		= $this->input->post('usercode');
+			$username 		= $this->input->post('username');
+			$privilegecode 	= $this->input->post('privilegecode');
+			$grpcode 			= $this->input->post('grpcode');
+			$pwd 			= $this->input->post('pwd');
+			$expdt 			= $this->input->post('expdt');
+			if ($expdt != null) {
+				$expdt = date('Ymd', strtotime($expdt));
+			}elseif ($expdt == null) {
+				$expdt = $expdt;
+			}
+			$NotifyInd 		= $this->input->post('NotifyInd');
+			if ($NotifyInd == null) {
+				$NotifyInd = "N";
+			}elseif ($NotifyInd == 'on') {
+				$NotifyInd = "Y";
+			}
+			$HasQiscusAccount 	= $this->input->post('HasQiscusAccount');
+			if ($HasQiscusAccount == null) {
+				$HasQiscusAccount = "0";
+			}elseif ($HasQiscusAccount == 'on') {
+				$HasQiscusAccount = "1";
+			}
+			$deviceid 		= $this->input->post('deviceid');
+			$now 			= date('YmdHi');
+			$config['upload_path']		= './upload/avatarimage/';  // folder upload 
+			$config['allowed_types']		= 'gif|jpg|png|jpeg'; // jenis file
+			$config['max_size']			= 1024;
+			$config['file_name']		= $this->input->post('usercode');
+			$config['overwrite']		= true;    
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('AvatarImage')) //sesuai dengan name pada form 
+			{
+				if (!empty($_FILES['AvatarImage']['name'])) {
+					// Name isn't empty so a file must have been selected
+					$message = str_replace("<p>", "",$this->upload->display_errors());
+					$message = str_replace("</p>", "",$message);
+					echo "<script type='text/javascript'>alert('$message');</script>";
+					echo "<script>window.history.back();</script>";
+				} else {
+					// No file selected - set default image
+					$AvatarImage = 'default.png';
+					$data 			= array(
+						'usercode' 		=> $usercode,
+						'username'		=> $username,
+						'privilegecode'	=> $privilegecode,
+						'grpcode'			=> $grpcode,
+						'pwd'			=> $pwd,
+						'expdt'			=> $expdt,
+						'notifyind'		=> $NotifyInd,
+						'HasQiscusAccount'	=> $HasQiscusAccount,
+						'AvatarImage'		=> $AvatarImage,
+						'deviceid'		=> $deviceid,
+						"CreateBy" 		=> $this->session->userdata("usercode"),
+						"CreateDt" 		=> $now,
+					);
+					$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postUsers", $data);
+					redirect(base_url('admin/user'));
+				}
+			}else{
+				$file 			= $this->upload->data();
+				$AvatarImage 		= $file['file_name'];
+				$data 			= array(
+					'usercode' 		=> $usercode,
+					'username'		=> $username,
+					'privilegecode'	=> $privilegecode,
+					'grpcode'			=> $grpcode,
+					'pwd'			=> $pwd,
+					'expdt'			=> $expdt,
+					'notifyind'		=> $NotifyInd,
+					'HasQiscusAccount'	=> $HasQiscusAccount,
+					'AvatarImage'		=> $AvatarImage,
+					'deviceid'		=> $deviceid,
+					"CreateBy" 		=> $this->session->userdata("usercode"),
+					"CreateDt" 		=> $now,
+				);			
+				$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postUsers", $data);
+				redirect(base_url('admin/user'));
+			}
+			
 	}
 	function edit(){
 		$usercode 		= $this->input->post('usercode');
@@ -183,8 +208,8 @@ class User extends CI_Controller {
 			"LastupDt" 		=> $now,
 			'UserCode_old'		=> $usercode_old
 		);
-		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateUsers", $data);
-		redirect(base_url('admin/user'));
+		// $this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateUsers", $data);
+		// redirect(base_url('admin/user'));
 	}
 
 	function delete_user()
@@ -194,5 +219,24 @@ class User extends CI_Controller {
 		$this->api->delete($url);
 		redirect(base_url('admin/user'));
 	}
-}
+
+// 	private function uploadImage($AvatarImage)
+// 	{
+// 		$config['upload_path']		='./upload/avatarimage/';
+// 		$config['allowed_types']		= 'gif|jpg|png';
+// 		$config['file_name']		= $AvatarImage;
+// 		$config['overwrite']		= true;
+// 		$config['max_size']           = 1024; // 1MB
+// 		// $config['max_width']       = 1024;
+// 		// $config['max_height']      = 768;
+
+// 		$this->load->library('upload', $config);
+
+// 		if ($this->upload->do_upload('avatarimage')) {
+// 			return $this->upload->data("file_name");
+// 		}
+		
+// 		return "default.png";
+// 	}
+// }
 }
