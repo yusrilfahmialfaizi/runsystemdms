@@ -15,7 +15,7 @@
         <div class="col-md-6 ">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <form action="<?php echo base_url("admin/user/add") ?>" method="POST">
+                    <form enctype="multipart/form-data" action="<?php echo base_url("admin/user/add") ?>" method="POST">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -108,8 +108,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="expdt">Avatar Image</label>
-                                        <input class="form-control" id="AvatarImage" name="AvatarImage" type="text"
-                                            placeholder="avatar image...">
+                                        <input  class="form-control-file" type="file" name="AvatarImage" id="AvatarImage">
                                     </div>
                                 </div>
                             </div>

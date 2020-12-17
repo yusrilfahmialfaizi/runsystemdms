@@ -82,6 +82,18 @@ class User extends CI_Controller {
 	}
 
 	function add(){
+		$config['upload_path']         = './gambar/';  // folder upload 
+        $config['allowed_types']        = 'gif|jpg|png|jpeg'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']			= $this->input->post('usercode');
+        $config['overwrite']   			= true;    
+        $this->load->library('upload', $config);
+ 		if ( ! $this->upload->do_upload('AvatarImage')) //sesuai dengan name pada form 
+        {
+        echo 'ukuran gambar terlalu besar';
+        }
+		else
+		{ 
 		date_default_timezone_set('Asia/Jakarta');
 		$usercode 		= $this->input->post('usercode');
 		$username 		= $this->input->post('username');
@@ -106,7 +118,8 @@ class User extends CI_Controller {
 		}elseif ($HasQiscusAccount == 'on') {
 			$HasQiscusAccount = "1";
 		}
-		$AvatarImage 		= $this->input->post('AvatarImage');
+		$file = $this->upload->data();
+        $AvatarImage = $file['file_name'];
 		$deviceid 		= $this->input->post('deviceid');
 		$now 			= date('YmdHi');
 		$data 			= array(
@@ -118,7 +131,7 @@ class User extends CI_Controller {
 			'expdt'			=> $expdt,
 			'notifyind'		=> $NotifyInd,
 			'HasQiscusAccount'	=> $HasQiscusAccount,
-			'avatarimage'		=> $AvatarImage,
+			'AvatarImage'		=> $AvatarImage,
 			'deviceid'		=> $deviceid,
 			"CreateBy" 		=> $this->session->userdata("usercode"),
 			"CreateDt" 		=> $now,
@@ -181,4 +194,5 @@ class User extends CI_Controller {
 		$this->api->delete($url);
 		redirect(base_url('admin/user'));
 	}
+}
 }
