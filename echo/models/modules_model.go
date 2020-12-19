@@ -140,7 +140,7 @@ func GetModulsById(c *CustomContext) Moduls {
 func GetModulsWithId(c *CustomContext) Moduls {
 	projectcode := c.Param("projectcode")
 	connection = config.Connection()
-	query1 := "SELECT A.*, B.ProjectName FROM tblmodul A LEFT JOIN tblproject B ON A.ProjectCode = B.ProjectCode WHERE modulcode = ? WHERE A.ProjectCode = ?"
+	query1 := "SELECT A.*, B.ProjectName FROM tblmodul A LEFT JOIN tblproject B ON A.ProjectCode = B.ProjectCode WHERE A.ProjectCode = ?"
 	rows1, err1 := connection.Query(query1, projectcode)
 	if err1 != nil {
 		fmt.Println(err1)
@@ -152,7 +152,7 @@ func GetModulsWithId(c *CustomContext) Moduls {
 	for rows1.Next() {
 		modul := Modul{}
 
-		eror := rows1.Scan(&modul.ModulCode, &modul.ModulName, &modul.ProjectCode, &modul.CreateBy, &modul.CreateDt, &modul.LastupBy, &modul.LastupDt)
+		eror := rows1.Scan(&modul.ModulCode, &modul.ModulName, &modul.ProjectCode, &modul.CreateBy, &modul.CreateDt, &modul.LastupBy, &modul.LastupDt, &modul.ProjectName)
 		if eror != nil {
 			fmt.Println(eror)
 		}
