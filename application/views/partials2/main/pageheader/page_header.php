@@ -1,16 +1,20 @@
 <!-- Page Header Start-->
+<?php 
+  $uri1 = $this->uri->segment("1");
+  $uri2 = $this->uri->segment("2");
+  $uri3 = $this->uri->segment("3");
+?>
 <div class="page-main-header">
   <div class="main-header-right">
     <div class="main-header-left text-center">
+    <?php if ($uri1 != "home") { ?>
       <div class="logo-wrapper"><a href="<?php echo base_url("home")?>"><img src="<?php echo base_url("assets/images/logo/dms.png") ?>" alt=""></a></div>
+      <?php }else{ ?>
+      <div class="logo-wrapper"><a href="#"><img src="<?php echo base_url("assets/images/logo/dms.png") ?>" alt=""></a></div>
+      <?php } ?>
     </div>
     <div class="mobile-sidebar">
       <div class="media-body text-right switch-sm">
-      <?php 
-        $uri1 = $this->uri->segment("1");
-        $uri2 = $this->uri->segment("2");
-        $uri3 = $this->uri->segment("3");
-      ?>
       <?php if ($uri1 != "home") { ?>
         <?php if ($uri3 == null) { ?>
           <label class="switch ml-3"><i class="font-primary" onClick="sidebar_toggle()" id="sidebar-toggle" data-feather="align-center"></i></label>

@@ -50,7 +50,7 @@ type UpDatadocumentHdr struct {
 type DocDtl struct {
 	Docno       string          `json:"docno"`
 	MenuCode    string          `json:"menucode"`
-	Description string 		   `json:"description"`
+	Description nullable.String `json:"description"`
 	Status      string          `json:"status"`
 	CreateBy    string          `json:"createby"`
 	CreateDt    string          `json:"createdt"`
@@ -341,6 +341,34 @@ func GetDocumentsDtlPrint(c *CustomContext) DocumentsDtlJoinPrint {
 			fmt.Println(eror)
 		}
 		result.DocumentsDtlJoinPrint = append(result.DocumentsDtlJoinPrint, docdtl)
+	}
+	return result
+}
+
+// func get data documentdetail by docno and GrpCode join on tblgroupmenu
+func GetDocumentDtlById(c *CustomContext) DocumentsDtl {
+	con		= config.Connection()
+	docno	:= c.FormValue("docno")
+	grpcode	:= c.FormValue("grpcode")
+	query	:= "SELECT A.* FROM tbldocumentdtl A JOIN tblgroupmenu B ON B.MenuCode = A.MenuCode WHERE A.Docno = ? AND B.GrpCode = ?"
+	rows, eror := con.Query(query, docno, grpcode)
+
+	if eror != nil {
+		panic(eror)
+	}
+
+	defer rows.Close()
+
+	result := DocumentsDtl{}
+
+	for rows.Next(){
+		docdtl := DocDtl{}
+
+		eror := rows.Scan(&docdtl.Docno, &docdtl.MenuCode, &docdtl.Description, &docdtl.Status, &docdtl.CreateBy, &docdtl.CreateDt, &docdtl.LastUpBy, &docdtl.LastUpDt)
+		if eror != nil {
+			fmt.Println(eror)
+		}
+		result.DocumentsDtl = append(result.DocumentsDtl, docdtl)
 	}
 	return result
 }

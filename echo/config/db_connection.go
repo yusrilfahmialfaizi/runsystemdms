@@ -8,7 +8,7 @@ import (
 )
 
 func Connection() *sql.DB {
-	db, err := sql.Open("mysql", "root:@tcp(localhost:3307)/runsystemdms")
+	db, err := sql.Open("mysql", "root:@tcp(localhost:3307)/runsystemdms?multiStatements=true")
 	if err != nil {
 		fmt.Println(err.Error())
 	} else {

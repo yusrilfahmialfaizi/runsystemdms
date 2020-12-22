@@ -228,5 +228,27 @@ class Tabel extends CI_Controller {
 			"doc_status" => $checked));
 		}
 	}
+	function doc_status()
+	{	
+		$docno 		= $this->input->post('docno');
+		$data 		= array(
+			'docno' => $docno, 
+			'grpcode'	=> $this->session->userdata("grpcode")
+		);
+		$response 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlById", $data);
+		$response = json_decode($response, true);
+		$response = $response['documentsdtl'];
+		// echo "<pre>";
+		// print_r($data);
+		// print_r($response);
+		if(!in_array("O",array_column($response,'status'))) {
+			$response = array('message' => true);
+			echo json_encode($response);
+		} else {
+			$response = array('message' => false);
+			echo json_encode($response);
+		}
+		// echo "</pre>";
+	}
 }
 ?>

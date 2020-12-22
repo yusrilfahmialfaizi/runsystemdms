@@ -3,6 +3,7 @@
          var uri = "<?php echo $this->uri->segment("1"); ?>";
          var uri2 = "<?php echo $this->uri->segment("2"); ?>";
          var modulactive = "<?php echo $this->session->userdata("modul"); ?>";
+         var docno = "<?php echo $this->session->userdata('docno') ?>";
          if (uri == "admin"){
            $("li").removeClass("open");
            $("#" + uri2).addClass("open");
@@ -20,8 +21,10 @@
            var modulCode = "<?php echo $this->session->userdata("modul"); ?>";
            var doc_status = "<?php echo $this->session->userdata("doc_status"); ?>";
            if (doc_status == "F") {
+             document.getElementById('statushdr').disabled = true;
              document.getElementById('statushdr').checked = true;
            } else if (doc_status == "O") {
+             document.getElementById('statushdr').disabled = false;
              document.getElementById('statushdr').checked = false;
            } else {
              console.log("data null");
@@ -39,6 +42,25 @@
                $('#modul-menu-' + modulCode).html(response);
              }
            });
+           $.ajax({ //to get all data menu from db
+           type: 'POST',
+           url: '<?php echo base_url("tabel/doc_status") ?>',
+           dataType: 'json',
+           data: {
+             docno: docno
+           },
+           cache: false,
+           success: function(response) {
+             if (response.message == false) {
+              document.getElementById('statushdr').disabled = true;
+             }else{
+              document.getElementById('statushdr').disabled = false;
+              if (document.getElementById('statushdr').checked == true) {
+                document.getElementById('statushdr').disabled = true;
+              }
+             }
+           }
+         });
          }
        });
      </script>
@@ -95,9 +117,30 @@
          $.post("<?php echo base_url("tabel/modul_session") ?>", {
            modulCode: modulCode
          });
-         if (status != "O") {
+         $.ajax({ //to get all data menu from db
+           type: 'POST',
+           url: '<?php echo base_url("tabel/doc_status") ?>',
+           dataType: 'json',
+           data: {
+             docno: docno
+           },
+           cache: false,
+           success: function(response) {
+             if (response.message == false) {
+              document.getElementById('statushdr').disabled = true;
+             }else{
+              document.getElementById('statushdr').disabled = false;
+              if (document.getElementById('statushdr').checked == true) {
+                document.getElementById('statushdr').disabled = true;
+              }
+             }
+           }
+         });
+         if (status == "F") {
+           document.getElementById('statushdr').disabled = true;
            document.getElementById('statushdr').checked = true;
-         } else {
+         } else if (status == "O") {
+           document.getElementById('statushdr').disabled = false;
            document.getElementById('statushdr').checked = false;
          }
          $.post("<?php echo base_url("tabel/doc_session") ?>", {
@@ -139,9 +182,9 @@
            menuName: menuName
          });
        }
-       if ("<?php echo $this->uri->segment("1"); ?>" == "edit" || "<?php echo $this->uri->segment("1"); ?>" == "edit") {
+      //  if ("<?php echo $this->uri->segment("1"); ?>" == "edit" || "<?php echo $this->uri->segment("1"); ?>" == "edit") {
 
-       }
+      //  }
        //  $('input[type="checkbox"]').click(function() {
        function toggle_checkbox(element) {
          if ($(element).prop("checked") == true) {

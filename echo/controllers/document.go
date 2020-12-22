@@ -105,20 +105,28 @@ func GenerateCode(c echo.Context) error {
 func GetDocumentDtl(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetDocumentDtl(cc)
-	fmt.Println("Getting generate code...")
+	fmt.Println("Getting data...")
 	return c.JSON(http.StatusOK, result)
 }
 // function pada controller untuk get documents dtl berdasarkan docno
 func GetDocumentsDtl(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetDocumentsDtl(cc)
-	fmt.Println("Getting generate code...")
+	fmt.Println("Getting data...")
 	return c.JSON(http.StatusOK, result)
 }
+// function get data document join tblmodulmenu
 func GetDocumentsDtlPrint(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetDocumentsDtlPrint(cc)
-	fmt.Println("Getting generate code...")
+	fmt.Println("Getting data...")
+	return c.JSON(http.StatusOK, result)
+}
+// function get data document join tblgroupmenu
+func GetDocumentDtlById(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.GetDocumentDtlById(cc)
+	fmt.Println("Getting data...")
 	return c.JSON(http.StatusOK, result)
 }
 
