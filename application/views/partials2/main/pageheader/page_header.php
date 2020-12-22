@@ -30,6 +30,9 @@
               <h5 class="f-w-600 mb-0"><?php echo $this->session->userdata('username') ?></h5><span>Admin</span>
             </li>
             <li><i data-feather="user"> </i>Profile</li>
+            <?php if ($this->session->userdata('privilegecode') == 001) {?>
+              <li><a style="color: #242934;" href="<?= base_url('admin/home') ?>"><i data-feather="cpu"></i>Admin</a></li>
+            <?php } ?>
             <li><a href="<?php echo base_url('login/logout') ?>"><i data-feather="log-out"></i>Logout</a></li>
           </ul>
         </li>

@@ -60,12 +60,20 @@
 <!-- Dropdown - User Information -->
 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 aria-labelledby="userDropdown">
+
+<?php if ($this->session->userdata('privilegecode') == 001) {?>
+    <a class="dropdown-item" href="<?= base_url('home')?>">
+        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+        DMS
+    </a>            
+<?php } ?>
+
 <a class="dropdown-item" href="#">
     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
     Profile
 </a>
 
-<a class="dropdown-item" href="<?php echo base_url('admin/login/logout') ?>">
+<a class="dropdown-item" href="<?php echo base_url('login/logout') ?>">
     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
     Logout
 </a>

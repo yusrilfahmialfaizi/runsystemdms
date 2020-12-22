@@ -11,9 +11,9 @@ class Login extends CI_Controller
 			if ($this->session->userdata('previlegecode') == "003") {
 				# code...
 				redirect("home");
-			}elseif ($this->session->userdata('previlegecode') == "002") {
+			}else {
 				# code...
-				redirect(base_url("admin/user"));
+				redirect(base_url("admin/home"));
 			}
 		}
 		$this->load->view('partials2/login/page');
