@@ -1,4 +1,4 @@
-<script type="text/javascript" src="assets/ckeditor/ckeditor.js"> </script>
+<script type="text/javascript" src="<?= base_url()?>assets/ckeditor/ckeditor.js"> </script>
 <div class="page-body">
 	<div class="container-fluid">
 		<div class="page-header">
@@ -85,6 +85,65 @@
 							window.onload = function() {
 								CKEDITOR.replace('deskripsi');
 							}
+						</script>
+						<script>
+							CKEDITOR.replace('deskripsi', {
+							height: 300,
+
+							// Configure your file manager integration. This example uses CKFinder 3 for PHP.
+							filebrowserBrowseUrl: 'assets/ckeditor/ckfinder/ckfinder.html',
+							filebrowserImageBrowseUrl: 'assets/ckeditor/ckfinder/ckfinder.html?type=Images',
+							filebrowserUploadUrl: 'assets/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+							filebrowserImageUploadUrl: 'assets/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
+							});
+						</script>
+						<script>
+							CKEDITOR.replace('deskripsi', {
+							extraPlugins: 'uploadimage,image2',
+							height: 300,
+
+							// Upload images to a CKFinder connector (note that the response type is set to JSON).
+							uploadUrl: 'assets/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+
+							// Configure your file manager integration. This example uses CKFinder 3 for PHP.
+							filebrowserBrowseUrl: 'assets/ckeditor/ckfinder/ckfinder.html',
+							filebrowserImageBrowseUrl: 'assets/ckeditor/ckfinder/ckfinder.html?type=Images',
+							filebrowserUploadUrl: 'assets/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+							filebrowserImageUploadUrl: 'assets/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+
+							// The following options are not necessary and are used here for presentation purposes only.
+							// They configure the Styles drop-down list and widgets to use classes.
+
+							stylesSet: [{
+								name: 'Narrow image',
+								type: 'widget',
+								widget: 'image',
+								attributes: {
+									'class': 'image-narrow'
+								}
+								},
+								{
+								name: 'Wide image',
+								type: 'widget',
+								widget: 'image',
+								attributes: {
+									'class': 'image-wide'
+								}
+								}
+							],
+
+							// Load the default contents.css file plus customizations for this sample.
+							contentsCss: [
+								'http://cdn.ckeditor.com/4.15.1/full-all/contents.css',
+								'https://ckeditor.com/docs/ckeditor4/4.15.1/examples/assets/css/widgetstyles.css'
+							],
+
+							// Configure the Enhanced Image plugin to use classes instead of styles and to disable the
+							// resizer (because image size is controlled by widget styles or the image takes maximum
+							// 100% of the editor width).
+							image2_alignClasses: ['image-align-left', 'image-align-center', 'image-align-right'],
+							image2_disableResizer: true
+							});
 						</script>
 					</div>
 				</div>
