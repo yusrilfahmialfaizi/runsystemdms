@@ -88,16 +88,11 @@
 						</script>
 						<script>
 							CKEDITOR.replace('deskripsi', {
-							height: 300,
-
-							// Configure your file manager integration. This example uses CKFinder 3 for PHP.
 							filebrowserBrowseUrl: 'assets/ckeditor/ckfinder/ckfinder.html',
-							filebrowserImageBrowseUrl: 'assets/ckeditor/ckfinder/ckfinder.html?type=Images',
-							filebrowserUploadUrl: 'assets/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-							filebrowserImageUploadUrl: 'assets/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images'
+							filebrowserUploadUrl: 'assets/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
 							});
 						</script>
-						<script>
+						<!-- <script>
 							CKEDITOR.replace('deskripsi', {
 							extraPlugins: 'uploadimage,image2',
 							height: 300,
@@ -144,7 +139,7 @@
 							image2_alignClasses: ['image-align-left', 'image-align-center', 'image-align-right'],
 							image2_disableResizer: true
 							});
-						</script>
+						</script> -->
 					</div>
 				</div>
 			</div>
