@@ -54,6 +54,28 @@ func GetProjectGroup() PGs {
 	}
 	return result
 }
+func GetProject() PGs {
+	con := config.Connection()
+	queryStatement := "Select projectCode, projectname, actind, createby, createdt,lastupby, lastupdt From tblproject"
+
+	rows, err := con.Query(queryStatement)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer rows.Close()
+	result := PGs{}
+
+	for rows.Next() {
+		pg := PG{}
+
+		er := rows.Scan(&pg.ProjectCode, &pg.ProjectName, &pg.ActInd, &pg.CreateBy, &pg.CreateDt, &pg.LastupBy, &pg.LastupDt)
+		if er != nil {
+			fmt.Println("ER : ", er)
+		}
+		result.PGs = append(result.PGs, pg)
+	}
+	return result
+}
 func GetProjectById(c *CustomContext) PGs {
 	projectcode := c.Param("projectcode")
 	con := config.Connection()

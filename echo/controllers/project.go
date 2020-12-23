@@ -13,6 +13,11 @@ func GetProjectGroup(c echo.Context) error {
 	result := models.GetProjectGroup()
 	return c.JSON(http.StatusOK, result)
 }
+// Get Data Project
+func GetProject(c echo.Context) error {
+	result := models.GetProject()
+	return c.JSON(http.StatusOK, result)
+}
 
 // Get project by id
 func GetProjectById(c echo.Context) error {

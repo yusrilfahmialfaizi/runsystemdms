@@ -15,7 +15,7 @@ class Project extends CI_Controller {
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
 			redirect("admin/login");
 		}
-		$url = "http://127.0.0.1:8080/runsystemdms/getPG";
+		$url = "http://127.0.0.1:8080/runsystemdms/getProject";
 		$response = $this->api->get($url);
 		$data = json_decode($response, true);
 		if ($data == null ) {

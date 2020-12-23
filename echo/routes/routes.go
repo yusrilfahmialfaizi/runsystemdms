@@ -44,6 +44,7 @@ func Routes() *echo.Echo {
 	e.PUT("/runsystemdms/updatePrivileges", controllers.UpdatePrivileges(con))
 
 	e.GET("/runsystemdms/getPG", controllers.GetProjectGroup)
+	e.GET("/runsystemdms/getProject", controllers.GetProject)
 	e.GET("/runsystemdms/getProjectById/:projectcode", controllers.GetProjectById)
 	e.POST("/runsystemdms/postProject", controllers.PostProject(con))
 	e.PUT("/runsystemdms/updateProject", controllers.UpdateProject(con))
