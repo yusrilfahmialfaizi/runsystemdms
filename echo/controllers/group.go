@@ -62,7 +62,7 @@ func PostGroupMenu(con *sql.DB) echo.HandlerFunc {
 
 		c.Bind(&actiongroupmenu)
 
-		result, err := models.PostGroupMenus(con, actiongroupmenu.MenuCode, actiongroupmenu.GrpCode, actiongroupmenu.AccessInd, actiongroupmenu.CreateBy, actiongroupmenu.CreateDt)
+		result, err := models.PostGroupMenus(con, actiongroupmenu.MenuCode, actiongroupmenu.GrpCode,  actiongroupmenu.CreateBy, actiongroupmenu.CreateDt)
 
 		if err == nil {
 			return c.JSON(http.StatusCreated, result)
@@ -96,7 +96,7 @@ func UpdateGroupMenu(con *sql.DB) echo.HandlerFunc {
 		var updategroupmenu models.ActionGroupMenu
 		c.Bind(&updategroupmenu)
 
-		_, err := models.UpdateGroupMenus(con, updategroupmenu.MenuCode, updategroupmenu.GrpCode, updategroupmenu.AccessInd, updategroupmenu.LastupBy, updategroupmenu.LastupDt, updategroupmenu.MenuCode_old, updategroupmenu.GrpCode_old)
+		_, err := models.UpdateGroupMenus(con, updategroupmenu.MenuCode, updategroupmenu.GrpCode, updategroupmenu.LastupBy, updategroupmenu.LastupDt, updategroupmenu.MenuCode_old, updategroupmenu.GrpCode_old)
 
 		if err == nil {
 			return c.JSON(http.StatusOK, updategroupmenu)

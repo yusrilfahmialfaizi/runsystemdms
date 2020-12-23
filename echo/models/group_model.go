@@ -2,10 +2,8 @@ package models
 
 import (
 	"database/sql"
-	_ "database/sql"
 	"echo/config"
 	"fmt"
-
 	_ "github.com/labstack/echo/v4"
 	nullable "gopkg.in/guregu/null.v3"
 )
@@ -36,7 +34,6 @@ type GroupMenu struct {
 	MenuDesc  string          `json:"menudesc"`
 	GrpCode   string          `json:"grpcode"`
 	GrpName   string          `json:"grpname"`
-	AccessInd string          `json:"accessind"`
 	CreateBy  string          `json:"createby"`
 	CreateDt  string          `json:"createdt"`
 	LastupBy  nullable.String `json:"lastupby"`
@@ -45,7 +42,6 @@ type GroupMenu struct {
 type ActionGroupMenu struct {
 	MenuCode  	string `json:"menucode"`
 	GrpCode   	string `json:"grpcode"`
-	AccessInd 	string `json:"accessind"`
 	CreateBy  	string `json:"createby"`
 	CreateDt  	string `json:"createdt"`
 	LastupBy  	string `json:"lastupby"`
@@ -103,7 +99,7 @@ func GetGroupsById(c *CustomContext) Groups {
 }
 func GetGroupsMenu() GroupMenus {
 	connection = config.Connection()
-	query1 := "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.AccessInd, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode"
+	query1 := "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode"
 	rows1, err1 := connection.Query(query1)
 	if err1 != nil {
 		fmt.Println(err1)
@@ -114,7 +110,7 @@ func GetGroupsMenu() GroupMenus {
 	for rows1.Next() {
 		groupmenu := GroupMenu{}
 
-		eror := rows1.Scan(&groupmenu.MenuCode, &groupmenu.MenuDesc, &groupmenu.GrpCode, &groupmenu.GrpName, &groupmenu.AccessInd, &groupmenu.CreateBy, &groupmenu.CreateDt, &groupmenu.LastupBy, &groupmenu.LastupDt)
+		eror := rows1.Scan(&groupmenu.MenuCode, &groupmenu.MenuDesc, &groupmenu.GrpCode, &groupmenu.GrpName, &groupmenu.CreateBy, &groupmenu.CreateDt, &groupmenu.LastupBy, &groupmenu.LastupDt)
 		if eror != nil {
 			fmt.Println(eror)
 		}
@@ -127,7 +123,7 @@ func GetGroupsMenuById(c *CustomContext) GroupMenus {
 	menucode := c.FormValue("menucode")
 	grpcode := c.FormValue("grpcode")
 	connection = config.Connection()
-	query1 := "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.AccessInd, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode WHERE A.MenuCode = ? && A.GrpCode = ?"
+	query1 := "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode WHERE A.MenuCode = ? && A.GrpCode = ?"
 	rows1, err1 := connection.Query(query1, menucode, grpcode)
 	if err1 != nil {
 		fmt.Println(err1)
@@ -138,7 +134,7 @@ func GetGroupsMenuById(c *CustomContext) GroupMenus {
 	for rows1.Next() {
 		groupmenu := GroupMenu{}
 
-		eror := rows1.Scan(&groupmenu.MenuCode, &groupmenu.MenuDesc, &groupmenu.GrpCode, &groupmenu.GrpName, &groupmenu.AccessInd, &groupmenu.CreateBy, &groupmenu.CreateDt, &groupmenu.LastupBy, &groupmenu.LastupDt)
+		eror := rows1.Scan(&groupmenu.MenuCode, &groupmenu.MenuDesc, &groupmenu.GrpCode, &groupmenu.GrpName, &groupmenu.CreateBy, &groupmenu.CreateDt, &groupmenu.LastupBy, &groupmenu.LastupDt)
 		if eror != nil {
 			fmt.Println(eror)
 		}
@@ -149,7 +145,7 @@ func GetGroupsMenuById(c *CustomContext) GroupMenus {
 func GetGroupsMenuWithId(c *CustomContext) GroupMenus {
 	grpcode := c.Param("grpcode")
 	connection = config.Connection()
-	query1 := "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.AccessInd, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode WHERE A.GrpCode = ?"
+	query1 := "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode WHERE A.GrpCode = ?"
 	rows1, err1 := connection.Query(query1, grpcode)
 	if err1 != nil {
 		fmt.Println(err1)
@@ -160,7 +156,7 @@ func GetGroupsMenuWithId(c *CustomContext) GroupMenus {
 	for rows1.Next() {
 		groupmenu := GroupMenu{}
 
-		eror := rows1.Scan(&groupmenu.MenuCode, &groupmenu.MenuDesc, &groupmenu.GrpCode, &groupmenu.GrpName, &groupmenu.AccessInd, &groupmenu.CreateBy, &groupmenu.CreateDt, &groupmenu.LastupBy, &groupmenu.LastupDt)
+		eror := rows1.Scan(&groupmenu.MenuCode, &groupmenu.MenuDesc, &groupmenu.GrpCode, &groupmenu.GrpName, &groupmenu.CreateBy, &groupmenu.CreateDt, &groupmenu.LastupBy, &groupmenu.LastupDt)
 		if eror != nil {
 			fmt.Println(eror)
 		}
@@ -190,10 +186,10 @@ func PostGroups(con *sql.DB, GrpCode string, GrpName string, CreateBy string, Cr
 	return result.RowsAffected()
 }
 
-func PostGroupMenus(con *sql.DB, MenuCode string, GrpCode string, AccessInd string, CreateBy string, CreateDt string) (int64, error) {
+func PostGroupMenus(con *sql.DB, MenuCode string, GrpCode string,  CreateBy string, CreateDt string) (int64, error) {
 	con = config.Connection()
 
-	query := "INSERT INTO tblgroupmenu (MenuCode, GrpCode, AccessInd, CreateBy, CreateDt) values (?,?,?,?,?)"
+	query := "INSERT INTO tblgroupmenu (MenuCode, GrpCode, CreateBy, CreateDt) values (?,?,?,?,?)"
 	stmt1, err1 := con.Prepare(query)
 
 	if err1 != nil {
@@ -201,7 +197,7 @@ func PostGroupMenus(con *sql.DB, MenuCode string, GrpCode string, AccessInd stri
 	}
 	defer stmt1.Close()
 
-	result, er1 := stmt1.Exec(MenuCode, GrpCode, AccessInd, CreateBy, CreateDt)
+	result, er1 := stmt1.Exec(MenuCode, GrpCode, CreateBy, CreateDt)
 
 	if er1 != nil {
 		panic(er1)
@@ -230,9 +226,9 @@ func UpdateGroups(con *sql.DB, GrpCode string, GrpName string, LastupBy string, 
 	return result.RowsAffected()
 }
 
-func UpdateGroupMenus(con *sql.DB, MenuCode string, GrpCode string, AccessInd string, LastupBy string, LastupDt string, MenuCode_old string, GrpCode_old string) (int64, error) {
+func UpdateGroupMenus(con *sql.DB, MenuCode string, GrpCode string, LastupBy string, LastupDt string, MenuCode_old string, GrpCode_old string) (int64, error) {
 	con = config.Connection()
-	query := "UPDATE tblgroupmenu set MenuCode = ?, GrpCode = ?, AccessInd = ?, LastUpBy = ?, LastUpDt = ? WHERE MenuCode = ? && GrpCode =?"
+	query := "UPDATE tblgroupmenu set MenuCode = ?, GrpCode = ?, LastUpBy = ?, LastUpDt = ? WHERE MenuCode = ? && GrpCode =?"
 
 	stmt, err := con.Prepare(query)
 
@@ -240,7 +236,7 @@ func UpdateGroupMenus(con *sql.DB, MenuCode string, GrpCode string, AccessInd st
 		fmt.Println(err)
 	}
 
-	result, err2 := stmt.Exec(MenuCode, GrpCode, AccessInd, LastupBy, LastupDt, MenuCode_old, GrpCode_old)
+	result, err2 := stmt.Exec(MenuCode, GrpCode, LastupBy, LastupDt, MenuCode_old, GrpCode_old)
 
 	if err2 != nil {
 		fmt.Println(err2)

@@ -22,7 +22,6 @@
                         <tr>
                             <th>Menu Description</th>
                             <th>Group Name</th>
-                            <th>Access Indicator</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,7 +31,6 @@
                         <tr>
                             <td><?php echo $key['menudesc'] ?></td>
                             <td><?php echo $key['grpname'] ?></td>
-                            <td><?php echo $key['accessind'] ?></td>
                             <td align="center">
                                 <a
                                     href="<?php echo base_url("admin/groupmenu/edit_grpmenu?menucode=" . $key['menucode'] . "&grpcode=" . $key["grpcode"]); ?>">

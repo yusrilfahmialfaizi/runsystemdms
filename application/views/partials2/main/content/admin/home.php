@@ -22,7 +22,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                         <h6>User</h6></div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">40</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $user ?></div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-fw fa-user fa-2x text-bllack-300"></i>
@@ -40,7 +40,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                         <h6>Project</h6></div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">21</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $prj ?></div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-fw fa-briefcase fa-2x text-black-300"></i>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $modul ?></div>
                             </div>
                             <div class="col">
                                 
@@ -83,7 +83,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                         <h6>Menu</h6></div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $menu ?></div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-fw fa-folder-open fa-2x text-black-300"></i>
@@ -105,7 +105,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                         <h6>Group</h6></div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">40</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $group ?></div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-fw fa-users fa-2x text-black-300"></i>
@@ -123,7 +123,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
                         <h6>Group Menu</h6></div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">21</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $gm ?></div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-fw fa-copy fa-2x text-black-300"></i>

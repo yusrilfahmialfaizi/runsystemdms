@@ -46,14 +46,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label class="col-form-label pt-0" for="accessind">Access Indicator</label>
-                                    <input class="form-control" id="accessind" name="accessind" type="text" placeholder="access indicator...">
-                                </div>
-                            </div>
-                        </div>
                         <div class="card-footer">
                             <button class="btn btn-primary btn-pill">Submit</button>
                         </div>
