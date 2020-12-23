@@ -175,12 +175,79 @@
 
        function menuCode(menuCode) {
          var menuName = $(menuCode).data('name');
-         var menuCode = $(menuCode).attr('data-id');
+         var url      = $(menuCode).data('url');
+         var menuCode = $(menuCode).data('id');
+         var uri      = "<?php echo $this->uri->segment("1"); ?>";
+
+         const swalWithBootstrapButtons = Swal.mixin({
+           customClass: {
+             confirmButton: 'btn btn-success',
+             cancelButton: 'btn btn-danger'
+           },
+           buttonsStyling: true
+         });
 
          $.post("<?php echo base_url("tabel/menu_session") ?>", {
            menuCode: menuCode,
            menuName: menuName
          });
+
+         if (uri == "tabel") {
+           if (url == "edit") {
+              window.location.href = "<?php echo base_url("edit") ?>";
+           }else if (url == "editor") {
+             window.location.href = "<?php echo base_url("editor") ?>";
+           }
+         }else if (uri == "edit" || uri == "editor") {
+           if (url == "edit") {
+             swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, move it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.href = "<?php echo base_url("edit") ?>";
+                } else if (
+                  /* Read more about handling dismissals below */
+                  result.dismiss === Swal.DismissReason.cancel
+                ) {
+                  swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
+                  )
+                }
+              });
+           }else if (url == "editor") {
+            
+             swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, move it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+              }).then((result) => {
+                if (result.isConfirmed) {
+                   window.location.href = "<?php echo base_url("editor") ?>";
+                } else if (
+                  /* Read more about handling dismissals below */
+                  result.dismiss === Swal.DismissReason.cancel
+                ) {
+                  swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
+                  )
+                }
+              });
+           }
+         }
        }
       //  if ("<?php echo $this->uri->segment("1"); ?>" == "edit" || "<?php echo $this->uri->segment("1"); ?>" == "edit") {
 
@@ -325,3 +392,21 @@
          $('[data-toggle="tooltip"]').tooltip();
        });
      </script>
+
+     <!-- <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.maxHeight){
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+          } 
+        });
+      }
+    </script> -->
+

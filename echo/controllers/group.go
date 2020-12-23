@@ -4,8 +4,6 @@ import (
 	"database/sql"
 	_ "database/sql"
 	"echo/models"
-	"fmt"
-	_ "fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -112,13 +110,11 @@ func UpdateGroupMenu(con *sql.DB) echo.HandlerFunc {
 func DeleteGroup(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.DeleteGroup(cc)
-	fmt.Println("Delete ...")
 	return c.JSON(http.StatusOK, result)
 }
 
 func DeleteGroupMenu(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.DeleteGroupMenus(cc)
-	fmt.Println("Delete ...")
 	return c.JSON(http.StatusOK, result)
 }

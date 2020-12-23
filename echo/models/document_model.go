@@ -94,14 +94,14 @@ type GenerateCodes struct {
 	DocNo sql.NullInt64 `json:"docno"`
 }
 
-var con *sql.DB
+var connection *sql.DB
 
 //function untuk get document yang ditampilkan di view tabel
 func GetDatadocuments(c *CustomContext) Datadocuments {
-	con = config.Connection()
+	connection := config.Connection()
 	modulcode := c.Param("modulcode");
 	query := "SELECT A.Docno, A.ModulCode, B.ModulName, A.ActiveInd, A.`Status`, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tbldocumenthdr A INNER JOIN tblmodul B ON B.ModulCode = A.ModulCode WHERE A.modulcode = ? ORDER BY A.CreateDt DESC"
-	rows, err := con.Query(query, modulcode)
+	rows, err := connection.Query(query, modulcode)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -120,42 +120,86 @@ func GetDatadocuments(c *CustomContext) Datadocuments {
 	return result
 }
 
+
+	
+//function untuk untuk edit active indicator documenthdr
+func EditActiveInd(con *sql.DB, ModulCode string) (int64, error) {
+	con = config.Connection()
+	query1 := "UPDATE tbldocumenthdr SET ActiveInd = 'N' WHERE modulcode = ?"
+		stmt1, err1 := con.Prepare(query1)
+		if err1 != nil {
+			panic(err1)
+		}
+		defer stmt1.Close()
+		result, er1 := stmt1.Exec(ModulCode)
+		if er1 != nil {
+			panic(er1)
+		}
+	
+	return result.RowsAffected()
+}
 //function untuk untuk post data documenthdr yang ditampilkan di view tabel
 func PostDataDocuments(con *sql.DB, Docno string, ModulCode string, Status string, ActiveInd string, CreateBy string, CreateDt string, LastUpBy string, LastUpDt string) (int64, error) {
 	con = config.Connection()
 
-	query1 := "UPDATE tbldocumenthdr SET ActiveInd = 'N' WHERE modulcode = ?"
 	query2 := "INSERT INTO tbldocumenthdr (docno, modulcode, activeind, status, createby, createdt, lastupby, lastupdt) values (?,?,?,?,?,?,?,?)"
-	stmt1, err1 := con.Prepare(query1)
 	stmt2, err2 := con.Prepare(query2)
 
-	if err1 != nil {
-		panic(err1)
-	}
 	if err2 != nil {
 
 		fmt.Println(err2)
 	}
-	defer stmt1.Close()
 	defer stmt2.Close()
 
-	_, er1 := stmt1.Exec(ModulCode)
 	result, er2 := stmt2.Exec(Docno, ModulCode, ActiveInd, Status, CreateBy, CreateDt, LastUpBy, LastUpDt)
 
-	if er1 != nil {
-		panic(er1)
-	}
 	if er2 != nil {
-		fmt.Println(er2)
+		panic(er2)
 	}
-	
+	GetdataMenuCode1(ModulCode, Docno, CreateBy, CreateDt, LastUpBy, LastUpDt)
 	return result.RowsAffected()
 }
+func GetdataMenuCode1(ModulCode string, Docno string, CreateBy string, CreateDt string, LastUpBy string, LastUpDt string) Add {
+	connection := config.Connection()
+	query3 := "SELECT A.MenuCode, A.ModulCode, A.MenuDesc, A.Parent, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblmodulmenu A WHERE modulcode = ?"
+	stmt3, err3 := connection.Query(query3, ModulCode)
+	if err3 != nil {
+		panic(err3)
+	}
+	defer stmt3.Close()
+	result := Add{}
+
+	for stmt3.Next() {
+		modulmenu := MenuAddDocument{}
+
+		er3 := stmt3.Scan(&modulmenu.MenuCode, &modulmenu.ModulCode, &modulmenu.MenuDesc, &modulmenu.Parent, &modulmenu.CreateBy, &modulmenu.CreateDt, &modulmenu.LastupBy, &modulmenu.LastupDt)
+		if er3 != nil {
+			panic(er3)
+		}
+
+		// fmt.Println(Docno, modulmenu.MenuCode, CreateBy, CreateDt, LastUpBy, LastUpDt)
+		// PostDataDocumentsDtl1(Docno, modulmenu.MenuCode, CreateBy, CreateDt, LastUpBy, LastUpDt)
+		query := "INSERT INTO tbldocumentdtl (docno, menucode, createby, createdt, lastupby, lastupdt) values (?,?,?,?,?,?)"
+		stmt, err := connection.Prepare(query)
+		if err != nil {
+		fmt.Println(err)
+		}
+		// Make sure to cleanup after the program exits
+		defer stmt.Close()
+		_, err2 := stmt.Exec(Docno, modulmenu.MenuCode, CreateBy, CreateDt, LastUpBy, LastUpDt)
+		if err2 != nil {
+			fmt.Println(err2)
+		}
+		
+		result.Add = append(result.Add, modulmenu)
+	}
+	return result
+}
 func GetdataMenuCode(c *CustomContext) Add {
-	con = config.Connection()
+	connection := config.Connection()
 	ModulCode := c.FormValue("modulcode");
 	query3 := "SELECT A.MenuCode, A.ModulCode, A.MenuDesc, A.Parent, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblmodulmenu A WHERE modulcode = ?"
-	stmt3, err3 := con.Query(query3, ModulCode)
+	stmt3, err3 := connection.Query(query3, ModulCode)
 	if err3 != nil {
 		panic(err3)
 	}
@@ -174,6 +218,30 @@ func GetdataMenuCode(c *CustomContext) Add {
 	return result
 }
 
+//function untuk untuk post data documentdtl yang ditampilkan di view tabel
+func PostDataDocumentsDtl1(Docno string, MenuCode string, CreateBy string, CreateDt string, LastUpBy string, LastUpDt string) (int64, error) {
+	connnection := config.Connection()
+	query := "INSERT INTO tbldocumentdtl (docno, menucode, createby, createdt, lastupby, lastupdt) values (?,?,?,?,?,?)"
+	// Create a prepared SQL statement
+	stmt, err := connnection.Prepare(query)
+
+	// / Exit if we get an error
+	if err != nil {
+		fmt.Println(err)
+	}
+	// Make sure to cleanup after the program exits
+	defer stmt.Close()
+
+	//The sql stat wll return the id, so we can use it.
+	result, err2 := stmt.Exec(Docno, MenuCode, CreateBy, CreateDt, LastUpBy, LastUpDt)
+
+	// Exit if we get an error
+	if err2 != nil {
+		fmt.Println(err2)
+	}
+
+	return result.RowsAffected()
+}
 //function untuk untuk post data documentdtl yang ditampilkan di view tabel
 func PostDataDocumentsDtl(con *sql.DB, Docno string, MenuCode string, CreateBy string, CreateDt string, LastUpBy string, LastUpDt string) (int64, error) {
 	con = config.Connection()
@@ -255,10 +323,10 @@ func EditDocHdr(con *sql.DB, Docno string, Status string,  LastUpBy string, Last
 // Generate docno
 func GenerateCode(c *CustomContext) GenerateCodes{
 	modulcode := c.Param("modulcode")
-	con = config.Connection()
+	connection = config.Connection()
 	query := "SELECT MAX(LEFT(tbldocumenthdr.Docno,4)) AS DocNo FROM tbldocumenthdr WHERE modulcode = ? ORDER BY DocNo DESC"
 	
-	rows, err := con.Query(query, modulcode)
+	rows, err := connection.Query(query, modulcode)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -347,11 +415,11 @@ func GetDocumentsDtlPrint(c *CustomContext) DocumentsDtlJoinPrint {
 
 // func get data documentdetail by docno and GrpCode join on tblgroupmenu
 func GetDocumentDtlById(c *CustomContext) DocumentsDtl {
-	con		= config.Connection()
+	connection := config.Connection()
 	docno	:= c.FormValue("docno")
 	grpcode	:= c.FormValue("grpcode")
 	query	:= "SELECT A.* FROM tbldocumentdtl A JOIN tblgroupmenu B ON B.MenuCode = A.MenuCode WHERE A.Docno = ? AND B.GrpCode = ?"
-	rows, eror := con.Query(query, docno, grpcode)
+	rows, eror := connection.Query(query, docno, grpcode)
 
 	if eror != nil {
 		panic(eror)

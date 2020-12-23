@@ -116,11 +116,12 @@ class Tabel extends CI_Controller {
 		return $code;
 	}
 	function createDocument(){
-		$code = $this->GenerateCode();
-		$modulcode = $this->session->userdata("modul");
+		$code 		= $this->GenerateCode();
+		$modulcode 	= $this->session->userdata("modul");
 		date_default_timezone_set('Asia/Jakarta');
-		$now = date('YmdHi');
-		$data1 = array(
+		$now 		= date('YmdHi');
+		$data 		= array('modulcode' => $modulcode);
+		$data1 		= array(
 			"Docno" =>$code,
 			"ModulCode"=>$modulcode, 
 			"ActiveInd" => "Y", 
@@ -130,28 +131,29 @@ class Tabel extends CI_Controller {
 			"LastUpBy" => "",
 			"LastUpAt" => ""
 		);
+		$response = $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/editActiveInd", $data);
 		$response1 = $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postDataDocuments", $data1);
-		if ($response1) {
+		// if ($response1) {
 			# code...
 			$data2 		= array('modulcode' => $modulcode);
-			$response2 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDataMenuCode", $data2);
-			if ($response2 != null) {
-				$response2 = json_decode($response2, true);
-				$response2 = $response2['add'];
-				foreach ($response2 as $key) {
+			// $response2 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDataMenuCode", $data2);
+			// if ($response2 != null) {
+			// 	$response2 = json_decode($response2, true);
+			// 	$response2 = $response2['add'];
+			// 	foreach ($response2 as $key) {
 					
-					$data3 		= array(
-						"Docno" 		=> $code,
-						"MenuCode"	=> $key["menucode"], 
-						"CreateBy" 	=> $this->session->userdata("usercode"),
-						"CreateDt" 	=> $now,
-						"LastUpBy" 	=> "",
-						"LastUpAt" 	=> ""
-					);
-					$response3 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postDataDocumentsDtl", $data3);
-				}
-			}
-		}
+			// 		$data3 		= array(
+			// 			"Docno" 		=> $code,
+			// 			"MenuCode"	=> $key["menucode"], 
+			// 			"CreateBy" 	=> $this->session->userdata("usercode"),
+			// 			"CreateDt" 	=> $now,
+			// 			"LastUpBy" 	=> "",
+			// 			"LastUpAt" 	=> ""
+			// 		);
+			// 		$response3 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postDataDocumentsDtl", $data3);
+			// 	}
+			// }
+		// }
 	}
 
 	function modul_session(){

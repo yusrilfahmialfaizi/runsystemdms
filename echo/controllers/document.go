@@ -3,7 +3,6 @@ package controllers
 import (
 	"database/sql"
 	"echo/models"
-	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -13,16 +12,32 @@ import (
 func GetDatadocuments(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetDatadocuments(cc)
-	fmt.Println("Getting data document...")
 	return c.JSON(http.StatusOK, result)
 }
 func GetDataMenuCode(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetdataMenuCode(cc)
-	fmt.Println("Getting data document...")
 	return c.JSON(http.StatusOK, result)
 }
 
+//function controller untuk edit data active ind documenthdr
+func EditActiveInd(con *sql.DB) echo.HandlerFunc {
+	return func(c echo.Context) error {
+
+		var insDatadocument models.InsDatadocument
+
+		c.Bind(&insDatadocument)
+
+		result, err := models.EditActiveInd(con, insDatadocument.ModulCode)
+
+		if err == nil {
+			return c.JSON(http.StatusCreated, result)
+		} else {
+			return err
+		}
+
+	}
+}
 //function controller untuk create data document
 func PostDataDocuments(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -98,35 +113,30 @@ func EditDataDocumentsHdr(con *sql.DB) echo.HandlerFunc {
 func GenerateCode(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GenerateCode(cc)
-	fmt.Println("Getting generate code...")
 	return c.JSON(http.StatusOK, result)
 }
 // function pada controller untuk get documents dtl berdasarkan docno dan menucode
 func GetDocumentDtl(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetDocumentDtl(cc)
-	fmt.Println("Getting data...")
 	return c.JSON(http.StatusOK, result)
 }
 // function pada controller untuk get documents dtl berdasarkan docno
 func GetDocumentsDtl(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetDocumentsDtl(cc)
-	fmt.Println("Getting data...")
 	return c.JSON(http.StatusOK, result)
 }
 // function get data document join tblmodulmenu
 func GetDocumentsDtlPrint(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetDocumentsDtlPrint(cc)
-	fmt.Println("Getting data...")
 	return c.JSON(http.StatusOK, result)
 }
 // function get data document join tblgroupmenu
 func GetDocumentDtlById(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetDocumentDtlById(cc)
-	fmt.Println("Getting data...")
 	return c.JSON(http.StatusOK, result)
 }
 

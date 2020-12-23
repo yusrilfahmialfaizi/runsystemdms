@@ -42,4 +42,35 @@
     <link id="color" rel="stylesheet" href="<?php echo base_url("assets/css/color-1.css") ?>" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/responsive.css") ?>">
+    <!-- <style>
+.collapsible {
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+
+.collapsible:after {
+  content: '\002B';
+  color: black;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+</style> -->
 </head>

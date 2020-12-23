@@ -3,7 +3,6 @@ package controllers
 import (
 	"database/sql"
 	"echo/models"
-	"fmt"
 	"net/http"
 	"strings"
 	_ "time"
@@ -20,14 +19,12 @@ type Response struct {
 // function untuk get user
 func GetUser(c echo.Context) error {
 	result := models.GetUser()
-	fmt.Println("Getting data ...")
 	return c.JSON(http.StatusOK, result)
 }
 
 // get privilege
 func GetPrivilege(c echo.Context) error {
 	result := models.GetPrivilege()
-	fmt.Println("Getting data ...")
 	return c.JSON(http.StatusOK, result)
 }
 
@@ -151,7 +148,6 @@ func Login(c echo.Context) (err error) {
 func DeleteUser(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.DeleteUsers(cc)
-	fmt.Println("Delete ...")
 	return c.JSON(http.StatusOK, result)
 }
 
@@ -159,6 +155,5 @@ func DeleteUser(c echo.Context) error {
 func DeletePrivilege(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.DeletePrivilege(cc)
-	fmt.Println("Delete ...")
 	return c.JSON(http.StatusOK, result)
 }

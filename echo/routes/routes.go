@@ -75,6 +75,7 @@ func Routes() *echo.Echo {
 	e.POST("/runsystemdms/getDocsDtlById", controllers.GetDocumentDtlById)
 	e.POST("/runsystemdms/getDataMenuCode", controllers.GetDataMenuCode)
 	e.GET("/runsystemdms/getDataDocuments/:modulcode", controllers.GetDatadocuments)
+	e.POST("/runsystemdms/editActiveInd", controllers.EditActiveInd(con))
 	e.POST("/runsystemdms/postDataDocuments", controllers.PostDataDocuments(con))
 	e.POST("/runsystemdms/postDataDocumentsDtl", controllers.PostDataDocumentsDtl(con))
 	e.PUT("/runsystemdms/editDataDocuments", controllers.EditDataDocuments(con))

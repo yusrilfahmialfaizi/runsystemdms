@@ -3,7 +3,6 @@ package controllers
 import (
 	"database/sql"
 	"echo/models"
-	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -12,8 +11,6 @@ import (
 // Get Data Project
 func GetProjectGroup(c echo.Context) error {
 	result := models.GetProjectGroup()
-	fmt.Println("Getting data ...")
-	fmt.Println(result)
 	return c.JSON(http.StatusOK, result)
 }
 
@@ -59,6 +56,5 @@ func UpdateProject(con *sql.DB) echo.HandlerFunc {
 func DeleteProject(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.DeleteProjects(cc)
-	fmt.Println("Delete ...")
 	return c.JSON(http.StatusOK, result)
 }

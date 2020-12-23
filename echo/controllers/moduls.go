@@ -49,7 +49,6 @@ func UpdateModuls(con *sql.DB) echo.HandlerFunc {
 func GetModulsWithId(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetModulsWithId(cc)
-	fmt.Println("Getting menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
 
@@ -64,7 +63,6 @@ func GetMenusById(c echo.Context) error {
 func GetModulsById(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetModulsById(cc)
-	fmt.Println("Getting menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
 
@@ -72,6 +70,5 @@ func GetModulsById(c echo.Context) error {
 func DeleteModule(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.DeleteModules(cc)
-	fmt.Println("Delete ...")
 	return c.JSON(http.StatusOK, result)
 }

@@ -37,7 +37,6 @@ func GetProjectGroup() PGs {
 	queryStatement := "Select projectCode, projectname, actind, createby, createdt,lastupby, lastupdt From tblproject Where actind = 'Y'"
 
 	rows, err := con.Query(queryStatement)
-	fmt.Println(err)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -61,7 +60,6 @@ func GetProjectById(c *CustomContext) PGs {
 	queryStatement := "Select projectCode, projectname, actind, createby, createdt,lastupby, lastupdt From tblproject Where projectcode = ?"
 
 	rows, err := con.Query(queryStatement, projectcode)
-	fmt.Println("ROWS : ", rows)
 	fmt.Println(err)
 	if err != nil {
 		fmt.Println(err)

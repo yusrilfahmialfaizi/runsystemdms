@@ -89,7 +89,7 @@ type Datasubmodules struct {
 	Datasubmodules []Datasubmodule `json:"datasubmodule"`
 }
 
-var connection *sql.DB
+// var connection *sql.DB
 
 // function untuk mengambil data dari tabel menu berdasarkan parent yang memiliki 2 digit angka
 func GetModuls() Moduls {

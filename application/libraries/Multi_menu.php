@@ -430,29 +430,27 @@ class Multi_menu {
 							if ( is_null($item[$this->menu_parent]) && $this->parentl1_tag_open != '' ) 
 							{
 									$tag_open    =  $this->parentl1_tag_open;
-									// $item_anchor = $this->parentl1_anchor != '' ? $this->parentl1_anchor : $this->parent_anchor.'<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" href="%s">%s</a>';
-									$item_anchor = $this->parentl1_anchor != '' ? $this->parentl1_anchor : '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" href="%s">%s</a>';
+									$item_anchor = $this->parentl1_anchor != '' ? $this->parentl1_anchor : '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" data-url="edit" href="%s">%s</a>';
 							}
 							else 
 							{
 									$tag_open     = $this->parent_tag_open;
-									// $item_anchor = $this->parent_anchor;
-									$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" href="%s">%s</a>';
+									$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" data-url="edit" href="%s">%s</a>';
 							}
 
-								$href  = base_url('edit');				
+								// $href  = base_url('edit');				
+								$href  = "#";				
 						}
 						else 
 						{
 							$tag_open    = $this->item_tag_open;
-								$href        = site_url($slug);
+								// $href        = site_url($slug);
+								$href        = "#";
 								// $item_anchor = $this->item_anchor;
-								$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" href="%s">%s</a>';
+								$item_anchor = '<a onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'" data-name="'.$item[$this->menu_label].'" data-url="editor" href="%s">%s</a>';
 						}
 
-							$html .= $this->set_active($tag_open, $slug);	      
-							
-							// $onclick = 'onClick="menuCode(this)" data-id="'.$item[$this->menu_id].'"';
+							$html .= $this->set_active($tag_open, $slug);
 
 							if (substr_count($item_anchor, '%s') == 2) {
 								$html .= sprintf($item_anchor, $href, $label);
