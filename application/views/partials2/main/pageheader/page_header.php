@@ -31,7 +31,7 @@
         <li class="onhover-dropdown"> <span class="media user-header"><img class="img-fluid" src="<?php echo base_url("assets/images/dashboard/user.png") ?>" alt=""></span>
           <ul class="onhover-show-div profile-dropdown">
             <li class="gradient-primary">
-              <h5 class="f-w-600 mb-0"><?php echo $this->session->userdata('username') ?></h5><span>Admin</span>
+              <h5 class="f-w-600 mb-0"><?php echo $this->session->userdata('username') ?></h5><span>User</span>
             </li>
             <li><i data-feather="user"> </i>Profile</li>
             <?php if ($this->session->userdata('privilegecode') == 001) {?>
