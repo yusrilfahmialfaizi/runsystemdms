@@ -28,7 +28,7 @@
                 <thead>
                   <tr>
                     <th>Docno</th>
-                    <th>Active Indicator</th>
+                    <th>Active</th>
                     <th>Status</th>
                     <th>Create By</th>
                     <th>Create Date</th>
@@ -52,9 +52,9 @@
                             <td><?php echo $key[$i]["docno"]; ?></td>
                             <td>
                               <?php if ($key[$i]["activeind"] == "Y") {
-                                echo "Active";
+                                echo "Yes";
                               } else {
-                                echo "InActive";
+                                echo "No";
                               } ?>
                             </td>
                             <td>
