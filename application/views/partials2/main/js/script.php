@@ -19,16 +19,32 @@
          
          if (uri != "home" && uri != "tabel" && uri != "admin") {
            var modulCode = "<?php echo $this->session->userdata("modul"); ?>";
-           var doc_status = "<?php echo $this->session->userdata("doc_status"); ?>";
-           if (doc_status == "F") {
-             document.getElementById('statushdr').disabled = true;
-             document.getElementById('statushdr').checked = true;
-           } else if (doc_status == "O") {
-             document.getElementById('statushdr').disabled = false;
-             document.getElementById('statushdr').checked = false;
-           } else {
-             console.log("data null");
+          //  var doc_status = "<?php echo $this->session->userdata("doc_status"); ?>";
+          //  if (doc_status == "F") {
+          //    document.getElementById('statushdr').disabled = true;
+          //    document.getElementById('statushdr').checked = true;
+          //  } else {
+          //    document.getElementById('statushdr').disabled = false;
+          //    document.getElementById('statushdr').checked = false;
+          //  }
+          $.ajax({ //to get all data menu from db
+           type: 'POST',
+           url: '<?php echo base_url("tabel/dochdr") ?>',
+           dataType: 'json',
+           data: {
+             docno: docno
+           },
+           cache: false,
+           success: function(data) {
+              if (data.status == "F") {
+                document.getElementById('statushdr').disabled = true;
+                document.getElementById('statushdr').checked = true;
+              } else {
+                document.getElementById('statushdr').disabled = false;
+                document.getElementById('statushdr').checked = false;
+              }
            }
+          });
 
            $.ajax({ //to get all data menu from db
              type: 'POST',

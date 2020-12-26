@@ -119,6 +119,28 @@ func GetDatadocuments(c *CustomContext) Datadocuments {
 	}
 	return result
 }
+func GetDatadocumentsHdr(c *CustomContext) Datadocuments {
+	connection 	:= config.Connection()
+	docno 		:= c.FormValue("docno");
+	query 		:= "SELECT * FROM tbldocumenthdr WHERE Docno = ? ORDER BY CreateDt DESC"
+	rows, err := connection.Query(query, docno)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer rows.Close()
+	result := Datadocuments{}
+
+	for rows.Next() {
+		datadocument := Datadocument{}
+
+		eror := rows.Scan(&datadocument.Docno, &datadocument.ModulCode, &datadocument.ActiveInd, &datadocument.Status, &datadocument.CreateBy, &datadocument.CreateDt, &datadocument.LastupBy, &datadocument.LastupDt)
+		if eror != nil {
+			fmt.Println(eror)
+		}
+		result.Datadocuments = append(result.Datadocuments, datadocument)
+	}
+	return result
+}
 
 
 	
