@@ -14,6 +14,11 @@ func GetDatadocuments(c echo.Context) error {
 	result := models.GetDatadocuments(cc)
 	return c.JSON(http.StatusOK, result)
 }
+func GetDatadocumentsHdr(c echo.Context) error {
+	cc := c.(*models.CustomContext)
+	result := models.GetDatadocumentsHdr(cc)
+	return c.JSON(http.StatusOK, result)
+}
 func GetDataMenuCode(c echo.Context) error {
 	cc := c.(*models.CustomContext)
 	result := models.GetdataMenuCode(cc)

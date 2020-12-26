@@ -252,5 +252,19 @@ class Tabel extends CI_Controller {
 		}
 		// echo "</pre>";
 	}
+	function dochdr()
+	{
+		$docno 		= $this->input->post('docno');
+		// $docno 		= "0022/GSS/INVESTASI/FICO/12/2020";
+		$data 		= array(
+			'docno' => $docno
+		);
+		$response 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDataDocumentsHdr", $data);
+		$response 	= json_decode($response, true);
+		$response		= $response['datadocument'][0];
+		$data 		= array ('status' => $response['status']);
+		echo json_encode($data);
+		
+	}
 }
 ?>
