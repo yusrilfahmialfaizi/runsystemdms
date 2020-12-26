@@ -82,8 +82,7 @@ class Tabel extends CI_Controller {
 			$pdf->SetFont('Times','B',14);
 			$pdf->Cell(1,15, str_replace("0", ".",intVal($key['menucode']))." ".$key['menudesc'],0,1,'L');
 			$pdf->SetFont('Times','',12);
-			// $pdf->MultiCell(0,0.5,str_replace('style="text-align:', 'align="', $key['description']),0,'J',false);
-			$pdf->WriteHTMLCell(0,10,'','',$key['description'],0,0,false,true,'J',true);
+			$pdf->WriteHTMLCell(0,0,'','',$key['description']);
 			$pdf->Ln();
 		}
 		$pdf->output();
