@@ -22,6 +22,7 @@
                             <th>UserCode</th>
                             <th>Username</th>
                             <th>GroupCode</th>
+                            <th>PrivilegeName</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,6 +35,13 @@
                             <td><?php echo $key['usercode'] ?></td>
                             <td><?php echo $key['username'] ?></td>
                             <td><?php echo $key['grpcode'] ?></td>
+                            <td><?php if ($key["privilegecode"] == "001") {
+                                echo "All";
+                              } elseif ($key["privilegecode"] == "002") {
+                                echo "Admin";
+                              } else {
+                                  echo "User";
+                              } ?></td>
                             <td align="center">
                                 <a href="<?php echo base_url("admin/user/edit_user?usercode=") . $key["usercode"]; ?>">
                                     <button class="btn btn-warning btn-circle" data-toggle="tooltip" title="Edit"
