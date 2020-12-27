@@ -21,27 +21,23 @@ func GetUser(c echo.Context) error {
 	result := models.GetUser()
 	return c.JSON(http.StatusOK, result)
 }
-
 // get privilege
 func GetPrivilege(c echo.Context) error {
 	result := models.GetPrivilege()
 	return c.JSON(http.StatusOK, result)
 }
-
 // function untuk get privilege
 func GetPrivilegeById(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.GetPrivilegeById(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.GetPrivilegeById(cc)
 	return c.JSON(http.StatusOK, result)
 }
-
 // function untuk get user
 func GetUserById(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.GetUserById(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.GetUserById(cc)
 	return c.JSON(http.StatusOK, result)
 }
-
 // POST method to INSERT User
 func PostUser(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -57,7 +53,6 @@ func PostUser(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
-
 // POST method to INSERT Privilege
 func PostPrivilege(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -73,7 +68,6 @@ func PostPrivilege(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
-
 // Update data privilege
 func UpdatePrivileges(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -88,7 +82,6 @@ func UpdatePrivileges(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
-
 // Update data user
 func UpdateUsers(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -103,14 +96,14 @@ func UpdateUsers(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
-
+// function untuk login
 func Login(c echo.Context) (err error) {
-	usercode := c.FormValue("usercode")
-	usr := strings.ToLower(usercode)
-	usr2 := strings.ToUpper(usercode)
-	pwd := c.FormValue("pwd")
-	result := models.GetUser()
-	response := Response{}
+	usercode 	:= c.FormValue("usercode")
+	usr 		:= strings.ToLower(usercode)
+	usr2 	:= strings.ToUpper(usercode)
+	pwd 		:= c.FormValue("pwd")
+	result 	:= models.GetUser()
+	response 	:= Response{}
 	for i := 0; i < len(result.Users); i++ {
 		if usr == result.Users[i].UserCode || usr2 == result.Users[i].UserCode {
 			if pwd == result.Users[i].Pwd {
@@ -143,17 +136,15 @@ func Login(c echo.Context) (err error) {
 	return c.JSON(http.StatusOK, response)
 	// return c.JSON(http.StatusOK, response)
 }
-
 //delete data
 func DeleteUser(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.DeleteUsers(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.DeleteUsers(cc)
 	return c.JSON(http.StatusOK, result)
 }
-
 //delete data
 func DeletePrivilege(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.DeletePrivilege(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.DeletePrivilege(cc)
 	return c.JSON(http.StatusOK, result)
 }

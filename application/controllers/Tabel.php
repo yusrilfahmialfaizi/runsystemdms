@@ -19,8 +19,11 @@ class Tabel extends CI_Controller {
 		$projectcode = $this->session->userdata("projectcode");
 		$data2 = $this->menu->getModulById($projectcode);
 		$data2 = json_decode($data2, true);
+		// echo "<pre>";
+		// print_r($data2);
+		// echo "</pre>";
 		$data["sidebar"] = $data2;
-		if ($data2 != null) {
+		if ($data2['modul'] != null) {
 			foreach ($data2 as $key) {
 				for ($i=0; $i < count($key); $i++) { 
 					if ($i == 0) {
@@ -33,8 +36,9 @@ class Tabel extends CI_Controller {
 			$modulcode = $this->input->get("modulcode");
 			if ($modulcode != null) {
 				$this->modul_sessionForIndex($modulcode);
-				$data1 = $this->getDataDocuments($modulcode);
-				$data1 = json_decode($data1, true);
+				$dt		= array("modulcode" => $modulcode, 'projectcode' => $projectcode);
+				$response	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDataDocuments", $dt);
+				$data1 = json_decode($response, true);
 				if ($data1 != null) {
 					$data["get"] = $data1;
 				}else{
@@ -42,8 +46,9 @@ class Tabel extends CI_Controller {
 				}
 			}else if ($sesi != null){
 				$this->modul_sessionForIndex($sesi);
-				$data1 = $this->getDataDocuments($sesi);
-				$data1 = json_decode($data1, true);
+				$dt		= array("modulcode" => $sesi, 'projectcode' => $projectcode);
+				$response	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDataDocuments", $dt);
+				$data1 	= json_decode($response, true);
 				if ($data1 != null) {
 					$data["get"] = $data1;
 				}else{
@@ -96,10 +101,14 @@ class Tabel extends CI_Controller {
 
 	
 	function GenerateCode(){
+		// $modulcode 	= $this->session->userdata("modulcode");
+		// $projectcode 	= $this->session->userdata("projectcode");
+		// $dt			= array("modulcode" => $modulcode, 'projectcode' => $projectcode);
+		// $data 		= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getGenerateCode", $dt);
 		$url = "http://127.0.0.1:8080/runsystemdms/getGenerateCode/".$this->session->userdata("modul");
-		$data = $this->api->get($url);
+		$data 	= $this->api->get($url);
 		
-		$data = json_decode($data, true);
+		$data 	= json_decode($data, true);
 		$number = $data["docno"]["Int64"];
 		if ($number == null) {
 			$number = 1;
@@ -107,34 +116,37 @@ class Tabel extends CI_Controller {
 			$number += 1;
 		}
 		date_default_timezone_set('Asia/Jakarta');
-		$tahun = date("Y");
-		$bulan = date("m");
-		$modul = $this->session->userdata("modul");
-		$batas = str_pad($number, 4, "0", STR_PAD_LEFT);
-		$code = $batas."/GSS/INVESTASI/".$modul."/".$bulan."/".$tahun;
+		$tahun 	= date("Y");
+		$bulan 	= date("m");
+		$modul 	= $this->session->userdata("modul");
+		$batas 	= str_pad($number, 4, "0", STR_PAD_LEFT);
+		$code	= $batas."/GSS/INVESTASI/".$modul."/".$bulan."/".$tahun;
+		echo $code;
 		return $code;
 	}
 	function createDocument(){
 		$code 		= $this->GenerateCode();
 		$modulcode 	= $this->session->userdata("modul");
+		$projectcode 	= $this->session->userdata("projectcode");
 		date_default_timezone_set('Asia/Jakarta');
 		$now 		= date('YmdHi');
-		$data 		= array('modulcode' => $modulcode);
+		$data 		= array("modulcode" => $modulcode, 'projectcode' => $projectcode);
 		$data1 		= array(
-			"Docno" =>$code,
-			"ModulCode"=>$modulcode, 
-			"ActiveInd" => "Y", 
-			"Status" => "O",
-			"CreateBy" => $this->session->userdata("usercode"),
-			"CreateDt" => $now,
-			"LastUpBy" => "",
-			"LastUpAt" => ""
+			"Docno" 		=>$code,
+			"ModulCode"	=>$modulcode, 
+			"ProjectCode"	=>$projectcode, 
+			"ActiveInd" 	=> "Y", 
+			"Status" 		=> "O",
+			"CreateBy" 	=> $this->session->userdata("usercode"),
+			"CreateDt" 	=> $now,
+			"LastUpBy" 	=> "",
+			"LastUpAt" 	=> ""
 		);
 		$response = $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/editActiveInd", $data);
 		$response1 = $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postDataDocuments", $data1);
 		// if ($response1) {
 			# code...
-			$data2 		= array('modulcode' => $modulcode);
+			// $data2 		= array('modulcode' => $modulcode);
 			// $response2 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDataMenuCode", $data2);
 			// if ($response2 != null) {
 			// 	$response2 = json_decode($response2, true);
@@ -165,7 +177,7 @@ class Tabel extends CI_Controller {
 	}
 
 	function menu_session(){
-		$menu = $this->input->post("menuCode");
+		$menu 	= $this->input->post("menuCode");
 		$menuName = $this->input->post("menuName");
 		$this->session->set_userdata(array("menu" => $menu, "menuName" => $menuName));
 	}
@@ -173,8 +185,8 @@ class Tabel extends CI_Controller {
 	function ModulMenuById(){
 		$this->load->library("menu");
 		$this->load->library("multi_menu");
-		$docno = $this->input->post('docno');
-		$modulcode = $this->input->post('modulCode');
+		$docno 		= $this->input->post('docno');
+		$modulcode 	= $this->input->post('modulCode');
 		if ($docno != null) {
 			$dt = array("docno" => $docno, "modulcode" => $modulcode);
 		}else{
@@ -193,27 +205,29 @@ class Tabel extends CI_Controller {
 	}
 
 	function doc_session(){
-		$docno = $this->input->post("docno");
-		$active = $this->input->post("active");
-		$status = $this->input->post("status");
+		$docno 	= $this->input->post("docno");
+		$active 	= $this->input->post("active");
+		$status 	= $this->input->post("status");
 		$this->session->set_userdata(array(
-			"docno" => $docno, 
-			"active" => $active, 
-			"doc_status" => $status));
+			"docno" 		=> $docno, 
+			"active" 		=> $active, 
+			"doc_status" 	=> $status));
 		echo $this->session->userdata("doc_status");
 	}
 	function update_statushdr(){
-		$url = 'http://127.0.0.1:8080/runsystemdms/editDataDocumentshdr';
-		$checked = $this->input->post("checked");
-		$docno = $this->session->userdata("docno");
-		$lastupby = $this->session->userdata("usercode");
+		$url 		= 'http://127.0.0.1:8080/runsystemdms/editDataDocumentshdr';
+		$checked 		= $this->input->post("checked");
+		$docno 		= $this->session->userdata("docno");
+		$projectcode	= $this->session->userdata("projectcode");
+		$lastupby 	= $this->session->userdata("usercode");
 		date_default_timezone_set('Asia/Jakarta');
-		$lastupdt = date('YmdHi');
-		$data = [
-			"docno" => $docno,
-			"status" => $checked,
-			"lastupby" => $lastupby,
-			"lastupdt" => $lastupdt
+		$lastupdt 	= date('YmdHi');
+		$data 		= [
+			"docno" 		=> $docno,
+			"projectcode"	=> $projectcode,
+			"status" 		=> $checked,
+			"lastupby"	=> $lastupby,
+			"lastupdt" 	=> $lastupdt
 		];
 		if ($docno != null) {
 			$ch = curl_init();
@@ -233,12 +247,12 @@ class Tabel extends CI_Controller {
 	{	
 		$docno 		= $this->input->post('docno');
 		$data 		= array(
-			'docno' => $docno, 
+			'docno' 	=> $docno, 
 			'grpcode'	=> $this->session->userdata("grpcode")
 		);
 		$response 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDocsDtlById", $data);
-		$response = json_decode($response, true);
-		$response = $response['documentsdtl'];
+		$response 	= json_decode($response, true);
+		$response 	= $response['documentsdtl'];
 		// echo "<pre>";
 		// print_r($data);
 		// print_r($response);
@@ -254,9 +268,11 @@ class Tabel extends CI_Controller {
 	function dochdr()
 	{
 		$docno 		= $this->input->post('docno');
-		// $docno 		= "0022/GSS/INVESTASI/FICO/12/2020";
+		$projectcode	= $this->session->userdata("projectcode");
+
 		$data 		= array(
-			'docno' => $docno
+			'docno' 		=> $docno,
+			'projectcode'	=> $projectcode
 		);
 		$response 	= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDataDocumentsHdr", $data);
 		$response 	= json_decode($response, true);

@@ -69,13 +69,14 @@ func Routes() *echo.Echo {
 	e.GET("/runsystemdms/getGroupMenuWithId/:grpcode", controllers.GetGroupMenuWithId)
 
 	//routes document
+	// e.POST("/runsystemdms/getGenerateCode", controllers.GenerateCode)
 	e.GET("/runsystemdms/getGenerateCode/:modulcode", controllers.GenerateCode)
 	e.POST("/runsystemdms/getDocsDtl", controllers.GetDocumentDtl)
 	e.POST("/runsystemdms/getDocsDtlForMenu", controllers.GetDocumentsDtl)
 	e.POST("/runsystemdms/getDocsDtlForPrint", controllers.GetDocumentsDtlPrint)
 	e.POST("/runsystemdms/getDocsDtlById", controllers.GetDocumentDtlById)
 	e.POST("/runsystemdms/getDataMenuCode", controllers.GetDataMenuCode)
-	e.GET("/runsystemdms/getDataDocuments/:modulcode", controllers.GetDatadocuments)
+	e.POST("/runsystemdms/getDataDocuments", controllers.GetDatadocuments)
 	e.POST("/runsystemdms/getDataDocumentsHdr", controllers.GetDatadocumentsHdr)
 	e.POST("/runsystemdms/editActiveInd", controllers.EditActiveInd(con))
 	e.POST("/runsystemdms/postDataDocuments", controllers.PostDataDocuments(con))

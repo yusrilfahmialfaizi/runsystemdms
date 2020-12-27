@@ -14,28 +14,29 @@ func GetGroup(c echo.Context) error {
 	result := models.GetGroups()
 	return c.JSON(http.StatusOK, result)
 }
+// cont func get group
 func GetGroupById(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.GetGroupsById(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.GetGroupsById(cc)
 	return c.JSON(http.StatusOK, result)
 }
-
 // Controller untuk get data
 func GetGroupMenu(c echo.Context) error {
 	result := models.GetGroupsMenu()
 	return c.JSON(http.StatusOK, result)
 }
+// cont func get groupmenu
 func GetGroupMenuById(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.GetGroupsMenuById(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.GetGroupsMenuById(cc)
 	return c.JSON(http.StatusOK, result)
 }
+// cont func get groupmenu
 func GetGroupMenuWithId(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.GetGroupsMenuWithId(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.GetGroupsMenuWithId(cc)
 	return c.JSON(http.StatusOK, result)
 }
-
 //function controller untuk create
 func PostGroup(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -54,7 +55,7 @@ func PostGroup(con *sql.DB) echo.HandlerFunc {
 
 	}
 }
-
+// cont func post groupmenu
 func PostGroupMenu(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
 
@@ -72,7 +73,6 @@ func PostGroupMenu(con *sql.DB) echo.HandlerFunc {
 
 	}
 }
-
 //function controller untuk update
 func UpdateGroup(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -89,7 +89,7 @@ func UpdateGroup(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
-
+// cont func update groupmenu
 func UpdateGroupMenu(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
 
@@ -105,16 +105,15 @@ func UpdateGroupMenu(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
-
 //delete data group
 func DeleteGroup(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.DeleteGroup(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.DeleteGroup(cc)
 	return c.JSON(http.StatusOK, result)
 }
-
+// cont func delete
 func DeleteGroupMenu(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.DeleteGroupMenus(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.DeleteGroupMenus(cc)
 	return c.JSON(http.StatusOK, result)
 }

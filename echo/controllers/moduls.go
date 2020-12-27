@@ -15,7 +15,6 @@ func GetModuls(c echo.Context) error {
 	fmt.Println("Getting menu parent...")
 	return c.JSON(http.StatusOK, result)
 }
-
 // POST method to INSERT modul
 func PostModul(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -31,7 +30,6 @@ func PostModul(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
-
 // Update data modul
 func UpdateModuls(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -46,29 +44,27 @@ func UpdateModuls(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
+// get modul
 func GetModulsWithId(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.GetModulsWithId(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.GetModulsWithId(cc)
 	return c.JSON(http.StatusOK, result)
 }
-
 // function untuk get menu berdasarkan modulcode
 func GetMenusById(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.GetMenusById(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.GetMenusById(cc)
 	return c.JSON(http.StatusOK, result)
 }
-
 // get modul by id
 func GetModulsById(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.GetModulsById(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.GetModulsById(cc)
 	return c.JSON(http.StatusOK, result)
 }
-
 //delete modul
 func DeleteModule(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.DeleteModules(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.DeleteModules(cc)
 	return c.JSON(http.StatusOK, result)
 }

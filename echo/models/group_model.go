@@ -53,11 +53,11 @@ type ActionGroupMenu struct {
 type GroupMenus struct {
 	GroupMenus []GroupMenu `json:"groupmenu"`
 }
-
+// func get group
 func GetGroups() Groups {
-	connection = config.Connection()
-	query1 := "SELECT GrpCode, GrpName, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblgroup"
-	rows1, err1 := connection.Query(query1)
+	connection 	= config.Connection()
+	query1 		:= "SELECT GrpCode, GrpName, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblgroup"
+	rows1, err1 	:= connection.Query(query1)
 	if err1 != nil {
 		fmt.Println(err1)
 	}
@@ -75,11 +75,12 @@ func GetGroups() Groups {
 	}
 	return result
 }
+// func get group 
 func GetGroupsById(c *CustomContext) Groups {
-	grpcode := c.Param("grpcode")
-	connection = config.Connection()
-	query1 := "SELECT GrpCode, GrpName, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblgroup WHERE GrpCode = ?"
-	rows1, err1 := connection.Query(query1, grpcode)
+	grpcode 		:= c.Param("grpcode")
+	connection 	= config.Connection()
+	query1 		:= "SELECT GrpCode, GrpName, CreateBy, CreateDt, LastUpBy, LastUpDt FROM tblgroup WHERE GrpCode = ?"
+	rows1, err1 	:= connection.Query(query1, grpcode)
 	if err1 != nil {
 		fmt.Println(err1)
 	}
@@ -97,10 +98,11 @@ func GetGroupsById(c *CustomContext) Groups {
 	}
 	return result
 }
+// func get groupmenu
 func GetGroupsMenu() GroupMenus {
-	connection = config.Connection()
-	query1 := "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode"
-	rows1, err1 := connection.Query(query1)
+	connection 	= config.Connection()
+	query1 		:= "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode"
+	rows1, err1 	:= connection.Query(query1)
 	if err1 != nil {
 		fmt.Println(err1)
 	}
@@ -118,13 +120,13 @@ func GetGroupsMenu() GroupMenus {
 	}
 	return result
 }
-
+// func get groupmenu
 func GetGroupsMenuById(c *CustomContext) GroupMenus {
-	menucode := c.FormValue("menucode")
-	grpcode := c.FormValue("grpcode")
-	connection = config.Connection()
-	query1 := "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode WHERE A.MenuCode = ? && A.GrpCode = ?"
-	rows1, err1 := connection.Query(query1, menucode, grpcode)
+	menucode 		:= c.FormValue("menucode")
+	grpcode 		:= c.FormValue("grpcode")
+	connection 	= config.Connection()
+	query1 		:= "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode WHERE A.MenuCode = ? && A.GrpCode = ?"
+	rows1, err1 	:= connection.Query(query1, menucode, grpcode)
 	if err1 != nil {
 		fmt.Println(err1)
 	}
@@ -142,11 +144,12 @@ func GetGroupsMenuById(c *CustomContext) GroupMenus {
 	}
 	return result
 }
+// func get groupmenu
 func GetGroupsMenuWithId(c *CustomContext) GroupMenus {
-	grpcode := c.Param("grpcode")
-	connection = config.Connection()
-	query1 := "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode WHERE A.GrpCode = ?"
-	rows1, err1 := connection.Query(query1, grpcode)
+	grpcode 		:= c.Param("grpcode")
+	connection 	= config.Connection()
+	query1 		:= "SELECT A.MenuCode, B.MenuDesc, A.GrpCode, C.GrpName, A.CreateBy, A.CreateDt, A.LastUpBy, A.LastUpDt FROM tblgroupmenu A LEFT JOIN tblmodulmenu B ON B.MenuCode = A.MenuCode LEFT JOIN tblgroup C ON C.GrpCode = A.GrpCode WHERE A.GrpCode = ?"
+	rows1, err1 	:= connection.Query(query1, grpcode)
 	if err1 != nil {
 		fmt.Println(err1)
 	}
@@ -164,13 +167,12 @@ func GetGroupsMenuWithId(c *CustomContext) GroupMenus {
 	}
 	return result
 }
-
 //function untuk untuk post data
 func PostGroups(con *sql.DB, GrpCode string, GrpName string, CreateBy string, CreateDt string) (int64, error) {
-	con = config.Connection()
+	con 			= config.Connection()
 
-	query := "INSERT INTO tblgroup (GrpCode, GrpName, CreateBy, CreateDt) values (?,?,?,?)"
-	stmt1, err1 := con.Prepare(query)
+	query 		:= "INSERT INTO tblgroup (GrpCode, GrpName, CreateBy, CreateDt) values (?,?,?,?)"
+	stmt1, err1 	:= con.Prepare(query)
 
 	if err1 != nil {
 		panic(err1)
@@ -185,12 +187,12 @@ func PostGroups(con *sql.DB, GrpCode string, GrpName string, CreateBy string, Cr
 
 	return result.RowsAffected()
 }
-
+//function untuk untuk post data
 func PostGroupMenus(con *sql.DB, MenuCode string, GrpCode string,  CreateBy string, CreateDt string) (int64, error) {
-	con = config.Connection()
+	con 			= config.Connection()
 
-	query := "INSERT INTO tblgroupmenu (MenuCode, GrpCode, CreateBy, CreateDt) values (?,?,?,?,?)"
-	stmt1, err1 := con.Prepare(query)
+	query 		:= "INSERT INTO tblgroupmenu (MenuCode, GrpCode, CreateBy, CreateDt) values (?,?,?,?,?)"
+	stmt1, err1 	:= con.Prepare(query)
 
 	if err1 != nil {
 		panic(err1)
@@ -205,13 +207,12 @@ func PostGroupMenus(con *sql.DB, MenuCode string, GrpCode string,  CreateBy stri
 
 	return result.RowsAffected()
 }
-
 // function untuk update
 func UpdateGroups(con *sql.DB, GrpCode string, GrpName string, LastupBy string, LastupDt string, GrpCode_old string) (int64, error) {
-	con = config.Connection()
-	query := "UPDATE tblgroup set GrpCode = ?, GrpName = ?, LastUpBy = ?, LastUpDt = ? WHERE GrpCode = ?"
+	con 			= config.Connection()
+	query 		:= "UPDATE tblgroup set GrpCode = ?, GrpName = ?, LastUpBy = ?, LastUpDt = ? WHERE GrpCode = ?"
 
-	stmt, err := con.Prepare(query)
+	stmt, err 	:= con.Prepare(query)
 
 	if err != nil {
 		fmt.Println(err)
@@ -225,12 +226,12 @@ func UpdateGroups(con *sql.DB, GrpCode string, GrpName string, LastupBy string, 
 
 	return result.RowsAffected()
 }
-
+//function untuk untuk put data
 func UpdateGroupMenus(con *sql.DB, MenuCode string, GrpCode string, LastupBy string, LastupDt string, MenuCode_old string, GrpCode_old string) (int64, error) {
-	con = config.Connection()
-	query := "UPDATE tblgroupmenu set MenuCode = ?, GrpCode = ?, LastUpBy = ?, LastUpDt = ? WHERE MenuCode = ? && GrpCode =?"
+	con 			= config.Connection()
+	query 		:= "UPDATE tblgroupmenu set MenuCode = ?, GrpCode = ?, LastUpBy = ?, LastUpDt = ? WHERE MenuCode = ? && GrpCode =?"
 
-	stmt, err := con.Prepare(query)
+	stmt, err 	:= con.Prepare(query)
 
 	if err != nil {
 		fmt.Println(err)
@@ -244,14 +245,13 @@ func UpdateGroupMenus(con *sql.DB, MenuCode string, GrpCode string, LastupBy str
 
 	return result.RowsAffected()
 }
-
 //func untuk delete data
 func DeleteGroup(c *CustomContext) Groups {
-	connection := config.Connection()
-	grpcode := c.FormValue("grpcode")
-	query := "DELETE FROM tblgroup WHERE tblgroup.GrpCode = ?"
+	connection 	:= config.Connection()
+	grpcode 		:= c.FormValue("grpcode")
+	query 		:= "DELETE FROM tblgroup WHERE tblgroup.GrpCode = ?"
 
-	rows, eror := connection.Query(query, grpcode)
+	rows, eror 	:= connection.Query(query, grpcode)
 	if eror != nil {
 		fmt.Println(eror)
 	}
@@ -268,14 +268,14 @@ func DeleteGroup(c *CustomContext) Groups {
 	}
 	return result
 }
-
+//function untuk untuk delete
 func DeleteGroupMenus(c *CustomContext) GroupMenus {
-	connection := config.Connection()
-	menucode := c.FormValue("menucode")
-	grpcode := c.FormValue("grpcode")
-	query := "DELETE FROM tblgroupmenu WHERE tblgroupmenu.MenuCode = ? AND tblgroupmenu.GrpCode = ?"
+	connection 	:= config.Connection()
+	menucode 		:= c.FormValue("menucode")
+	grpcode 		:= c.FormValue("grpcode")
+	query 		:= "DELETE FROM tblgroupmenu WHERE tblgroupmenu.MenuCode = ? AND tblgroupmenu.GrpCode = ?"
 
-	rows, eror := connection.Query(query, menucode, grpcode)
+	rows, eror 	:= connection.Query(query, menucode, grpcode)
 	if eror != nil {
 		fmt.Println(eror)
 	}

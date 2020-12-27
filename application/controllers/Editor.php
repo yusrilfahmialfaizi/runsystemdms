@@ -16,13 +16,13 @@ class Editor extends CI_Controller
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "003" && $this->session->userdata('privilegecode') != "001") {
 			redirect("login");
 		}
-		$menucode = $this->session->userdata("menu");
-		$docno = $this->session->userdata("docno");
-		$doc = $this->documentdtl->getDocumentDtl($docno, $menucode);
-		$projectcode = $this->session->userdata("projectcode");
-		$data2 = $this->menu->getModulById($projectcode);
-		$data2 = json_decode($data2, true);
-		$doc = json_decode($doc, true);
+		$menucode 	= $this->session->userdata("menu");
+		$docno 		= $this->session->userdata("docno");
+		$doc 		= $this->documentdtl->getDocumentDtl($docno, $menucode);
+		$projectcode 	= $this->session->userdata("projectcode");
+		$data2 		= $this->menu->getModulById($projectcode);
+		$data2 		= json_decode($data2, true);
+		$doc 		= json_decode($doc, true);
 		$data["sidebar"] = $data2;
 		$data["doc"] = $doc;
 		if ($data2 == null) {
@@ -34,28 +34,30 @@ class Editor extends CI_Controller
 
 	function EditDocDetail()
 	{
-		$docno = $this->session->userdata("docno");
-		$menucode = $this->session->userdata("menu");
-		$description = $this->input->post("deskripsi");
-		$stts = $this->input->post("chk-ani");
+		$docno 		= $this->session->userdata("docno");
+		$projectcode	= $this->session->userdata("projectcode");
+		$menucode 	= $this->session->userdata("menu");
+		$description 	= $this->input->post("deskripsi");
+		$stts		= $this->input->post("chk-ani");
 		if ($stts == "on") {
 			$status = "F";
 		} else {
 			$status = "O";
 		}
-		$lastupby = $this->session->userdata("usercode");
+		$lastupby 	= $this->session->userdata("usercode");
 		date_default_timezone_set('Asia/Jakarta');
-		$lastupdt = date('YmdHi');
-		$doc = $this->documentdtl->getDocumentDtl($docno, $menucode);
-		$doc = json_decode($doc, true);
+		$lastupdt 	= date('YmdHi');
+		$doc 		= $this->documentdtl->getDocumentDtl($docno, $menucode);
+		$doc 		= json_decode($doc, true);
 		if ($doc['documentsdtl'] != null) {
 			$data = array(
-				"docno" => $docno,
-				"menucode" => $menucode,
-				"description" => $description,
-				"status" => $status,
-				"lastupby" => $lastupby,
-				"lastupdt" => $lastupdt
+				"docno" 		=> $docno,
+				"projectcode" 	=> $projectcode,
+				"menucode" 	=> $menucode,
+				"description" 	=> $description,
+				"status" 		=> $status,
+				"lastupby" 	=> $lastupby,
+				"lastupdt" 	=> $lastupdt
 			);
 			# update
 			$response = $this->documentdtl->callApiDocDtl('PUT', "http://127.0.0.1:8080/runsystemdms/editDataDocuments", $data);

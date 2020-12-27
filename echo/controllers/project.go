@@ -18,14 +18,12 @@ func GetProject(c echo.Context) error {
 	result := models.GetProject()
 	return c.JSON(http.StatusOK, result)
 }
-
 // Get project by id
 func GetProjectById(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.GetProjectById(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.GetProjectById(cc)
 	return c.JSON(http.StatusOK, result)
 }
-
 // POST method to INSERT Project
 func PostProject(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -41,7 +39,6 @@ func PostProject(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
-
 // Update data Project
 func UpdateProject(con *sql.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -56,10 +53,9 @@ func UpdateProject(con *sql.DB) echo.HandlerFunc {
 		}
 	}
 }
-
 //delete data
 func DeleteProject(c echo.Context) error {
-	cc := c.(*models.CustomContext)
-	result := models.DeleteProjects(cc)
+	cc 		:= c.(*models.CustomContext)
+	result 	:= models.DeleteProjects(cc)
 	return c.JSON(http.StatusOK, result)
 }
