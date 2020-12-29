@@ -116,7 +116,8 @@ class Module extends CI_Controller
 	function delete_modul()
 	{
 		$modulcode 	= $this->input->get("modulcode");
-		$url 		= "http://127.0.0.1:8080/runsystemdms/deleteModule?modulcode=" . $modulcode;
+		$projectcode 	= $this->input->get("projectcode");
+		$url 		= "http://127.0.0.1:8080/runsystemdms/deleteModule?modulcode=" . $modulcode . "&projectcode=" . $projectcode;
 		$this->api->delete($url);
 		redirect(base_url('admin/module'));
 	}

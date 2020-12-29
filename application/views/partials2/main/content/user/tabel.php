@@ -79,8 +79,10 @@
                             <td>
                               <button data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" data-status="<?php echo $key[$i]["status"]; ?>" data-active="<?php echo $key[$i]["activeind"]; ?>" onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"]; ?>">Edit</button>
                               <button data-toggle="tooltip" title="Preview" width="20" type="button" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" onClick="preview(this)" data-feather="book-open">Preview</button>
-                              <button  type="button" data-toggle="modal" data-target="#modal-<?php echo str_replace('/', '-',$key[$i]["docno"]); ?>">
-                            Log </button>
+                              <span data-toggle="modal" data-target="#modal-<?php echo str_replace('/', '-',$key[$i]["docno"]); ?>">
+                              <button  type="button" data-feather="list" title="Log" data-toggle="tooltip" >
+                              Log </button>
+                              </span>
                             </td>
                           </tr>
                   <?php }

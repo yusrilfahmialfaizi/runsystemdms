@@ -44,7 +44,7 @@
                                         width="20" type="button" data-feather="edit-3"
                                         data-id="<?php echo $key["modulcode"]; ?>"><i class="fas fa-edit"></i></button>
                                 </a>
-                                <!-- <a href="<?php echo base_url("admin/module/delete_modul?modulcode=") . $key["modulcode"]; ?>"> -->
+                                <!-- <a href="<?php echo base_url("admin/module/delete_modul?modulcode=" . $key["modulcode"] . "&projectcode=" .$key["projectcode"]) ?>"> -->
                                 <button disabled class="btn btn-danger btn-circle" data-toggle="tooltip" title="Delete"
                                     width="20" type="button" data-id="<?php echo $key["modulcode"]; ?>"
                                     data-feather="x"><i class="fas fa-trash"></i></button>
