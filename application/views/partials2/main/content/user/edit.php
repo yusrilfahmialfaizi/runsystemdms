@@ -27,10 +27,10 @@
 						<!-- <a style="float: left;" href="<?= base_url() ?>tabel" class="btn btn-sm btn-outline-primary">Tabel</a> -->
 						<form action="<?php echo base_url("edit/editdocdetail") ?>" method="POST">
 							<?php foreach ($doc as $value) { ?>
-								<?php if ($this->session->userdata("active") == 'Y') { ?>
+								<?php if ($this->session->userdata("active") == 'Y' && $hdr['status'] == 'O') { ?>
 									<div class="col-md-4 offset-md-10">
 										<label class="d-block" for="chk-ani">
-											<?php if ($value[0]['status'] == "O" || $value[0]['status'] == null) { ?>
+											<?php if ($value[0]['status'] == "O" || $value[0]['status'] == null ) { ?>
 												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox">Review
 											<?php } else { ?>
 												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" checked="checked">Review

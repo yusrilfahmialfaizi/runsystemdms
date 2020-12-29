@@ -44,6 +44,9 @@ func Routes() *echo.Echo {
 	e.POST("/runsystemdms/postProject", controllers.PostProject(con))
 	e.PUT("/runsystemdms/updateProject", controllers.UpdateProject(con))
 
+	e.GET("/runsystemdms/getLogById", controllers.GetLogById)
+	e.POST("/runsystemdms/postLog", controllers.PostLog(con))
+
 	e.GET("/runsystemdms/getMenu", controllers.GetMenu)
 	e.GET("/runsystemdms/getMenuWithId/:menucode", controllers.GetMenuWithId)
 	e.POST("/runsystemdms/postMenu", controllers.PostMenu(con))

@@ -70,8 +70,7 @@
                             <td><?php echo $key[$i]["createby"]; ?></td>
                             <td><?php echo date("d-m-Y H:i", $createdt); ?></td>
                             <td><?php echo $key[$i]["lastupby"]; ?>
-                            <button type="button" data-toggle="modal" data-target="#modal">
-                            Klik </button></td>
+                            </td>
                             <?php if ($key[$i]["lastupby"] != null){ ?>
                             <td><?php echo date("d-m-Y H:i", $lastupdt); ?></td>
                             <?php }else{ ?>
@@ -80,6 +79,8 @@
                             <td>
                               <button data-toggle="tooltip" title="Edit" width="20" type="button" data-feather="edit" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" data-status="<?php echo $key[$i]["status"]; ?>" data-active="<?php echo $key[$i]["activeind"]; ?>" onClick="modules2(this)" data-id="<?php echo $key[$i]["modulname"]; ?>">Edit</button>
                               <button data-toggle="tooltip" title="Preview" width="20" type="button" data-docno="<?php echo $key[$i]["docno"]; ?>" data-modulcode="<?php echo $key[$i]["modulcode"]; ?>" onClick="preview(this)" data-feather="book-open">Preview</button>
+                              <button  type="button" data-toggle="modal" data-target="#modal-<?php echo str_replace('/', '-',$key[$i]["docno"]); ?>">
+                            Log </button>
                             </td>
                           </tr>
                   <?php }
@@ -95,53 +96,53 @@
     </div>
   </div>
   <!-- Contoh Modal -->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalSayaLabel" aria-hidden="true">
+<?php foreach ($log as $lg) { 
+    $logs = $lg['docno'];
+  ?>
+
+<div class="modal fade" id="modal-<?php echo str_replace('/', '-', $lg["docno"]); ?>" tabindex="-1" role="dialog" aria-labelledby="modalSayaLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalSayaLabel">Detail Log</h5>
+        <h5 class="modal-title" id="modalSayaLabel">Detail Log <?php echo $logs ?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <div class="card-block row">
-                    <div class="col-sm-12 col-lg-12 col-xl-12">
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead class="table-primary">
-                            <tr>
-                              <th scope="col">Docno</th>
-                              <th scope="col">Last Update By</th>
-                              <th scope="col">Last Update Date</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                              <!-- js -->
-                  <?php if ($get != null) { ?>
-                    <?php foreach ($get as $key) {
-                      if ($key != null) {
-                        # code...
-                        for ($i = 0; $i < count($key); $i++) {
-                          $createdt = strtotime($key[$i]["createdt"]);
-                          $lastupdt = strtotime($key[$i]["lastupdt"]);
-                    ?>
+        <div class="card-block row">
+          <div class="col-sm-12 col-lg-12 col-xl-12">
+            <div class="dt-ext table-responsive">
+              <table class="display" id="basic-fixed-header">
+                <thead class="table-primary">
+                  <tr>
+                    <th scope="col">Log Code</th>
+                    <th scope="col">Docno</th>
+                    <th scope="col">Last Update By</th>
+                    <th scope="col">Last Update Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <!-- js -->
+                  <?php foreach ($log as $key) {
+                    if ($logs == $key['docno']) {
+                      # code...
+                      $lastupdt = strtotime($key["lastupdt"]);
+                  ?>
 
-                          <tr>
-                            <td><?php echo $key[$i]["docno"]; ?></td>
-                            <td><?php echo $key[$i]["createby"]; ?></td>
-                            <td><?php echo date("d-m-Y H:i", $createdt); ?></td>
-                            <?php } ?>
-                          </tr>
-                  <?php }
-                      }
-                    }
-                   ?>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
+                  <tr>
+                    <td><?php echo $key["logcode"]; ?></td>
+                    <td><?php echo $key["docno"]; ?></td>
+                    <td><?php echo $key["lastupby"]; ?></td>
+                    <td><?php echo date("d-m-Y H:i", $lastupdt); ?></td>
+                    <?php } ?>
+                  </tr>
+                <?php } ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -149,3 +150,5 @@
     </div>
   </div>
 </div>
+
+<?php } ?>

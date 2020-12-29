@@ -64,7 +64,13 @@ class Editor extends CI_Controller
 			$this->session->set_flashdata('alert', '<div class="alert alert-primary dark alert-dismissible fade show" role="alert">
 					<p><strong>Data telah tersimpan</strong></p>
                     <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    </div>');
+				</div>');
+			$data1 = [
+				"docno" 		=> $docno,
+				"lastupby"	=> $lastupby,
+				"lastupdt" 	=> $lastupdt
+			];
+			$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postLog", $data1);
 			redirect(base_url("editor"));
 		}
 	}

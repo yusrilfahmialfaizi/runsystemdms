@@ -16,15 +16,23 @@ class Edit extends CI_Controller
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "user" && $this->session->userdata('privilegecode') != "admin") {
 			redirect("login");
 		}
-		$menucode 	= $this->session->userdata("menu");
-		$docno 		= $this->session->userdata("docno");
-		$doc 		= $this->documentdtl->getDocumentDtl($docno, $menucode);
-		$projectcode 	= $this->session->userdata("projectcode");
-		$data2 		= $this->menu->getModulById($projectcode);
-		$data2 		= json_decode($data2, true);
-		$doc 		= json_decode($doc, true);
-		$data["sidebar"] = $data2;
-		$data["doc"] = $doc;
+		$menucode 		= $this->session->userdata("menu");
+		$docno 			= $this->session->userdata("docno");
+		$doc 			= $this->documentdtl->getDocumentDtl($docno, $menucode);
+		$projectcode 		= $this->session->userdata("projectcode");
+		$data2 			= $this->menu->getModulById($projectcode);
+		$data2 			= json_decode($data2, true);
+		$doc 			= json_decode($doc, true);
+		$data 			= array(
+			'docno' 		=> $docno,
+			'projectcode'	=> $projectcode
+		);
+		$response 		= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDataDocumentsHdr", $data);
+		$response 		= json_decode($response, true);
+		$response			= $response['datadocument'][0];
+		$data["sidebar"] 	= $data2;
+		$data['hdr']		= $response;
+		$data["doc"] 		= $doc;
 		if ($data2 == null) {
 			$this->load->view('partials2/main/page/page_error');
 		}else{
@@ -66,6 +74,12 @@ class Edit extends CI_Controller
 					<p><strong>Data telah tersimpan</strong></p>
 			        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 					</div>');
+				$data1 = [
+					"docno" 		=> $docno,
+					"lastupby"	=> $lastupby,
+					"lastupdt" 	=> $lastupdt
+				];
+				$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postLog", $data1);
 			} else {
 				$this->session->set_flashdata('alert', '<div class="alert alert-primary dark alert-dismissible fade show" role="alert">
 					<p><strong>Data belum tersimpan</strong></p>

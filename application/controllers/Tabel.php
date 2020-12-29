@@ -16,11 +16,15 @@ class Tabel extends CI_Controller {
 		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "user" && $this->session->userdata('privilegecode') != "admin") {
 			redirect("login");
 		}
-		$projectcode = $this->session->userdata("projectcode");
-		$data2 = $this->menu->getModulById($projectcode);
-		$data2 = json_decode($data2, true);
-		$data["sidebar"] = $data2;
-		if ($data2['modul'] != null) {
+		$projectcode 		= $this->session->userdata("projectcode");
+		$data2 			= $this->menu->getModulById($projectcode);
+		$data2 			= json_decode($data2, true);
+		$url 			= "http://127.0.0.1:8080/runsystemdms/getLogById";
+		$data3 			= $this->api->get($url);
+		$data3 			= json_decode($data3, true);
+		if ($data2['modul'] != null || $data3['log'] != null) {
+			$data["sidebar"] 	= $data2;
+			$data["log"]		= $data3['log'];
 			foreach ($data2 as $key) {
 				for ($i=0; $i < count($key); $i++) { 
 					if ($i == 0) {
@@ -55,6 +59,8 @@ class Tabel extends CI_Controller {
 				$data["get"] = [];
 			}
 			$this->load->view('partials2/main/page/page_tabel', $data);
+		}else if ($data2['message'] != null || $data3['message'] != null) {
+			$this->load->view('partials2/main/page/page_error');
 		}else{
 			$this->load->view('partials2/main/page/page_error');
 		}
@@ -239,6 +245,13 @@ class Tabel extends CI_Controller {
 			$this->session->set_userdata(array(
 			"doc_status" => $checked));
 		}
+		$data1 = [
+			"docno" 		=> $docno,
+			"lastupby"	=> $lastupby,
+			"lastupdt" 	=> $lastupdt
+		];
+		$this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/postLog", $data1);
+
 	}
 	function doc_status()
 	{	
