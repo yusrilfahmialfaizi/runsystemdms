@@ -43,18 +43,7 @@
       <span>User</span>
     </a>
   </li>
-  <?php if ($uri == "privilege") { ?>
-  <li class="nav-item active">
-  <?php }else{ ?>
-  <li class="nav-item">
-  <?php } ?>
-    <a class="nav-link collapsed" href="<?php echo base_url("admin/privilege")?>" aria-expanded="true"
-      aria-controls="collapseTwo">
-      <i class="fas fa-fw fa-user"></i>
-      <span>Privilege</span>
-    </a>
-  </li>
-
+  
   <!-- Nav Item - Utilities Collapse Menu -->
   <?php if ($uri == "project") { ?>
   <li class="nav-item active">
