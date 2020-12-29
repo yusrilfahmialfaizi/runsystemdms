@@ -45,16 +45,20 @@
                                     <label class="col-form-label pt-0" for="privilegecode">Privilege Code</label>
                                     <select class="custom-select" id="privilegecode" name="privilegecode" required="">
                                         <option value="">--Pilih--</option>
-                                        <?php foreach ($prvl as $key) { ?>
-                                        <?php if ($key['privilegecode'] == $us['privilegecode']){ ?>
-                                        <option value="<?php echo $key['privilegecode'] ?>" selected>
-                                            <?php echo $key['privilegename'] ?>
+                                        <?php if ("admin" == $us['privilegecode']){ ?>
+                                        <option value="admin" selected>
+                                            Admin
+                                        </option>
+                                        <option value="user">
+                                            User
                                         </option>
                                         <?php }else { ?>
-                                        <option value="<?php echo $key['privilegecode'] ?>">
-                                            <?php echo $key['privilegename'] ?>
+                                        <option value="admin">
+                                            Admin
                                         </option>
-                                        <?php } ?>
+                                        <option value="user" selected>
+                                            User
+                                        </option>
                                         <?php } ?>
                                     </select>
                                 </div>

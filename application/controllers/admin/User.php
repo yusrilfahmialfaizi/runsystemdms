@@ -40,17 +40,13 @@ class User extends CI_Controller {
 		$url 		= 'http://127.0.0.1:8080/runsystemdms/getGroup';
 		$response 	= $this->api->get($url);
 		$data 		= json_decode($response, true);
-		$url2 		= "http://127.0.0.1:8080/runsystemdms/getPrivileges";
-		$response2 	= $this->api->get($url2);
-		$data2 		= json_decode($response2, true);
-		if ($data == null && $data2 != null) {
+		if ($data == null ) {
 			$this->load->view('partials2/main/page2/page_notfound');
 		}else{
 			if (isset($data['message'])) {
 				$this->load->view('partials2/main/page2/page_notfound');
 			}else{		
 				$data['dt'] 	= $data['group'];
-				$data['prvl']	= $data2['privilege'];
 				$this->load->view('partials2/main/page2/page_add_user', $data);
 			}
 		}
@@ -68,13 +64,9 @@ class User extends CI_Controller {
 		$url1 		= "http://127.0.0.1:8080/runsystemdms/getUsersById/".$usercode;
 		$response1 	= $this->api->get($url1);
 		$data1		= json_decode($response1, true);
-		$url2 		= "http://127.0.0.1:8080/runsystemdms/getPrivileges";
-		$response2 	= $this->api->get($url2);
-		$data2 		= json_decode($response2, true);
-		if ($data != null && $data1 != null && $data2 != null) {
+		if ($data != null && $data1 != null ) {
 			$data['dt'] 	= $data['group'];
 			$data['user']	= $data1['user'];
-			$data['prvl']	= $data2['privilege'];
 			$this->load->view('partials2/main/page2/page_edit_user', $data);
 		}else{
 			$this->load->view('partials2/main/page2/page_notfound');

@@ -42,11 +42,8 @@
                                         <select class="custom-select" id="privilegecode" name="privilegecode"
                                             required="">
                                             <option value="">--Pilih--</option>
-                                            <?php foreach ($prvl as $key) { ?>
-                                            <option value="<?php echo $key['privilegecode'] ?>">
-                                                <?php echo $key['privilegename'] ?>
-                                            </option>
-                                            <?php } ?>
+                                            <option value="admin">Admin</option>
+                                            <option value="user">User</option>
                                         </select>
                                     </div>
                                 </div>
