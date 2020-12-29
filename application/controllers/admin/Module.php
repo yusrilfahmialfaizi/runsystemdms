@@ -13,8 +13,8 @@ class Module extends CI_Controller
 
 	public function index()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("admin/login");
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "admin") {
+			redirect("login");
 		}
 		$url1 			= "http://127.0.0.1:8080/runsystemdms/getModuls";
 		$response1 		= $this->api->get($url1);
@@ -32,8 +32,8 @@ class Module extends CI_Controller
 	}
 	public function Add_modul()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("admin/login");
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "admin") {
+			redirect("login");
 		}
 		$url 				= "http://127.0.0.1:8080/runsystemdms/getProject";
 		$response 			= $this->api->get($url);
@@ -51,8 +51,8 @@ class Module extends CI_Controller
 	}
 	public function edit_module()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("admin/login");
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "admin") {
+			redirect("login");
 		}
 		$modulcode 		= $this->input->get("modulcode");
 		$url 			= "http://127.0.0.1:8080/runsystemdms/getModulByID/" . $modulcode;

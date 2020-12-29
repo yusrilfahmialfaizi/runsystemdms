@@ -8,7 +8,7 @@ class Login extends CI_Controller
 	public function index()
 	{
 		if ($this->session->userdata('status') == "login") {
-			if ($this->session->userdata('previlegecode') == "003") {
+			if ($this->session->userdata('previlegecode') == "user") {
 				# code...
 				redirect("home");
 			}else {

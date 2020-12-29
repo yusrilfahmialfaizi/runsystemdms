@@ -61,7 +61,7 @@
 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 aria-labelledby="userDropdown">
 
-<?php if ($this->session->userdata('privilegecode') == 001) {?>
+<?php if ($this->session->userdata('privilegecode') == 'admin') {?>
     <a class="dropdown-item" href="<?= base_url('home')?>">
         <i class="fas fa-magnet fa-sm fa-fw mr-2 text-gray-400"></i>
         User DMS

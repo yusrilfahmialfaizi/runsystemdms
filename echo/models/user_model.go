@@ -26,23 +26,6 @@ type User struct {
 	LastupBy         nullable.String `json:"lastupby"`
 	LastupDt         nullable.String `json:"lastupdt"`
 }
-type Privilege struct {
-	PrivilegeCode    string          `json:"privilegecode"`
-	PrivilegeName    string          `json:"privilegename"`
-	CreateBy         string          `json:"createby"`
-	CreateDt         string          `json:"createdt"`
-	LastupBy         nullable.String `json:"lastupby"`
-	LastupDt         nullable.String `json:"lastupdt"`
-}
-type ActionPrivilege struct {
-	PrivilegeCode    	string          `json:"privilegecode"`
-	PrivilegeName    	string          `json:"privilegename"`
-	CreateBy         	string          `json:"createby"`
-	CreateDt         	string          `json:"createdt"`
-	LastupBy         	string		   `json:"lastupby"`
-	LastupDt         	string		   `json:"lastupdt"`
-	PrivilegeCode_old   string          `json:"privilegecode_old"`
-}
 type ActionUser struct {
 	UserCode         string `json:"usercode"`
 	Username         string `json:"username"`
@@ -60,12 +43,8 @@ type ActionUser struct {
 	LastupDt         string `json:"lastupdt"`
 	UserCode_old     string `json:"usercode_old"`
 }
-
 type Users struct {
 	Users []User `json:"user"`
-}
-type Privileges struct {
-	Privileges []Privilege `json:"privilege"`
 }
 type NullString struct {
 	sql.NullString
@@ -111,53 +90,7 @@ func GetUser() Users {
 	}
 	return result
 }
-func GetPrivilege() Privileges {
-	con := config.Connection()
-	queryStatement := "SELECT * FROM tblprivilege"
 
-	rows, err := con.Query(queryStatement)
-	fmt.Println(err)
-	if err != nil {
-		fmt.Println(err)
-	}
-	defer rows.Close()
-	result := Privileges{}
-
-	for rows.Next() {
-		pr := Privilege{}
-
-		er := rows.Scan(&pr.PrivilegeCode, &pr.PrivilegeName, &pr.CreateBy, &pr.CreateDt, &pr.LastupBy, &pr.LastupDt)
-		if er != nil {
-			fmt.Println("ER : ", er)
-		}
-		
-		result.Privileges = append(result.Privileges, pr)
-	}
-	return result
-}
-func GetPrivilegeById(c *CustomContext) Privileges {
-	privilegecode := c.Param("privilegecode")
-	con := config.Connection()
-	queryStatement := "Select * From tblprivilege WHERE privilegecode = ?"
-
-	rows, err := con.Query(queryStatement, privilegecode)
-	if err != nil {
-		fmt.Println(err)
-	}
-	defer rows.Close()
-	result := Privileges{}
-
-	for rows.Next() {
-		pr := Privilege{}
-
-		er := rows.Scan(&pr.PrivilegeCode, &pr.PrivilegeName, &pr.CreateBy, &pr.CreateDt, &pr.LastupBy, &pr.LastupDt)
-		if er != nil {
-			fmt.Println("ER : ", er)
-		}
-		result.Privileges = append(result.Privileges, pr)
-	}
-	return result
-}
 func GetUserById(c *CustomContext) Users {
 	usercode := c.Param("usercode")
 	con := config.Connection()
@@ -253,30 +186,6 @@ func UpdatePrivileges(con *sql.DB, PrivilegeCode string, PrivilegeName string, L
 
 	return result.RowsAffected()
 }
-//func untuk delete data
-func DeletePrivilege(c *CustomContext) Privileges {
-	connection := config.Connection()
-	grpcode := c.FormValue("privilegecode")
-	query := "DELETE FROM tblprivilege WHERE tblprivilege.PrivilegeCode = ?"
-
-	rows, eror := connection.Query(query, grpcode)
-	if eror != nil {
-		fmt.Println(eror)
-	}
-	defer rows.Close()
-	result := Privileges{}
-
-	if rows.Next() {
-		privilege := Privilege{}
-		eror2 := rows.Scan(&privilege.PrivilegeCode)
-		if eror2 != nil {
-			fmt.Println(eror2)
-		}
-		result.Privileges = append(result.Privileges, privilege)
-	}
-	return result
-}
-
 // Update data users
 func UpdateUsers(con *sql.DB, UserCode string, Username string, PrivilegeCode string, GrpCode string, Pwd string, ExpDt string, NotifyInd string, HasQiscusAccount string, AvatarImage string, DeviceId string, LastupBy string, LastupDt string, UserCode_old string) (int64, error) {
 	con = config.Connection()

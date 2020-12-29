@@ -13,8 +13,8 @@ class Group extends CI_Controller
 
 	public function index()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("admin/login");
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "admin") {
+			redirect("login");
 		}
 		$url 		= "http://127.0.0.1:8080/runsystemdms/getGroup";
 		$response 	= $this->api->get($url);
@@ -32,15 +32,15 @@ class Group extends CI_Controller
 	}
 	public function add_group()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("admin/login");
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "admin") {
+			redirect("login");
 		}
 		$this->load->view('partials2/main/page2/page_add_group');
 	}
 	public function edit_grp()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("admin/login");
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "admin") {
+			redirect("login");
 		}
 		$grpcode 		= $this->input->get("grpcode");
 		$url 		= "http://127.0.0.1:8080/runsystemdms/getGroupById/" . $grpcode;

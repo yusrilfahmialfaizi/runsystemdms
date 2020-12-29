@@ -109,9 +109,10 @@
                     cache: false,
                     success: function(data) {
                         if (data.message == true) {
-                            if (privilegecode == '003' ) {
+                            alert(privilegecode);
+                            if (privilegecode == 'user' ) {
                                 window.location.href = "<?php echo base_url("home") ?>";
-                            }else if (privilegecode != '003'){
+                            }else if (privilegecode == 'admin'){
                                 window.location.href = "<?php echo base_url("admin/home") ?>";
                             }else{
                                 var text = "Anda bukan user !!!"

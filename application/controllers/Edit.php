@@ -13,7 +13,7 @@ class Edit extends CI_Controller
 
 	public function index()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "003" && $this->session->userdata('privilegecode') != "001") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "user" && $this->session->userdata('privilegecode') != "admin") {
 			redirect("login");
 		}
 		$menucode 	= $this->session->userdata("menu");

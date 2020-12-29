@@ -12,8 +12,8 @@ class Home extends CI_Controller {
 	
 	public function index()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "002" && $this->session->userdata('privilegecode') != "001") {
-			redirect("admin/login");
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "admin") {
+			redirect("login");
 		}
 		$url 		= "http://127.0.0.1:8080/runsystemdms/getUsers";
 		$response 	= $this->api->get($url);
@@ -21,13 +21,6 @@ class Home extends CI_Controller {
 		$data		= $data['user'];
 		$count_user 	= count($data);
 		$data['user']	= $count_user;
-
-		$url1 		= "http://127.0.0.1:8080/runsystemdms/getPrivileges";
-		$response1 	= $this->api->get($url1);
-		$data1 		= json_decode($response1, true);
-		$data1		= $data1['privilege'];
-		$count_prv 	= count($data1);
-		$data['prv']	= $count_prv;
 
 		$url2 		= "http://127.0.0.1:8080/runsystemdms/getProject";
 		$response2 	= $this->api->get($url2);

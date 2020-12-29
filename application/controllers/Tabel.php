@@ -13,15 +13,12 @@ class Tabel extends CI_Controller {
 	
 	public function index()
 	{
-		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "003" && $this->session->userdata('privilegecode') != "001") {
+		if ($this->session->userdata('status') != "login" || $this->session->userdata('privilegecode') != "user" && $this->session->userdata('privilegecode') != "admin") {
 			redirect("login");
 		}
 		$projectcode = $this->session->userdata("projectcode");
 		$data2 = $this->menu->getModulById($projectcode);
 		$data2 = json_decode($data2, true);
-		// echo "<pre>";
-		// print_r($data2);
-		// echo "</pre>";
 		$data["sidebar"] = $data2;
 		if ($data2['modul'] != null) {
 			foreach ($data2 as $key) {

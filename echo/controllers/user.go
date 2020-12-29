@@ -21,17 +21,6 @@ func GetUser(c echo.Context) error {
 	result := models.GetUser()
 	return c.JSON(http.StatusOK, result)
 }
-// get privilege
-func GetPrivilege(c echo.Context) error {
-	result := models.GetPrivilege()
-	return c.JSON(http.StatusOK, result)
-}
-// function untuk get privilege
-func GetPrivilegeById(c echo.Context) error {
-	cc 		:= c.(*models.CustomContext)
-	result 	:= models.GetPrivilegeById(cc)
-	return c.JSON(http.StatusOK, result)
-}
 // function untuk get user
 func GetUserById(c echo.Context) error {
 	cc 		:= c.(*models.CustomContext)
@@ -50,35 +39,6 @@ func PostUser(con *sql.DB) echo.HandlerFunc {
 			return c.JSON(http.StatusCreated, result)
 		} else {
 			return err
-		}
-	}
-}
-// POST method to INSERT Privilege
-func PostPrivilege(con *sql.DB) echo.HandlerFunc {
-	return func(c echo.Context) error {
-		var privilege models.ActionPrivilege
-
-		c.Bind(&privilege)
-		result, err := models.PostPrivileges(con, privilege.PrivilegeCode, privilege.PrivilegeName, privilege.CreateBy, privilege.CreateDt)
-
-		if err != nil {
-			return c.JSON(http.StatusCreated, result)
-		} else {
-			return err
-		}
-	}
-}
-// Update data privilege
-func UpdatePrivileges(con *sql.DB) echo.HandlerFunc {
-	return func(c echo.Context) error {
-		var privilege models.ActionPrivilege
-
-		c.Bind(&privilege)
-		result, err := models.UpdatePrivileges(con, privilege.PrivilegeCode, privilege.PrivilegeName, privilege.LastupBy, privilege.LastupDt, privilege.PrivilegeCode_old)
-		if err != nil {
-			return err
-		} else {
-			return c.JSON(http.StatusOK, result)
 		}
 	}
 }
@@ -142,9 +102,4 @@ func DeleteUser(c echo.Context) error {
 	result 	:= models.DeleteUsers(cc)
 	return c.JSON(http.StatusOK, result)
 }
-//delete data
-func DeletePrivilege(c echo.Context) error {
-	cc 		:= c.(*models.CustomContext)
-	result 	:= models.DeletePrivilege(cc)
-	return c.JSON(http.StatusOK, result)
-}
+
