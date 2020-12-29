@@ -24,14 +24,15 @@ type Modul struct {
 	ProjectName nullable.String `json:"projectname"`
 }
 type ActionModul struct {
-	ModulCode     string `json:"modulcode"`
-	ModulName     string `json:"modulname"`
-	ProjectCode   string `json:"projectcode"`
-	CreateBy      string `json:"createby"`
-	CreateDt      string `json:"createdt"`
-	LastupBy      string `json:"lastupby"`
-	LastupDt      string `json:"lastupdt"`
-	ModulCode_old string `json:"modulcode_old"`
+	ModulCode     		string `json:"modulcode"`
+	ModulName     		string `json:"modulname"`
+	ProjectCode   		string `json:"projectcode"`
+	CreateBy      		string `json:"createby"`
+	CreateDt      		string `json:"createdt"`
+	LastupBy      		string `json:"lastupby"`
+	LastupDt      		string `json:"lastupdt"`
+	ModulCode_old 		string `json:"modulcode_old"`
+	ProjectCode_old	string `json:"projectcode_old"`
 }
 
 type MenuAddDocument struct {
@@ -115,10 +116,11 @@ func GetModuls() Moduls {
 	return result
 }
 func GetModulsById(c *CustomContext) Moduls {
-	modulcode := c.Param("modulcode")
-	connection = config.Connection()
-	query1 := "SELECT A.*, B.ProjectName FROM tblmodul A LEFT JOIN tblproject B ON A.ProjectCode = B.ProjectCode WHERE A.modulcode = ?"
-	rows1, err1 := connection.Query(query1, modulcode)
+	modulcode 	:= c.FormValue("modulcode")
+	projectcode 	:= c.FormValue("projectcode")
+	connection 	= config.Connection()
+	query1 		:= "SELECT A.*, B.ProjectName FROM tblmodul A LEFT JOIN tblproject B ON A.ProjectCode = B.ProjectCode WHERE A.modulcode = ? AND A.ProjectCode = ?"
+	rows1, err1 	:= connection.Query(query1, modulcode, projectcode)
 	if err1 != nil {
 		fmt.Println(err1)
 		// fmt.Println(err2)
@@ -207,10 +209,10 @@ func PostModul(con *sql.DB, ModulCode string, ModulName string, ProjectCode stri
 	return result.RowsAffected()
 }
 
-func UpdateModul(con *sql.DB, ModulCode string, ModulName string, ProjectCode string, LastupBy string, LastupDt string, ModulCode_old string) (int64, error) {
+func UpdateModul(con *sql.DB, ModulCode string, ModulName string, ProjectCode string, LastupBy string, LastupDt string, ModulCode_old string, ProjectCode_old string) (int64, error) {
 	con = config.Connection()
 
-	query := "UPDATE tblmodul set ModulCode = ?, ModulName = ?, ProjectCode = ?, LastUpBy = ?, LastUpDt = ? WHERE ModulCode = ?"
+	query := "UPDATE tblmodul set ModulCode = ?, ModulName = ?, ProjectCode = ?, LastUpBy = ?, LastUpDt = ? WHERE ModulCode = ? AND Projectcode = ?"
 
 	stmt, err := con.Prepare(query)
 
@@ -218,7 +220,7 @@ func UpdateModul(con *sql.DB, ModulCode string, ModulName string, ProjectCode st
 		panic(err)
 	}
 
-	result, eror := stmt.Exec(ModulCode, ModulName, ProjectCode, LastupBy, LastupDt, ModulCode_old)
+	result, eror := stmt.Exec(ModulCode, ModulName, ProjectCode, LastupBy, LastupDt, ModulCode_old, ProjectCode_old)
 
 	if eror != nil {
 		panic(eror)
@@ -227,11 +229,12 @@ func UpdateModul(con *sql.DB, ModulCode string, ModulName string, ProjectCode st
 }
 
 func DeleteModules(c *CustomContext) Moduls {
-	connection := config.Connection()
-	modulcode := c.FormValue("modulcode")
-	query := "DELETE FROM tblmodul WHERE tblmodul.ModulCode = ?"
+	connection 	:= config.Connection()
+	modulcode 	:= c.FormValue("modulcode")
+	projectcode 	:= c.FormValue("projectcode")
+	query 	:= "DELETE FROM tblmodul WHERE tblmodul.ModulCode = ? AND tblmodul.ProjectCode= ?"
 
-	rows, eror := connection.Query(query, modulcode)
+	rows, eror := connection.Query(query, modulcode, projectcode)
 	if eror != nil {
 		fmt.Println(eror)
 	}

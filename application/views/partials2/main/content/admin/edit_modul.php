@@ -41,6 +41,7 @@
                                     <div class="form-group">
                                         <label class="col-form-label pt-0" for="projectcode">Project
                                             Name</label>
+                                            <input class="form-control" id="projectcode_old" name="projectcode_old" type="text" value="<?php echo $data['projectcode'] ?>" required="" hidden>
                                         <select class="custom-select" id="projectcode" name="projectcode" required="">
                                             <option value="">--Pilih--</option>
                                             <?php foreach ($project as $key){ ?>

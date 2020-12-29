@@ -39,7 +39,7 @@
                             <td><?php echo $key['projectname'] ?></td>
                             <td align="center">
                                 <a
-                                    href="<?php echo base_url("admin/module/edit_module?modulcode=") . $key["modulcode"]; ?>">
+                                    href="<?php echo base_url("admin/module/edit_module?modulcode=".$key['modulcode']."&projectcode=".$key["projectcode"]) ?>">
                                     <button class="btn btn-warning btn-circle" data-toggle="tooltip" title="Edit"
                                         width="20" type="button" data-feather="edit-3"
                                         data-id="<?php echo $key["modulcode"]; ?>"><i class="fas fa-edit"></i></button>

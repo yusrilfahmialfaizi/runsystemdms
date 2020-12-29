@@ -54,7 +54,7 @@ func Routes() *echo.Echo {
 	e.PUT("/runsystemdms/updateModuls", controllers.UpdateModuls(con))
 	e.GET("/runsystemdms/getModulsWithId/:projectcode", controllers.GetModulsWithId)
 	e.GET("/runsystemdms/getMenusByID/:modulcode", controllers.GetMenusById)
-	e.GET("/runsystemdms/getModulByID/:modulcode", controllers.GetModulsById)
+	e.POST("/runsystemdms/getModulByID", controllers.GetModulsById)
 
 	e.GET("/runsystemdms/getGroup", controllers.GetGroup)
 	e.GET("/runsystemdms/getGroupById/:grpcode", controllers.GetGroupById)

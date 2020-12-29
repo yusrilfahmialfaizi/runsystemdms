@@ -36,7 +36,7 @@ func UpdateModuls(con *sql.DB) echo.HandlerFunc {
 		var modul models.ActionModul
 
 		c.Bind(&modul)
-		result, err := models.UpdateModul(con, modul.ModulCode, modul.ModulName, modul.ProjectCode, modul.LastupBy, modul.LastupDt, modul.ModulCode_old)
+		result, err := models.UpdateModul(con, modul.ModulCode, modul.ModulName, modul.ProjectCode, modul.LastupBy, modul.LastupDt, modul.ModulCode_old, modul.ProjectCode_old)
 		if err != nil {
 			return err
 		} else {

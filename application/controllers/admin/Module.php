@@ -55,8 +55,9 @@ class Module extends CI_Controller
 			redirect("login");
 		}
 		$modulcode 		= $this->input->get("modulcode");
-		$url 			= "http://127.0.0.1:8080/runsystemdms/getModulByID/" . $modulcode;
-		$response 		= $this->api->get($url);
+		$projectcode		= $this->input->get("projectcode");
+		$dt				= array('modulcode'	=> $modulcode, 'projectcode'	=> $projectcode);
+		$response 		= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getModulByID", $dt);
 		$data 			= json_decode($response, true);
 		$url2 			= "http://127.0.0.1:8080/runsystemdms/getPG";
 		$response2 		= $this->api->get($url2);
@@ -92,19 +93,21 @@ class Module extends CI_Controller
 	}
 	function edit()
 	{
+		date_default_timezone_set('Asia/Jakarta');
 		$modulcode 		= $this->input->post('modulcode');
 		$modulname 		= $this->input->post('modulname');
 		$projectcode 		= $this->input->post('projectcode');
+		$projectcode_old 	= $this->input->post('projectcode_old');
 		$modulcode_old 	= $this->input->post('modulcode_old');
-		date_default_timezone_set('Asia/Jakarta');
 		$now 			= date('YmdHi');
 		$data 			= array(
-			'modulcode' 	=> $modulcode,
-			'modulname'	=> $modulname,
-			'projectcode' 	=> $projectcode,
-			"LastupBy" 	=> $this->session->userdata("usercode"),
-			"LastupDt" 	=> $now,
-			'modulcode_old'=> $modulcode_old,
+			'modulcode' 		=> $modulcode,
+			'modulname'		=> $modulname,
+			'projectcode' 		=> $projectcode,
+			"LastupBy" 		=> $this->session->userdata("usercode"),
+			"LastupDt" 		=> $now,
+			'projectcode_old' 	=> $projectcode_old,
+			'modulcode_old'	=> $modulcode_old,
 		);
 		$this->documentdtl->callApiDocDtl("PUT", "http://127.0.0.1:8080/runsystemdms/updateModuls", $data);
 		redirect(base_url('admin/module'));
