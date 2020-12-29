@@ -109,7 +109,6 @@
                     cache: false,
                     success: function(data) {
                         if (data.message == true) {
-                            alert(privilegecode);
                             if (privilegecode == 'user' ) {
                                 window.location.href = "<?php echo base_url("home") ?>";
                             }else if (privilegecode == 'admin'){
