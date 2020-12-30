@@ -1,9 +1,10 @@
      <script type="text/javascript">
        $(document).ready(function() {
-         var uri = "<?php echo $this->uri->segment("1"); ?>";
-         var uri2 = "<?php echo $this->uri->segment("2"); ?>";
-         var modulactive = "<?php echo $this->session->userdata("modul"); ?>";
-         var docno = "<?php echo $this->session->userdata('docno') ?>";
+         var uri          = "<?php echo $this->uri->segment("1"); ?>";
+         var uri2         = "<?php echo $this->uri->segment("2"); ?>";
+         var modulactive  = "<?php echo $this->session->userdata("modul"); ?>";
+         var docno        = "<?php echo $this->session->userdata('docno') ?>";
+         var grpcode      = "<?php echo $this->session->userdata("grpcode") ?>";
          if (uri == "admin"){
            $("li").removeClass("open");
            $("#" + uri2).addClass("open");
@@ -19,14 +20,6 @@
          
          if (uri != "home" && uri != "tabel" && uri != "admin") {
            var modulCode = "<?php echo $this->session->userdata("modul"); ?>";
-          //  var doc_status = "<?php echo $this->session->userdata("doc_status"); ?>";
-          //  if (doc_status == "F") {
-          //    document.getElementById('statushdr').disabled = true;
-          //    document.getElementById('statushdr').checked = true;
-          //  } else {
-          //    document.getElementById('statushdr').disabled = false;
-          //    document.getElementById('statushdr').checked = false;
-          //  }
           $.ajax({ //to get all data menu from db
            type: 'POST',
            url: '<?php echo base_url("tabel/dochdr") ?>',
@@ -40,8 +33,12 @@
                 document.getElementById('statushdr').disabled = true;
                 document.getElementById('statushdr').checked = true;
               } else {
-                document.getElementById('statushdr').disabled = false;
-                document.getElementById('statushdr').checked = false;
+                if (grpcode == "Analyst") {
+                  document.getElementById('statushdr').disabled = false;
+                }else{
+                  document.getElementById('statushdr').disabled = true;
+                }
+                  document.getElementById('statushdr').checked = false;
               }
            }
           });
@@ -70,9 +67,14 @@
              if (response.message == false) {
               document.getElementById('statushdr').disabled = true;
              }else{
-              document.getElementById('statushdr').disabled = false;
               if (document.getElementById('statushdr').checked == true) {
                 document.getElementById('statushdr').disabled = true;
+              }else{
+                if (grpcode == "Analyst") {
+                  document.getElementById('statushdr').disabled = false;
+                }else{
+                  document.getElementById('statushdr').disabled = true;
+                }
               }
              }
            }
@@ -107,12 +109,13 @@
        }
 
        function modules2(id_li) {
-         var modulname = $(id_li).attr("data-name");
-         var modulCode = $(id_li).attr("data-modulcode");
-         var docno = $(id_li).attr("data-docno");
-         var active = $(id_li).attr("data-active");
-         var status = $(id_li).attr("data-status");
-         var clas = $('#sidebar').attr('class');
+         var modulname  = $(id_li).attr("data-name");
+         var modulCode  = $(id_li).attr("data-modulcode");
+         var docno      = $(id_li).attr("data-docno");
+         var active     = $(id_li).attr("data-active");
+         var status     = $(id_li).attr("data-status");
+         var clas       = $('#sidebar').attr('class');
+         var grpcode    = "<?php echo $this->session->userdata("grpcode") ?>";
          if (clas == "iconsidebar-menu iconbar-second-close") {
            $("#sidebar").removeClass("iconbar-second-close");
            $("#sidebar").addClass("iconbar-mainmenu-close");
@@ -142,12 +145,17 @@
            },
            cache: false,
            success: function(response) {
-             if (response.message == false) {
+             if (response.message == false ) {
               document.getElementById('statushdr').disabled = true;
              }else{
-              document.getElementById('statushdr').disabled = false;
               if (document.getElementById('statushdr').checked == true) {
                 document.getElementById('statushdr').disabled = true;
+              }else{
+                if (grpcode == "Analyst") {
+                  document.getElementById('statushdr').disabled = false;
+                }else{
+                  document.getElementById('statushdr').disabled = true;
+                }
               }
              }
            }
@@ -156,8 +164,13 @@
            document.getElementById('statushdr').disabled = true;
            document.getElementById('statushdr').checked = true;
          } else if (status == "O") {
-           document.getElementById('statushdr').disabled = false;
-           document.getElementById('statushdr').checked = false;
+            if (grpcode == "Analyst") {
+              document.getElementById('statushdr').disabled = true;
+              document.getElementById('statushdr').checked = false;
+            }else{
+              document.getElementById('statushdr').disabled = false;
+              document.getElementById('statushdr').checked = false;
+            }
          }
          $.post("<?php echo base_url("tabel/doc_session") ?>", {
            docno: docno,

@@ -191,7 +191,7 @@ func PostGroups(con *sql.DB, GrpCode string, GrpName string, CreateBy string, Cr
 func PostGroupMenus(con *sql.DB, MenuCode string, GrpCode string,  CreateBy string, CreateDt string) (int64, error) {
 	con 			= config.Connection()
 
-	query 		:= "INSERT INTO tblgroupmenu (MenuCode, GrpCode, CreateBy, CreateDt) values (?,?,?,?,?)"
+	query 		:= "INSERT INTO tblgroupmenu (MenuCode, GrpCode, CreateBy, CreateDt) values (?,?,?,?)"
 	stmt1, err1 	:= con.Prepare(query)
 
 	if err1 != nil {

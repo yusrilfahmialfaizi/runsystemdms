@@ -31,9 +31,17 @@
 									<div class="col-md-4 offset-md-10">
 										<label class="d-block" for="chk-ani">
 											<?php if ($value[0]['status'] == "O" || $value[0]['status'] == null ) { ?>
+												<?php if ($this->session->userdata('grpcode') != "Analyst"){ ?>
+												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" disabled>Review
+												<?php }else{ ?>
 												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox">Review
+												<?php } ?>
 											<?php } else { ?>
+												<?php if ($this->session->userdata('grpcode') != "Analyst"){ ?>
+												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" checked="checked" disabled>Review
+												<?php }else{ ?>
 												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" checked="checked">Review
+												<?php } ?>
 											<?php } ?>
 										</label>
 									</div>
@@ -48,7 +56,7 @@
 								<?php } else { ?>
 									<div class="col-md-4 offset-md-10">
 										<label class="d-block" for="chk-ani">
-											<?php if ($value[0]['status'] == "O" || $value[0]['status'] == null) { ?>
+											<?php if ($value[0]['status'] == "O" || $value[0]['status'] == null ) { ?>
 												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" disabled>Review
 											<?php } else { ?>
 												<input class="checkbox_animated" id="chk-ani" name="chk-ani" type="checkbox" checked="checked" disabled>Review

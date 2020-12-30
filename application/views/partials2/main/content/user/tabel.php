@@ -23,6 +23,7 @@
           <div class="card-header">
             <a href="#" class="btn btn-success btnsweet"> + New Document</a>
           </div>
+          <?php echo $this->session->userdata("grpcode") ?>
           <div class="card-body">
             <div class="dt-ext table-responsive">
               <table class="display" id="basic-fixed-header">
