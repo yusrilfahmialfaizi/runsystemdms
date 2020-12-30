@@ -26,7 +26,7 @@
 						<a style="float: left;" href="<?= base_url("/tabel?modulcode=") . $this->session->userdata("modul") ?>" class="btn btn-sm btn-outline-primary">Tabel</a>
 						<form action="<?php echo base_url("editor/editdocdetail") ?>" method="POST">
 							<?php foreach ($doc as $value) { ?>
-								<?php if ($this->session->userdata("active") == 'Y') { ?>
+								<?php if ($this->session->userdata("active") == 'Y' && $hdr['status'] == 'O') { ?>
 									<div class="col-md-4 offset-md-10">
 										<label class="d-block" for="chk-ani">
 											<?php if ($value[0]['status'] == "O" || $value[0]['status'] == null) { ?>

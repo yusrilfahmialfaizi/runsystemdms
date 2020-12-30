@@ -23,6 +23,14 @@ class Editor extends CI_Controller
 		$data2 		= $this->menu->getModulById($projectcode);
 		$data2 		= json_decode($data2, true);
 		$doc 		= json_decode($doc, true);
+		$data 			= array(
+			'docno' 		=> $docno,
+			'projectcode'	=> $projectcode
+		);
+		$response 		= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDataDocumentsHdr", $data);
+		$response 		= json_decode($response, true);
+		$response			= $response['datadocument'][0];
+		$data['hdr']		= $response;
 		$data["sidebar"] = $data2;
 		$data["doc"] = $doc;
 		if ($data2 == null) {

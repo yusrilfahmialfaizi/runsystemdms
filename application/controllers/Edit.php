@@ -30,8 +30,8 @@ class Edit extends CI_Controller
 		$response 		= $this->documentdtl->callApiDocDtl("POST", "http://127.0.0.1:8080/runsystemdms/getDataDocumentsHdr", $data);
 		$response 		= json_decode($response, true);
 		$response			= $response['datadocument'][0];
-		$data["sidebar"] 	= $data2;
 		$data['hdr']		= $response;
+		$data["sidebar"] 	= $data2;
 		$data["doc"] 		= $doc;
 		if ($data2 == null) {
 			$this->load->view('partials2/main/page/page_error');
