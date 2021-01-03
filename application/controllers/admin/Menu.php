@@ -38,10 +38,13 @@ class Menu extends CI_Controller
 		}
 		$url 			= "http://127.0.0.1:8080/runsystemdms/getMenu";
 		$response			= $this->api->get($url);
-		$data			 = json_decode($response, true);
+		$data			= json_decode($response, true);
 		$url1 			= "http://127.0.0.1:8080/runsystemdms/getModuls";
 		$response1 		= $this->api->get($url1);
 		$data1			= json_decode($response1, true);
+		$url2 			= "http://127.0.0.1:8080/runsystemdms/getPG";
+		$response2 		= $this->api->get($url2);
+		$data2 			= json_decode($response2, true);
 		if ($data == null && $data1 == null) {
 			$this->load->view('partials2/main/page2/page_notfound');
 		}else{
@@ -50,6 +53,7 @@ class Menu extends CI_Controller
 			} else {
 				$data['menu'] 		= $data['menu'];
 				$data['dt'] 		= $data1['modul'];
+				$data['dt1'] 		= $data2['pg'];
 				$this->load->view('partials2/main/page2/page_add_modul_menu', $data);
 			}
 		}
@@ -137,6 +141,14 @@ class Menu extends CI_Controller
 			redirect("login");
 		}
 		$this->load->view('partials2/main/page2/page_add_group_menu');
+	}
+	function getModuleWithPc(){
+		$projectcode		= $this->input->post('projectcode');
+		$url 			= "http://127.0.0.1:8080/runsystemdms/getModulsWithId/". $projectcode;
+		$response			= $this->api->get($url);
+		$data			= json_decode($response, true);
+		$data			= $data['modul'];
+		echo json_encode($data);
 	}
 	function delete_menu()
 	{

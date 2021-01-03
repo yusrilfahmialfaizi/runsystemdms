@@ -60,12 +60,7 @@ class Project extends CI_Controller {
 	function add(){
 		$projectcode 		= $this->input->post('projectcode');
 		$projectname 		= $this->input->post('projectname');
-		$actind 			= $this->input->post('actind');
-		if ($actind == null) {
-			$actind = "N";
-		}elseif ($actind == 'on') {
-			$actind = "Y";
-		}
+		$actind = "Y";
 		$ctcode 			= $this->input->post('ctcode');
 		date_default_timezone_set('Asia/Jakarta');
 		$now = date('YmdHi');

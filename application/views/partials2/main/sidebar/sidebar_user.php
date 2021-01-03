@@ -45,7 +45,7 @@
                           <?php } ?>
                           <br>
                           <label><b><p>Final</b>
-                            <input class="checkbox_animated" onClick="toggle_checkbox(this)" id="statushdr" name="statushdr-<?php echo $key[$i]["modulcode"] ?>" type="checkbox" data-code="<?php echo $key[$i]["modulcode"] ?>"></p>
+                            <input class="checkbox_animated" onClick="toggle_checkbox(this)" id="statushdr-<?php echo $key[$i]["modulcode"] ?>" name="statushdr-<?php echo $key[$i]["modulcode"] ?>" type="checkbox" data-code="<?php echo $key[$i]["modulcode"] ?>"></p>
                           </label>
                         </li>                  
                         <ul id="modul-menu-<?php echo $key[$i]["modulcode"] ?>"></ul>

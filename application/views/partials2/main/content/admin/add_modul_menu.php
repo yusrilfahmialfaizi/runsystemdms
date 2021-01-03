@@ -32,13 +32,8 @@
                                 <div class="form-group">
                                     <span style='color:#F00;'>*</span>
                                     <label class="col-form-label pt-0" for="modulcode">Modul Name</label>
-                                    <select class="custom-select" id="modulcode" name="modulcode" required="">
+                                    <select class="custom-select" id="modulcode" name="modulcode" required="" disabled>
                                         <option value="">--Pilih--</option>
-                                        <?php print_r($dt); 
-                                            foreach ($dt as $key){ ?>
-                                        <option value="<?php echo $key['modulcode'] ?>"><?php echo $key['modulname'] ?>
-                                        </option>
-                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>

@@ -41,12 +41,12 @@
                                         <?php foreach ($dt as $key){ ?>
                                         <?php if ($d['modulcode'] == $key['modulcode']) { ?>
                                         <option selected value="<?php echo $key['modulcode'] ?>">
-                                            <?php echo $key['modulname'] ?>
+                                            <?php echo $key['projectcode']. " | " .$key['modulcode']. " | " .$key['modulname'] ?>
                                         </option>
-                                        <?php }else{ ?>
+                                        <?php }else if ($d['modulcode'] != $key['modulcode']){ ?>
+                                        <option value="<?php echo $key['modulcode'] ?>"><?php echo $key['projectcode']. " | " .$key['modulcode']. " | " .$key['modulname'] ?>
+                                        </option>
                                         <?php } ?>
-                                        <option value="<?php echo $key['modulcode'] ?>"><?php echo $key['modulname'] ?>
-                                        </option>
                                         <?php } ?>
                                     </select>
                                 </div>

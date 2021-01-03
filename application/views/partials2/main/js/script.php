@@ -30,15 +30,15 @@
            cache: false,
            success: function(data) {
               if (data.status == "F") {
-                document.getElementById('statushdr').disabled = true;
-                document.getElementById('statushdr').checked = true;
+                document.getElementById('statushdr-'+modulCode).disabled = true;
+                document.getElementById('statushdr-'+modulCode).checked = true;
               } else {
                 if (grpcode == "Analyst") {
-                  document.getElementById('statushdr').disabled = false;
+                  document.getElementById('statushdr-'+modulCode).disabled = false;
                 }else{
-                  document.getElementById('statushdr').disabled = true;
+                  document.getElementById('statushdr-'+modulCode).disabled = true;
                 }
-                  document.getElementById('statushdr').checked = false;
+                  document.getElementById('statushdr-'+modulCode).checked = false;
               }
            }
           });
@@ -65,15 +65,15 @@
            cache: false,
            success: function(response) {
              if (response.message == false) {
-              document.getElementById('statushdr').disabled = true;
+              document.getElementById('statushdr-'+modulCode).disabled = true;
              }else{
-              if (document.getElementById('statushdr').checked == true) {
-                document.getElementById('statushdr').disabled = true;
+              if (document.getElementById('statushdr-'+modulCode).checked == true) {
+                document.getElementById('statushdr-'+modulCode).disabled = true;
               }else{
                 if (grpcode == "Analyst") {
-                  document.getElementById('statushdr').disabled = false;
+                  document.getElementById('statushdr-'+modulCode).disabled = false;
                 }else{
-                  document.getElementById('statushdr').disabled = true;
+                  document.getElementById('statushdr-'+modulCode).disabled = true;
                 }
               }
              }
@@ -136,6 +136,7 @@
          $.post("<?php echo base_url("tabel/modul_session") ?>", {
            modulCode: modulCode
          });
+
          $.ajax({ //to get all data menu from db
            type: 'POST',
            url: '<?php echo base_url("tabel/doc_status") ?>',
@@ -146,30 +147,30 @@
            cache: false,
            success: function(response) {
              if (response.message == false ) {
-              document.getElementById('statushdr').disabled = true;
+              document.getElementById('statushdr-'+modulCode).disabled = true;
              }else{
-              if (document.getElementById('statushdr').checked == true) {
-                document.getElementById('statushdr').disabled = true;
+              if (document.getElementById('statushdr-'+modulCode).checked == true) {
+                document.getElementById('statushdr-'+modulCode).disabled = true;
               }else{
                 if (grpcode == "Analyst") {
-                  document.getElementById('statushdr').disabled = false;
+                  document.getElementById('statushdr-'+modulCode).disabled = false;
                 }else{
-                  document.getElementById('statushdr').disabled = true;
+                  document.getElementById('statushdr-'+modulCode).disabled = true;
                 }
               }
              }
            }
          });
          if (status == "F") {
-           document.getElementById('statushdr').disabled = true;
-           document.getElementById('statushdr').checked = true;
+           document.getElementById('statushdr-'+modulCode).disabled = true;
+           document.getElementById('statushdr-'+modulCode).checked = true;
          } else if (status == "O") {
             if (grpcode == "Analyst") {
-              document.getElementById('statushdr').disabled = true;
-              document.getElementById('statushdr').checked = false;
+              document.getElementById('statushdr-'+modulCode).disabled = true;
+              document.getElementById('statushdr-'+modulCode).checked = false;
             }else{
-              document.getElementById('statushdr').disabled = false;
-              document.getElementById('statushdr').checked = false;
+              document.getElementById('statushdr-'+modulCode).disabled = false;
+              document.getElementById('statushdr-'+modulCode).checked = false;
             }
          }
          $.post("<?php echo base_url("tabel/doc_session") ?>", {
@@ -282,25 +283,25 @@
 
       //  }
        //  $('input[type="checkbox"]').click(function() {
-       function toggle_checkbox(element) {
-         if ($(element).prop("checked") == true) {
-           // console.log("Checkbox is checked.");
-           var checked = "F";
-           $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
-             checked: checked
-           }).done(function() {
-             location.reload(true)
-           });
-         } else if ($(element).prop("checked") == false) {
-           var checked = "O";
-           // console.log("Checkbox is unchecked.");
-           $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
-             checked: checked
-           }).done(function() {
-             location.reload(true)
-           });
-         }
-       }
+      //  function toggle_checkbox(element) {
+      //    if ($(element).prop("checked") == true) {
+      //      // console.log("Checkbox is checked.");
+      //      var checked = "F";
+      //      $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
+      //        checked: checked
+      //      }).done(function() {
+      //        location.reload(true)
+      //      });
+      //    } else if ($(element).prop("checked") == false) {
+      //      var checked = "O";
+      //      // console.log("Checkbox is unchecked.");
+      //      $.post("<?php echo base_url("tabel/update_statushdr") ?>", {
+      //        checked: checked
+      //      }).done(function() {
+      //        location.reload(true)
+      //      });
+      //    }
+      //  }
        //  });
 
        function preview(ths) {

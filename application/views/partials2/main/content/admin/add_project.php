@@ -37,16 +37,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label class="col-form-label pt-0" for="expdt">Active</label>
-                                        <input style="margin-left: 5px;" id="actind" name="actind" type="checkbox">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="card-footer">
                             <button class="btn btn-primary btn-pill">Submit</button>
                         </div>

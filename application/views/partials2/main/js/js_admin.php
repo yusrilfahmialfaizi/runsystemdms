@@ -21,3 +21,27 @@
 <script src="<?php echo base_url("assets_admin/js/demo/datatables-demo.js") ?>"></script>
 <!-- Customizer -->
 <script src="<?php echo base_url("assets_admin/js/sb-customizer.js") ?>"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+     $("#add_projectcode").on('change', function(){
+          var projectcode = $("#add_projectcode").val();
+          console.log(projectcode);
+          $.ajax({
+               type      : "POST",
+               url       : "<?php echo base_url("admin/menu/getModuleWithPc") ?>",
+               dataType  : "json",
+               data      : {projectcode:projectcode},
+               cache     : false,
+               success   : function(data){
+                    document.getElementById("modulcode").disabled = false;
+                    var html = '';
+                    html += "<option value=''>--Pilih--</option>";
+                    for (let index = 0; index < data.length; index++) {
+                         html += "<option value='"+data[index].modulcode+"'>"+data[index].modulcode+' - '+data[index].modulname+"</option>";
+                    }
+                    $("#modulcode").html(html);                        
+               }
+          })
+     });
+});
+</script>
