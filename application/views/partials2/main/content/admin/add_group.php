@@ -21,6 +21,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
+                                    <span style='color:#F00;'>*</span>
                                     <label class="col-form-label pt-0" for="grpcode">Group Code</label>
                                     <input class="form-control" id="grpcode" name="grpcode" type="text" placeholder="group code..." required="">
                                 </div>
@@ -29,6 +30,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
+                                    <span style='color:#F00;'>*</span>
                                     <label class="col-form-label pt-0" for="grpname">Group Name</label>
                                     <input class="form-control" id="grpname" name="grpname" type="text" placeholder="group name..." required="">
                                 </div>

@@ -25,7 +25,7 @@
           </div>
           <div class="card-body">
             <div class="dt-ext table-responsive">
-              <table class="display" id="basic-fixed-header">
+              <table class="display" id="fixed-header-footer">
                 <thead>
                   <tr>
                     <th>Docno</th>
@@ -103,7 +103,7 @@
   ?>
 
 <div class="modal fade" id="modal-<?php echo str_replace('/', '-', $lg["docno"]); ?>" tabindex="-1" role="dialog" aria-labelledby="modalSayaLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalSayaLabel">Detail Log <?php echo $logs ?></h5>
@@ -114,27 +114,26 @@
       <div class="modal-body">
         <div class="card-block row">
           <div class="col-sm-12 col-lg-12 col-xl-12">
-            <div class="dt-ext table-responsive">
-              <table class="display" id="basic-fixed-header">
-                <thead class="table-primary">
+            <div class="table-responsive">
+              <table class="display" id="responsive">
+                <thead class="thead-light">
                   <tr>
-                    <th scope="col">Log Code</th>
-                    <th scope="col">Docno</th>
+                    <th scope="col">No</th>
                     <th scope="col">Last Update By</th>
                     <th scope="col">Last Update Date</th>
                   </tr>
                 </thead>
                 <tbody>
                     <!-- js -->
-                  <?php foreach ($log as $key) {
+                  <?php 
+                   $no = 1;
+                  foreach ($log as $key) {
                     if ($logs == $key['docno']) {
                       # code...
                       $lastupdt = strtotime($key["lastupdt"]);
                   ?>
-
                   <tr>
-                    <td><?php echo $key["logcode"]; ?></td>
-                    <td><?php echo $key["docno"]; ?></td>
+                    <td><?php echo $no++ ?></td>
                     <td><?php echo $key["lastupby"]; ?></td>
                     <td><?php echo date("d-m-Y H:i", $lastupdt); ?></td>
                     <?php } ?>

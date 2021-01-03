@@ -22,6 +22,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="modulcode">Modul Code</label>
                                         <input class="form-control" id="modulcode" name="modulcode" type="text" placeholder="modul code..." value="<?php echo $data['modulcode'] ?>" required="">
                                         <input class="form-control" id="modulcode_old" name="modulcode_old" readonly="" hidden="" type="text" placeholder="modul code..." value="<?php echo $data['modulcode'] ?>" required=""> 
@@ -31,6 +32,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="modulname">Modul Name</label>
                                         <input class="form-control" id="modulname" name="modulname" type="text" placeholder="modul name..." value="<?php echo $data['modulname'] ?>" required=""> 
                                     </div>
@@ -39,6 +41,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="projectcode">Project
                                             Name</label>
                                             <input class="form-control" id="projectcode_old" name="projectcode_old" type="text" value="<?php echo $data['projectcode'] ?>" required="" hidden>

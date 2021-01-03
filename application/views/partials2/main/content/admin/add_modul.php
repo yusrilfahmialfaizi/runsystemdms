@@ -21,6 +21,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="modulcode">Modul Code</label>
                                         <input class="form-control" id="modulcode" name="modulcode" type="text" placeholder="modul code..." required="">
                                         <div class="valid-feedback">Looks good!</div>
@@ -31,6 +32,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="modulname">Modul Name</label>
                                         <input class="form-control" id="modulname" name="modulname" type="text" placeholder="modul name..." required="">
                                         <div class="valid-feedback">Looks good!</div>
@@ -41,6 +43,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="projectcode">Project
                                             Name</label>
                                         <select class="custom-select" id="projectcode" name="projectcode" required="">

@@ -20,15 +20,17 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="usercode">User Code</label>
                                         <input class="form-control" id="usercode" name="usercode" type="text"
-                                            placeholder="user code..." required="">
+                                        placeholder="user code..." required="">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="username">User Name</label>
                                         <input class="form-control" id="username" name="username" type="text"
                                             placeholder="user name..." required="">
@@ -38,6 +40,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="privilegecode">Privilege Code</label>
                                         <select class="custom-select" id="privilegecode" name="privilegecode"
                                             required="">
@@ -51,6 +54,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="grpcode">Group Code</label>
                                         <select class="custom-select" id="grpcode" name="grpcode" required="">
                                             <option value="">--Pilih--</option>
@@ -65,6 +69,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="pwd">Password</label>
                                         <input class="form-control" id="pwd" name="pwd" type="password"
                                             placeholder="password..." required="">

@@ -20,6 +20,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
+                                    <span style='color:#F00;'>*</span>
                                     <label class="col-form-label pt-0" for="menucode">Menu Code</label>
                                     <select class="custom-select" id="menucode" name="menucode" required="">
                                         <option value="">--Pilih--</option>
@@ -35,6 +36,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
+                                    <span style='color:#F00;'>*</span>
                                     <label class="col-form-label pt-0" for="grpcode">Group Code</label>
                                     <select class="custom-select" id="grpcode" name="grpcode" required="">
                                         <option value="">--Pilih--</option>

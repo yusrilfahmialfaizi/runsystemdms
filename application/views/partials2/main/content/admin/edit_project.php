@@ -21,6 +21,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="Projectcode">Project Code</label>
                                         <input class="form-control" id="projectcode" name="projectcode" type="text" placeholder="Projectcode..." value="<?php echo $data['projectcode'] ?>" required="" readonly="">
                                     </div>
@@ -29,6 +30,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="Projectname">Project Name</label>
                                         <input class="form-control" id="projectname" name="projectname" type="text" value="<?php echo $data['projectname'] ?>" placeholder="Project name..." required="">
                                     </div>

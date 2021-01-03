@@ -25,6 +25,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="grpcode">Group Code</label>
                                         <input class="form-control" id="grpcode" name="grpcode" value="<?php echo $key['grpcode'] ?>" type="text" placeholder="group code..." required="">
                                         <input class="form-control" id="grpcode_old" name="grpcode_old" value="<?php echo $key['grpcode'] ?>" type="text" placeholder="group code..." hidden="" required="">
@@ -34,6 +35,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="grpname">Group Name</label>
                                         <input class="form-control" id="grpname" name="grpname" value="<?php echo $key['grpcode'] ?>" type="text" placeholder="group name..." required="">
                                     </div>

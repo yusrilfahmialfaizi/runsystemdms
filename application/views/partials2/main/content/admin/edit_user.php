@@ -33,6 +33,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
+                                    <span style='color:#F00;'>*</span>
                                     <label class="col-form-label pt-0" for="username">User Name</label>
                                     <input class="form-control" id="username" name="username" type="text"
                                         placeholder="user name..." value="<?php echo $us['username'] ?>" required="">
@@ -42,6 +43,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
+                                    <span style='color:#F00;'>*</span>
                                     <label class="col-form-label pt-0" for="privilegecode">Privilege Code</label>
                                     <select class="custom-select" id="privilegecode" name="privilegecode" required="">
                                         <option value="">--Pilih--</option>
@@ -67,6 +69,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
+                                    <span style='color:#F00;'>*</span>
                                     <label class="col-form-label pt-0" for="grpcode">Group Code</label>
                                     <select class="custom-select" id="grpcode" name="grpcode" required="">
                                         <option value="">--Pilih--</option>
@@ -87,6 +90,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
+                                    <span style='color:#F00;'>*</span>
                                     <label class="col-form-label pt-0" for="pwd">Password</label>
                                     <input class="form-control" id="pwd" name="pwd" type="password"
                                         placeholder="password..." value="<?php echo $us['pwd'] ?>" required="">
