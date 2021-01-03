@@ -100,6 +100,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
+                                    <span style='color:#F00;'>*</span>
                                     <label class="col-form-label pt-0" for="expdt">Exp Date</label>
                                     <?php if ($us['expdt'] != null) { ?>
                                     <?php $expdt = strtotime($us["expdt"]);?>
@@ -107,7 +108,7 @@
                                         type="date" data-language="en" value="<?php echo date("Y-m-d", $expdt) ?>">
                                     <?php }else{ ?>
                                     <input class="datepicker-here form-control digits" id="expdt" name="expdt"
-                                        type="date" data-language="en" value="">
+                                        type="date" data-language="en" value="" required="">
                                     <?php } ?>
                                 </div>
                             </div>

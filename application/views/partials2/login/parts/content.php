@@ -45,9 +45,11 @@
             });
 
             function login() {
-                var usercode = $('#usercode').val();
-                var pwd = $("#pwd").val();
-                var url = 'http://127.0.0.1:8080/runsystemdms/login';
+                var usercode    = $('#usercode').val();
+                var pwd         = $("#pwd").val();
+                var url         = 'http://127.0.0.1:8080/runsystemdms/login';
+                let current_datetime    = new Date();
+                let date = current_datetime.getFullYear() + "" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "" + ("0" + current_datetime.getDate()).slice(-2);
                 $.ajax({
                     type: "POST",
                     url: url,
@@ -67,7 +69,15 @@
                             }).join(''));
 
                             var result = JSON.parse(jsonPayload);
-                            session(result);
+                            if (result.expdate > date) {
+                                session(result);    
+                            }else{
+                                var text = "Akun Anda Expired !!!"
+                                document.getElementById("wrong").innerHTML = text;
+                                document.getElementById("wrong").style.color = "#ff0000";
+                                document.getElementById("pwd").style.color = "#ff0000";
+                                document.getElementById("usercode").style.color = "#ff0000";
+                            }
                         } else if (data.message == "username tidak terdaftar") {
                             var text = "Username anda belum terdaftar atau salah !!!"
                             document.getElementById("wrong").innerHTML = text;
@@ -90,11 +100,14 @@
             }
 
             function session(result) {
-                var usercode        = result.usercode;
-                var username        = result.username;
-                var privilegecode   = result.privilegecode;
-                var grpcode         = result.grpcode;
-                var status          = "login"
+                var usercode            = result.usercode;
+                var username            = result.username;
+                var privilegecode       = result.privilegecode;
+                var grpcode             = result.grpcode;
+                var expdate             = result.expdate;
+                var status              = "login";
+                // alert(moonLanding.getMonth());
+                // alert(date.getFullYear());
                 $.ajax({
                     type: "POST",
                     url: "http://localhost/runsystemdms/login/session",

@@ -1,15 +1,14 @@
 package controllers
 
 import (
+	"github.com/labstack/echo/v4"
+	"github.com/dgrijalva/jwt-go"
 	"database/sql"
 	"echo/models"
 	"net/http"
 	"strings"
-	_ "time"
-
-	"github.com/dgrijalva/jwt-go"
-
-	"github.com/labstack/echo/v4"
+	_"time"
+	_"fmt"
 )
 
 type Response struct {
@@ -72,10 +71,11 @@ func Login(c echo.Context) (err error) {
 
 				// set claims yang bisa digunakn di frontend
 				claims := token.Claims.(jwt.MapClaims)
-				claims["usercode"] = result.Users[i].UserCode
-				claims["username"] = result.Users[i].Username
-				claims["privilegecode"] = result.Users[i].PrivilegeCode
-				claims["grpcode"] = result.Users[i].GrpCode
+				claims["usercode"] 		= result.Users[i].UserCode
+				claims["username"] 		= result.Users[i].Username
+				claims["privilegecode"] 	= result.Users[i].PrivilegeCode
+				claims["grpcode"] 		= result.Users[i].GrpCode
+				claims["expdate"] 		= result.Users[i].ExpDt
 
 				// mencari kombinasi token dan mengirimkannya sebagai response
 				t, err := token.SignedString([]byte("secret"))
@@ -103,3 +103,4 @@ func DeleteUser(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
+ 

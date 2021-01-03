@@ -79,9 +79,10 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <span style='color:#F00;'>*</span>
                                         <label class="col-form-label pt-0" for="expdt">Exp Date</label>
                                         <input class="datepicker-here form-control digits" id="expdt" name="expdt"
-                                            type="date" data-language="en">
+                                            type="date" data-language="en" required="">
 
                                     </div>
                                 </div>

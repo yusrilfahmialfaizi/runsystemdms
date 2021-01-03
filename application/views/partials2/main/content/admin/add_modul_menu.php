@@ -30,6 +30,21 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
+                                    <label class="col-form-label pt-0" for="add_projectcode">Project Name</label>
+                                    <select class="custom-select" id="add_projectcode" name="add_projectcode" required="">
+                                        <option value="">--Pilih--</option>
+                                        <?php print_r($dt1); 
+                                            foreach ($dt1 as $key){ ?>
+                                        <option value="<?php echo $key['projectcode']?>"><?php echo $key['projectcode'] ." - ". $key['projectname'] ?>
+                                        </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
                                     <span style='color:#F00;'>*</span>
                                     <label class="col-form-label pt-0" for="modulcode">Modul Name</label>
                                     <select class="custom-select" id="modulcode" name="modulcode" required="" disabled>

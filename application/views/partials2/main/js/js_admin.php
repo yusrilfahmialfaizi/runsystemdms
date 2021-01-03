@@ -25,7 +25,6 @@
 $(document).ready(function() {
      $("#add_projectcode").on('change', function(){
           var projectcode = $("#add_projectcode").val();
-          console.log(projectcode);
           $.ajax({
                type      : "POST",
                url       : "<?php echo base_url("admin/menu/getModuleWithPc") ?>",
@@ -36,10 +35,14 @@ $(document).ready(function() {
                     document.getElementById("modulcode").disabled = false;
                     var html = '';
                     html += "<option value=''>--Pilih--</option>";
-                    for (let index = 0; index < data.length; index++) {
-                         html += "<option value='"+data[index].modulcode+"'>"+data[index].modulcode+' - '+data[index].modulname+"</option>";
+                    if (data != null){
+                         for (let index = 0; index < data.length; index++) {
+                              html += "<option value='"+data[index].modulcode+"'>"+data[index].modulcode+' - '+data[index].modulname+"</option>";
+                         }
+                         $("#modulcode").html(html);                        
+                    }else{
+                         $("#modulcode").html(html);                        
                     }
-                    $("#modulcode").html(html);                        
                }
           })
      });

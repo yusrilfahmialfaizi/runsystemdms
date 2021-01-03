@@ -16,7 +16,7 @@ type User struct {
 	PrivilegeCode    string          `json:"privilegecode"`
 	GrpCode          string          `json:"grpcode"`
 	Pwd              string          `json:"pwd"`
-	ExpDt            nullable.String `json:"expdt"`
+	ExpDt            string		   `json:"expdt"`
 	NotifyInd        string          `json:"notifyind"`
 	HasQiscusAccount nullable.String `json:"hasqiscusaccout"`
 	AvatarImage      nullable.String `json:"avatarimage"`
